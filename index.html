@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Demon 的个人摄影主页，收录手机摄影与相机摄影作品。">
+    <meta name="description" content="Demon 的个人摄影主页，展示作品集并提供预约拍摄入口。">
     <title>Demon Photography</title>
     <link rel="preconnect" href="https://images.unsplash.com">
     <link rel="stylesheet" href="styles.css">
@@ -15,10 +15,9 @@
         <span>Demon Photography</span>
       </a>
       <nav class="nav" aria-label="Main navigation">
-        <a href="#mobile" data-i18n="navMobile">手机摄影</a>
-        <a href="#camera" data-i18n="navCamera">相机摄影</a>
+        <a href="#portfolio" data-i18n="navPortfolio">作品集</a>
+        <a href="#booking" data-i18n="navBooking">预约拍摄</a>
         <a href="#about" data-i18n="navAbout">关于</a>
-        <a href="#contact" data-i18n="navContact">联系</a>
       </nav>
       <div class="language-switcher" aria-label="Language">
         <button class="language-button is-active" type="button" data-lang="zh">中</button>
@@ -28,69 +27,75 @@
     </header>
 
     <nav class="mobile-toc" aria-label="Portfolio directory">
-      <a href="#mobile" data-i18n="tocMobile">手机</a>
+      <a href="#portfolio" data-i18n="tocPortfolio">作品集</a>
       <a href="#mobile-portrait" data-i18n="tocMobilePortrait">手机人像</a>
       <a href="#mobile-nature" data-i18n="tocMobileNature">手机自然</a>
-      <a href="#camera" data-i18n="tocCamera">相机</a>
       <a href="#camera-portrait" data-i18n="tocCameraPortrait">相机人像</a>
       <a href="#camera-nature" data-i18n="tocCameraNature">相机自然</a>
       <a href="#camera-travel" data-i18n="tocCameraTravel">相机旅游</a>
+      <a href="#booking" data-i18n="tocBooking">预约</a>
     </nav>
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
         <img
           class="hero-image"
-          src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=82"
-          alt="山谷与湖面在清晨光线中的风景照片"
+          src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1800&q=82"
+          alt="摄影师手持相机拍摄的照片"
         >
         <div class="hero-shade"></div>
         <div class="hero-content">
-          <p class="eyebrow" data-i18n="heroEyebrow">Portfolio / 手机与相机</p>
+          <p class="eyebrow" data-i18n="heroEyebrow">Portrait / Nature / Travel</p>
           <h1 id="hero-title">Demon Photography</h1>
-          <p class="hero-copy" data-i18n="heroCopy">把日常随身记录和相机创作整理成两个清晰的作品集。</p>
+          <p class="hero-copy" data-i18n="heroCopy">以安静、真实、有呼吸感的影像，记录人物、自然和旅途中的光。</p>
           <div class="hero-actions">
-            <a class="button primary" href="#mobile" data-i18n="heroMobile">手机摄影</a>
-            <a class="button ghost" href="#camera" data-i18n="heroCamera">相机摄影</a>
+            <a class="button primary" href="#portfolio" data-i18n="heroPortfolio">作品集</a>
+            <a class="button ghost" href="#booking" data-i18n="heroBooking">预约拍摄</a>
           </div>
         </div>
       </section>
 
       <section class="intro" aria-label="Portfolio overview">
         <div>
-          <span class="metric">02</span>
-          <span class="metric-label" data-i18n="metricCollections">摄影作品集</span>
-        </div>
-        <div>
           <span class="metric">05</span>
-          <span class="metric-label" data-i18n="metricCategories">细分分类</span>
+          <span class="metric-label" data-i18n="metricCollections">精选作品分类</span>
         </div>
         <div>
           <span class="metric">03</span>
           <span class="metric-label" data-i18n="metricLanguages">语言版本</span>
         </div>
+        <div>
+          <span class="metric">24h</span>
+          <span class="metric-label" data-i18n="metricReply">预约信息回复</span>
+        </div>
       </section>
 
-      <section class="section portfolio-block" id="mobile" aria-labelledby="mobile-title">
+      <section class="section portfolio" id="portfolio" aria-labelledby="portfolio-title">
         <div class="section-heading">
           <div>
-            <p class="eyebrow" data-i18n="mobileEyebrow">Mobile Photography</p>
-            <h2 id="mobile-title" data-i18n="mobileTitle">手机摄影</h2>
+            <p class="eyebrow" data-i18n="portfolioEyebrow">Selected Portfolio</p>
+            <h2 id="portfolio-title" data-i18n="portfolioTitle">作品集</h2>
           </div>
-          <p class="section-copy" data-i18n="mobileCopy">更轻、更快的日常观察，适合记录人物与自然光下的细节。</p>
+          <p class="section-copy" data-i18n="portfolioCopy">按照拍摄方式与主题整理，便于快速浏览不同气质的作品。</p>
         </div>
-        <div class="collection-grid" id="mobile-gallery"></div>
-      </section>
 
-      <section class="section portfolio-block" id="camera" aria-labelledby="camera-title">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow" data-i18n="cameraEyebrow">Camera Photography</p>
-            <h2 id="camera-title" data-i18n="cameraTitle">相机摄影</h2>
-          </div>
-          <p class="section-copy" data-i18n="cameraCopy">更完整的创作系列，分为人像、自然与旅游三个方向。</p>
+        <div class="portfolio-groups">
+          <section class="portfolio-group" aria-labelledby="mobile-title">
+            <div class="group-heading">
+              <p class="eyebrow" data-i18n="mobileEyebrow">Mobile</p>
+              <h3 id="mobile-title" data-i18n="mobileTitle">手机摄影</h3>
+            </div>
+            <div class="collection-grid" id="mobile-gallery"></div>
+          </section>
+
+          <section class="portfolio-group" aria-labelledby="camera-title">
+            <div class="group-heading">
+              <p class="eyebrow" data-i18n="cameraEyebrow">Camera</p>
+              <h3 id="camera-title" data-i18n="cameraTitle">相机摄影</h3>
+            </div>
+            <div class="collection-grid camera-grid" id="camera-gallery"></div>
+          </section>
         </div>
-        <div class="collection-grid" id="camera-gallery"></div>
       </section>
 
       <section class="about-band" id="about" aria-labelledby="about-title">
@@ -99,21 +104,47 @@
           <h2 id="about-title" data-i18n="aboutTitle">关于我</h2>
         </div>
         <p data-i18n="aboutCopy">
-          这里可以写你的摄影风格、常驻城市、器材偏好、接拍范围或项目经历。页面已经按手机摄影与相机摄影分好结构，后续只需要替换照片与作品说明。
+          我关注自然光、情绪和现场感，希望照片保留真实的温度。可预约个人写真、旅行记录、自然主题拍摄，也可以根据你的想法定制拍摄内容。
         </p>
       </section>
 
-      <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <section class="section booking" id="booking" aria-labelledby="booking-title">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">Contact</p>
-            <h2 id="contact-title" data-i18n="contactTitle">联系与合作</h2>
+            <p class="eyebrow" data-i18n="bookingEyebrow">Book a Session</p>
+            <h2 id="booking-title" data-i18n="bookingTitle">预约拍摄</h2>
           </div>
+          <p class="section-copy" data-i18n="bookingCopy">填写你的拍摄需求，提交后会自动整理成邮件，方便我尽快确认档期与方案。</p>
         </div>
-        <div class="contact-panel">
-          <a href="mailto:763525586@qq.com">763525586@qq.com</a>
-          <a href="tel:+8613687951586">+86 13687951586</a>
-          <a href="tel:+817085503168">+81 07085503168</a>
+
+        <div class="booking-layout">
+          <aside class="contact-card" aria-label="Contact information">
+            <p class="contact-kicker" data-i18n="contactKicker">联系方式</p>
+            <a href="mailto:763525586@qq.com">763525586@qq.com</a>
+            <a href="tel:+8613687951586">+86 13687951586</a>
+            <a href="tel:+817085503168">+81 07085503168</a>
+          </aside>
+
+          <form class="booking-form" id="booking-form">
+            <label>
+              <span data-i18n="formName">姓名</span>
+              <input id="client-name" name="name" type="text" autocomplete="name" required>
+            </label>
+            <label>
+              <span data-i18n="formContact">联系方式</span>
+              <input id="client-contact" name="contact" type="text" autocomplete="tel email" required>
+            </label>
+            <label>
+              <span data-i18n="formDate">预约拍摄日期</span>
+              <input id="shoot-date" name="date" type="date" required>
+            </label>
+            <label class="full-field">
+              <span data-i18n="formContent">拍摄内容</span>
+              <textarea id="shoot-content" name="content" rows="5" required></textarea>
+            </label>
+            <button class="button primary form-submit" type="submit" data-i18n="formSubmit">发送预约信息</button>
+            <p class="form-note" id="form-note" data-i18n="formNote">提交会打开你的邮件应用，并不会在网页上保存个人信息。</p>
+          </form>
         </div>
       </section>
     </main>

@@ -1,6 +1,6 @@
 # Demon Photography
 
-一个适合 GitHub Pages 的个人摄影主页模板。页面包含首页视觉区、手机摄影、相机摄影、灯箱预览、三语言切换、移动端作品目录、关于与联系区。
+一个适合 GitHub Pages 的个人摄影主页模板。页面包含首页视觉区、作品集、预约拍摄表单、灯箱预览、三语言切换、移动端作品目录、关于与联系方式。
 
 ## 替换照片
 
@@ -11,6 +11,7 @@
 ## 修改个人信息
 
 - `script.js` 中的 `translations` 可以修改中文、英文、日语页面文案。
+- `script.js` 顶部的 `contactEmail` 控制预约表单发送到哪个邮箱。
 - `index.html` 中的 `Demon Photography` 可以直接替换。
 - `styles.css` 中的 `--accent` 可以调整主色。
 

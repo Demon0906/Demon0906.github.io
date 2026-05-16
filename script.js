@@ -1,32 +1,45 @@
+const contactEmail = "763525586@qq.com";
+
 const translations = {
   zh: {
-    navMobile: "手机摄影",
-    navCamera: "相机摄影",
+    navPortfolio: "作品集",
+    navBooking: "预约拍摄",
     navAbout: "关于",
-    navContact: "联系",
-    tocMobile: "手机",
+    tocPortfolio: "作品集",
+    tocBooking: "预约",
     tocMobilePortrait: "手机人像",
     tocMobileNature: "手机自然",
-    tocCamera: "相机",
     tocCameraPortrait: "相机人像",
     tocCameraNature: "相机自然",
     tocCameraTravel: "相机旅游",
-    heroEyebrow: "Portfolio / 手机与相机",
-    heroCopy: "把日常随身记录和相机创作整理成两个清晰的作品集。",
-    heroMobile: "手机摄影",
-    heroCamera: "相机摄影",
-    metricCollections: "摄影作品集",
-    metricCategories: "细分分类",
+    heroEyebrow: "Portrait / Nature / Travel",
+    heroCopy: "以安静、真实、有呼吸感的影像，记录人物、自然和旅途中的光。",
+    heroPortfolio: "作品集",
+    heroBooking: "预约拍摄",
+    metricCollections: "精选作品分类",
     metricLanguages: "语言版本",
-    mobileEyebrow: "Mobile Photography",
+    metricReply: "预约信息回复",
+    portfolioEyebrow: "Selected Portfolio",
+    portfolioTitle: "作品集",
+    portfolioCopy: "按照拍摄方式与主题整理，便于快速浏览不同气质的作品。",
+    mobileEyebrow: "Mobile",
     mobileTitle: "手机摄影",
-    mobileCopy: "更轻、更快的日常观察，适合记录人物与自然光下的细节。",
-    cameraEyebrow: "Camera Photography",
+    cameraEyebrow: "Camera",
     cameraTitle: "相机摄影",
-    cameraCopy: "更完整的创作系列，分为人像、自然与旅游三个方向。",
     aboutTitle: "关于我",
-    aboutCopy: "这里可以写你的摄影风格、常驻城市、器材偏好、接拍范围或项目经历。页面已经按手机摄影与相机摄影分好结构，后续只需要替换照片与作品说明。",
-    contactTitle: "联系与合作",
+    aboutCopy: "我关注自然光、情绪和现场感，希望照片保留真实的温度。可预约个人写真、旅行记录、自然主题拍摄，也可以根据你的想法定制拍摄内容。",
+    bookingEyebrow: "Book a Session",
+    bookingTitle: "预约拍摄",
+    bookingCopy: "填写你的拍摄需求，提交后会自动整理成邮件，方便我尽快确认档期与方案。",
+    contactKicker: "联系方式",
+    formName: "姓名",
+    formContact: "联系方式",
+    formDate: "预约拍摄日期",
+    formContent: "拍摄内容",
+    formSubmit: "发送预约信息",
+    formNote: "提交会打开你的邮件应用，并不会在网页上保存个人信息。",
+    mailSubject: "摄影预约咨询",
+    mailBodyTitle: "摄影预约信息",
     mobilePortrait: "人像",
     mobileNature: "自然",
     cameraPortrait: "人像",
@@ -34,33 +47,44 @@ const translations = {
     cameraTravel: "旅游",
   },
   en: {
-    navMobile: "Mobile",
-    navCamera: "Camera",
+    navPortfolio: "Portfolio",
+    navBooking: "Book",
     navAbout: "About",
-    navContact: "Contact",
-    tocMobile: "Mobile",
+    tocPortfolio: "Portfolio",
+    tocBooking: "Book",
     tocMobilePortrait: "Mobile Portrait",
     tocMobileNature: "Mobile Nature",
-    tocCamera: "Camera",
     tocCameraPortrait: "Camera Portrait",
     tocCameraNature: "Camera Nature",
     tocCameraTravel: "Camera Travel",
-    heroEyebrow: "Portfolio / Mobile & Camera",
-    heroCopy: "Two clear collections for everyday mobile moments and camera-based work.",
-    heroMobile: "Mobile Work",
-    heroCamera: "Camera Work",
-    metricCollections: "Photo collections",
-    metricCategories: "Subcategories",
+    heroEyebrow: "Portrait / Nature / Travel",
+    heroCopy: "Quiet, honest images with room to breathe, capturing people, nature, and light on the road.",
+    heroPortfolio: "Portfolio",
+    heroBooking: "Book a Session",
+    metricCollections: "Curated categories",
     metricLanguages: "Languages",
-    mobileEyebrow: "Mobile Photography",
+    metricReply: "Booking reply",
+    portfolioEyebrow: "Selected Portfolio",
+    portfolioTitle: "Portfolio",
+    portfolioCopy: "Organized by capture style and subject so different moods are easy to browse.",
+    mobileEyebrow: "Mobile",
     mobileTitle: "Mobile Photography",
-    mobileCopy: "Lighter, faster observations for portraits and natural details in daily life.",
-    cameraEyebrow: "Camera Photography",
+    cameraEyebrow: "Camera",
     cameraTitle: "Camera Photography",
-    cameraCopy: "A fuller creative archive organized into portrait, nature, and travel.",
     aboutTitle: "About Me",
-    aboutCopy: "Use this area for your style, base city, gear, booking scope, or project history. The page is already structured around mobile and camera photography, so you can focus on replacing images and captions.",
-    contactTitle: "Contact",
+    aboutCopy: "I focus on natural light, emotion, and a sense of place. Portraits, travel records, nature sessions, and custom ideas are all welcome.",
+    bookingEyebrow: "Book a Session",
+    bookingTitle: "Book a Session",
+    bookingCopy: "Send your shoot request as a prepared email so I can confirm availability and direction quickly.",
+    contactKicker: "Contact",
+    formName: "Name",
+    formContact: "Contact",
+    formDate: "Preferred date",
+    formContent: "Shoot details",
+    formSubmit: "Send Request",
+    formNote: "Submitting opens your mail app. Personal information is not stored on this website.",
+    mailSubject: "Photography booking request",
+    mailBodyTitle: "Photography booking request",
     mobilePortrait: "Portrait",
     mobileNature: "Nature",
     cameraPortrait: "Portrait",
@@ -68,33 +92,44 @@ const translations = {
     cameraTravel: "Travel",
   },
   ja: {
-    navMobile: "スマホ写真",
-    navCamera: "カメラ写真",
+    navPortfolio: "作品集",
+    navBooking: "撮影予約",
     navAbout: "紹介",
-    navContact: "連絡先",
-    tocMobile: "スマホ",
+    tocPortfolio: "作品集",
+    tocBooking: "予約",
     tocMobilePortrait: "スマホ人物",
     tocMobileNature: "スマホ自然",
-    tocCamera: "カメラ",
     tocCameraPortrait: "カメラ人物",
     tocCameraNature: "カメラ自然",
     tocCameraTravel: "カメラ旅",
-    heroEyebrow: "Portfolio / スマホとカメラ",
-    heroCopy: "日常の記録とカメラ作品を、見やすい二つのコレクションに整理しました。",
-    heroMobile: "スマホ写真",
-    heroCamera: "カメラ写真",
-    metricCollections: "写真コレクション",
-    metricCategories: "カテゴリー",
+    heroEyebrow: "Portrait / Nature / Travel",
+    heroCopy: "静かで自然な空気を大切にしながら、人物、自然、旅先の光を記録します。",
+    heroPortfolio: "作品集",
+    heroBooking: "撮影予約",
+    metricCollections: "作品カテゴリー",
     metricLanguages: "言語",
-    mobileEyebrow: "Mobile Photography",
+    metricReply: "予約返信",
+    portfolioEyebrow: "Selected Portfolio",
+    portfolioTitle: "作品集",
+    portfolioCopy: "撮影方法とテーマ別に整理し、作品の雰囲気を見つけやすくしています。",
+    mobileEyebrow: "Mobile",
     mobileTitle: "スマホ写真",
-    mobileCopy: "身軽で素早い日常の観察。人物や自然光の細部を記録します。",
-    cameraEyebrow: "Camera Photography",
+    cameraEyebrow: "Camera",
     cameraTitle: "カメラ写真",
-    cameraCopy: "人物、自然、旅の三つに分けた、より完成度の高い作品群です。",
     aboutTitle: "自己紹介",
-    aboutCopy: "ここには撮影スタイル、拠点、機材、撮影依頼の範囲、プロジェクト経歴などを書けます。ページはスマホ写真とカメラ写真に分かれているので、写真と説明を差し替えるだけで使えます。",
-    contactTitle: "連絡先",
+    aboutCopy: "自然光、感情、その場の空気を大切にしています。ポートレート、旅の記録、自然テーマの撮影、オリジナルの相談も可能です。",
+    bookingEyebrow: "Book a Session",
+    bookingTitle: "撮影予約",
+    bookingCopy: "撮影内容を入力するとメールとして整理され、日程や内容を確認しやすくなります。",
+    contactKicker: "連絡先",
+    formName: "お名前",
+    formContact: "連絡先",
+    formDate: "撮影希望日",
+    formContent: "撮影内容",
+    formSubmit: "予約内容を送信",
+    formNote: "送信するとメールアプリが開きます。このサイトには個人情報を保存しません。",
+    mailSubject: "撮影予約の相談",
+    mailBodyTitle: "撮影予約情報",
     mobilePortrait: "人物",
     mobileNature: "自然",
     cameraPortrait: "人物",
@@ -163,6 +198,7 @@ const lightboxImage = document.querySelector("#lightbox-image");
 const lightboxTitle = document.querySelector("#lightbox-title");
 const lightboxMeta = document.querySelector("#lightbox-meta");
 const lightboxClose = document.querySelector(".lightbox-close");
+const bookingForm = document.querySelector("#booking-form");
 let currentLanguage = "zh";
 
 function t(key) {
@@ -184,13 +220,11 @@ function renderCollections() {
             <button class="photo-card" type="button" data-photo-id="${photo.id}">
               <img src="${photo.src}" alt="${photo.alt}" loading="lazy">
               <span class="photo-info">
+                <span class="photo-type">${t(photo.labelKey)}</span>
                 <strong>${localized(photo.title)}</strong>
                 <p>${localized(photo.meta)}</p>
               </span>
             </button>
-            <div class="collection-label">
-              <span>${t(photo.labelKey)}</span>
-            </div>
           </article>
         `,
       )
@@ -221,6 +255,20 @@ function openLightbox(photoId) {
   lightbox.showModal();
 }
 
+function buildMailto(formData) {
+  const lines = [
+    t("mailBodyTitle"),
+    "",
+    `${t("formName")}: ${formData.get("name")}`,
+    `${t("formContact")}: ${formData.get("contact")}`,
+    `${t("formDate")}: ${formData.get("date")}`,
+    `${t("formContent")}:`,
+    formData.get("content"),
+  ];
+
+  return `mailto:${contactEmail}?subject=${encodeURIComponent(t("mailSubject"))}&body=${encodeURIComponent(lines.join("\n"))}`;
+}
+
 languageButtons.forEach((button) => {
   button.addEventListener("click", () => applyLanguage(button.dataset.lang));
 });
@@ -230,6 +278,13 @@ document.addEventListener("click", (event) => {
   if (card) {
     openLightbox(card.dataset.photoId);
   }
+});
+
+bookingForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (!bookingForm.reportValidity()) return;
+
+  window.location.href = buildMailto(new FormData(bookingForm));
 });
 
 lightboxClose.addEventListener("click", () => lightbox.close());
