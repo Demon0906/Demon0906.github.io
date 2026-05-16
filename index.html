@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Demon 的个人摄影主页，展示作品集并提供预约拍摄入口。">
+    <meta name="description" content="Demon 的个人摄影主页，展示相机与手机摄影作品集并提供预约拍摄入口。">
     <title>Demon Photography</title>
     <link rel="preconnect" href="https://images.unsplash.com">
     <link rel="stylesheet" href="styles.css">
@@ -27,29 +27,31 @@
     </header>
 
     <nav class="mobile-toc" aria-label="Portfolio directory">
-      <a href="#portfolio" data-i18n="tocPortfolio">作品集</a>
-      <a href="#mobile-portrait" data-i18n="tocMobilePortrait">手机人像</a>
-      <a href="#mobile-nature" data-i18n="tocMobileNature">手机自然</a>
+      <a href="#camera-work" data-i18n="tocCamera">相机摄影</a>
       <a href="#camera-portrait" data-i18n="tocCameraPortrait">相机人像</a>
       <a href="#camera-nature" data-i18n="tocCameraNature">相机自然</a>
       <a href="#camera-travel" data-i18n="tocCameraTravel">相机旅游</a>
+      <a href="#mobile-work" data-i18n="tocMobile">手机摄影</a>
+      <a href="#mobile-portrait" data-i18n="tocMobilePortrait">手机人像</a>
+      <a href="#mobile-nature" data-i18n="tocMobileNature">手机自然</a>
       <a href="#booking" data-i18n="tocBooking">预约</a>
     </nav>
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
         <img
-          class="hero-image"
+          class="hero-image protected-media"
           src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1800&q=82"
           alt="摄影师手持相机拍摄的照片"
+          draggable="false"
         >
         <div class="hero-shade"></div>
         <div class="hero-content">
-          <p class="eyebrow" data-i18n="heroEyebrow">Portrait / Nature / Travel</p>
+          <p class="eyebrow" data-i18n="heroEyebrow">Camera First / Mobile Notes</p>
           <h1 id="hero-title">Demon Photography</h1>
-          <p class="hero-copy" data-i18n="heroCopy">以安静、真实、有呼吸感的影像，记录人物、自然和旅途中的光。</p>
+          <p class="hero-copy" data-i18n="heroCopy">以摄影作品集的方式呈现相机与手机影像，按主题、时间和地点整理每一次拍摄。</p>
           <div class="hero-actions">
-            <a class="button primary" href="#portfolio" data-i18n="heroPortfolio">作品集</a>
+            <a class="button primary" href="#portfolio" data-i18n="heroPortfolio">浏览作品集</a>
             <a class="button ghost" href="#booking" data-i18n="heroBooking">预约拍摄</a>
           </div>
         </div>
@@ -58,11 +60,11 @@
       <section class="intro" aria-label="Portfolio overview">
         <div>
           <span class="metric">05</span>
-          <span class="metric-label" data-i18n="metricCollections">精选作品分类</span>
+          <span class="metric-label" data-i18n="metricCollections">主题分类</span>
         </div>
         <div>
-          <span class="metric">03</span>
-          <span class="metric-label" data-i18n="metricLanguages">语言版本</span>
+          <span class="metric">02</span>
+          <span class="metric-label" data-i18n="metricDevices">作品来源</span>
         </div>
         <div>
           <span class="metric">24h</span>
@@ -76,26 +78,11 @@
             <p class="eyebrow" data-i18n="portfolioEyebrow">Selected Portfolio</p>
             <h2 id="portfolio-title" data-i18n="portfolioTitle">作品集</h2>
           </div>
-          <p class="section-copy" data-i18n="portfolioCopy">按照拍摄方式与主题整理，便于快速浏览不同气质的作品。</p>
+          <p class="section-copy" data-i18n="portfolioCopy">先看相机作品，再看手机作品。每个分类会自动横向滚动，点击分类可展开更多按时间与地点整理的照片集。</p>
         </div>
+        <p class="privacy-note" data-i18n="privacyNote">作品为预览展示，已限制右键保存与拖拽下载。网页无法完全阻止系统截图，请尊重影像隐私与版权。</p>
 
-        <div class="portfolio-groups">
-          <section class="portfolio-group" aria-labelledby="mobile-title">
-            <div class="group-heading">
-              <p class="eyebrow" data-i18n="mobileEyebrow">Mobile</p>
-              <h3 id="mobile-title" data-i18n="mobileTitle">手机摄影</h3>
-            </div>
-            <div class="collection-grid" id="mobile-gallery"></div>
-          </section>
-
-          <section class="portfolio-group" aria-labelledby="camera-title">
-            <div class="group-heading">
-              <p class="eyebrow" data-i18n="cameraEyebrow">Camera</p>
-              <h3 id="camera-title" data-i18n="cameraTitle">相机摄影</h3>
-            </div>
-            <div class="collection-grid camera-grid" id="camera-gallery"></div>
-          </section>
-        </div>
+        <div class="portfolio-groups" id="portfolio-groups"></div>
       </section>
 
       <section class="about-band" id="about" aria-labelledby="about-title">
@@ -151,12 +138,14 @@
 
     <dialog class="lightbox" id="lightbox" aria-label="作品预览">
       <button class="lightbox-close" type="button" aria-label="关闭预览">×</button>
-      <img id="lightbox-image" alt="">
+      <img id="lightbox-image" class="protected-media" alt="" draggable="false">
       <div class="lightbox-caption">
         <h3 id="lightbox-title"></h3>
         <p id="lightbox-meta"></p>
       </div>
     </dialog>
+
+    <div class="privacy-toast" id="privacy-toast" role="status" aria-live="polite" data-i18n="privacyToast">作品仅供在线预览，请勿保存或截图传播。</div>
 
     <script src="script.js"></script>
   </body>
