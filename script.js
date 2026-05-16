@@ -22,8 +22,8 @@ const translations = {
     metricReply: "预约信息回复",
     portfolioEyebrow: "Selected Portfolio",
     portfolioTitle: "作品集",
-    portfolioCopy: "先看相机作品，再看手机作品。每个分类会自动横向滚动，点击分类可展开更多按时间与地点整理的照片集。",
-    privacyNote: "作品为预览展示，已限制右键保存与拖拽下载。网页无法完全阻止系统截图，请尊重影像隐私与版权。",
+    portfolioCopy: "先看相机作品，再看手机作品。点击分类按钮可以快速跳转到对应摄影集；每个照片集内的多张照片会横向滚动展示。",
+    privacyNote: "本网页所有照片均由作者本人拍摄，人像照片已经模特本人同意，未经许可不得下载与转发，请尊重影像隐私与版权。",
     privacyToast: "作品仅供在线预览，请勿保存或截图传播。",
     viewSets: "查看照片集",
     setLabel: "照片集",
@@ -33,6 +33,10 @@ const translations = {
     cameraIntro: "更完整的创作系列，优先展示人像、自然与旅行。",
     mobileTitle: "手机摄影",
     mobileIntro: "随身记录的片段，保留即时观察和日常光线。",
+    storiesEyebrow: "Journal",
+    storiesTitle: "摄影故事",
+    storiesCopy: "记录拍摄主题、现场观察和摄影技巧分析，点击文章可以展开阅读更详细的内容。",
+    readStory: "阅读全文",
     aboutTitle: "关于我",
     aboutCopy: "我关注自然光、情绪和现场感，希望照片保留真实的温度。可预约个人写真、旅行记录、自然主题拍摄，也可以根据你的想法定制拍摄内容。",
     bookingEyebrow: "Book a Session",
@@ -74,8 +78,8 @@ const translations = {
     metricReply: "Booking reply",
     portfolioEyebrow: "Selected Portfolio",
     portfolioTitle: "Portfolio",
-    portfolioCopy: "Camera work appears first, followed by mobile work. Each category auto-scrolls horizontally; open one to view photo sets by time and place.",
-    privacyNote: "Images are preview-only. Right-click saving and dragging are restricted, but websites cannot fully block system screenshots.",
+    portfolioCopy: "Camera work appears first, followed by mobile work. Use fixed category buttons to jump quickly; photos inside each set scroll horizontally.",
+    privacyNote: "All photos on this website were taken by the author. Portrait images are published with model consent. Downloading or reposting without permission is prohibited. Please respect image privacy and copyright.",
     privacyToast: "Images are for online preview only. Please do not save or redistribute screenshots.",
     viewSets: "View Sets",
     setLabel: "Set",
@@ -85,6 +89,10 @@ const translations = {
     cameraIntro: "Fuller creative series, led by portrait, nature, and travel.",
     mobileTitle: "Mobile Photography",
     mobileIntro: "Everyday observations with immediate light and small moments.",
+    storiesEyebrow: "Journal",
+    storiesTitle: "Photo Stories",
+    storiesCopy: "Notes on themes, field observations, and photography techniques. Open an article to read the full story.",
+    readStory: "Read More",
     aboutTitle: "About Me",
     aboutCopy: "I focus on natural light, emotion, and a sense of place. Portraits, travel records, nature sessions, and custom ideas are all welcome.",
     bookingEyebrow: "Book a Session",
@@ -126,8 +134,8 @@ const translations = {
     metricReply: "予約返信",
     portfolioEyebrow: "Selected Portfolio",
     portfolioTitle: "作品集",
-    portfolioCopy: "カメラ写真を先に、スマホ写真を後に表示します。カテゴリーは横に自動スクロールし、クリックすると時間と場所別の写真集を見られます。",
-    privacyNote: "画像はプレビュー表示です。右クリック保存とドラッグを制限していますが、システムのスクリーンショットを完全に防ぐことはできません。",
+    portfolioCopy: "カメラ写真を先に、スマホ写真を後に表示します。固定されたカテゴリーから素早く移動でき、各写真集の写真は横にスクロールします。",
+    privacyNote: "本サイトの写真はすべて作者本人が撮影したものです。人物写真はモデル本人の同意を得て掲載しています。許可なく保存・転載しないでください。写真のプライバシーと著作権を尊重してください。",
     privacyToast: "作品はオンラインプレビュー専用です。保存やスクリーンショットの再配布はご遠慮ください。",
     viewSets: "写真集を見る",
     setLabel: "写真集",
@@ -137,6 +145,10 @@ const translations = {
     cameraIntro: "人物、自然、旅を中心とした完成度の高いシリーズです。",
     mobileTitle: "スマホ写真",
     mobileIntro: "日常の光と小さな瞬間を残した記録です。",
+    storiesEyebrow: "Journal",
+    storiesTitle: "写真ストーリー",
+    storiesCopy: "撮影テーマ、現場での気づき、撮影技術の分析を記録します。記事を開くと詳細を読めます。",
+    readStory: "続きを読む",
     aboutTitle: "自己紹介",
     aboutCopy: "自然光、感情、その場の空気を大切にしています。ポートレート、旅の記録、自然テーマの撮影、オリジナルの相談も可能です。",
     bookingEyebrow: "Book a Session",
@@ -296,6 +308,11 @@ const portfolioGroups = [
 
 const languageButtons = document.querySelectorAll(".language-button");
 const portfolioMount = document.querySelector("#portfolio-groups");
+const portfolioMenuToggle = document.querySelector("#portfolio-menu-toggle");
+const portfolioMenu = document.querySelector("#portfolio-menu");
+const portfolioQuickLinks = document.querySelector("#portfolio-quick-links");
+const storyGrid = document.querySelector("#story-grid");
+const storyDetail = document.querySelector("#story-detail");
 const lightbox = document.querySelector("#lightbox");
 const lightboxImage = document.querySelector("#lightbox-image");
 const lightboxTitle = document.querySelector("#lightbox-title");
@@ -304,8 +321,42 @@ const lightboxClose = document.querySelector(".lightbox-close");
 const bookingForm = document.querySelector("#booking-form");
 const privacyToast = document.querySelector("#privacy-toast");
 const activeCategories = {};
+let activeStory = 0;
 let currentLanguage = "zh";
 let toastTimer;
+
+const stories = [
+  {
+    title: { zh: "雨后森林的层次", en: "Layers After Rain", ja: "雨上がりの森の階層" },
+    meta: { zh: "摄影故事 / 自然光", en: "Story / Natural light", ja: "ストーリー / 自然光" },
+    cover: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=82",
+    body: {
+      zh: "雨后的森林会把反差压低，叶面和树干的质感更容易被看见。拍摄时我会先寻找最安静的背景，再让主体处在一束较软的侧光里，让照片保留湿润、缓慢、带呼吸感的气氛。",
+      en: "After rain, the forest softens in contrast and texture becomes easier to read. I usually begin with a quiet background, then place the subject in soft side light so the image keeps a humid, slow atmosphere.",
+      ja: "雨上がりの森はコントラストが柔らかくなり、葉や幹の質感が見えやすくなります。静かな背景を選び、柔らかい横光の中に被写体を置くことで、湿度と余白のある雰囲気を残します。",
+    },
+  },
+  {
+    title: { zh: "人像中的留白", en: "Negative Space in Portraits", ja: "ポートレートの余白" },
+    meta: { zh: "摄影技巧 / 构图", en: "Technique / Composition", ja: "技術 / 構図" },
+    cover: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=82",
+    body: {
+      zh: "人像不一定要把画面填满。适当的留白能让观看者感受到人物所处的环境，也能给情绪留下空间。拍摄时可以先确定人物眼神方向，再把空白留在视线延伸的一侧。",
+      en: "A portrait does not need to fill the frame. Negative space lets the viewer sense the environment and leaves room for emotion. I often decide the gaze direction first, then keep space on the side where the gaze travels.",
+      ja: "ポートレートは画面をすべて埋める必要はありません。余白は環境と感情を伝えるための空間になります。視線の方向を決め、その先に余白を置くと自然な構図になります。",
+    },
+  },
+  {
+    title: { zh: "旅行照片的节奏", en: "Rhythm in Travel Photos", ja: "旅写真のリズム" },
+    meta: { zh: "摄影故事 / 旅行", en: "Story / Travel", ja: "ストーリー / 旅" },
+    cover: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1200&q=82",
+    body: {
+      zh: "旅行摄影像是在做一本视觉日记。远景负责交代地点，中景记录人与空间的关系，细节则让记忆变得具体。把这三种照片交替排列，整组作品会更像一次真正走过的旅程。",
+      en: "Travel photography works like a visual diary. Wide frames introduce place, middle distance shows people in space, and details make memory specific. Alternating these three types gives a series the rhythm of a real journey.",
+      ja: "旅写真は視覚的な日記に近いものです。遠景は場所を伝え、中景は人と空間の関係を記録し、細部は記憶を具体的にします。この三つを交互に並べると、旅のリズムが生まれます。",
+    },
+  },
+];
 
 function t(key) {
   return translations[currentLanguage][key] || translations.zh[key] || key;
@@ -329,24 +380,18 @@ function getCategory(groupId, categoryId) {
   return portfolioGroups.find((group) => group.id === groupId)?.categories.find((category) => category.id === categoryId);
 }
 
-function renderCategoryCard(group, category, includeAnchor = false) {
+function renderCategoryButton(group, category) {
   return `
-    <button class="category-card ${activeCategories[group.id] === category.id ? "is-active" : ""}" type="button" data-group="${group.id}" data-category="${category.id}" ${includeAnchor ? `id="${category.id}"` : ""}>
-      <img class="protected-media" src="${category.cover}" alt="${escapeHtml(localized(category.title))}" loading="lazy" draggable="false">
-      <span class="category-overlay">
-        <span>${t(category.labelKey)}</span>
-        <strong>${localized(category.title)}</strong>
-        <em>${t("viewSets")}</em>
-      </span>
+    <button class="category-chip ${activeCategories[group.id] === category.id ? "is-active" : ""}" type="button" data-group="${group.id}" data-category="${category.id}" id="${category.id}">
+      <span>${t(category.labelKey)}</span>
+      <strong>${localized(category.title)}</strong>
     </button>
   `;
 }
 
 function renderGroup(group) {
   activeCategories[group.id] ||= group.categories[0].id;
-  const primaryCards = group.categories.map((category) => renderCategoryCard(group, category, true)).join("");
-  const duplicateCards = group.categories.map((category) => renderCategoryCard(group, category)).join("");
-  const trackCards = primaryCards + duplicateCards;
+  const categoryButtons = group.categories.map((category) => renderCategoryButton(group, category)).join("");
 
   return `
     <section class="portfolio-group" id="${group.anchor}" aria-labelledby="${group.id}-title">
@@ -357,8 +402,8 @@ function renderGroup(group) {
         </div>
         <p>${t(group.introKey)}</p>
       </div>
-      <div class="auto-rail" aria-label="${escapeHtml(t(group.titleKey))}">
-        <div class="auto-track">${trackCards}</div>
+      <div class="category-grid" aria-label="${escapeHtml(t(group.titleKey))}">
+        ${categoryButtons}
       </div>
       <div class="set-detail" id="${group.id}-detail"></div>
     </section>
@@ -390,16 +435,18 @@ function renderSetDetail(group) {
                 </div>
                 <span>${t("locationLabel")} / ${localized(set.place)}</span>
               </header>
-              <div class="photo-strip">
-                ${set.photos
+              <div class="photo-strip" aria-label="${escapeHtml(localized(set.title))}">
+                <div class="photo-track">
+                ${[...set.photos, ...set.photos]
                   .map(
                     (src, photoIndex) => `
-                      <button class="set-photo" type="button" data-group="${group.id}" data-category="${category.id}" data-set="${setIndex}" data-photo="${photoIndex}">
+                      <button class="set-photo" type="button" data-group="${group.id}" data-category="${category.id}" data-set="${setIndex}" data-photo="${photoIndex % set.photos.length}">
                         <img class="protected-media" src="${src}" alt="${escapeHtml(localized(set.title))}" loading="lazy" draggable="false">
                       </button>
                     `,
                   )
                   .join("")}
+                </div>
               </div>
             </article>
           `,
@@ -409,9 +456,60 @@ function renderSetDetail(group) {
   `;
 }
 
+function getAllPortfolioLinks() {
+  return portfolioGroups.flatMap((group) =>
+    group.categories.map((category) => ({
+      href: `#${category.id}`,
+      group,
+      category,
+    })),
+  );
+}
+
+function renderPortfolioNavigation() {
+  const links = getAllPortfolioLinks()
+    .map(
+      ({ href, group, category }) => `
+        <a href="${href}" data-group="${group.id}" data-category="${category.id}">
+          <span>${t(group.titleKey)}</span>
+          <strong>${localized(category.title)}</strong>
+        </a>
+      `,
+    )
+    .join("");
+
+  portfolioMenu.innerHTML = links;
+  portfolioQuickLinks.innerHTML = links;
+}
+
 function renderPortfolio() {
+  renderPortfolioNavigation();
   portfolioMount.innerHTML = portfolioGroups.map(renderGroup).join("");
   portfolioGroups.forEach(renderSetDetail);
+}
+
+function renderStories() {
+  storyGrid.innerHTML = stories
+    .map(
+      (story, index) => `
+        <button class="story-card ${activeStory === index ? "is-active" : ""}" type="button" data-story="${index}">
+          <img class="protected-media" src="${story.cover}" alt="${escapeHtml(localized(story.title))}" loading="lazy" draggable="false">
+          <span>
+            <em>${localized(story.meta)}</em>
+            <strong>${localized(story.title)}</strong>
+            <small>${t("readStory")}</small>
+          </span>
+        </button>
+      `,
+    )
+    .join("");
+
+  const story = stories[activeStory];
+  storyDetail.innerHTML = `
+    <p class="eyebrow">${localized(story.meta)}</p>
+    <h3>${localized(story.title)}</h3>
+    <p>${localized(story.body)}</p>
+  `;
 }
 
 function applyLanguage(language) {
@@ -424,6 +522,7 @@ function applyLanguage(language) {
     button.classList.toggle("is-active", button.dataset.lang === language);
   });
   renderPortfolio();
+  renderStories();
 }
 
 function openLightbox(groupId, categoryId, setIndex, photoIndex) {
@@ -463,12 +562,42 @@ languageButtons.forEach((button) => {
   button.addEventListener("click", () => applyLanguage(button.dataset.lang));
 });
 
+portfolioMenuToggle.addEventListener("click", () => {
+  const isOpen = portfolioMenuToggle.getAttribute("aria-expanded") === "true";
+  portfolioMenuToggle.setAttribute("aria-expanded", String(!isOpen));
+  portfolioMenu.classList.toggle("is-open", !isOpen);
+});
+
 document.addEventListener("click", (event) => {
-  const categoryCard = event.target.closest(".category-card");
-  if (categoryCard) {
-    activeCategories[categoryCard.dataset.group] = categoryCard.dataset.category;
+  if (!event.target.closest(".nav-menu")) {
+    portfolioMenuToggle.setAttribute("aria-expanded", "false");
+    portfolioMenu.classList.remove("is-open");
+  }
+
+  const portfolioLink = event.target.closest(".portfolio-menu a, .portfolio-jump a");
+  if (portfolioLink) {
+    event.preventDefault();
+    activeCategories[portfolioLink.dataset.group] = portfolioLink.dataset.category;
     renderPortfolio();
-    document.querySelector(`#${categoryCard.dataset.group}-detail`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document.querySelector(portfolioLink.getAttribute("href"))?.scrollIntoView({ behavior: "smooth", block: "start" });
+    portfolioMenuToggle.setAttribute("aria-expanded", "false");
+    portfolioMenu.classList.remove("is-open");
+    return;
+  }
+
+  const categoryChip = event.target.closest(".category-chip");
+  if (categoryChip) {
+    activeCategories[categoryChip.dataset.group] = categoryChip.dataset.category;
+    renderPortfolio();
+    document.querySelector(`#${categoryChip.dataset.group}-detail`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    return;
+  }
+
+  const storyCard = event.target.closest(".story-card");
+  if (storyCard) {
+    activeStory = Number(storyCard.dataset.story);
+    renderStories();
+    storyDetail.scrollIntoView({ behavior: "smooth", block: "center" });
     return;
   }
 

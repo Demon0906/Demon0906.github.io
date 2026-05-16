@@ -15,7 +15,10 @@
         <span>Demon Photography</span>
       </a>
       <nav class="nav" aria-label="Main navigation">
-        <a href="#portfolio" data-i18n="navPortfolio">作品集</a>
+        <div class="nav-menu">
+          <button class="nav-link" id="portfolio-menu-toggle" type="button" aria-expanded="false" aria-controls="portfolio-menu" data-i18n="navPortfolio">作品集</button>
+          <div class="portfolio-menu" id="portfolio-menu"></div>
+        </div>
         <a href="#booking" data-i18n="navBooking">预约拍摄</a>
         <a href="#about" data-i18n="navAbout">关于</a>
       </nav>
@@ -78,11 +81,24 @@
             <p class="eyebrow" data-i18n="portfolioEyebrow">Selected Portfolio</p>
             <h2 id="portfolio-title" data-i18n="portfolioTitle">作品集</h2>
           </div>
-          <p class="section-copy" data-i18n="portfolioCopy">先看相机作品，再看手机作品。每个分类会自动横向滚动，点击分类可展开更多按时间与地点整理的照片集。</p>
+          <p class="section-copy" data-i18n="portfolioCopy">先看相机作品，再看手机作品。点击分类按钮可以快速跳转到对应摄影集；每个照片集内的多张照片会横向滚动展示。</p>
         </div>
-        <p class="privacy-note" data-i18n="privacyNote">作品为预览展示，已限制右键保存与拖拽下载。网页无法完全阻止系统截图，请尊重影像隐私与版权。</p>
+        <div class="portfolio-jump" id="portfolio-quick-links" aria-label="Portfolio quick links"></div>
+        <p class="privacy-note" data-i18n="privacyNote">本网页所有照片均由作者本人拍摄，人像照片已经模特本人同意，未经许可不得下载与转发，请尊重影像隐私与版权。</p>
 
         <div class="portfolio-groups" id="portfolio-groups"></div>
+      </section>
+
+      <section class="section stories" id="stories" aria-labelledby="stories-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow" data-i18n="storiesEyebrow">Journal</p>
+            <h2 id="stories-title" data-i18n="storiesTitle">摄影故事</h2>
+          </div>
+          <p class="section-copy" data-i18n="storiesCopy">记录拍摄主题、现场观察和摄影技巧分析，点击文章可以展开阅读更详细的内容。</p>
+        </div>
+        <div class="story-grid" id="story-grid"></div>
+        <article class="story-detail" id="story-detail"></article>
       </section>
 
       <section class="about-band" id="about" aria-labelledby="about-title">
