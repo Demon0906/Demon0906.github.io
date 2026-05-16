@@ -3,24 +3,39 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Demon 的个人摄影主页，收录人像、街拍、旅行与自然摄影作品。">
+    <meta name="description" content="Demon 的个人摄影主页，收录手机摄影与相机摄影作品。">
     <title>Demon Photography</title>
     <link rel="preconnect" href="https://images.unsplash.com">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="#top" aria-label="Demon Photography 首页">
+      <a class="brand" href="#top" aria-label="Demon Photography">
         <span class="brand-mark">D</span>
         <span>Demon Photography</span>
       </a>
-      <nav class="nav" aria-label="主导航">
-        <a href="#work">作品</a>
-        <a href="#series">专题</a>
-        <a href="#about">关于</a>
-        <a href="#contact">联系</a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#mobile" data-i18n="navMobile">手机摄影</a>
+        <a href="#camera" data-i18n="navCamera">相机摄影</a>
+        <a href="#about" data-i18n="navAbout">关于</a>
+        <a href="#contact" data-i18n="navContact">联系</a>
       </nav>
+      <div class="language-switcher" aria-label="Language">
+        <button class="language-button is-active" type="button" data-lang="zh">中</button>
+        <button class="language-button" type="button" data-lang="en">EN</button>
+        <button class="language-button" type="button" data-lang="ja">日</button>
+      </div>
     </header>
+
+    <nav class="mobile-toc" aria-label="Portfolio directory">
+      <a href="#mobile" data-i18n="tocMobile">手机</a>
+      <a href="#mobile-portrait" data-i18n="tocMobilePortrait">手机人像</a>
+      <a href="#mobile-nature" data-i18n="tocMobileNature">手机自然</a>
+      <a href="#camera" data-i18n="tocCamera">相机</a>
+      <a href="#camera-portrait" data-i18n="tocCameraPortrait">相机人像</a>
+      <a href="#camera-nature" data-i18n="tocCameraNature">相机自然</a>
+      <a href="#camera-travel" data-i18n="tocCameraTravel">相机旅游</a>
+    </nav>
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
@@ -31,89 +46,74 @@
         >
         <div class="hero-shade"></div>
         <div class="hero-content">
-          <p class="eyebrow">Portfolio / 2026</p>
+          <p class="eyebrow" data-i18n="heroEyebrow">Portfolio / 手机与相机</p>
           <h1 id="hero-title">Demon Photography</h1>
-          <p class="hero-copy">用镜头记录城市、旅途、人物和光落下来的瞬间。</p>
+          <p class="hero-copy" data-i18n="heroCopy">把日常随身记录和相机创作整理成两个清晰的作品集。</p>
           <div class="hero-actions">
-            <a class="button primary" href="#work">查看作品</a>
-            <a class="button ghost" href="#contact">预约拍摄</a>
+            <a class="button primary" href="#mobile" data-i18n="heroMobile">手机摄影</a>
+            <a class="button ghost" href="#camera" data-i18n="heroCamera">相机摄影</a>
           </div>
         </div>
       </section>
 
-      <section class="intro" aria-label="摄影主页概览">
+      <section class="intro" aria-label="Portfolio overview">
         <div>
-          <span class="metric">04</span>
-          <span class="metric-label">精选分类</span>
+          <span class="metric">02</span>
+          <span class="metric-label" data-i18n="metricCollections">摄影作品集</span>
         </div>
         <div>
-          <span class="metric">24+</span>
-          <span class="metric-label">可扩展作品位</span>
+          <span class="metric">05</span>
+          <span class="metric-label" data-i18n="metricCategories">细分分类</span>
         </div>
         <div>
-          <span class="metric">1</span>
-          <span class="metric-label">静态页面即可部署</span>
+          <span class="metric">03</span>
+          <span class="metric-label" data-i18n="metricLanguages">语言版本</span>
         </div>
       </section>
 
-      <section class="section" id="work" aria-labelledby="work-title">
+      <section class="section portfolio-block" id="mobile" aria-labelledby="mobile-title">
         <div class="section-heading">
-          <p class="eyebrow">Selected Works</p>
-          <h2 id="work-title">摄影作品</h2>
+          <div>
+            <p class="eyebrow" data-i18n="mobileEyebrow">Mobile Photography</p>
+            <h2 id="mobile-title" data-i18n="mobileTitle">手机摄影</h2>
+          </div>
+          <p class="section-copy" data-i18n="mobileCopy">更轻、更快的日常观察，适合记录人物与自然光下的细节。</p>
         </div>
-        <div class="filters" role="list" aria-label="作品筛选">
-          <button class="filter-button is-active" type="button" data-filter="all">全部</button>
-          <button class="filter-button" type="button" data-filter="portrait">人像</button>
-          <button class="filter-button" type="button" data-filter="street">街拍</button>
-          <button class="filter-button" type="button" data-filter="travel">旅行</button>
-          <button class="filter-button" type="button" data-filter="nature">自然</button>
-        </div>
-        <div class="gallery" id="gallery"></div>
+        <div class="collection-grid" id="mobile-gallery"></div>
       </section>
 
-      <section class="section split" id="series" aria-labelledby="series-title">
+      <section class="section portfolio-block" id="camera" aria-labelledby="camera-title">
         <div class="section-heading">
-          <p class="eyebrow">Photo Series</p>
-          <h2 id="series-title">近期专题</h2>
+          <div>
+            <p class="eyebrow" data-i18n="cameraEyebrow">Camera Photography</p>
+            <h2 id="camera-title" data-i18n="cameraTitle">相机摄影</h2>
+          </div>
+          <p class="section-copy" data-i18n="cameraCopy">更完整的创作系列，分为人像、自然与旅游三个方向。</p>
         </div>
-        <div class="series-grid">
-          <article class="series-item">
-            <img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=900&q=80" alt="夜晚城市街道的霓虹灯">
-            <div>
-              <p class="series-kicker">城市夜行</p>
-              <h3>灯牌、雨水和回家的路</h3>
-            </div>
-          </article>
-          <article class="series-item">
-            <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80" alt="开阔山路和远处山峰">
-            <div>
-              <p class="series-kicker">远方笔记</p>
-              <h3>把路上的风景整理成册</h3>
-            </div>
-          </article>
-        </div>
+        <div class="collection-grid" id="camera-gallery"></div>
       </section>
 
       <section class="about-band" id="about" aria-labelledby="about-title">
         <div>
           <p class="eyebrow">About</p>
-          <h2 id="about-title">关于我</h2>
+          <h2 id="about-title" data-i18n="aboutTitle">关于我</h2>
         </div>
-        <p>
-          这里可以写你的摄影风格、常驻城市、器材偏好、接拍范围或项目经历。模板已经留好作品分类、
-          专题区和联系入口，你只需要替换照片、标题和文字。
+        <p data-i18n="aboutCopy">
+          这里可以写你的摄影风格、常驻城市、器材偏好、接拍范围或项目经历。页面已经按手机摄影与相机摄影分好结构，后续只需要替换照片与作品说明。
         </p>
       </section>
 
       <section class="section contact" id="contact" aria-labelledby="contact-title">
         <div class="section-heading">
-          <p class="eyebrow">Contact</p>
-          <h2 id="contact-title">联系与合作</h2>
+          <div>
+            <p class="eyebrow">Contact</p>
+            <h2 id="contact-title" data-i18n="contactTitle">联系与合作</h2>
+          </div>
         </div>
         <div class="contact-panel">
-          <a href="mailto:yourname@example.com">yourname@example.com</a>
-          <a href="https://github.com/Demon0906">GitHub / Demon0906</a>
-          <a href="https://www.instagram.com/">Instagram</a>
+          <a href="mailto:763525586@qq.com">763525586@qq.com</a>
+          <a href="tel:+8613687951586">+86 13687951586</a>
+          <a href="tel:+817085503168">+81 07085503168</a>
         </div>
       </section>
     </main>
