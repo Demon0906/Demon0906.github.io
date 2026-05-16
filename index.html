@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demon 的个人摄影主页，收录人像、街拍、旅行与自然摄影作品。">
+    <title>Demon Photography</title>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Demon Photography 首页">
+        <span class="brand-mark">D</span>
+        <span>Demon Photography</span>
+      </a>
+      <nav class="nav" aria-label="主导航">
+        <a href="#work">作品</a>
+        <a href="#series">专题</a>
+        <a href="#about">关于</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <img
+          class="hero-image"
+          src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=82"
+          alt="山谷与湖面在清晨光线中的风景照片"
+        >
+        <div class="hero-shade"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Portfolio / 2026</p>
+          <h1 id="hero-title">Demon Photography</h1>
+          <p class="hero-copy">用镜头记录城市、旅途、人物和光落下来的瞬间。</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#work">查看作品</a>
+            <a class="button ghost" href="#contact">预约拍摄</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="intro" aria-label="摄影主页概览">
+        <div>
+          <span class="metric">04</span>
+          <span class="metric-label">精选分类</span>
+        </div>
+        <div>
+          <span class="metric">24+</span>
+          <span class="metric-label">可扩展作品位</span>
+        </div>
+        <div>
+          <span class="metric">1</span>
+          <span class="metric-label">静态页面即可部署</span>
+        </div>
+      </section>
+
+      <section class="section" id="work" aria-labelledby="work-title">
+        <div class="section-heading">
+          <p class="eyebrow">Selected Works</p>
+          <h2 id="work-title">摄影作品</h2>
+        </div>
+        <div class="filters" role="list" aria-label="作品筛选">
+          <button class="filter-button is-active" type="button" data-filter="all">全部</button>
+          <button class="filter-button" type="button" data-filter="portrait">人像</button>
+          <button class="filter-button" type="button" data-filter="street">街拍</button>
+          <button class="filter-button" type="button" data-filter="travel">旅行</button>
+          <button class="filter-button" type="button" data-filter="nature">自然</button>
+        </div>
+        <div class="gallery" id="gallery"></div>
+      </section>
+
+      <section class="section split" id="series" aria-labelledby="series-title">
+        <div class="section-heading">
+          <p class="eyebrow">Photo Series</p>
+          <h2 id="series-title">近期专题</h2>
+        </div>
+        <div class="series-grid">
+          <article class="series-item">
+            <img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=900&q=80" alt="夜晚城市街道的霓虹灯">
+            <div>
+              <p class="series-kicker">城市夜行</p>
+              <h3>灯牌、雨水和回家的路</h3>
+            </div>
+          </article>
+          <article class="series-item">
+            <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=900&q=80" alt="开阔山路和远处山峰">
+            <div>
+              <p class="series-kicker">远方笔记</p>
+              <h3>把路上的风景整理成册</h3>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="about-band" id="about" aria-labelledby="about-title">
+        <div>
+          <p class="eyebrow">About</p>
+          <h2 id="about-title">关于我</h2>
+        </div>
+        <p>
+          这里可以写你的摄影风格、常驻城市、器材偏好、接拍范围或项目经历。模板已经留好作品分类、
+          专题区和联系入口，你只需要替换照片、标题和文字。
+        </p>
+      </section>
+
+      <section class="section contact" id="contact" aria-labelledby="contact-title">
+        <div class="section-heading">
+          <p class="eyebrow">Contact</p>
+          <h2 id="contact-title">联系与合作</h2>
+        </div>
+        <div class="contact-panel">
+          <a href="mailto:yourname@example.com">yourname@example.com</a>
+          <a href="https://github.com/Demon0906">GitHub / Demon0906</a>
+          <a href="https://www.instagram.com/">Instagram</a>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="lightbox" id="lightbox" aria-label="作品预览">
+      <button class="lightbox-close" type="button" aria-label="关闭预览">×</button>
+      <img id="lightbox-image" alt="">
+      <div class="lightbox-caption">
+        <h3 id="lightbox-title"></h3>
+        <p id="lightbox-meta"></p>
+      </div>
+    </dialog>
+
+    <script src="script.js"></script>
+  </body>
+</html>
