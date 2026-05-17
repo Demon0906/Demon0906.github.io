@@ -1,5 +1,3 @@
-const contactEmail = "763525586@qq.com";
-
 const translations = {
   zh: {
     navPortfolio: "作品集",
@@ -8,14 +6,14 @@ const translations = {
     aboutMenuMe: "关于我",
     aboutMenuPricing: "价格咨询",
     aboutMenuBusiness: "商务合作",
-    tocBooking: "预约",
+    tocBooking: "联系",
     heroEyebrow: "Portrait / Nature / Travel / Journal",
     heroCopy: "以摄影项目的方式整理人像、自然、旅行和摄影故事，让每一组作品都成为独立的影像档案。",
     heroPortfolio: "浏览作品集",
     heroBooking: "预约拍摄",
     portfolioEyebrow: "Selected Portfolio",
     portfolioTitle: "作品集",
-    portfolioCopy: "页面按人像摄影、自然风光、旅游记忆、摄影故事四个大板块组织。每个摄影集都是独立项目，可点击展开并横向浏览更多照片。",
+    portfolioCopy: "页面按人像摄影、自然风光、旅游记忆、摄影故事四个大板块组织。每个摄影集作为独立项目展示，封面会自动切换照片集中的画面。",
     privacyNote: "本网页所有照片均由作者本人拍摄，人像照片已经模特本人同意，未经许可不得下载与转发，请尊重影像隐私与版权。",
     privacyToast: "作品仅供在线预览，请勿保存或截图传播。",
     openProject: "查看项目",
@@ -32,24 +30,13 @@ const translations = {
     storiesIntro: "摄影主题、技巧分析和拍摄现场笔记。",
     aboutTitle: "关于我",
     aboutCopy: "我关注自然光、情绪和现场感，希望照片保留真实的温度。可预约个人写真、旅行记录、自然主题拍摄，也可以根据你的想法定制拍摄内容。",
-    bookingEyebrow: "Book a Session",
-    bookingTitle: "预约拍摄",
-    bookingCopy: "如需预约拍摄，可先通过邮箱、电话或社交媒体联系，也可以填写预约问卷提交需求。",
-    bookingOpen: "填写预约问卷",
-    bookingFormTitle: "预约拍摄问卷",
+    contactEyebrow: "Contact",
+    contactTitle: "联系方式",
+    contactCopy: "如需预约拍摄、价格咨询或商务合作，可以通过邮箱、电话或社交媒体联系我。",
     contactEmail: "邮箱",
     contactPhone: "联系电话",
     contactSocial: "社交媒体",
     wechatSame: "微信同",
-    formName: "姓名",
-    formContact: "联系方式",
-    formDateTime: "预约拍摄日期与时间",
-    formTheme: "期望拍摄主题",
-    formLocation: "拍摄地点",
-    formNotes: "备注",
-    formSubmit: "提交预约信息",
-    formNote: "提交后会在页面显示确认提示。",
-    formSuccess: "您的预约信息已提交，我们将尽快与您联系，感谢您的预约。",
   },
   en: {
     navPortfolio: "Portfolio",
@@ -58,14 +45,14 @@ const translations = {
     aboutMenuMe: "About Me",
     aboutMenuPricing: "Pricing",
     aboutMenuBusiness: "Commercial Work",
-    tocBooking: "Book",
+    tocBooking: "Contact",
     heroEyebrow: "Portrait / Nature / Travel / Journal",
     heroCopy: "Portraits, landscapes, travel memories, and photography stories are organized as independent visual projects.",
     heroPortfolio: "View Portfolio",
     heroBooking: "Book a Session",
     portfolioEyebrow: "Selected Portfolio",
     portfolioTitle: "Portfolio",
-    portfolioCopy: "The page is organized into portrait, nature, travel memory, and photography story sections. Each collection works like an independent project with expandable details.",
+    portfolioCopy: "The page is organized into portrait, nature, travel memory, and photography story sections. Each collection is shown as an independent project, with cover images that automatically rotate through the set.",
     privacyNote: "All photos on this website were taken by the author. Portrait images are published with model consent. Downloading or reposting without permission is prohibited. Please respect image privacy and copyright.",
     privacyToast: "Images are for online preview only. Please do not save or redistribute screenshots.",
     openProject: "Open Project",
@@ -82,24 +69,13 @@ const translations = {
     storiesIntro: "Photography themes, technique notes, and field journals.",
     aboutTitle: "About Me",
     aboutCopy: "I focus on natural light, emotion, and a sense of place. Portraits, travel records, nature sessions, and custom ideas are all welcome.",
-    bookingEyebrow: "Book a Session",
-    bookingTitle: "Book a Session",
-    bookingCopy: "Contact me by email, phone, or social media, or open the booking form to send your shoot request.",
-    bookingOpen: "Open Booking Form",
-    bookingFormTitle: "Booking Form",
+    contactEyebrow: "Contact",
+    contactTitle: "Contact",
+    contactCopy: "For bookings, pricing, or commercial work, please contact me by email, phone, or social media.",
     contactEmail: "Email",
     contactPhone: "Phone",
     contactSocial: "Social Media",
     wechatSame: "WeChat available",
-    formName: "Name",
-    formContact: "Contact",
-    formDateTime: "Preferred date and time",
-    formTheme: "Expected theme",
-    formLocation: "Shooting location",
-    formNotes: "Notes",
-    formSubmit: "Submit Booking",
-    formNote: "A confirmation message will appear after submission.",
-    formSuccess: "Your booking request has been submitted. We will contact you as soon as possible. Thank you for your booking.",
   },
   ja: {
     navPortfolio: "作品集",
@@ -108,14 +84,14 @@ const translations = {
     aboutMenuMe: "自己紹介",
     aboutMenuPricing: "料金相談",
     aboutMenuBusiness: "商業撮影",
-    tocBooking: "予約",
+    tocBooking: "連絡",
     heroEyebrow: "Portrait / Nature / Travel / Journal",
     heroCopy: "人物、自然、旅の記憶、写真ストーリーを独立したプロジェクトとして整理しています。",
     heroPortfolio: "作品集を見る",
     heroBooking: "撮影予約",
     portfolioEyebrow: "Selected Portfolio",
     portfolioTitle: "作品集",
-    portfolioCopy: "人物写真、自然風景、旅の記憶、写真ストーリーの四つの大きなセクションで構成しています。それぞれの写真集は独立したプロジェクトとして表示されます。",
+    portfolioCopy: "人物写真、自然風景、旅の記憶、写真ストーリーの四つのセクションで構成しています。各写真集は独立したプロジェクトとして表示され、カバー写真が自動で切り替わります。",
     privacyNote: "本サイトの写真はすべて作者本人が撮影したものです。人物写真はモデル本人の同意を得て掲載しています。許可なく保存・転載しないでください。写真のプライバシーと著作権を尊重してください。",
     privacyToast: "作品はオンラインプレビュー専用です。保存やスクリーンショットの再配布はご遠慮ください。",
     openProject: "プロジェクトを見る",
@@ -132,24 +108,13 @@ const translations = {
     storiesIntro: "撮影テーマ、技術分析、現場での記録をまとめます。",
     aboutTitle: "自己紹介",
     aboutCopy: "自然光、感情、その場の空気を大切にしています。ポートレート、旅の記録、自然テーマの撮影、オリジナルの相談も可能です。",
-    bookingEyebrow: "Book a Session",
-    bookingTitle: "撮影予約",
-    bookingCopy: "メール、電話、SNSで連絡できます。撮影希望は予約フォームから送信できます。",
-    bookingOpen: "予約フォームを開く",
-    bookingFormTitle: "撮影予約フォーム",
+    contactEyebrow: "Contact",
+    contactTitle: "連絡先",
+    contactCopy: "撮影予約、料金相談、商業撮影については、メール、電話、SNSでご連絡ください。",
     contactEmail: "メール",
     contactPhone: "電話",
     contactSocial: "SNS",
     wechatSame: "WeChat可",
-    formName: "お名前",
-    formContact: "連絡先",
-    formDateTime: "撮影希望日時",
-    formTheme: "希望テーマ",
-    formLocation: "撮影場所",
-    formNotes: "備考",
-    formSubmit: "予約内容を送信",
-    formNote: "送信後、確認メッセージが表示されます。",
-    formSuccess: "予約情報が送信されました。できるだけ早くご連絡いたします。ご予約ありがとうございます。",
   },
 };
 
@@ -307,13 +272,7 @@ const lightboxImage = document.querySelector("#lightbox-image");
 const lightboxTitle = document.querySelector("#lightbox-title");
 const lightboxMeta = document.querySelector("#lightbox-meta");
 const lightboxClose = document.querySelector(".lightbox-close");
-const bookingModal = document.querySelector("#booking-modal");
-const bookingForm = document.querySelector("#booking-form");
-const bookingModalClose = document.querySelector(".modal-close");
-const bookingTriggers = document.querySelectorAll(".booking-trigger");
-const formSuccess = document.querySelector("#form-success");
 const privacyToast = document.querySelector("#privacy-toast");
-const activeProjects = {};
 let currentLanguage = "zh";
 let toastTimer;
 
@@ -335,20 +294,34 @@ function getProject(sectionId, projectId) {
 }
 
 function renderProjectCard(section, project) {
+  const coverImages = project.photos
+    .map(
+      (src, index) => `
+        <img
+          class="protected-media"
+          src="${src}"
+          alt="${escapeHtml(localized(project.title))}"
+          loading="lazy"
+          draggable="false"
+          style="--photo-index: ${index}; --photo-count: ${project.photos.length};"
+        >
+      `,
+    )
+    .join("");
   return `
-    <button class="project-card ${activeProjects[section.id] === project.id ? "is-active" : ""}" type="button" data-section="${section.id}" data-project="${project.id}" id="${project.id}">
-      <img class="protected-media" src="${project.cover}" alt="${escapeHtml(localized(project.title))}" loading="lazy" draggable="false">
+    <button class="project-card" type="button" data-section="${section.id}" data-project="${project.id}" id="${project.id}" aria-label="${escapeHtml(localized(project.title))}">
+      <span class="project-cover-stack" aria-hidden="true">${coverImages}</span>
       <span class="project-card-copy">
-        <em>${project.date} / ${localized(project.place)}</em>
+        <em>${project.date} · ${localized(project.place)}</em>
         <strong>${localized(project.title)}</strong>
         <small>${localized(project.summary)}</small>
+        <span class="project-open">${t("openProject")}</span>
       </span>
     </button>
   `;
 }
 
 function renderSection(section) {
-  activeProjects[section.id] ||= section.projects[0].id;
   return `
     <section class="portfolio-group project-section" id="${section.id}-section" aria-labelledby="${section.id}-title">
       <div class="group-heading">
@@ -361,39 +334,7 @@ function renderSection(section) {
       <div class="project-grid">
         ${section.projects.map((project) => renderProjectCard(section, project)).join("")}
       </div>
-      <div class="project-detail" id="${section.id}-detail"></div>
     </section>
-  `;
-}
-
-function renderProjectDetail(section) {
-  const project = getProject(section.id, activeProjects[section.id]);
-  const mount = document.querySelector(`#${section.id}-detail`);
-  if (!project || !mount) return;
-
-  mount.innerHTML = `
-    <div class="detail-heading">
-      <div>
-        <p class="eyebrow">${t(section.titleKey)}</p>
-        <h4>${localized(project.title)}</h4>
-      </div>
-      <span>${t("dateLabel")} / ${project.date} · ${t("locationLabel")} / ${localized(project.place)}</span>
-    </div>
-    <p class="project-summary">${localized(project.summary)}</p>
-    ${project.story ? `<article class="inline-story"><p>${localized(project.story)}</p></article>` : ""}
-    <div class="photo-strip" aria-label="${escapeHtml(localized(project.title))}">
-      <div class="photo-track">
-        ${[...project.photos, ...project.photos]
-          .map(
-            (src, photoIndex) => `
-              <button class="set-photo" type="button" data-section="${section.id}" data-project="${project.id}" data-photo="${photoIndex % project.photos.length}">
-                <img class="protected-media" src="${src}" alt="${escapeHtml(localized(project.title))}" loading="lazy" draggable="false">
-              </button>
-            `,
-          )
-          .join("")}
-      </div>
-    </div>
   `;
 }
 
@@ -424,7 +365,6 @@ function renderPortfolioNavigation() {
 function renderPortfolio() {
   renderPortfolioNavigation();
   portfolioMount.innerHTML = portfolioSections.map(renderSection).join("");
-  portfolioSections.forEach(renderProjectDetail);
 }
 
 function applyLanguage(language) {
@@ -460,27 +400,6 @@ languageButtons.forEach((button) => {
   button.addEventListener("click", () => applyLanguage(button.dataset.lang));
 });
 
-bookingTriggers.forEach((trigger) => {
-  trigger.addEventListener("click", (event) => {
-    event.preventDefault();
-    formSuccess.hidden = true;
-    bookingModal.hidden = false;
-    document.body.classList.add("modal-open");
-    document.querySelector("#client-name").focus();
-  });
-});
-
-function closeBookingModal() {
-  bookingModal.hidden = true;
-  document.body.classList.remove("modal-open");
-}
-
-bookingModalClose.addEventListener("click", closeBookingModal);
-
-bookingModal.addEventListener("click", (event) => {
-  if (event.target === bookingModal) closeBookingModal();
-});
-
 portfolioMenuToggle.addEventListener("click", () => {
   const isOpen = portfolioMenuToggle.getAttribute("aria-expanded") === "true";
   portfolioMenuToggle.setAttribute("aria-expanded", String(!isOpen));
@@ -514,8 +433,6 @@ document.addEventListener("click", (event) => {
   const portfolioLink = event.target.closest("#portfolio-menu a[data-section]");
   if (portfolioLink) {
     event.preventDefault();
-    activeProjects[portfolioLink.dataset.section] = portfolioLink.dataset.project;
-    renderPortfolio();
     document.querySelector(portfolioLink.getAttribute("href"))?.scrollIntoView({ behavior: "smooth", block: "start" });
     portfolioMenuToggle.setAttribute("aria-expanded", "false");
     portfolioMenu.classList.remove("is-open");
@@ -524,20 +441,13 @@ document.addEventListener("click", (event) => {
 
   const projectCard = event.target.closest(".project-card");
   if (projectCard) {
-    activeProjects[projectCard.dataset.section] = projectCard.dataset.project;
-    renderPortfolio();
-    document.querySelector(`#${projectCard.dataset.section}-detail`)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    openLightbox(projectCard.dataset.section, projectCard.dataset.project, 0);
     return;
-  }
-
-  const photo = event.target.closest(".set-photo");
-  if (photo) {
-    openLightbox(photo.dataset.section, photo.dataset.project, photo.dataset.photo);
   }
 });
 
 document.addEventListener("contextmenu", (event) => {
-  if (event.target.closest(".protected-media, .photo-set, .project-card, .lightbox")) {
+  if (event.target.closest(".protected-media, .project-card, .lightbox")) {
     event.preventDefault();
     showPrivacyToast();
   }
@@ -552,14 +462,6 @@ document.addEventListener("dragstart", (event) => {
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "PrintScreen") showPrivacyToast();
-  if (event.key === "Escape" && !bookingModal.hidden) closeBookingModal();
-});
-
-bookingForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  if (!bookingForm.reportValidity()) return;
-  bookingForm.reset();
-  formSuccess.hidden = false;
 });
 
 lightboxClose.addEventListener("click", () => lightbox.close());
