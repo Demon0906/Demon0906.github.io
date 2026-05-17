@@ -19,7 +19,7 @@
           <button class="nav-link" id="portfolio-menu-toggle" type="button" aria-expanded="false" aria-controls="portfolio-menu" data-i18n="navPortfolio">作品集</button>
           <div class="portfolio-menu" id="portfolio-menu"></div>
         </div>
-        <a href="#booking" data-i18n="navBooking">预约拍摄</a>
+        <a class="booking-trigger" href="#booking" data-i18n="navBooking">预约拍摄</a>
         <a href="#about" data-i18n="navAbout">关于</a>
       </nav>
       <div class="language-switcher" aria-label="Language">
@@ -52,7 +52,7 @@
           <p class="hero-copy" data-i18n="heroCopy">以摄影项目的方式整理人像、自然、旅行和摄影故事，让每一组作品都成为独立的影像档案。</p>
           <div class="hero-actions">
             <a class="button primary" href="#portfolio" data-i18n="heroPortfolio">浏览作品集</a>
-            <a class="button ghost" href="#booking" data-i18n="heroBooking">预约拍摄</a>
+            <a class="button ghost booking-trigger" href="#booking" data-i18n="heroBooking">预约拍摄</a>
           </div>
         </div>
       </section>
@@ -105,37 +105,76 @@
           <p class="section-copy" data-i18n="bookingCopy">填写你的拍摄需求，提交后会自动整理成邮件，方便我尽快确认档期与方案。</p>
         </div>
 
-        <div class="booking-layout">
-          <aside class="contact-card" aria-label="Contact information">
-            <p class="contact-kicker" data-i18n="contactKicker">联系方式</p>
+        <div class="contact-layout">
+          <article class="contact-card">
+            <p class="contact-kicker" data-i18n="contactEmail">邮箱</p>
             <a href="mailto:763525586@qq.com">763525586@qq.com</a>
-            <a href="tel:+8613687951586">+86 13687951586</a>
-            <a href="tel:+817085503168">+81 07085503168</a>
-          </aside>
+            <a href="mailto:ruoqinao@gmail.com">ruoqinao@gmail.com</a>
+          </article>
 
-          <form class="booking-form" id="booking-form">
-            <label>
-              <span data-i18n="formName">姓名</span>
-              <input id="client-name" name="name" type="text" autocomplete="name" required>
-            </label>
-            <label>
-              <span data-i18n="formContact">联系方式</span>
-              <input id="client-contact" name="contact" type="text" autocomplete="tel email" required>
-            </label>
-            <label>
-              <span data-i18n="formDate">预约拍摄日期</span>
-              <input id="shoot-date" name="date" type="date" required>
-            </label>
-            <label class="full-field">
-              <span data-i18n="formContent">拍摄内容</span>
-              <textarea id="shoot-content" name="content" rows="5" required></textarea>
-            </label>
-            <button class="button primary form-submit" type="submit" data-i18n="formSubmit">发送预约信息</button>
-            <p class="form-note" id="form-note" data-i18n="formNote">提交会打开你的邮件应用，并不会在网页上保存个人信息。</p>
-          </form>
+          <article class="contact-card">
+            <p class="contact-kicker" data-i18n="contactPhone">联系电话</p>
+            <a href="tel:+8613687951586">+86 13687951586 <span data-i18n="wechatSame">微信同</span></a>
+            <a href="tel:+817085503168">+81 07085503168 <span>LINE</span></a>
+          </article>
+
+          <article class="contact-card">
+            <p class="contact-kicker" data-i18n="contactSocial">社交媒体</p>
+            <div class="social-links" aria-label="Social media">
+              <a class="social-icon xhs" href="#" aria-label="小红书">
+                <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="8" width="28" height="24" rx="6"></rect><path d="M14 17h12M14 23h9"></path></svg>
+              </a>
+              <a class="social-icon ins" href="#" aria-label="Instagram">
+                <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="9" width="22" height="22" rx="7"></rect><circle cx="20" cy="20" r="5"></circle><circle cx="27" cy="13" r="1.6"></circle></svg>
+              </a>
+              <a class="social-icon douyin" href="#" aria-label="抖音">
+                <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M22 9v17a6 6 0 1 1-5-5.9"></path><path d="M22 10c2 5 5 7 9 7"></path></svg>
+              </a>
+            </div>
+          </article>
         </div>
+        <button class="button primary booking-trigger booking-cta" type="button" data-i18n="bookingOpen">填写预约问卷</button>
       </section>
     </main>
+
+    <div class="booking-modal-shell" id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="booking-modal-title" hidden>
+      <div class="booking-modal">
+        <button class="modal-close" type="button" aria-label="关闭预约问卷">×</button>
+        <div class="modal-heading">
+          <p class="eyebrow" data-i18n="bookingEyebrow">Book a Session</p>
+          <h2 id="booking-modal-title" data-i18n="bookingFormTitle">预约拍摄问卷</h2>
+        </div>
+        <form class="booking-form" id="booking-form">
+          <label>
+            <span data-i18n="formName">姓名</span>
+            <input id="client-name" name="name" type="text" autocomplete="name" required>
+          </label>
+          <label>
+            <span data-i18n="formContact">联系方式</span>
+            <input id="client-contact" name="contact" type="text" autocomplete="tel email" required>
+          </label>
+          <label>
+            <span data-i18n="formDateTime">预约拍摄日期与时间</span>
+            <input id="shoot-datetime" name="datetime" type="datetime-local" required>
+          </label>
+          <label>
+            <span data-i18n="formTheme">期望拍摄主题</span>
+            <input id="shoot-theme" name="theme" type="text" required>
+          </label>
+          <label class="full-field">
+            <span data-i18n="formLocation">拍摄地点</span>
+            <input id="shoot-location" name="location" type="text" required>
+          </label>
+          <label class="full-field">
+            <span data-i18n="formNotes">备注</span>
+            <textarea id="shoot-notes" name="notes" rows="4"></textarea>
+          </label>
+          <button class="button primary form-submit" type="submit" data-i18n="formSubmit">提交预约信息</button>
+          <p class="form-note" id="form-note" data-i18n="formNote">提交后会在页面显示确认提示。</p>
+          <p class="form-success" id="form-success" data-i18n="formSuccess" hidden>您的预约信息已提交，我们将尽快与您联系，感谢您的预约。</p>
+        </form>
+      </div>
+    </div>
 
     <dialog class="lightbox" id="lightbox" aria-label="作品预览">
       <button class="lightbox-close" type="button" aria-label="关闭预览">×</button>

@@ -34,16 +34,22 @@ const translations = {
     aboutCopy: "我关注自然光、情绪和现场感，希望照片保留真实的温度。可预约个人写真、旅行记录、自然主题拍摄，也可以根据你的想法定制拍摄内容。",
     bookingEyebrow: "Book a Session",
     bookingTitle: "预约拍摄",
-    bookingCopy: "填写你的拍摄需求，提交后会自动整理成邮件，方便我尽快确认档期与方案。",
-    contactKicker: "联系方式",
+    bookingCopy: "如需预约拍摄，可先通过邮箱、电话或社交媒体联系，也可以填写预约问卷提交需求。",
+    bookingOpen: "填写预约问卷",
+    bookingFormTitle: "预约拍摄问卷",
+    contactEmail: "邮箱",
+    contactPhone: "联系电话",
+    contactSocial: "社交媒体",
+    wechatSame: "微信同",
     formName: "姓名",
     formContact: "联系方式",
-    formDate: "预约拍摄日期",
-    formContent: "拍摄内容",
-    formSubmit: "发送预约信息",
-    formNote: "提交会打开你的邮件应用，并不会在网页上保存个人信息。",
-    mailSubject: "摄影预约咨询",
-    mailBodyTitle: "摄影预约信息",
+    formDateTime: "预约拍摄日期与时间",
+    formTheme: "期望拍摄主题",
+    formLocation: "拍摄地点",
+    formNotes: "备注",
+    formSubmit: "提交预约信息",
+    formNote: "提交后会在页面显示确认提示。",
+    formSuccess: "您的预约信息已提交，我们将尽快与您联系，感谢您的预约。",
   },
   en: {
     navPortfolio: "Portfolio",
@@ -78,16 +84,22 @@ const translations = {
     aboutCopy: "I focus on natural light, emotion, and a sense of place. Portraits, travel records, nature sessions, and custom ideas are all welcome.",
     bookingEyebrow: "Book a Session",
     bookingTitle: "Book a Session",
-    bookingCopy: "Send your shoot request as a prepared email so I can confirm availability and direction quickly.",
-    contactKicker: "Contact",
+    bookingCopy: "Contact me by email, phone, or social media, or open the booking form to send your shoot request.",
+    bookingOpen: "Open Booking Form",
+    bookingFormTitle: "Booking Form",
+    contactEmail: "Email",
+    contactPhone: "Phone",
+    contactSocial: "Social Media",
+    wechatSame: "WeChat available",
     formName: "Name",
     formContact: "Contact",
-    formDate: "Preferred date",
-    formContent: "Shoot details",
-    formSubmit: "Send Request",
-    formNote: "Submitting opens your mail app. Personal information is not stored on this website.",
-    mailSubject: "Photography booking request",
-    mailBodyTitle: "Photography booking request",
+    formDateTime: "Preferred date and time",
+    formTheme: "Expected theme",
+    formLocation: "Shooting location",
+    formNotes: "Notes",
+    formSubmit: "Submit Booking",
+    formNote: "A confirmation message will appear after submission.",
+    formSuccess: "Your booking request has been submitted. We will contact you as soon as possible. Thank you for your booking.",
   },
   ja: {
     navPortfolio: "作品集",
@@ -122,16 +134,22 @@ const translations = {
     aboutCopy: "自然光、感情、その場の空気を大切にしています。ポートレート、旅の記録、自然テーマの撮影、オリジナルの相談も可能です。",
     bookingEyebrow: "Book a Session",
     bookingTitle: "撮影予約",
-    bookingCopy: "撮影内容を入力するとメールとして整理され、日程や内容を確認しやすくなります。",
-    contactKicker: "連絡先",
+    bookingCopy: "メール、電話、SNSで連絡できます。撮影希望は予約フォームから送信できます。",
+    bookingOpen: "予約フォームを開く",
+    bookingFormTitle: "撮影予約フォーム",
+    contactEmail: "メール",
+    contactPhone: "電話",
+    contactSocial: "SNS",
+    wechatSame: "WeChat可",
     formName: "お名前",
     formContact: "連絡先",
-    formDate: "撮影希望日",
-    formContent: "撮影内容",
+    formDateTime: "撮影希望日時",
+    formTheme: "希望テーマ",
+    formLocation: "撮影場所",
+    formNotes: "備考",
     formSubmit: "予約内容を送信",
-    formNote: "送信するとメールアプリが開きます。このサイトには個人情報を保存しません。",
-    mailSubject: "撮影予約の相談",
-    mailBodyTitle: "撮影予約情報",
+    formNote: "送信後、確認メッセージが表示されます。",
+    formSuccess: "予約情報が送信されました。できるだけ早くご連絡いたします。ご予約ありがとうございます。",
   },
 };
 
@@ -288,7 +306,11 @@ const lightboxImage = document.querySelector("#lightbox-image");
 const lightboxTitle = document.querySelector("#lightbox-title");
 const lightboxMeta = document.querySelector("#lightbox-meta");
 const lightboxClose = document.querySelector(".lightbox-close");
+const bookingModal = document.querySelector("#booking-modal");
 const bookingForm = document.querySelector("#booking-form");
+const bookingModalClose = document.querySelector(".modal-close");
+const bookingTriggers = document.querySelectorAll(".booking-trigger");
+const formSuccess = document.querySelector("#form-success");
 const privacyToast = document.querySelector("#privacy-toast");
 const activeProjects = {};
 let currentLanguage = "zh";
@@ -434,13 +456,29 @@ function showPrivacyToast() {
   toastTimer = setTimeout(() => privacyToast.classList.remove("is-visible"), 2600);
 }
 
-function buildMailto(formData) {
-  const lines = [t("mailBodyTitle"), "", `${t("formName")}: ${formData.get("name")}`, `${t("formContact")}: ${formData.get("contact")}`, `${t("formDate")}: ${formData.get("date")}`, `${t("formContent")}:`, formData.get("content")];
-  return `mailto:${contactEmail}?subject=${encodeURIComponent(t("mailSubject"))}&body=${encodeURIComponent(lines.join("\n"))}`;
-}
-
 languageButtons.forEach((button) => {
   button.addEventListener("click", () => applyLanguage(button.dataset.lang));
+});
+
+bookingTriggers.forEach((trigger) => {
+  trigger.addEventListener("click", (event) => {
+    event.preventDefault();
+    formSuccess.hidden = true;
+    bookingModal.hidden = false;
+    document.body.classList.add("modal-open");
+    document.querySelector("#client-name").focus();
+  });
+});
+
+function closeBookingModal() {
+  bookingModal.hidden = true;
+  document.body.classList.remove("modal-open");
+}
+
+bookingModalClose.addEventListener("click", closeBookingModal);
+
+bookingModal.addEventListener("click", (event) => {
+  if (event.target === bookingModal) closeBookingModal();
 });
 
 portfolioMenuToggle.addEventListener("click", () => {
@@ -496,12 +534,14 @@ document.addEventListener("dragstart", (event) => {
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "PrintScreen") showPrivacyToast();
+  if (event.key === "Escape" && !bookingModal.hidden) closeBookingModal();
 });
 
 bookingForm.addEventListener("submit", (event) => {
   event.preventDefault();
   if (!bookingForm.reportValidity()) return;
-  window.location.href = buildMailto(new FormData(bookingForm));
+  bookingForm.reset();
+  formSuccess.hidden = false;
 });
 
 lightboxClose.addEventListener("click", () => lightbox.close());
