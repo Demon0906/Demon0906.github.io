@@ -5,14 +5,14 @@ const translations = {
     navPortfolio: "作品集",
     navBooking: "预约拍摄",
     navAbout: "关于",
+    aboutMenuMe: "关于我",
+    aboutMenuPricing: "价格咨询",
+    aboutMenuBusiness: "商务合作",
     tocBooking: "预约",
     heroEyebrow: "Portrait / Nature / Travel / Journal",
     heroCopy: "以摄影项目的方式整理人像、自然、旅行和摄影故事，让每一组作品都成为独立的影像档案。",
     heroPortfolio: "浏览作品集",
     heroBooking: "预约拍摄",
-    metricCollections: "大作品板块",
-    metricDevices: "独立摄影集",
-    metricReply: "预约信息回复",
     portfolioEyebrow: "Selected Portfolio",
     portfolioTitle: "作品集",
     portfolioCopy: "页面按人像摄影、自然风光、旅游记忆、摄影故事四个大板块组织。每个摄影集都是独立项目，可点击展开并横向浏览更多照片。",
@@ -55,14 +55,14 @@ const translations = {
     navPortfolio: "Portfolio",
     navBooking: "Book",
     navAbout: "About",
+    aboutMenuMe: "About Me",
+    aboutMenuPricing: "Pricing",
+    aboutMenuBusiness: "Commercial Work",
     tocBooking: "Book",
     heroEyebrow: "Portrait / Nature / Travel / Journal",
     heroCopy: "Portraits, landscapes, travel memories, and photography stories are organized as independent visual projects.",
     heroPortfolio: "View Portfolio",
     heroBooking: "Book a Session",
-    metricCollections: "Sections",
-    metricDevices: "Projects",
-    metricReply: "Booking reply",
     portfolioEyebrow: "Selected Portfolio",
     portfolioTitle: "Portfolio",
     portfolioCopy: "The page is organized into portrait, nature, travel memory, and photography story sections. Each collection works like an independent project with expandable details.",
@@ -105,14 +105,14 @@ const translations = {
     navPortfolio: "作品集",
     navBooking: "撮影予約",
     navAbout: "紹介",
+    aboutMenuMe: "自己紹介",
+    aboutMenuPricing: "料金相談",
+    aboutMenuBusiness: "商業撮影",
     tocBooking: "予約",
     heroEyebrow: "Portrait / Nature / Travel / Journal",
     heroCopy: "人物、自然、旅の記憶、写真ストーリーを独立したプロジェクトとして整理しています。",
     heroPortfolio: "作品集を見る",
     heroBooking: "撮影予約",
-    metricCollections: "セクション",
-    metricDevices: "写真集",
-    metricReply: "予約返信",
     portfolioEyebrow: "Selected Portfolio",
     portfolioTitle: "作品集",
     portfolioCopy: "人物写真、自然風景、旅の記憶、写真ストーリーの四つの大きなセクションで構成しています。それぞれの写真集は独立したプロジェクトとして表示されます。",
@@ -300,7 +300,8 @@ const languageButtons = document.querySelectorAll(".language-button");
 const portfolioMount = document.querySelector("#portfolio-groups");
 const portfolioMenuToggle = document.querySelector("#portfolio-menu-toggle");
 const portfolioMenu = document.querySelector("#portfolio-menu");
-const portfolioQuickLinks = document.querySelector("#portfolio-quick-links");
+const aboutMenuToggle = document.querySelector("#about-menu-toggle");
+const aboutMenu = document.querySelector("#about-menu");
 const lightbox = document.querySelector("#lightbox");
 const lightboxImage = document.querySelector("#lightbox-image");
 const lightboxTitle = document.querySelector("#lightbox-title");
@@ -418,7 +419,6 @@ function renderPortfolioNavigation() {
     )
     .join("");
   portfolioMenu.innerHTML = links;
-  portfolioQuickLinks.innerHTML = links;
 }
 
 function renderPortfolio() {
@@ -485,15 +485,33 @@ portfolioMenuToggle.addEventListener("click", () => {
   const isOpen = portfolioMenuToggle.getAttribute("aria-expanded") === "true";
   portfolioMenuToggle.setAttribute("aria-expanded", String(!isOpen));
   portfolioMenu.classList.toggle("is-open", !isOpen);
+  aboutMenuToggle.setAttribute("aria-expanded", "false");
+  aboutMenu.classList.remove("is-open");
+});
+
+aboutMenuToggle.addEventListener("click", () => {
+  const isOpen = aboutMenuToggle.getAttribute("aria-expanded") === "true";
+  aboutMenuToggle.setAttribute("aria-expanded", String(!isOpen));
+  aboutMenu.classList.toggle("is-open", !isOpen);
+  portfolioMenuToggle.setAttribute("aria-expanded", "false");
+  portfolioMenu.classList.remove("is-open");
 });
 
 document.addEventListener("click", (event) => {
   if (!event.target.closest(".nav-menu")) {
     portfolioMenuToggle.setAttribute("aria-expanded", "false");
     portfolioMenu.classList.remove("is-open");
+    aboutMenuToggle.setAttribute("aria-expanded", "false");
+    aboutMenu.classList.remove("is-open");
   }
 
-  const portfolioLink = event.target.closest(".portfolio-menu a, .portfolio-jump a");
+  const aboutLink = event.target.closest("#about-menu a");
+  if (aboutLink) {
+    aboutMenuToggle.setAttribute("aria-expanded", "false");
+    aboutMenu.classList.remove("is-open");
+  }
+
+  const portfolioLink = event.target.closest("#portfolio-menu a[data-section]");
   if (portfolioLink) {
     event.preventDefault();
     activeProjects[portfolioLink.dataset.section] = portfolioLink.dataset.project;

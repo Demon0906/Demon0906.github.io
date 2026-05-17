@@ -20,7 +20,14 @@
           <div class="portfolio-menu" id="portfolio-menu"></div>
         </div>
         <a class="booking-trigger" href="#booking" data-i18n="navBooking">预约拍摄</a>
-        <a href="#about" data-i18n="navAbout">关于</a>
+        <div class="nav-menu about-nav">
+          <button class="nav-link" id="about-menu-toggle" type="button" aria-expanded="false" aria-controls="about-menu" data-i18n="navAbout">关于</button>
+          <div class="portfolio-menu about-menu" id="about-menu">
+            <a href="#about" data-i18n="aboutMenuMe">关于我</a>
+            <a href="#booking" data-i18n="aboutMenuPricing">价格咨询</a>
+            <a href="#booking" data-i18n="aboutMenuBusiness">商务合作</a>
+          </div>
+        </div>
       </nav>
       <div class="language-switcher" aria-label="Language">
         <button class="language-button is-active" type="button" data-lang="zh">中</button>
@@ -57,21 +64,6 @@
         </div>
       </section>
 
-      <section class="intro" aria-label="Portfolio overview">
-        <div>
-          <span class="metric">05</span>
-          <span class="metric-label" data-i18n="metricCollections">大作品板块</span>
-        </div>
-        <div>
-          <span class="metric">08</span>
-          <span class="metric-label" data-i18n="metricDevices">独立摄影集</span>
-        </div>
-        <div>
-          <span class="metric">24h</span>
-          <span class="metric-label" data-i18n="metricReply">预约信息回复</span>
-        </div>
-      </section>
-
       <section class="section portfolio" id="portfolio" aria-labelledby="portfolio-title">
         <div class="section-heading">
           <div>
@@ -80,7 +72,6 @@
           </div>
           <p class="section-copy" data-i18n="portfolioCopy">页面按人像摄影、自然风光、旅游记忆、摄影故事四个大板块组织。每个摄影集都是独立项目，可点击展开并横向浏览更多照片。</p>
         </div>
-        <div class="portfolio-jump" id="portfolio-quick-links" aria-label="Portfolio quick links"></div>
         <p class="privacy-note" data-i18n="privacyNote">本网页所有照片均由作者本人拍摄，人像照片已经模特本人同意，未经许可不得下载与转发，请尊重影像隐私与版权。</p>
 
         <div class="portfolio-groups" id="portfolio-groups"></div>

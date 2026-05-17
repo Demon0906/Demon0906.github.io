@@ -359,37 +359,11 @@ h5 {
   backdrop-filter: blur(10px);
 }
 
-.intro {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1px;
-  background: var(--line);
-  border-bottom: 1px solid var(--line);
-}
-
-.intro > div {
-  min-height: 118px;
-  padding: 26px clamp(18px, 4vw, 56px);
-  background: var(--paper);
-}
-
-.metric {
-  display: block;
-  font-size: 34px;
-  font-weight: 850;
-  line-height: 1;
-}
-
-.metric-label {
-  color: var(--muted);
-  font-size: 14px;
-}
-
 .section,
 .about-band {
   width: min(1180px, calc(100% - 36px));
   margin: 0 auto;
-  padding: 86px 0;
+  padding: 92px 0;
 }
 
 .section-heading {
@@ -438,18 +412,12 @@ h5 {
   color: var(--muted);
 }
 
-.project-grid,
-.portfolio-jump {
+.project-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
-.portfolio-jump {
-  margin: 0 0 22px;
-}
-
-.portfolio-jump a,
 .project-chip {
   display: grid;
   gap: 2px;
@@ -463,21 +431,18 @@ h5 {
   backdrop-filter: blur(14px);
 }
 
-.portfolio-jump a span,
 .project-chip span {
   color: var(--muted);
   font-size: 11px;
   font-weight: 760;
 }
 
-.portfolio-jump a strong,
 .project-chip strong {
   font-size: 14px;
   line-height: 1.2;
 }
 
-.project-chip.is-active,
-.portfolio-jump a:hover {
+.project-chip.is-active {
   border-color: rgba(159, 67, 47, 0.56);
   background: rgba(159, 67, 47, 0.14);
 }
@@ -1093,7 +1058,6 @@ h5 {
     min-height: 86vh;
   }
 
-  .intro,
   .about-band,
   .contact-layout,
   .group-heading,
@@ -1160,21 +1124,12 @@ h5 {
     font-size: clamp(48px, 18vw, 76px);
   }
 
-  .intro {
-    grid-template-columns: 1fr;
-  }
-
-  .intro > div {
-    min-height: 96px;
-  }
-
   .section,
   .about-band {
     width: min(100% - 28px, 1180px);
     padding: 66px 0;
   }
 
-  .portfolio-jump,
   .project-grid {
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -1182,13 +1137,8 @@ h5 {
     scrollbar-width: none;
   }
 
-  .portfolio-jump::-webkit-scrollbar,
   .project-grid::-webkit-scrollbar {
     display: none;
-  }
-
-  .portfolio-jump a {
-    min-width: 132px;
   }
 
   .project-grid {
