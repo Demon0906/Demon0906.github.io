@@ -609,6 +609,119 @@ h3 {
   stroke-linejoin: round;
 }
 
+.modal-open {
+  overflow: hidden;
+}
+
+.booking-modal-shell {
+  position: fixed;
+  z-index: 40;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background: rgba(0, 0, 0, 0.62);
+  backdrop-filter: blur(8px);
+}
+
+.booking-modal-shell[hidden] {
+  display: none;
+}
+
+.booking-modal {
+  position: relative;
+  width: min(720px, 100%);
+  max-height: min(860px, calc(100vh - 36px));
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  padding: clamp(22px, 4vw, 34px);
+  background: rgba(247, 247, 244, 0.96);
+  color: var(--ink);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.36);
+}
+
+.modal-heading {
+  margin-bottom: 22px;
+}
+
+.modal-heading h2 {
+  font-size: clamp(28px, 4vw, 42px);
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.booking-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.booking-form label {
+  display: grid;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 760;
+}
+
+.booking-form input,
+.booking-form textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 13px;
+  background: #fff;
+  color: var(--ink);
+  outline: none;
+}
+
+.booking-form input:focus,
+.booking-form textarea:focus {
+  border-color: rgba(164, 71, 49, 0.52);
+  box-shadow: 0 0 0 3px rgba(164, 71, 49, 0.12);
+}
+
+.booking-form textarea {
+  resize: vertical;
+}
+
+.full-field,
+.form-submit,
+.form-success {
+  grid-column: 1 / -1;
+}
+
+.form-submit {
+  justify-self: start;
+  background: var(--ink);
+  color: #fff;
+}
+
+.form-success {
+  margin: 0;
+  border: 1px solid rgba(82, 154, 94, 0.28);
+  border-radius: 10px;
+  padding: 12px 13px;
+  background: rgba(82, 154, 94, 0.1);
+  color: #2f6f3b;
+  font-size: 14px;
+  font-weight: 720;
+}
+
 .lightbox {
   width: min(1080px, calc(100% - 28px));
   border: 0;
@@ -943,8 +1056,14 @@ h3 {
   }
 
   .portfolio-menu {
-    left: 0;
-    min-width: min(310px, calc(100vw - 28px));
+    position: fixed;
+    top: 94px;
+    left: 14px;
+    right: 14px;
+    z-index: 25;
+    min-width: 0;
+    max-height: calc(100vh - 118px);
+    overflow-y: auto;
     transform: none;
   }
 
@@ -1020,6 +1139,10 @@ h3 {
 
   .contact-card {
     padding-top: 14px;
+  }
+
+  .booking-form {
+    grid-template-columns: 1fr;
   }
 
   .detail-header {

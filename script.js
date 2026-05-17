@@ -265,6 +265,11 @@ const lightboxImage = document.querySelector("#lightbox-image");
 const lightboxTitle = document.querySelector("#lightbox-title");
 const lightboxMeta = document.querySelector("#lightbox-meta");
 const lightboxClose = document.querySelector(".lightbox-close");
+const bookingModal = document.querySelector("#booking-modal");
+const bookingForm = document.querySelector("#booking-form");
+const bookingModalClose = document.querySelector(".modal-close");
+const bookingTriggers = document.querySelectorAll(".booking-trigger");
+const formSuccess = document.querySelector("#form-success");
 const privacyToast = document.querySelector("#privacy-toast");
 let currentLanguage = "zh";
 let toastTimer;
@@ -393,6 +398,48 @@ languageButtons.forEach((button) => {
   button.addEventListener("click", () => applyLanguage(button.dataset.lang));
 });
 
+function closeNavigationMenus() {
+  portfolioMenuToggle.setAttribute("aria-expanded", "false");
+  portfolioMenu.classList.remove("is-open");
+  aboutMenuToggle.setAttribute("aria-expanded", "false");
+  aboutMenu.classList.remove("is-open");
+  modelMenuToggle.setAttribute("aria-expanded", "false");
+  modelMenu.classList.remove("is-open");
+}
+
+function openBookingModal() {
+  closeNavigationMenus();
+  formSuccess.hidden = true;
+  bookingModal.hidden = false;
+  document.body.classList.add("modal-open");
+  document.querySelector("#client-name")?.focus();
+}
+
+function closeBookingModal() {
+  bookingModal.hidden = true;
+  document.body.classList.remove("modal-open");
+}
+
+bookingTriggers.forEach((trigger) => {
+  trigger.addEventListener("click", (event) => {
+    event.preventDefault();
+    openBookingModal();
+  });
+});
+
+bookingModalClose.addEventListener("click", closeBookingModal);
+
+bookingModal.addEventListener("click", (event) => {
+  if (event.target === bookingModal) closeBookingModal();
+});
+
+bookingForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (!bookingForm.reportValidity()) return;
+  bookingForm.reset();
+  formSuccess.hidden = false;
+});
+
 portfolioMenuToggle.addEventListener("click", () => {
   const isOpen = portfolioMenuToggle.getAttribute("aria-expanded") === "true";
   portfolioMenuToggle.setAttribute("aria-expanded", String(!isOpen));
@@ -425,12 +472,7 @@ modelMenuToggle.addEventListener("click", () => {
 
 document.addEventListener("click", (event) => {
   if (!event.target.closest(".nav-menu")) {
-    portfolioMenuToggle.setAttribute("aria-expanded", "false");
-    portfolioMenu.classList.remove("is-open");
-    aboutMenuToggle.setAttribute("aria-expanded", "false");
-    aboutMenu.classList.remove("is-open");
-    modelMenuToggle.setAttribute("aria-expanded", "false");
-    modelMenu.classList.remove("is-open");
+    closeNavigationMenus();
   }
 
   const aboutLink = event.target.closest("#about-menu a");
@@ -477,6 +519,7 @@ document.addEventListener("dragstart", (event) => {
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "PrintScreen") showPrivacyToast();
+  if (event.key === "Escape" && !bookingModal.hidden) closeBookingModal();
 });
 
 lightboxClose.addEventListener("click", () => lightbox.close());
