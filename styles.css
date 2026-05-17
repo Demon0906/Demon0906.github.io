@@ -78,7 +78,9 @@ button {
 
 .brand {
   gap: 10px;
-  font-weight: 780;
+  font-size: 18px;
+  font-weight: 820;
+  letter-spacing: 0;
 }
 
 .brand-mark {
@@ -128,6 +130,12 @@ button {
   background: rgba(24, 25, 27, 0.72);
   box-shadow: 0 22px 62px rgba(0, 0, 0, 0.26);
   backdrop-filter: blur(18px);
+}
+
+.model-menu a {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 780;
 }
 
 .portfolio-menu.is-open {
@@ -870,22 +878,48 @@ h3 {
 
 @media (max-width: 900px) {
   html {
-    scroll-padding-top: 118px;
+    scroll-padding-top: 112px;
   }
 
   .site-header {
     grid-template-columns: 1fr auto;
     align-items: start;
-    gap: 12px;
+    gap: 10px;
+    padding: 12px 14px 14px;
+    background: linear-gradient(180deg, rgba(12, 13, 15, 0.78), rgba(12, 13, 15, 0.18) 82%, rgba(12, 13, 15, 0));
+  }
+
+  .brand {
+    gap: 8px;
+    font-size: 17px;
+    line-height: 1;
+  }
+
+  .brand-mark {
+    width: 28px;
+    height: 28px;
+    font-size: 15px;
+  }
+
+  .language-switcher {
+    padding: 3px;
+  }
+
+  .language-button {
+    min-width: 32px;
+    height: 28px;
+    font-size: 12px;
   }
 
   .nav {
     grid-column: 1 / -1;
     justify-content: flex-start;
     order: 3;
+    gap: 20px;
     overflow-x: auto;
     padding-bottom: 2px;
     scrollbar-width: none;
+    font-size: 14px;
   }
 
   .nav::-webkit-scrollbar {
@@ -949,27 +983,12 @@ h3 {
 }
 
 @media (max-width: 560px) {
-  .site-header {
-    padding: 14px 14px 18px;
-  }
-
-  .brand span:last-child {
-    max-width: 158px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .language-button {
-    min-width: 34px;
-  }
-
   .hero-content {
-    padding: 190px 0 56px;
+    padding: 156px 0 54px;
   }
 
   h1 {
-    font-size: clamp(48px, 17vw, 72px);
+    font-size: clamp(44px, 16vw, 68px);
   }
 
   .section,

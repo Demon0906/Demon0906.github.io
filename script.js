@@ -3,6 +3,7 @@ const translations = {
     navPortfolio: "作品集",
     navBooking: "预约拍摄",
     navAbout: "关于",
+    navModels: "认识模特",
     aboutMenuMe: "关于我",
     aboutMenuPricing: "价格咨询",
     aboutMenuBusiness: "商务合作",
@@ -12,7 +13,7 @@ const translations = {
     heroBooking: "预约拍摄",
     privacyNote: "本网页所有照片均由作者本人拍摄，人像照片已经模特本人同意，未经许可不得下载与转发，请尊重影像隐私与版权。",
     privacyToast: "作品仅供在线预览，请勿保存或截图传播。",
-    openProject: "查看项目",
+    openProject: "浏览作品",
     projectLabel: "摄影集",
     locationLabel: "地点",
     dateLabel: "时间",
@@ -38,6 +39,7 @@ const translations = {
     navPortfolio: "Portfolio",
     navBooking: "Book",
     navAbout: "About",
+    navModels: "Models",
     aboutMenuMe: "About Me",
     aboutMenuPricing: "Pricing",
     aboutMenuBusiness: "Commercial Work",
@@ -47,7 +49,7 @@ const translations = {
     heroBooking: "Book a Session",
     privacyNote: "All photos on this website were taken by the author. Portrait images are published with model consent. Downloading or reposting without permission is prohibited. Please respect image privacy and copyright.",
     privacyToast: "Images are for online preview only. Please do not save or redistribute screenshots.",
-    openProject: "Open Project",
+    openProject: "View Series",
     projectLabel: "Project",
     locationLabel: "Place",
     dateLabel: "Date",
@@ -73,6 +75,7 @@ const translations = {
     navPortfolio: "作品集",
     navBooking: "撮影予約",
     navAbout: "紹介",
+    navModels: "モデル",
     aboutMenuMe: "自己紹介",
     aboutMenuPricing: "料金相談",
     aboutMenuBusiness: "商業撮影",
@@ -82,7 +85,7 @@ const translations = {
     heroBooking: "撮影予約",
     privacyNote: "本サイトの写真はすべて作者本人が撮影したものです。人物写真はモデル本人の同意を得て掲載しています。許可なく保存・転載しないでください。写真のプライバシーと著作権を尊重してください。",
     privacyToast: "作品はオンラインプレビュー専用です。保存やスクリーンショットの再配布はご遠慮ください。",
-    openProject: "プロジェクトを見る",
+    openProject: "作品を見る",
     projectLabel: "写真集",
     locationLabel: "場所",
     dateLabel: "日付",
@@ -255,6 +258,8 @@ const portfolioMenuToggle = document.querySelector("#portfolio-menu-toggle");
 const portfolioMenu = document.querySelector("#portfolio-menu");
 const aboutMenuToggle = document.querySelector("#about-menu-toggle");
 const aboutMenu = document.querySelector("#about-menu");
+const modelMenuToggle = document.querySelector("#model-menu-toggle");
+const modelMenu = document.querySelector("#model-menu");
 const lightbox = document.querySelector("#lightbox");
 const lightboxImage = document.querySelector("#lightbox-image");
 const lightboxTitle = document.querySelector("#lightbox-title");
@@ -394,6 +399,8 @@ portfolioMenuToggle.addEventListener("click", () => {
   portfolioMenu.classList.toggle("is-open", !isOpen);
   aboutMenuToggle.setAttribute("aria-expanded", "false");
   aboutMenu.classList.remove("is-open");
+  modelMenuToggle.setAttribute("aria-expanded", "false");
+  modelMenu.classList.remove("is-open");
 });
 
 aboutMenuToggle.addEventListener("click", () => {
@@ -402,6 +409,18 @@ aboutMenuToggle.addEventListener("click", () => {
   aboutMenu.classList.toggle("is-open", !isOpen);
   portfolioMenuToggle.setAttribute("aria-expanded", "false");
   portfolioMenu.classList.remove("is-open");
+  modelMenuToggle.setAttribute("aria-expanded", "false");
+  modelMenu.classList.remove("is-open");
+});
+
+modelMenuToggle.addEventListener("click", () => {
+  const isOpen = modelMenuToggle.getAttribute("aria-expanded") === "true";
+  modelMenuToggle.setAttribute("aria-expanded", String(!isOpen));
+  modelMenu.classList.toggle("is-open", !isOpen);
+  portfolioMenuToggle.setAttribute("aria-expanded", "false");
+  portfolioMenu.classList.remove("is-open");
+  aboutMenuToggle.setAttribute("aria-expanded", "false");
+  aboutMenu.classList.remove("is-open");
 });
 
 document.addEventListener("click", (event) => {
@@ -410,12 +429,20 @@ document.addEventListener("click", (event) => {
     portfolioMenu.classList.remove("is-open");
     aboutMenuToggle.setAttribute("aria-expanded", "false");
     aboutMenu.classList.remove("is-open");
+    modelMenuToggle.setAttribute("aria-expanded", "false");
+    modelMenu.classList.remove("is-open");
   }
 
   const aboutLink = event.target.closest("#about-menu a");
   if (aboutLink) {
     aboutMenuToggle.setAttribute("aria-expanded", "false");
     aboutMenu.classList.remove("is-open");
+  }
+
+  const modelLink = event.target.closest("#model-menu a");
+  if (modelLink) {
+    modelMenuToggle.setAttribute("aria-expanded", "false");
+    modelMenu.classList.remove("is-open");
   }
 
   const portfolioLink = event.target.closest("#portfolio-menu a[data-section]");
