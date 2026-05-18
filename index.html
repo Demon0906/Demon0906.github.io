@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Demon 的个人摄影主页，展示相机与手机摄影作品集并提供预约拍摄入口。">
-    <title>Demon Photography</title>
+    <meta name="description" content="Demon Atelier 的个人摄影主页，展示人像、自然、旅行、日常与摄影故事。">
+    <title>Demon Atelier</title>
     <link rel="preconnect" href="https://images.unsplash.com">
     <link rel="stylesheet" href="styles.css">
   </head>
@@ -55,7 +55,7 @@
         <div class="hero-shade"></div>
         <div class="hero-content">
           <p class="eyebrow" data-i18n="heroEyebrow">Portrait / Nature / Travel / Journal</p>
-          <h1 id="hero-title">Demon Photography</h1>
+          <h1 id="hero-title" data-i18n="heroTitle">Demon Atelier</h1>
           <p class="hero-copy" data-i18n="heroCopy">以摄影项目的方式整理人像、自然、旅行和摄影故事，让每一组作品都成为独立的影像档案。</p>
           <div class="hero-actions">
             <a class="button primary" href="#portfolio" data-i18n="heroPortfolio">浏览作品集</a>
@@ -65,6 +65,10 @@
       </section>
 
       <section class="section portfolio" id="portfolio" aria-label="作品集">
+        <aside class="portfolio-notice" aria-label="版权与隐私说明">
+          <span>Copyright Notice</span>
+          <p data-i18n="privacyNote">本网页所有照片均由作者本人拍摄，人像照片已经模特本人同意，未经许可不得下载与转发，请尊重影像隐私与版权。</p>
+        </aside>
         <div class="portfolio-groups" id="portfolio-groups"></div>
       </section>
 

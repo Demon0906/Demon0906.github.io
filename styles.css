@@ -3,16 +3,17 @@
   --body-font: "PingFang SC", "Microsoft YaHei", "Heiti SC", "Helvetica Neue", Arial, "Hiragino Sans", "Yu Gothic", system-ui, -apple-system, sans-serif;
   --display-font: "Heiti SC", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, system-ui, sans-serif;
   --serif-font: "Songti SC", "STSong", "SimSun", "Noto Serif SC", "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
+  --latin-art-font: "Bodoni 72", Didot, "Hoefler Text", "Times New Roman", serif;
   --name-font: "Songti SC", "STSong", "Noto Serif SC", "Kaiti SC", "KaiTi", serif;
-  --bg: #eef2f3;
-  --paper: rgba(255, 255, 255, 0.62);
-  --ink: #171717;
-  --muted: #676d76;
-  --quiet: #9aa0ab;
-  --line: rgba(48, 62, 74, 0.12);
-  --accent: #6f7f89;
-  --accent-soft: #dde7ea;
-  --shadow: 0 24px 70px rgba(45, 58, 68, 0.13);
+  --bg: #edf2f2;
+  --paper: rgba(255, 255, 255, 0.52);
+  --ink: #14181b;
+  --muted: #626d73;
+  --quiet: #8e9aa2;
+  --line: rgba(54, 70, 80, 0.11);
+  --accent: #6d7c83;
+  --accent-soft: #dce6e7;
+  --shadow: 0 24px 70px rgba(42, 54, 62, 0.12);
 }
 
 * {
@@ -28,8 +29,9 @@ body {
   margin: 0;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at 12% 12%, rgba(255, 255, 255, 0.82), transparent 34%),
-    linear-gradient(135deg, #f7f9f9 0%, #e6ecef 46%, #f3f6f6 100%);
+    radial-gradient(circle at 12% 10%, rgba(255, 255, 255, 0.9), transparent 32%),
+    radial-gradient(circle at 88% 18%, rgba(211, 224, 226, 0.48), transparent 30%),
+    linear-gradient(135deg, #f8faf9 0%, #e9eff0 48%, #f4f7f6 100%);
   color: var(--ink);
   font-family: var(--body-font);
   line-height: 1.6;
@@ -72,9 +74,10 @@ button {
   gap: 22px;
   padding: 14px clamp(18px, 4vw, 54px);
   color: var(--ink);
-  background: rgba(246, 249, 249, 0.72);
-  border-bottom: 1px solid rgba(26, 27, 29, 0.08);
-  backdrop-filter: blur(22px) saturate(1.08);
+  background: rgba(246, 249, 249, 0.46);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.44);
+  box-shadow: 0 12px 42px rgba(23, 31, 36, 0.05);
+  backdrop-filter: blur(28px) saturate(1.16);
 }
 
 .brand,
@@ -89,6 +92,7 @@ button {
   font-size: 18px;
   font-weight: 820;
   letter-spacing: 0;
+  color: rgba(20, 24, 27, 0.88);
 }
 
 .brand-mark {
@@ -96,8 +100,9 @@ button {
   width: 34px;
   height: 34px;
   place-items: center;
-  border: 1px solid rgba(20, 22, 26, 0.32);
+  border: 1px solid rgba(20, 22, 26, 0.24);
   border-radius: 50%;
+  background: rgba(255, 255, 255, 0.26);
 }
 
 .nav {
@@ -109,7 +114,7 @@ button {
 
 .nav a,
 .nav-link {
-  opacity: 0.9;
+  opacity: 0.84;
 }
 
 .nav-menu {
@@ -135,7 +140,7 @@ button {
   border: 1px solid rgba(226, 229, 234, 0.76);
   border-radius: 16px;
   padding: 10px;
-  background: rgba(255, 255, 255, 0.76);
+  background: rgba(255, 255, 255, 0.64);
   box-shadow: 0 22px 62px rgba(37, 43, 52, 0.16);
   backdrop-filter: blur(18px);
 }
@@ -220,8 +225,9 @@ button {
   padding: 4px;
   border: 1px solid rgba(20, 22, 26, 0.16);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.64);
-  backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(18px);
 }
 
 .language-button {
@@ -259,14 +265,14 @@ button {
 
 .hero-image {
   object-fit: cover;
-  opacity: 0.82;
-  filter: sepia(0.08) saturate(0.88) brightness(0.86);
+  opacity: 0.78;
+  filter: grayscale(0.48) sepia(0.04) saturate(0.76) brightness(0.82);
 }
 
 .hero-shade {
   background:
-    linear-gradient(180deg, rgba(238, 231, 220, 0.1), rgba(28, 25, 22, 0.34)),
-    linear-gradient(90deg, rgba(36, 31, 27, 0.52), rgba(70, 60, 52, 0.08) 72%);
+    linear-gradient(180deg, rgba(237, 242, 242, 0.04), rgba(19, 22, 22, 0.4)),
+    linear-gradient(90deg, rgba(24, 26, 25, 0.62), rgba(47, 51, 50, 0.08) 74%);
 }
 
 .hero-content {
@@ -341,10 +347,13 @@ h3 {
 }
 
 .hero h1 {
-  max-width: 920px;
-  font-size: clamp(52px, 7.2vw, 102px);
-  font-weight: 760;
-  letter-spacing: 0.01em;
+  max-width: 980px;
+  font-family: var(--latin-art-font);
+  font-size: clamp(64px, 9.2vw, 138px);
+  font-weight: 400;
+  letter-spacing: 0.015em;
+  line-height: 0.9;
+  text-shadow: 0 18px 54px rgba(0, 0, 0, 0.22);
 }
 
 .section-copy {
@@ -401,9 +410,35 @@ h3 {
   padding-top: 76px;
 }
 
+.portfolio-notice {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.24fr) minmax(0, 1fr);
+  gap: 16px clamp(18px, 4vw, 46px);
+  align-items: start;
+  margin-bottom: 34px;
+  border-bottom: 1px solid var(--line);
+  padding: 0 0 28px;
+  color: var(--muted);
+}
+
+.portfolio-notice span {
+  color: var(--quiet);
+  font-size: 11px;
+  font-weight: 820;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.portfolio-notice p {
+  max-width: 880px;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
 .portfolio-group {
   min-width: 0;
-  border-top: 1px solid var(--line);
+  border-top: 0;
   padding-top: 34px;
 }
 
@@ -1549,7 +1584,7 @@ h3 {
     align-items: start;
     gap: 10px;
     padding: 12px 14px 14px;
-    background: rgba(255, 255, 255, 0.78);
+    background: rgba(255, 255, 255, 0.58);
   }
 
   .brand {
@@ -1611,6 +1646,12 @@ h3 {
 
   .section-copy {
     margin-top: 12px;
+  }
+
+  .portfolio-notice {
+    grid-template-columns: 1fr;
+    margin-bottom: 22px;
+    padding-bottom: 22px;
   }
 
   .portfolio-menu {
@@ -1714,6 +1755,10 @@ h3 {
 
   h1 {
     font-size: clamp(44px, 16vw, 68px);
+  }
+
+  .hero h1 {
+    font-size: clamp(58px, 18vw, 86px);
   }
 
   .section,
