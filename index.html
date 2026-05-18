@@ -122,36 +122,36 @@
       <div class="booking-modal" id="booking-form-panel">
         <button class="modal-close" type="button" aria-label="关闭预约问卷">×</button>
         <div class="modal-heading">
-          <p class="eyebrow">Book a Session</p>
-          <h2 id="booking-modal-title">预约拍摄问卷</h2>
+          <p class="eyebrow" data-i18n="bookingEyebrow">Book a Session</p>
+          <h2 id="booking-modal-title" data-i18n="bookingTitle">预约拍摄问卷</h2>
         </div>
         <form class="booking-form" id="booking-form">
           <label>
-            <span>姓名</span>
+            <span data-i18n="bookingName">姓名</span>
             <input id="client-name" name="name" type="text" autocomplete="name" required>
           </label>
           <label>
-            <span>联系方式</span>
+            <span data-i18n="bookingContact">联系方式</span>
             <input name="contact" type="text" autocomplete="tel email" required>
           </label>
           <label>
-            <span>预约拍摄日期与时间</span>
+            <span data-i18n="bookingDate">预约拍摄日期与时间</span>
             <input name="datetime" type="datetime-local" required>
           </label>
           <label>
-            <span>期望拍摄主题</span>
+            <span data-i18n="bookingTheme">期望拍摄主题</span>
             <input name="theme" type="text" required>
           </label>
           <label class="full-field">
-            <span>拍摄地点</span>
+            <span data-i18n="bookingLocation">拍摄地点</span>
             <input name="location" type="text" required>
           </label>
           <label class="full-field">
-            <span>备注</span>
+            <span data-i18n="bookingNotes">备注</span>
             <textarea name="notes" rows="4"></textarea>
           </label>
-          <button class="button primary form-submit" type="submit">提交预约信息</button>
-          <p class="form-success" id="form-success" hidden>您的预约信息已提交，我们将尽快与您联系，感谢您的预约。</p>
+          <button class="button primary form-submit" type="submit" data-i18n="bookingSubmit">提交预约信息</button>
+          <p class="form-success" id="form-success" data-i18n="bookingSuccess" hidden>您的预约信息已提交，我们将尽快与您联系，感谢您的预约。</p>
         </form>
       </div>
     </div>

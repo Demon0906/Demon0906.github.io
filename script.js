@@ -38,6 +38,17 @@ const translations = {
     contactPhone: "联系电话",
     contactSocial: "社交媒体",
     wechatSame: "微信同",
+    swipeHint: "滑动查看",
+    bookingEyebrow: "Book a Session",
+    bookingTitle: "预约拍摄问卷",
+    bookingName: "姓名",
+    bookingContact: "联系方式",
+    bookingDate: "预约拍摄日期与时间",
+    bookingTheme: "期望拍摄主题",
+    bookingLocation: "拍摄地点",
+    bookingNotes: "备注",
+    bookingSubmit: "提交预约信息",
+    bookingSuccess: "您的预约信息已提交，我们将尽快与您联系，感谢您的预约。",
   },
   en: {
     navPortfolio: "Portfolio",
@@ -78,6 +89,17 @@ const translations = {
     contactPhone: "Phone",
     contactSocial: "Social Media",
     wechatSame: "WeChat available",
+    swipeHint: "Swipe",
+    bookingEyebrow: "Book a Session",
+    bookingTitle: "Session Request",
+    bookingName: "Name",
+    bookingContact: "Contact",
+    bookingDate: "Date and time",
+    bookingTheme: "Preferred theme",
+    bookingLocation: "Shooting location",
+    bookingNotes: "Notes",
+    bookingSubmit: "Submit Request",
+    bookingSuccess: "Your request has been submitted. We will contact you soon. Thank you.",
   },
   ja: {
     navPortfolio: "作品集",
@@ -118,6 +140,17 @@ const translations = {
     contactPhone: "電話",
     contactSocial: "SNS",
     wechatSame: "WeChat可",
+    swipeHint: "スワイプ",
+    bookingEyebrow: "Book a Session",
+    bookingTitle: "撮影予約フォーム",
+    bookingName: "お名前",
+    bookingContact: "連絡先",
+    bookingDate: "撮影希望日時",
+    bookingTheme: "希望テーマ",
+    bookingLocation: "撮影場所",
+    bookingNotes: "備考",
+    bookingSubmit: "予約内容を送信",
+    bookingSuccess: "予約情報を送信しました。確認後、できるだけ早くご連絡いたします。",
   },
 };
 
@@ -328,12 +361,13 @@ function renderProjectCard(section, project) {
     <button class="${cardClass}" type="button" data-section="${section.id}" data-project="${project.id}" id="${project.id}" aria-label="${escapeHtml(localized(project.title))}" style="--cover-bg: url('${coverUrl}');">
       <span class="project-cover-shell">
         <span class="project-cover-stack">${coverImages}</span>
+        <span class="project-swipe-hint">${t("swipeHint")}</span>
       </span>
       <span class="project-card-copy">
         <em>${project.date} · ${localized(project.place)}</em>
         <strong>${localized(project.title)}</strong>
         <small>${localized(project.summary)}</small>
-        <span class="project-open">${t("openProject")}</span>
+        <span class="project-open">${t("openProject")}<span aria-hidden="true">↗</span></span>
       </span>
     </button>
   `;
@@ -356,24 +390,24 @@ function renderSection(section) {
   `;
 }
 
-function getAllProjectLinks() {
-  return portfolioSections.flatMap((section) =>
-    section.projects.map((project) => ({
-      href: `#${project.id}`,
-      section,
-      project,
-    })),
-  );
-}
-
 function renderPortfolioNavigation() {
-  const links = getAllProjectLinks()
+  const links = portfolioSections
     .map(
-      ({ href, section, project }) => `
-        <a href="${href}" data-section="${section.id}" data-project="${project.id}">
-          <span>${t(section.titleKey)}</span>
-          <strong>${localized(project.title)}</strong>
-        </a>
+      (section, index) => `
+        <details class="portfolio-menu-group" ${index === 0 ? "open" : ""}>
+          <summary>${t(section.titleKey)}</summary>
+          <div>
+            ${section.projects
+              .map(
+                (project) => `
+                  <a href="#${project.id}" data-section="${section.id}" data-project="${project.id}">
+                    <strong>${localized(project.title)}</strong>
+                  </a>
+                `,
+              )
+              .join("")}
+          </div>
+        </details>
       `,
     )
     .join("");
