@@ -96,7 +96,7 @@ const portraitCollectionList = [
   {
     id: "portrait-live",
     collection: "live",
-    title: { zh: "Live", en: "Live", ja: "Live" },
+    title: { zh: "Live（手机）", en: "Live Mobile", ja: "Live（スマホ）" },
     date: "Portrait",
     place: { zh: "现场人像", en: "Live Portrait", ja: "ライブポートレート" },
     summary: {
@@ -107,10 +107,8 @@ const portraitCollectionList = [
     href: "portrait.html?collection=live",
     photos: [
       "assets/photos/人像摄影/Live（手机）/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg",
-      "assets/photos/人像摄影/Live（手机）/Nero/模特：Nero；拍摄地点：东京涉谷；拍摄时间：2026.4.jpg",
       "assets/photos/人像摄影/Live（手机）/模特：Nero；拍摄时间：2025.5；拍摄地点：东京涉谷.jpg",
       "assets/photos/人像摄影/Live（手机）/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
-      "assets/photos/人像摄影/Live（手机）/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
       "assets/photos/人像摄影/Live（手机）/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
     ],
     groups: [
@@ -137,17 +135,21 @@ const portraitCollectionList = [
       {
         id: "live-nero",
         title: "Nero",
-        description: "夜色和街道会让她的气质更锋利，画面里带着清晰的方向感。",
+        description: "夜色和街道会让他的气质更锋利，画面里带着清晰的方向感。",
         photos: [
           "assets/photos/人像摄影/Live（手机）/Nero/模特：Nero；拍摄地点：东京涉谷；拍摄时间：2026.4.jpg",
           "assets/photos/人像摄影/Live（手机）/Nero/模特：Nero；拍摄时间：2025.5；拍摄地点：东京涉谷.jpg",
+          "assets/photos/人像摄影/Live（手机）/模特：Nero；拍摄时间：2025.5；拍摄地点：东京涉谷.jpg",
         ],
       },
       {
         id: "live-susu",
         title: "美丽酥酥",
         description: "柔和、自然，适合被放在松弛的环境里，以更轻的方式保留当下情绪。",
-        photos: ["assets/photos/人像摄影/Live（手机）/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg"],
+        photos: [
+          "assets/photos/人像摄影/Live（手机）/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
+          "assets/photos/人像摄影/Live（手机）/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
+        ],
       },
     ],
   },
@@ -286,17 +288,17 @@ const sitePortfolioSections = [
     projects: [
       {
         id: "story-light-notes",
-        title: { zh: "熊大和它的远方", en: "Bear Da and the Faraway Places", ja: "熊大と遠い場所" },
+        title: { zh: "熊大：一只小熊的远方", en: "Bear Da: A Small Companion", ja: "熊大：小さな旅の友" },
         date: "Journal",
         place: { zh: "摄影故事", en: "Photo Story", ja: "写真ストーリー" },
-        summary: { zh: "一只陪伴二十多年的小熊，和它一路带来的快乐、远方与柔软记忆。", en: "A small bear of more than twenty years, carrying joy, distance, and soft memories.", ja: "二十年以上寄り添ってきた小さな熊が運ぶ、喜びと旅の記憶。" },
+        summary: { zh: "一只陪伴二十多年的小熊，把笑容、旅途和时间里柔软的部分一起带到镜头前。", en: "A companion of more than twenty years, carrying smiles, journeys, and the tender residue of time.", ja: "二十年以上寄り添う小さな熊が、笑顔と旅、時間の柔らかな記憶を運んでくる。" },
         story: {
           kicker: "A small companion",
-          title: "快乐熊，后来叫熊大",
+          title: "熊大：被时间带去远方的笑容",
           paragraphs: [
-            "它原本叫快乐熊。这个名字很直白，却也很准确：二十多年过去，它的笑容还是那样明亮，像一个从童年里留下来的小小开关，一看见就会让人心里松下来。",
-            "后来，它有了新的名字，叫熊大。名字变了，但它依然保留着快乐熊的性格。它去过很多地方，陪伴过不同季节的行李、车站、房间和远方。它不像纪念品那样停在某一个时刻，而是一直参与着生活，安静地出现在每一次出发和归来之间。",
-            "拍它的时候，我想记录的不是一只玩偶本身，而是一种被时间轻轻磨亮的陪伴。它的毛绒、笑脸和被带去远方的痕迹，都像是在提醒我们：快乐并不一定宏大，有时候只是一个熟悉的表情，陪你走过很久很久。",
+            "它最早叫快乐熊。这个名字朴素，却像一枚准确的注脚：二十多年过去，它的笑容仍然明亮，像从童年延续到现在的一束小光，轻轻一照，许多疲惫都会安静下来。",
+            "后来，它有了新的名字，叫熊大。名字改变了，陪伴的质地却没有改变。它去过很多地方，挤进行李箱，经过车站、房间、海边和远方，在一次次出发与归来之间，成为生活里最稳定也最柔软的坐标。",
+            "拍摄熊大时，我想记录的不是一件玩偶，而是一段被时间慢慢磨亮的关系。那些毛绒上的痕迹、始终扬起的嘴角，以及被带往不同地方的身影，都在提醒我：快乐不一定宏大，它有时只是一个熟悉的表情，安静地陪你走过很久。",
           ],
         },
         photos: [
