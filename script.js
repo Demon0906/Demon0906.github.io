@@ -308,6 +308,7 @@ function getProject(sectionId, projectId) {
 
 function renderProjectCard(section, project) {
   const coverUrl = window.localImage ? window.localImage(project.photos[0]) : project.photos[0];
+  const cardClass = `project-card project-card--${section.id}`;
   const coverImages = project.photos
     .map(
       (src, index) => `
@@ -323,7 +324,7 @@ function renderProjectCard(section, project) {
     )
     .join("");
   return `
-    <button class="project-card" type="button" data-section="${section.id}" data-project="${project.id}" id="${project.id}" aria-label="${escapeHtml(localized(project.title))}" style="--cover-bg: url('${coverUrl}');">
+    <button class="${cardClass}" type="button" data-section="${section.id}" data-project="${project.id}" id="${project.id}" aria-label="${escapeHtml(localized(project.title))}" style="--cover-bg: url('${coverUrl}');">
       <span class="project-cover-shell">
         <span class="project-cover-stack">${coverImages}</span>
       </span>
