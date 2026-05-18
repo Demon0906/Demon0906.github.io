@@ -1,4 +1,6 @@
 const localImage = (path) => encodeURI(path);
+const thumbImage = (path) =>
+  encodeURI(path.replace(/^assets\/photos\//, "assets/thumbs/").replace(/\.[^.]+$/, ".jpg"));
 
 function photoInfoFromPath(path) {
   const filename = decodeURIComponent(path.split("/").pop() || "").replace(/\.[^.]+$/, "");
@@ -335,6 +337,7 @@ const sectionOrder = ["portrait", "nature", "city", "daily", "stories"];
 sitePortfolioSections.sort((a, b) => sectionOrder.indexOf(a.id) - sectionOrder.indexOf(b.id));
 
 window.localImage = localImage;
+window.thumbImage = thumbImage;
 window.photoInfoFromPath = photoInfoFromPath;
 window.sitePortfolioSections = sitePortfolioSections;
 window.portraitCollections = portraitCollectionList;

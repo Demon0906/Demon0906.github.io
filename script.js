@@ -307,14 +307,15 @@ function getProject(sectionId, projectId) {
 }
 
 function renderProjectCard(section, project) {
-  const coverUrl = window.localImage ? window.localImage(project.photos[0]) : project.photos[0];
+  const mediaPath = window.thumbImage || window.localImage || ((src) => src);
+  const coverUrl = mediaPath(project.photos[0]);
   const cardClass = `project-card project-card--${section.id}`;
   const coverImages = project.photos
     .map(
       (src, index) => `
         <img
           class="protected-media"
-          src="${window.localImage ? window.localImage(src) : src}"
+          src="${mediaPath(src)}"
           alt="${escapeHtml(localized(project.title))}"
           loading="lazy"
           draggable="false"

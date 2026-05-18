@@ -107,7 +107,7 @@
           daily: "Daily",
           stories: "Story",
         };
-        hero.style.setProperty("--gallery-cover", `url("${window.localImage(cover)}")`);
+        hero.style.setProperty("--gallery-cover", `url("${window.thumbImage(cover)}")`);
         hero.innerHTML = `
           <p class="eyebrow">${sectionLabels[section.id] || "Gallery"}</p>
           <h1>${getText(project.title)}</h1>
@@ -128,7 +128,7 @@
             return `
               <article class="gallery-frame">
                 <button type="button" data-index="${index}" aria-label="查看 ${escapeHtml(getText(project.title))}">
-                  <img class="protected-media" src="${window.localImage(src)}" alt="${escapeHtml(getText(project.title))}" loading="lazy" draggable="false">
+                  <img class="protected-media" src="${window.thumbImage(src)}" alt="${escapeHtml(getText(project.title))}" loading="lazy" draggable="false">
                 </button>
                 <div class="gallery-frame-copy">
                   <p>${caption.meta}</p>
@@ -147,7 +147,7 @@
           .map(
             (src, index) => `
               <button class="story-image" type="button" data-index="${index}">
-                <img class="protected-media" src="${window.localImage(src)}" alt="${escapeHtml(getText(project.title))}" loading="lazy" draggable="false">
+                <img class="protected-media" src="${window.thumbImage(src)}" alt="${escapeHtml(getText(project.title))}" loading="lazy" draggable="false">
               </button>
             `,
           )
