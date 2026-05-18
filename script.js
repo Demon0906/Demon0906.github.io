@@ -277,6 +277,8 @@ const lightboxImage = document.querySelector("#lightbox-image");
 const lightboxTitle = document.querySelector("#lightbox-title");
 const lightboxMeta = document.querySelector("#lightbox-meta");
 const lightboxClose = document.querySelector(".lightbox-close");
+const lightboxPrev = document.querySelector(".lightbox-prev");
+const lightboxNext = document.querySelector(".lightbox-next");
 const bookingModal = document.querySelector("#booking-modal");
 const bookingForm = document.querySelector("#booking-form");
 const bookingModalClose = document.querySelector(".modal-close");
@@ -285,6 +287,7 @@ const formSuccess = document.querySelector("#form-success");
 const privacyToast = document.querySelector("#privacy-toast");
 let currentLanguage = "zh";
 let toastTimer;
+let lightboxState = { sectionId: "", projectId: "", photoIndex: 0 };
 
 function t(key) {
   return translations[currentLanguage][key] || translations.zh[key] || key;
@@ -391,13 +394,23 @@ function applyLanguage(language) {
 
 function openLightbox(sectionId, projectId, photoIndex) {
   const project = getProject(sectionId, projectId);
-  const src = project?.photos[Number(photoIndex)];
+  const index = Number(photoIndex);
+  const src = project?.photos[index];
   if (!project || !src) return;
+  const photoInfo = window.photoInfoFromPath?.(src);
+  lightboxState = { sectionId, projectId, photoIndex: index };
   lightboxImage.src = window.localImage ? window.localImage(src) : src;
   lightboxImage.alt = localized(project.title);
-  lightboxTitle.textContent = localized(project.title);
-  lightboxMeta.textContent = `${project.date} / ${localized(project.place)}`;
+  lightboxTitle.textContent = photoInfo?.title || localized(project.title);
+  lightboxMeta.textContent = photoInfo?.meta || `${project.date} / ${localized(project.place)}`;
   lightbox.showModal();
+}
+
+function moveLightbox(direction) {
+  const project = getProject(lightboxState.sectionId, lightboxState.projectId);
+  if (!project?.photos?.length) return;
+  const nextIndex = (lightboxState.photoIndex + direction + project.photos.length) % project.photos.length;
+  openLightbox(lightboxState.sectionId, lightboxState.projectId, nextIndex);
 }
 
 function showPrivacyToast() {
@@ -537,9 +550,13 @@ document.addEventListener("dragstart", (event) => {
 document.addEventListener("keydown", (event) => {
   if (event.key === "PrintScreen") showPrivacyToast();
   if (event.key === "Escape" && !bookingModal.hidden) closeBookingModal();
+  if (lightbox.open && event.key === "ArrowLeft") moveLightbox(-1);
+  if (lightbox.open && event.key === "ArrowRight") moveLightbox(1);
 });
 
 lightboxClose.addEventListener("click", () => lightbox.close());
+lightboxPrev.addEventListener("click", () => moveLightbox(-1));
+lightboxNext.addEventListener("click", () => moveLightbox(1));
 
 lightbox.addEventListener("click", (event) => {
   if (event.target === lightbox) lightbox.close();

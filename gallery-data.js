@@ -1,97 +1,136 @@
 const localImage = (path) => encodeURI(path);
 
-const portraitHighlights = [
-  "assets/photos/人像摄影/Live/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg",
-  "assets/photos/人像摄影/Live/模特：Nero；拍摄地点：东京涉谷；拍摄时间：2026.4.jpg",
-  "assets/photos/人像摄影/Live/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
-  "assets/photos/人像摄影/Live/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
-  "assets/photos/人像摄影/模特展/模特：Celia；拍摄时间：2026.3；拍摄地点：上海迪士尼.jpg",
-  "assets/photos/人像摄影/模特展/模特：Mio；拍摄时间：2026.5；拍摄地点：日本 横滨.jpg",
-];
+function photoInfoFromPath(path) {
+  const filename = decodeURIComponent(path.split("/").pop() || "").replace(/\.[^.]+$/, "");
+  const fields = {};
+  filename
+    .split(/[；;]/)
+    .map((part) => part.trim())
+    .filter(Boolean)
+    .forEach((part) => {
+      const [key, ...value] = part.split(/[：:]/);
+      if (value.length) fields[key.trim()] = value.join(":").trim();
+    });
+  const hasInfo = Object.keys(fields).length > 0;
+  const title = fields["模特"] || fields["主题"] || fields["拍摄地点"] || (hasInfo ? "影像记录" : "照片记录");
+  const meta = [fields["拍摄时间"], fields["拍摄地点"]].filter(Boolean).join(" · ");
+  const caption = hasInfo
+    ? Object.entries(fields)
+        .map(([key, value]) => `${key}: ${value}`)
+        .join(" / ")
+    : filename;
+  return { title, meta, caption, fields };
+}
 
-const portraitProjects = [
+const portraitCollectionList = [
   {
-    id: "model-kakiloki",
-    title: { zh: "kakiloki", en: "kakiloki", ja: "kakiloki" },
-    date: "2026.04-2026.05",
-    place: { zh: "富士山 / 东京台场", en: "Mt. Fuji / Tokyo Odaiba", ja: "富士山 / 東京台場" },
-    summary: { zh: "自然环境与城市边界中的人像记录。", en: "Portrait studies between nature and the city edge.", ja: "自然と都市の境界で撮影したポートレート。" },
+    id: "portrait-model-show",
+    collection: "model-show",
+    title: { zh: "模特展", en: "Model Exhibition", ja: "モデル展" },
+    date: "Portrait",
+    place: { zh: "人像摄影", en: "Portrait", ja: "人物写真" },
+    summary: {
+      zh: "从模特展文件夹中精选封面照片，进入后按每位模特查看完整项目。",
+      en: "Selected covers from the model exhibition folder. Open to view each model project.",
+      ja: "モデル展フォルダから選んだカバー写真。開くとモデル別に閲覧できます。",
+    },
+    href: "portrait.html?collection=model-show",
     photos: [
-      "assets/photos/人像摄影/Live/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
-      "assets/photos/人像摄影/Live/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本富士山.jpg",
-      "assets/photos/人像摄影/Live/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京台场.jpg",
-      "assets/photos/人像摄影/模特展/kakiloki/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.JPG",
-      "assets/photos/人像摄影/模特展/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京 台场.JPG",
-      "assets/photos/人像摄影/模特展/kakiloki/模特：kaliloki；拍摄时间：2026.4；拍摄地点：日本 富士山.JPG",
+      "assets/photos/人像摄影/模特展/模特：Celia；拍摄时间：2026.3；拍摄地点：上海迪士尼.jpg",
+      "assets/photos/人像摄影/模特展/模特：Mio；拍摄时间：2026.5；拍摄地点：日本 横滨.jpg",
+      "assets/photos/人像摄影/模特展/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg",
+      "assets/photos/人像摄影/模特展/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.JPG",
+    ],
+    groups: [
+      {
+        id: "model-show-kakiloki",
+        title: "kakiloki",
+        photos: [
+          "assets/photos/人像摄影/模特展/kakiloki/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.JPG",
+          "assets/photos/人像摄影/模特展/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京 台场.JPG",
+          "assets/photos/人像摄影/模特展/kakiloki/模特：kaliloki；拍摄时间：2026.4；拍摄地点：日本 富士山.JPG",
+        ],
+      },
+      {
+        id: "model-show-mio",
+        title: "Mio",
+        photos: [
+          "assets/photos/人像摄影/模特展/Mio/426d1ed20259edc0f02a7086d5c96a57.jpg",
+          "assets/photos/人像摄影/模特展/Mio/884b86dbf6fc5374edff1e1d50d5775a.jpg",
+          "assets/photos/人像摄影/模特展/Mio/c14affcbe5ceb22b238424f390c400d1.jpg",
+          "assets/photos/人像摄影/模特展/Mio/c557f1851a6d55502375b7aa0b9a694c.jpg",
+        ],
+      },
+      {
+        id: "model-show-nero",
+        title: "Nero",
+        photos: ["assets/photos/人像摄影/模特展/Nero/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg"],
+      },
+      {
+        id: "model-show-celia",
+        title: "Celia",
+        photos: ["assets/photos/人像摄影/模特展/Celia/模特：Celia；拍摄时间：2026.3；拍摄地点：上海迪士尼.jpg"],
+      },
     ],
   },
   {
-    id: "model-mio",
-    title: { zh: "Mio", en: "Mio", ja: "Mio" },
-    date: "2026.05",
-    place: { zh: "东京涩谷 / 横滨", en: "Tokyo Shibuya / Yokohama", ja: "東京渋谷 / 横浜" },
-    summary: { zh: "城市光线与行走状态中的人像系列。", en: "A portrait series shaped by city light and movement.", ja: "都市の光と歩行感を軸にしたポートレート。" },
+    id: "portrait-live",
+    collection: "live",
+    title: { zh: "Live", en: "Live", ja: "Live" },
+    date: "Portrait",
+    place: { zh: "现场人像", en: "Live Portrait", ja: "ライブポートレート" },
+    summary: {
+      zh: "以现场感和当下光线为主的人像记录，进入后按模特文件夹浏览。",
+      en: "Portraits shaped by live atmosphere and available light, grouped by model.",
+      ja: "現場感とその場の光を大切にした人物写真。モデル別に閲覧できます。",
+    },
+    href: "portrait.html?collection=live",
     photos: [
       "assets/photos/人像摄影/Live/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg",
-      "assets/photos/人像摄影/Live/Mio/602002416419b6fe9cb950f2990a8c56.jpg",
-      "assets/photos/人像摄影/Live/Mio/7ae1d4e91c5b71d3d6fe6f53c6f1db1a.jpg",
-      "assets/photos/人像摄影/Live/Mio/b6b48fcf3b86230126c4e9a51fb7e181.jpg",
-      "assets/photos/人像摄影/模特展/模特：Mio；拍摄时间：2026.5；拍摄地点：日本 横滨.jpg",
-      "assets/photos/人像摄影/模特展/Mio/426d1ed20259edc0f02a7086d5c96a57.jpg",
-      "assets/photos/人像摄影/模特展/Mio/884b86dbf6fc5374edff1e1d50d5775a.jpg",
-      "assets/photos/人像摄影/模特展/Mio/c14affcbe5ceb22b238424f390c400d1.jpg",
-      "assets/photos/人像摄影/模特展/Mio/c557f1851a6d55502375b7aa0b9a694c.jpg",
-    ],
-  },
-  {
-    id: "model-nero",
-    title: { zh: "Nero", en: "Nero", ja: "Nero" },
-    date: "2026.04",
-    place: { zh: "东京涩谷 / 上野", en: "Tokyo Shibuya / Ueno", ja: "東京渋谷 / 上野" },
-    summary: { zh: "街道、树影与人物气质之间的安静关系。", en: "Quiet portraits around streets, trees, and presence.", ja: "街路、木陰、人物の雰囲気を結ぶ静かな関係。" },
-    photos: [
       "assets/photos/人像摄影/Live/模特：Nero；拍摄地点：东京涉谷；拍摄时间：2026.4.jpg",
-      "assets/photos/人像摄影/模特展/Nero/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg",
-      "assets/photos/人像摄影/模特展/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg",
+      "assets/photos/人像摄影/Live/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
+      "assets/photos/人像摄影/Live/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
     ],
-  },
-  {
-    id: "model-celia",
-    title: { zh: "Celia", en: "Celia", ja: "Celia" },
-    date: "2026.03",
-    place: { zh: "上海迪士尼", en: "Shanghai Disney Resort", ja: "上海ディズニー" },
-    summary: { zh: "明亮色彩与游园场景中的人像记录。", en: "Portraits in bright color and park scenes.", ja: "明るい色彩とパーク風景のポートレート。" },
-    photos: [
-      "assets/photos/人像摄影/模特展/Celia/模特：Celia；拍摄时间：2026.3；拍摄地点：上海迪士尼.jpg",
-      "assets/photos/人像摄影/模特展/模特：Celia；拍摄时间：2026.3；拍摄地点：上海迪士尼.jpg",
+    groups: [
+      {
+        id: "live-kakiloki",
+        title: "kakiloki",
+        photos: [
+          "assets/photos/人像摄影/Live/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
+          "assets/photos/人像摄影/Live/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本富士山.jpg",
+          "assets/photos/人像摄影/Live/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京台场.jpg",
+        ],
+      },
+      {
+        id: "live-mio",
+        title: "Mio",
+        photos: [
+          "assets/photos/人像摄影/Live/Mio/602002416419b6fe9cb950f2990a8c56.jpg",
+          "assets/photos/人像摄影/Live/Mio/7ae1d4e91c5b71d3d6fe6f53c6f1db1a.jpg",
+          "assets/photos/人像摄影/Live/Mio/b6b48fcf3b86230126c4e9a51fb7e181.jpg",
+        ],
+      },
     ],
-  },
-  {
-    id: "model-susu",
-    title: { zh: "美丽酥酥", en: "Meili Susu", ja: "美麗酥酥" },
-    date: "2026.02",
-    place: { zh: "上海", en: "Shanghai", ja: "上海" },
-    summary: { zh: "柔和环境中的人像片段。", en: "Portrait fragments in a soft setting.", ja: "穏やかな環境でのポートレート。" },
-    photos: ["assets/photos/人像摄影/Live/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg"],
   },
 ];
+
+const portraitProjects = portraitCollectionList.flatMap((collection) =>
+  collection.groups.map((group) => ({
+    id: group.id,
+    title: { zh: group.title, en: group.title, ja: group.title },
+    date: collection.date,
+    place: collection.place,
+    summary: collection.summary,
+    photos: group.photos,
+  })),
+);
 
 const sitePortfolioSections = [
   {
     id: "portrait",
     titleKey: "portraitTitle",
     introKey: "portraitIntro",
-    projects: [
-      {
-        id: "portrait-models",
-        title: { zh: "人像摄影", en: "Portrait Photography", ja: "人物写真" },
-        date: "2026",
-        place: { zh: "模特作品集", en: "Model Portfolio", ja: "モデル作品集" },
-        summary: { zh: "主页展示精选人像照片，点击进入后按模特分组查看完整作品。", en: "Selected portraits on the home page. Open to view model-based series.", ja: "トップでは人物写真を抜粋表示し、詳細ページでモデル別に閲覧できます。" },
-        href: "portrait.html",
-        photos: portraitHighlights,
-      },
-    ],
+    projects: portraitCollectionList,
   },
   {
     id: "nature",
@@ -217,5 +256,7 @@ const sitePortfolioSections = [
 ];
 
 window.localImage = localImage;
+window.photoInfoFromPath = photoInfoFromPath;
 window.sitePortfolioSections = sitePortfolioSections;
+window.portraitCollections = portraitCollectionList;
 window.portraitProjects = portraitProjects;

@@ -395,6 +395,27 @@ h3 {
   background: #d9dde4;
 }
 
+.project-cover-stack::before,
+.project-cover-stack::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 16px;
+  right: 10px;
+  width: 10px;
+  height: calc(100% - 32px);
+  border-radius: 0 10px 10px 0;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 5px 0 14px rgba(34, 39, 46, 0.16);
+  pointer-events: none;
+}
+
+.project-cover-stack::after {
+  right: 0;
+  width: 7px;
+  background: rgba(236, 239, 244, 0.88);
+}
+
 .project-cover-stack img {
   position: absolute;
   inset: 0;
@@ -738,13 +759,39 @@ h3 {
   max-width: 780px;
   margin-bottom: 18px;
   color: var(--ink);
-  font-size: clamp(46px, 7vw, 92px);
+  font-size: clamp(42px, 6vw, 72px);
 }
 
 .portrait-hero p:last-child {
   max-width: 660px;
   color: var(--muted);
   font-size: 16px;
+}
+
+.portrait-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.portrait-tabs a {
+  border: 1px solid rgba(198, 204, 214, 0.78);
+  border-radius: 999px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 760;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(33, 38, 45, 0.05);
+}
+
+.portrait-tabs a.is-active,
+.portrait-tabs a:hover {
+  border-color: rgba(176, 75, 51, 0.42);
+  background: rgba(176, 75, 51, 0.1);
+  color: var(--accent);
 }
 
 .portrait-projects {
@@ -786,12 +833,15 @@ h3 {
 }
 
 .portrait-photo {
+  display: grid;
   overflow: hidden;
-  border: 0;
-  border-radius: 14px;
+  border: 1px solid rgba(224, 228, 235, 0.9);
+  border-radius: 18px;
   padding: 0;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.76);
   cursor: zoom-in;
+  text-align: left;
+  box-shadow: 0 12px 30px rgba(33, 38, 45, 0.06);
 }
 
 .portrait-photo img {
@@ -803,6 +853,30 @@ h3 {
 
 .portrait-photo:hover img {
   transform: scale(1.035);
+}
+
+.portrait-photo-info {
+  display: grid;
+  gap: 6px;
+  padding: 13px 14px 15px;
+}
+
+.portrait-photo-info strong {
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.portrait-photo-info small,
+.portrait-photo-info em {
+  color: var(--muted);
+  font-size: 12px;
+  font-style: normal;
+  line-height: 1.45;
+}
+
+.portrait-photo-info em {
+  color: var(--quiet);
 }
 
 .lightbox {
@@ -848,6 +922,32 @@ h3 {
   font-size: 28px;
   line-height: 1;
   cursor: pointer;
+}
+
+.lightbox-nav {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  transform: translateY(-50%);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.38);
+  color: #fff;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox-prev {
+  left: 14px;
+}
+
+.lightbox-next {
+  right: 14px;
 }
 
 .privacy-toast {

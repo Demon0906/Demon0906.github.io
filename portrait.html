@@ -23,8 +23,9 @@
     <main>
       <section class="portrait-hero">
         <p class="eyebrow">Portrait</p>
-        <h1>人像摄影</h1>
-        <p>按模特整理的人像作品。每一组照片都保留拍摄时的地点、光线与人物状态。</p>
+        <h1 id="portrait-title">人像摄影</h1>
+        <p id="portrait-intro">按文件夹整理的人像作品。进入每个项目后，可以查看单张照片与文件名中的拍摄信息。</p>
+        <div class="portrait-tabs" id="portrait-tabs" aria-label="人像摄影分类"></div>
       </section>
 
       <section class="portrait-projects" id="portrait-projects" aria-label="模特作品集"></section>
@@ -32,7 +33,9 @@
 
     <dialog class="lightbox" id="portrait-lightbox" aria-label="人像作品预览">
       <button class="lightbox-close" type="button" aria-label="关闭预览">×</button>
+      <button class="lightbox-nav lightbox-prev" type="button" aria-label="上一张">‹</button>
       <img id="portrait-lightbox-image" class="protected-media" alt="" draggable="false">
+      <button class="lightbox-nav lightbox-next" type="button" aria-label="下一张">›</button>
       <div class="lightbox-caption">
         <h3 id="portrait-lightbox-title"></h3>
         <p id="portrait-lightbox-meta"></p>
@@ -42,34 +45,73 @@
     <script src="gallery-data.js"></script>
     <script>
       const mount = document.querySelector("#portrait-projects");
+      const tabsMount = document.querySelector("#portrait-tabs");
+      const pageTitle = document.querySelector("#portrait-title");
+      const pageIntro = document.querySelector("#portrait-intro");
       const lightbox = document.querySelector("#portrait-lightbox");
       const lightboxImage = document.querySelector("#portrait-lightbox-image");
       const lightboxTitle = document.querySelector("#portrait-lightbox-title");
       const lightboxMeta = document.querySelector("#portrait-lightbox-meta");
+      const lightboxPrev = document.querySelector(".lightbox-prev");
+      const lightboxNext = document.querySelector(".lightbox-next");
+      const params = new URLSearchParams(window.location.search);
+      const selectedCollection = params.get("collection") || "model-show";
+      const collections = window.portraitCollections || [];
+      const activeCollection = collections.find((item) => item.collection === selectedCollection) || collections[0];
+      let lightboxState = { groupId: "", photoIndex: 0 };
 
       function getText(value) {
         return typeof value === "string" ? value : value.zh;
       }
 
+      function getGroup(groupId) {
+        return activeCollection.groups.find((group) => group.id === groupId);
+      }
+
+      function renderTabs() {
+        tabsMount.innerHTML = collections
+          .map(
+            (collection) => `
+              <a class="${collection.collection === activeCollection.collection ? "is-active" : ""}" href="portrait.html?collection=${collection.collection}">
+                ${getText(collection.title)}
+              </a>
+            `,
+          )
+          .join("");
+      }
+
       function renderPortraitProjects() {
-        mount.innerHTML = window.portraitProjects
-          .map((project) => {
-            const photos = project.photos
+        pageTitle.textContent = getText(activeCollection.title);
+        pageIntro.textContent = getText(activeCollection.summary);
+        mount.innerHTML = activeCollection.groups
+          .filter((group) => group.photos.length)
+          .map((group) => {
+            const photos = group.photos
               .map(
-                (src, index) => `
-                  <button class="portrait-photo" type="button" data-project="${project.id}" data-photo="${index}">
-                    <img src="${window.localImage(src)}" alt="${getText(project.title)}" loading="lazy" draggable="false">
+                (src, index) => {
+                  const info = window.photoInfoFromPath(src);
+                  const hasInfo = Object.keys(info.fields).length > 0;
+                  const meta = info.meta || getText(activeCollection.place);
+                  return `
+                  <button class="portrait-photo" type="button" data-group="${group.id}" data-photo="${index}">
+                    <img src="${window.localImage(src)}" alt="${group.title}" loading="lazy" draggable="false">
+                    <span class="portrait-photo-info">
+                      <strong>${hasInfo ? info.title : group.title}</strong>
+                      <small>${meta}</small>
+                      <em>${hasInfo ? info.caption : `${getText(activeCollection.title)} / ${group.title}`}</em>
+                    </span>
                   </button>
-                `,
+                `;
+                },
               )
               .join("");
             return `
-              <article class="portrait-project" id="${project.id}">
+              <article class="portrait-project" id="${group.id}">
                 <div class="portrait-project-heading">
                   <p class="eyebrow">Model</p>
-                  <h2>${getText(project.title)}</h2>
-                  <p>${project.date} · ${getText(project.place)}</p>
-                  <span>${getText(project.summary)}</span>
+                  <h2>${group.title}</h2>
+                  <p>${getText(activeCollection.title)} · ${getText(activeCollection.place)}</p>
+                  <span>点击任意照片可放大预览，并通过左右箭头切换这一组作品。</span>
                 </div>
                 <div class="portrait-photo-grid">${photos}</div>
               </article>
@@ -78,23 +120,47 @@
           .join("");
       }
 
+      function openPortraitLightbox(groupId, photoIndex) {
+        const group = getGroup(groupId);
+        const index = Number(photoIndex);
+        const src = group?.photos[index];
+        if (!group || !src) return;
+        const info = window.photoInfoFromPath(src);
+        const hasInfo = Object.keys(info.fields).length > 0;
+        lightboxState = { groupId, photoIndex: index };
+        lightboxImage.src = window.localImage(src);
+        lightboxImage.alt = group.title;
+        lightboxTitle.textContent = hasInfo ? `${group.title} / ${info.title}` : group.title;
+        lightboxMeta.textContent = hasInfo ? info.meta || info.caption : `${getText(activeCollection.title)} / ${group.title}`;
+        lightbox.showModal();
+      }
+
+      function movePortraitLightbox(direction) {
+        const group = getGroup(lightboxState.groupId);
+        if (!group?.photos?.length) return;
+        const nextIndex = (lightboxState.photoIndex + direction + group.photos.length) % group.photos.length;
+        openPortraitLightbox(lightboxState.groupId, nextIndex);
+      }
+
       mount.addEventListener("click", (event) => {
         const button = event.target.closest(".portrait-photo");
         if (!button) return;
-        const project = window.portraitProjects.find((item) => item.id === button.dataset.project);
-        const src = project.photos[Number(button.dataset.photo)];
-        lightboxImage.src = window.localImage(src);
-        lightboxImage.alt = getText(project.title);
-        lightboxTitle.textContent = getText(project.title);
-        lightboxMeta.textContent = `${project.date} / ${getText(project.place)}`;
-        lightbox.showModal();
+        openPortraitLightbox(button.dataset.group, button.dataset.photo);
       });
 
       document.querySelector(".lightbox-close").addEventListener("click", () => lightbox.close());
+      lightboxPrev.addEventListener("click", () => movePortraitLightbox(-1));
+      lightboxNext.addEventListener("click", () => movePortraitLightbox(1));
       lightbox.addEventListener("click", (event) => {
         if (event.target === lightbox) lightbox.close();
       });
+      document.addEventListener("keydown", (event) => {
+        if (!lightbox.open) return;
+        if (event.key === "ArrowLeft") movePortraitLightbox(-1);
+        if (event.key === "ArrowRight") movePortraitLightbox(1);
+      });
 
+      renderTabs();
       renderPortraitProjects();
     </script>
   </body>
