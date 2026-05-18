@@ -65,8 +65,10 @@ button {
   align-items: center;
   gap: 22px;
   padding: 16px clamp(18px, 4vw, 54px);
-  color: #fff;
-  background: linear-gradient(180deg, rgba(16, 17, 19, 0.62), rgba(16, 17, 19, 0));
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.72);
+  border-bottom: 1px solid rgba(226, 229, 234, 0.36);
+  backdrop-filter: blur(18px);
 }
 
 .brand,
@@ -88,7 +90,7 @@ button {
   width: 34px;
   height: 34px;
   place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(20, 22, 26, 0.32);
   border-radius: 50%;
 }
 
@@ -112,7 +114,7 @@ button {
   border: 0;
   padding: 0;
   background: transparent;
-  color: #fff;
+  color: var(--ink);
   cursor: pointer;
   font-weight: 760;
 }
@@ -124,16 +126,16 @@ button {
   display: none;
   min-width: 240px;
   transform: translateX(-50%);
-  border: 1px solid rgba(255, 255, 255, 0.24);
+  border: 1px solid rgba(226, 229, 234, 0.76);
   border-radius: 12px;
   padding: 8px;
-  background: rgba(24, 25, 27, 0.72);
-  box-shadow: 0 22px 62px rgba(0, 0, 0, 0.26);
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: 0 22px 62px rgba(37, 43, 52, 0.16);
   backdrop-filter: blur(18px);
 }
 
 .model-menu a {
-  color: #fff;
+  color: var(--ink);
   font-size: 14px;
   font-weight: 780;
 }
@@ -150,25 +152,25 @@ button {
 }
 
 .portfolio-menu a:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(164, 71, 49, 0.08);
 }
 
 .portfolio-menu span {
-  color: rgba(255, 255, 255, 0.62);
+  color: var(--quiet);
   font-size: 12px;
 }
 
 .portfolio-menu strong {
-  color: #fff;
+  color: var(--ink);
   font-size: 14px;
 }
 
 .language-switcher {
   gap: 4px;
   padding: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.36);
+  border: 1px solid rgba(20, 22, 26, 0.16);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.64);
   backdrop-filter: blur(14px);
 }
 
@@ -178,15 +180,15 @@ button {
   border: 0;
   border-radius: 999px;
   background: transparent;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--muted);
   cursor: pointer;
   font-size: 13px;
   font-weight: 800;
 }
 
 .language-button.is-active {
-  background: #fff;
-  color: var(--ink);
+  background: var(--ink);
+  color: #fff;
 }
 
 .hero {
@@ -722,6 +724,87 @@ h3 {
   font-weight: 720;
 }
 
+.portrait-hero,
+.portrait-projects {
+  width: min(1180px, calc(100% - 36px));
+  margin: 0 auto;
+}
+
+.portrait-hero {
+  padding: clamp(78px, 10vw, 128px) 0 46px;
+}
+
+.portrait-hero h1 {
+  max-width: 780px;
+  margin-bottom: 18px;
+  color: var(--ink);
+  font-size: clamp(46px, 7vw, 92px);
+}
+
+.portrait-hero p:last-child {
+  max-width: 660px;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.portrait-projects {
+  display: grid;
+  gap: 56px;
+  padding-bottom: 80px;
+}
+
+.portrait-project {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.34fr) minmax(0, 1fr);
+  gap: clamp(18px, 4vw, 44px);
+  border-top: 1px solid var(--line);
+  padding-top: 28px;
+}
+
+.portrait-project-heading {
+  position: sticky;
+  top: 86px;
+  align-self: start;
+}
+
+.portrait-project-heading h2 {
+  margin-bottom: 10px;
+  font-size: clamp(30px, 4vw, 52px);
+}
+
+.portrait-project-heading p:not(.eyebrow),
+.portrait-project-heading span {
+  display: block;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.portrait-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.portrait-photo {
+  overflow: hidden;
+  border: 0;
+  border-radius: 14px;
+  padding: 0;
+  background: #fff;
+  cursor: zoom-in;
+}
+
+.portrait-photo img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  transition: transform 240ms ease;
+}
+
+.portrait-photo:hover img {
+  transform: scale(1.035);
+}
+
 .lightbox {
   width: min(1080px, calc(100% - 28px));
   border: 0;
@@ -999,7 +1082,7 @@ h3 {
     align-items: start;
     gap: 10px;
     padding: 12px 14px 14px;
-    background: linear-gradient(180deg, rgba(12, 13, 15, 0.78), rgba(12, 13, 15, 0.18) 82%, rgba(12, 13, 15, 0));
+    background: rgba(255, 255, 255, 0.78);
   }
 
   .brand {
@@ -1057,10 +1140,11 @@ h3 {
 
   .portfolio-menu {
     position: fixed;
-    top: 94px;
+    top: 98px;
     left: 14px;
-    right: 14px;
+    right: auto;
     z-index: 25;
+    width: min(280px, calc(100vw - 28px));
     min-width: 0;
     max-height: calc(100vh - 118px);
     overflow-y: auto;
@@ -1069,6 +1153,44 @@ h3 {
 
   .project-grid {
     grid-template-columns: 1fr;
+  }
+
+  .booking-modal-shell {
+    align-items: start;
+    place-items: start center;
+    padding: 12px;
+    overflow-y: auto;
+  }
+
+  .booking-modal {
+    width: min(100%, 440px);
+    max-height: none;
+    margin: 12px 0;
+    border-radius: 16px;
+    padding: 20px 16px;
+  }
+
+  .booking-form {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .booking-form input,
+  .booking-form textarea {
+    min-height: 44px;
+    font-size: 16px;
+  }
+
+  .portrait-project {
+    grid-template-columns: 1fr;
+  }
+
+  .portrait-project-heading {
+    position: static;
+  }
+
+  .portrait-photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .detail-header,
@@ -1141,7 +1263,16 @@ h3 {
     padding-top: 14px;
   }
 
-  .booking-form {
+  .modal-heading h2 {
+    font-size: 28px;
+  }
+
+  .portrait-hero,
+  .portrait-projects {
+    width: min(100% - 28px, 1180px);
+  }
+
+  .portrait-photo-grid {
     grid-template-columns: 1fr;
   }
 

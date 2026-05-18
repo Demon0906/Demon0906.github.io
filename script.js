@@ -21,6 +21,10 @@ const translations = {
     portraitIntro: "关于人物、情绪、光线和空间关系的摄影项目。",
     natureTitle: "自然风光",
     natureIntro: "记录山林、海岸、植物与天气变化中的安静时刻。",
+    cityTitle: "城市印象",
+    cityIntro: "记录城市夜色、街道与旅途中的建筑片段。",
+    dailyTitle: "日常生活",
+    dailyIntro: "把身边的动物、物件和生活片段整理成轻盈的日常影像。",
     travelTitle: "旅游记忆",
     travelIntro: "把一次行走整理成影像日记：地点、路线与偶遇。",
     storiesTitle: "摄影故事",
@@ -57,6 +61,10 @@ const translations = {
     portraitIntro: "Projects about people, emotion, light, and the relationship between body and space.",
     natureTitle: "Nature & Landscape",
     natureIntro: "Quiet moments in mountains, forests, coasts, plants, and changing weather.",
+    cityTitle: "City Impressions",
+    cityIntro: "City nights, streets, and architectural fragments from trips.",
+    dailyTitle: "Daily Life",
+    dailyIntro: "Small records of animals, objects, and ordinary scenes nearby.",
     travelTitle: "Travel Memories",
     travelIntro: "A visual diary of places, routes, and unexpected encounters.",
     storiesTitle: "Photo Stories",
@@ -93,6 +101,10 @@ const translations = {
     portraitIntro: "人物、感情、光、空間との関係を扱う写真プロジェクトです。",
     natureTitle: "自然風景",
     natureIntro: "山、森、海岸、植物、天候の変化の中にある静かな瞬間を記録します。",
+    cityTitle: "都市印象",
+    cityIntro: "都市の夜、街路、旅先の建築断片を記録します。",
+    dailyTitle: "日常生活",
+    dailyIntro: "身近な動物、物、日常の断片を軽やかな写真として残します。",
     travelTitle: "旅の記憶",
     travelIntro: "場所、ルート、偶然の出会いを視覚的な日記として残します。",
     storiesTitle: "写真ストーリー",
@@ -109,7 +121,7 @@ const translations = {
   },
 };
 
-const portfolioSections = [
+const portfolioSections = window.sitePortfolioSections || [
   {
     id: "portrait",
     titleKey: "portraitTitle",
@@ -297,7 +309,7 @@ function renderProjectCard(section, project) {
       (src, index) => `
         <img
           class="protected-media"
-          src="${src}"
+          src="${window.localImage ? window.localImage(src) : src}"
           alt="${escapeHtml(localized(project.title))}"
           loading="lazy"
           draggable="false"
@@ -381,7 +393,7 @@ function openLightbox(sectionId, projectId, photoIndex) {
   const project = getProject(sectionId, projectId);
   const src = project?.photos[Number(photoIndex)];
   if (!project || !src) return;
-  lightboxImage.src = src;
+  lightboxImage.src = window.localImage ? window.localImage(src) : src;
   lightboxImage.alt = localized(project.title);
   lightboxTitle.textContent = localized(project.title);
   lightboxMeta.textContent = `${project.date} / ${localized(project.place)}`;
@@ -498,6 +510,11 @@ document.addEventListener("click", (event) => {
 
   const projectCard = event.target.closest(".project-card");
   if (projectCard) {
+    const project = getProject(projectCard.dataset.section, projectCard.dataset.project);
+    if (project?.href) {
+      window.location.href = project.href;
+      return;
+    }
     openLightbox(projectCard.dataset.section, projectCard.dataset.project, 0);
     return;
   }

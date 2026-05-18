@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demon Photography 人像摄影作品，按模特分组展示。">
+    <title>人像摄影 | Demon Photography</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="detail-page portrait-page">
+    <header class="detail-header">
+      <a class="brand dark-brand" href="index.html" aria-label="返回 Demon 首页">
+        <span class="brand-mark">D</span>
+        <span>Demon</span>
+      </a>
+      <nav class="detail-nav" aria-label="Portrait navigation">
+        <a href="index.html#portfolio">作品集</a>
+        <a href="about.html">关于我</a>
+        <a href="index.html#contact">联系方式</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="portrait-hero">
+        <p class="eyebrow">Portrait</p>
+        <h1>人像摄影</h1>
+        <p>按模特整理的人像作品。每一组照片都保留拍摄时的地点、光线与人物状态。</p>
+      </section>
+
+      <section class="portrait-projects" id="portrait-projects" aria-label="模特作品集"></section>
+    </main>
+
+    <dialog class="lightbox" id="portrait-lightbox" aria-label="人像作品预览">
+      <button class="lightbox-close" type="button" aria-label="关闭预览">×</button>
+      <img id="portrait-lightbox-image" class="protected-media" alt="" draggable="false">
+      <div class="lightbox-caption">
+        <h3 id="portrait-lightbox-title"></h3>
+        <p id="portrait-lightbox-meta"></p>
+      </div>
+    </dialog>
+
+    <script src="gallery-data.js"></script>
+    <script>
+      const mount = document.querySelector("#portrait-projects");
+      const lightbox = document.querySelector("#portrait-lightbox");
+      const lightboxImage = document.querySelector("#portrait-lightbox-image");
+      const lightboxTitle = document.querySelector("#portrait-lightbox-title");
+      const lightboxMeta = document.querySelector("#portrait-lightbox-meta");
+
+      function getText(value) {
+        return typeof value === "string" ? value : value.zh;
+      }
+
+      function renderPortraitProjects() {
+        mount.innerHTML = window.portraitProjects
+          .map((project) => {
+            const photos = project.photos
+              .map(
+                (src, index) => `
+                  <button class="portrait-photo" type="button" data-project="${project.id}" data-photo="${index}">
+                    <img src="${window.localImage(src)}" alt="${getText(project.title)}" loading="lazy" draggable="false">
+                  </button>
+                `,
+              )
+              .join("");
+            return `
+              <article class="portrait-project" id="${project.id}">
+                <div class="portrait-project-heading">
+                  <p class="eyebrow">Model</p>
+                  <h2>${getText(project.title)}</h2>
+                  <p>${project.date} · ${getText(project.place)}</p>
+                  <span>${getText(project.summary)}</span>
+                </div>
+                <div class="portrait-photo-grid">${photos}</div>
+              </article>
+            `;
+          })
+          .join("");
+      }
+
+      mount.addEventListener("click", (event) => {
+        const button = event.target.closest(".portrait-photo");
+        if (!button) return;
+        const project = window.portraitProjects.find((item) => item.id === button.dataset.project);
+        const src = project.photos[Number(button.dataset.photo)];
+        lightboxImage.src = window.localImage(src);
+        lightboxImage.alt = getText(project.title);
+        lightboxTitle.textContent = getText(project.title);
+        lightboxMeta.textContent = `${project.date} / ${getText(project.place)}`;
+        lightbox.showModal();
+      });
+
+      document.querySelector(".lightbox-close").addEventListener("click", () => lightbox.close());
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) lightbox.close();
+      });
+
+      renderPortraitProjects();
+    </script>
+  </body>
+</html>
