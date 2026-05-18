@@ -273,10 +273,19 @@ const sitePortfolioSections = [
     projects: [
       {
         id: "story-light-notes",
-        title: { zh: "光线手记", en: "Light Notes", ja: "光の手記" },
+        title: { zh: "熊大和它的远方", en: "Bear Da and the Faraway Places", ja: "熊大と遠い場所" },
         date: "Journal",
         place: { zh: "摄影故事", en: "Photo Story", ja: "写真ストーリー" },
-        summary: { zh: "把拍摄现场的光、色彩和观看方式整理成一组视觉笔记。", en: "A visual notebook of light, color, and ways of seeing from the field.", ja: "現場の光、色、見方をまとめた視覚的なノート。" },
+        summary: { zh: "一只陪伴二十多年的小熊，和它一路带来的快乐、远方与柔软记忆。", en: "A small bear of more than twenty years, carrying joy, distance, and soft memories.", ja: "二十年以上寄り添ってきた小さな熊が運ぶ、喜びと旅の記憶。" },
+        story: {
+          kicker: "A small companion",
+          title: "快乐熊，后来叫熊大",
+          paragraphs: [
+            "它原本叫快乐熊。这个名字很直白，却也很准确：二十多年过去，它的笑容还是那样明亮，像一个从童年里留下来的小小开关，一看见就会让人心里松下来。",
+            "后来，它有了新的名字，叫熊大。名字变了，但它依然保留着快乐熊的性格。它去过很多地方，陪伴过不同季节的行李、车站、房间和远方。它不像纪念品那样停在某一个时刻，而是一直参与着生活，安静地出现在每一次出发和归来之间。",
+            "拍它的时候，我想记录的不是一只玩偶本身，而是一种被时间轻轻磨亮的陪伴。它的毛绒、笑脸和被带去远方的痕迹，都像是在提醒我们：快乐并不一定宏大，有时候只是一个熟悉的表情，陪你走过很久很久。",
+          ],
+        },
         photos: [
           "assets/photos/摄影故事/095f7496a02454f6fcdfc1f8febda101.jpg",
           "assets/photos/摄影故事/1f626f17ee2bb2ea44f3ee88b44e0e19.jpg",
@@ -321,6 +330,9 @@ const sitePortfolioSections = [
     ],
   },
 ];
+
+const sectionOrder = ["portrait", "nature", "city", "daily", "stories"];
+sitePortfolioSections.sort((a, b) => sectionOrder.indexOf(a.id) - sectionOrder.indexOf(b.id));
 
 window.localImage = localImage;
 window.photoInfoFromPath = photoInfoFromPath;

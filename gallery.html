@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demon Photography 摄影集详情。">
+    <title>摄影集 | Demon Photography</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="detail-page gallery-page">
+    <header class="detail-header">
+      <a class="brand dark-brand" href="index.html" aria-label="返回 Demon 首页">
+        <span class="brand-mark">D</span>
+        <span>Demon</span>
+      </a>
+      <nav class="detail-nav" aria-label="Gallery navigation">
+        <a href="index.html#portfolio">作品集</a>
+        <a href="about.html">关于我</a>
+        <a href="index.html#contact">联系方式</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="gallery-hero" id="gallery-hero"></section>
+      <section class="gallery-body" id="gallery-body"></section>
+    </main>
+
+    <dialog class="lightbox" id="gallery-lightbox" aria-label="摄影作品预览">
+      <button class="lightbox-close" type="button" aria-label="关闭预览">×</button>
+      <button class="lightbox-nav lightbox-prev" type="button" aria-label="上一张">‹</button>
+      <img id="gallery-lightbox-image" class="protected-media" alt="" draggable="false">
+      <button class="lightbox-nav lightbox-next" type="button" aria-label="下一张">›</button>
+      <div class="lightbox-caption">
+        <h3 id="gallery-lightbox-title"></h3>
+        <p id="gallery-lightbox-meta"></p>
+      </div>
+    </dialog>
+
+    <script src="gallery-data.js"></script>
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const sectionId = params.get("section");
+      const projectId = params.get("project");
+      const hero = document.querySelector("#gallery-hero");
+      const body = document.querySelector("#gallery-body");
+      const lightbox = document.querySelector("#gallery-lightbox");
+      const lightboxImage = document.querySelector("#gallery-lightbox-image");
+      const lightboxTitle = document.querySelector("#gallery-lightbox-title");
+      const lightboxMeta = document.querySelector("#gallery-lightbox-meta");
+      const closeButton = document.querySelector(".lightbox-close");
+      const prevButton = document.querySelector(".lightbox-prev");
+      const nextButton = document.querySelector(".lightbox-next");
+      const sections = window.sitePortfolioSections || [];
+      const section = sections.find((item) => item.id === sectionId) || sections.find((item) => item.id !== "portrait");
+      const project = section?.projects.find((item) => item.id === projectId) || section?.projects[0];
+      let lightboxIndex = 0;
+
+      function getText(value) {
+        return typeof value === "string" ? value : value?.zh || "";
+      }
+
+      function escapeHtml(value) {
+        return String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
+      }
+
+      function photoCaption(src, index) {
+        const info = window.photoInfoFromPath(src);
+        const meta = info.meta || getText(project.place);
+        const detail = Object.entries(info.fields)
+          .map(([key, value]) => `${key}: ${value}`)
+          .join(" / ");
+        const fallback = [
+          "光停在画面里，像一次安静的呼吸。",
+          "色彩与形状在这里相遇，留下一个可以慢慢观看的瞬间。",
+          "这张照片保留了现场的温度，也保留了时间经过时的轻微痕迹。",
+          "风、光和距离一起构成了画面的情绪。",
+        ];
+        return {
+          title: info.title === "照片记录" ? `Frame ${String(index + 1).padStart(2, "0")}` : info.title,
+          meta,
+          detail: detail || fallback[index % fallback.length],
+        };
+      }
+
+      function openLightbox(index) {
+        const src = project.photos[index];
+        if (!src) return;
+        const caption = photoCaption(src, index);
+        lightboxIndex = index;
+        lightboxImage.src = window.localImage(src);
+        lightboxImage.alt = getText(project.title);
+        lightboxTitle.textContent = getText(project.title);
+        lightboxMeta.textContent = caption.meta || caption.detail;
+        lightbox.showModal();
+      }
+
+      function moveLightbox(direction) {
+        const nextIndex = (lightboxIndex + direction + project.photos.length) % project.photos.length;
+        openLightbox(nextIndex);
+      }
+
+      function renderHero() {
+        const cover = project.photos[0];
+        const sectionLabels = {
+          nature: "Nature",
+          city: "City",
+          daily: "Daily",
+          stories: "Story",
+        };
+        hero.style.setProperty("--gallery-cover", `url("${window.localImage(cover)}")`);
+        hero.innerHTML = `
+          <p class="eyebrow">${sectionLabels[section.id] || "Gallery"}</p>
+          <h1>${getText(project.title)}</h1>
+          <p>${getText(project.summary)}</p>
+          <div class="gallery-meta">
+            <span>${project.date}</span>
+            <span>${getText(project.place)}</span>
+            <span>${project.photos.length} frames</span>
+          </div>
+        `;
+      }
+
+      function renderGalleryGrid() {
+        body.className = "gallery-body gallery-grid";
+        body.innerHTML = project.photos
+          .map((src, index) => {
+            const caption = photoCaption(src, index);
+            return `
+              <article class="gallery-frame">
+                <button type="button" data-index="${index}" aria-label="查看 ${escapeHtml(getText(project.title))}">
+                  <img class="protected-media" src="${window.localImage(src)}" alt="${escapeHtml(getText(project.title))}" loading="lazy" draggable="false">
+                </button>
+                <div class="gallery-frame-copy">
+                  <p>${caption.meta}</p>
+                  <span>${caption.detail}</span>
+                </div>
+              </article>
+            `;
+          })
+          .join("");
+      }
+
+      function renderStory() {
+        const story = project.story;
+        body.className = "gallery-body story-article";
+        const images = project.photos
+          .map(
+            (src, index) => `
+              <button class="story-image" type="button" data-index="${index}">
+                <img class="protected-media" src="${window.localImage(src)}" alt="${escapeHtml(getText(project.title))}" loading="lazy" draggable="false">
+              </button>
+            `,
+          )
+          .join("");
+        body.innerHTML = `
+          <article class="story-card">
+            <div class="story-copy">
+              <p class="eyebrow">${story.kicker}</p>
+              <h2>${story.title}</h2>
+              ${story.paragraphs.map((paragraph) => `<p>${paragraph}</p>`).join("")}
+            </div>
+            <div class="story-images">${images}</div>
+          </article>
+        `;
+      }
+
+      if (!project) {
+        hero.innerHTML = "<h1>没有找到这个摄影集</h1>";
+      } else {
+        document.title = `${getText(project.title)} | Demon Photography`;
+        renderHero();
+        if (project.story) renderStory();
+        else renderGalleryGrid();
+      }
+
+      body.addEventListener("click", (event) => {
+        const trigger = event.target.closest("[data-index]");
+        if (!trigger) return;
+        openLightbox(Number(trigger.dataset.index));
+      });
+
+      closeButton.addEventListener("click", () => lightbox.close());
+      prevButton.addEventListener("click", () => moveLightbox(-1));
+      nextButton.addEventListener("click", () => moveLightbox(1));
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) lightbox.close();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (!lightbox.open) return;
+        if (event.key === "ArrowLeft") moveLightbox(-1);
+        if (event.key === "ArrowRight") moveLightbox(1);
+      });
+    </script>
+  </body>
+</html>

@@ -545,7 +545,7 @@ document.addEventListener("click", (event) => {
       window.location.href = project.href;
       return;
     }
-    openLightbox(projectCard.dataset.section, projectCard.dataset.project, 0);
+    window.location.href = `gallery.html?section=${encodeURIComponent(projectCard.dataset.section)}&project=${encodeURIComponent(projectCard.dataset.project)}`;
     return;
   }
 });
