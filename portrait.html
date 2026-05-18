@@ -24,7 +24,7 @@
       <section class="portrait-hero">
         <p class="eyebrow">Portrait</p>
         <h1 id="portrait-title">人像摄影</h1>
-        <p id="portrait-intro">按文件夹整理的人像作品。进入每个项目后，可以查看单张照片与文件名中的拍摄信息。</p>
+        <p id="portrait-intro">把人物的状态放进光线、地点和时间里，让每一组肖像都保留自己的节奏。</p>
         <div class="portrait-tabs" id="portrait-tabs" aria-label="人像摄影分类"></div>
       </section>
 
@@ -92,13 +92,18 @@
                   const info = window.photoInfoFromPath(src);
                   const hasInfo = Object.keys(info.fields).length > 0;
                   const meta = info.meta || getText(activeCollection.place);
+                  const details = hasInfo
+                    ? Object.entries(info.fields)
+                        .filter(([key]) => key !== "模特" && key !== "模特名")
+                        .map(([key, value]) => `${key}: ${value}`)
+                        .join(" / ")
+                    : `${getText(activeCollection.title)} / ${group.title}`;
                   return `
                   <button class="portrait-photo" type="button" data-group="${group.id}" data-photo="${index}">
                     <img src="${window.localImage(src)}" alt="${group.title}" loading="lazy" draggable="false">
                     <span class="portrait-photo-info">
-                      <strong>${hasInfo ? info.title : group.title}</strong>
                       <small>${meta}</small>
-                      <em>${hasInfo ? info.caption : `${getText(activeCollection.title)} / ${group.title}`}</em>
+                      <em>${details}</em>
                     </span>
                   </button>
                 `;
@@ -111,7 +116,7 @@
                   <p class="eyebrow">Model</p>
                   <h2>${group.title}</h2>
                   <p>${getText(activeCollection.title)} · ${getText(activeCollection.place)}</p>
-                  <span>点击任意照片可放大预览，并通过左右箭头切换这一组作品。</span>
+                  <span>${group.description || "在自然光和真实场景中保留人物的独特气质，让画面拥有更安静的叙事感。"}</span>
                 </div>
                 <div class="portrait-photo-grid">${photos}</div>
               </article>
@@ -130,7 +135,7 @@
         lightboxState = { groupId, photoIndex: index };
         lightboxImage.src = window.localImage(src);
         lightboxImage.alt = group.title;
-        lightboxTitle.textContent = hasInfo ? `${group.title} / ${info.title}` : group.title;
+        lightboxTitle.textContent = group.title;
         lightboxMeta.textContent = hasInfo ? info.meta || info.caption : `${getText(activeCollection.title)} / ${group.title}`;
         lightbox.showModal();
       }

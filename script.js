@@ -8,30 +8,30 @@ const translations = {
     aboutMenuPricing: "价格咨询",
     aboutMenuBusiness: "商务合作",
     heroEyebrow: "Portrait / Nature / Travel / Journal",
-    heroCopy: "以摄影项目的方式整理人像、自然、旅行和摄影故事，让每一组作品都成为独立的影像档案。",
-    heroPortfolio: "浏览作品集",
+    heroCopy: "以光线、人物与行走中的场景为线索，收集那些值得被慢慢观看的瞬间。",
+    heroPortfolio: "进入作品集",
     heroBooking: "预约拍摄",
     privacyNote: "本网页所有照片均由作者本人拍摄，人像照片已经模特本人同意，未经许可不得下载与转发，请尊重影像隐私与版权。",
     privacyToast: "作品仅供在线预览，请勿保存或截图传播。",
-    openProject: "浏览作品",
-    projectLabel: "摄影集",
+    openProject: "进入这一辑",
+    projectLabel: "Selected Series",
     locationLabel: "地点",
     dateLabel: "时间",
     portraitTitle: "人像摄影",
-    portraitIntro: "关于人物、情绪、光线和空间关系的摄影项目。",
+    portraitIntro: "人物在光线与空间里留下的表情、姿态和短暂情绪。",
     natureTitle: "自然风光",
-    natureIntro: "记录山林、海岸、植物与天气变化中的安静时刻。",
+    natureIntro: "植物、海岸与季节里的细微变化，适合被放慢观看。",
     cityTitle: "城市印象",
-    cityIntro: "记录城市夜色、街道与旅途中的建筑片段。",
+    cityIntro: "街道、夜色与建筑片段，构成旅途中关于城市的记忆。",
     dailyTitle: "日常生活",
-    dailyIntro: "把身边的动物、物件和生活片段整理成轻盈的日常影像。",
+    dailyIntro: "日常生活中不经意的温柔、灵动和轻盈片刻。",
     travelTitle: "旅游记忆",
-    travelIntro: "把一次行走整理成影像日记：地点、路线与偶遇。",
+    travelIntro: "把路线、地方和偶遇整理成可以反复回看的视觉日记。",
     storiesTitle: "摄影故事",
-    storiesIntro: "摄影主题、技巧分析和拍摄现场笔记。",
+    storiesIntro: "从一次拍摄的现场出发，记录主题、方法和观看方式。",
     aboutTitle: "关于我",
-    aboutCopy: "我关注自然光、情绪和现场感，希望照片保留真实的温度。可预约个人写真、旅行记录、自然主题拍摄，也可以根据你的想法定制拍摄内容。",
-    aboutDetailCta: "查看详细介绍",
+    aboutCopy: "我偏爱自然光与真实场景里的细节：风经过树叶的方向、人物停顿时的眼神、城市忽然落下的一束光。摄影对我来说，是把当下保留下来的一种温柔方式。",
+    aboutDetailCta: "阅读关于我",
     contactEyebrow: "Contact",
     contactTitle: "联系方式",
     contactEmail: "邮箱",
@@ -48,13 +48,13 @@ const translations = {
     aboutMenuPricing: "Pricing",
     aboutMenuBusiness: "Commercial Work",
     heroEyebrow: "Portrait / Nature / Travel / Journal",
-    heroCopy: "Portraits, landscapes, travel memories, and photography stories are organized as independent visual projects.",
-    heroPortfolio: "View Portfolio",
+    heroCopy: "A quiet archive of light, people, places, and moments worth returning to.",
+    heroPortfolio: "Enter Portfolio",
     heroBooking: "Book a Session",
     privacyNote: "All photos on this website were taken by the author. Portrait images are published with model consent. Downloading or reposting without permission is prohibited. Please respect image privacy and copyright.",
     privacyToast: "Images are for online preview only. Please do not save or redistribute screenshots.",
-    openProject: "View Series",
-    projectLabel: "Project",
+    openProject: "Enter Series",
+    projectLabel: "Selected Series",
     locationLabel: "Place",
     dateLabel: "Date",
     portraitTitle: "Portrait Photography",
@@ -70,7 +70,7 @@ const translations = {
     storiesTitle: "Photo Stories",
     storiesIntro: "Photography themes, technique notes, and field journals.",
     aboutTitle: "About Me",
-    aboutCopy: "I focus on natural light, emotion, and a sense of place. Portraits, travel records, nature sessions, and custom ideas are all welcome.",
+    aboutCopy: "I am drawn to natural light and real places: the direction of leaves in the wind, a pause in someone’s eyes, a sudden beam of city light.",
     aboutDetailCta: "Read Full Profile",
     contactEyebrow: "Contact",
     contactTitle: "Contact",
@@ -88,13 +88,13 @@ const translations = {
     aboutMenuPricing: "料金相談",
     aboutMenuBusiness: "商業撮影",
     heroEyebrow: "Portrait / Nature / Travel / Journal",
-    heroCopy: "人物、自然、旅の記憶、写真ストーリーを独立したプロジェクトとして整理しています。",
-    heroPortfolio: "作品集を見る",
+    heroCopy: "光、人物、場所、そして何度も見返したくなる瞬間を静かに集めています。",
+    heroPortfolio: "作品集へ",
     heroBooking: "撮影予約",
     privacyNote: "本サイトの写真はすべて作者本人が撮影したものです。人物写真はモデル本人の同意を得て掲載しています。許可なく保存・転載しないでください。写真のプライバシーと著作権を尊重してください。",
     privacyToast: "作品はオンラインプレビュー専用です。保存やスクリーンショットの再配布はご遠慮ください。",
-    openProject: "作品を見る",
-    projectLabel: "写真集",
+    openProject: "この章を見る",
+    projectLabel: "Selected Series",
     locationLabel: "場所",
     dateLabel: "日付",
     portraitTitle: "人物写真",
@@ -110,7 +110,7 @@ const translations = {
     storiesTitle: "写真ストーリー",
     storiesIntro: "撮影テーマ、技術分析、現場での記録をまとめます。",
     aboutTitle: "自己紹介",
-    aboutCopy: "自然光、感情、その場の空気を大切にしています。ポートレート、旅の記録、自然テーマの撮影、オリジナルの相談も可能です。",
+    aboutCopy: "自然光と実際の場所に宿る細部に惹かれます。風に揺れる葉、ふと止まる視線、街に落ちる一筋の光を残したいと思っています。",
     aboutDetailCta: "詳しい紹介を見る",
     contactEyebrow: "Contact",
     contactTitle: "連絡先",
@@ -307,6 +307,7 @@ function getProject(sectionId, projectId) {
 }
 
 function renderProjectCard(section, project) {
+  const coverUrl = window.localImage ? window.localImage(project.photos[0]) : project.photos[0];
   const coverImages = project.photos
     .map(
       (src, index) => `
@@ -322,8 +323,10 @@ function renderProjectCard(section, project) {
     )
     .join("");
   return `
-    <button class="project-card" type="button" data-section="${section.id}" data-project="${project.id}" id="${project.id}" aria-label="${escapeHtml(localized(project.title))}">
-      <span class="project-cover-stack" aria-hidden="true">${coverImages}</span>
+    <button class="project-card" type="button" data-section="${section.id}" data-project="${project.id}" id="${project.id}" aria-label="${escapeHtml(localized(project.title))}" style="--cover-bg: url('${coverUrl}');">
+      <span class="project-cover-shell">
+        <span class="project-cover-stack">${coverImages}</span>
+      </span>
       <span class="project-card-copy">
         <em>${project.date} · ${localized(project.place)}</em>
         <strong>${localized(project.title)}</strong>
@@ -378,6 +381,20 @@ function renderPortfolioNavigation() {
 function renderPortfolio() {
   renderPortfolioNavigation();
   portfolioMount.innerHTML = portfolioSections.map(renderSection).join("");
+  initCoverAutoScroll();
+}
+
+function initCoverAutoScroll() {
+  document.querySelectorAll(".project-cover-stack").forEach((stack) => {
+    if (stack.dataset.autoReady === "true" || stack.children.length < 2) return;
+    stack.dataset.autoReady = "true";
+    let index = 0;
+    setInterval(() => {
+      if (stack.matches(":hover")) return;
+      index = (index + 1) % stack.children.length;
+      stack.scrollTo({ left: stack.clientWidth * index, behavior: "smooth" });
+    }, 3600);
+  });
 }
 
 function applyLanguage(language) {
