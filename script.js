@@ -428,9 +428,29 @@ function initCoverAutoScroll() {
     if (stack.dataset.autoReady === "true" || stack.children.length < 2) return;
     stack.dataset.autoReady = "true";
     let index = 0;
+    const updateBackground = () => {
+      const activeImage = stack.children[index];
+      const card = stack.closest(".project-card");
+      if (!activeImage || !card) return;
+      card.style.setProperty("--cover-bg", `url("${activeImage.currentSrc || activeImage.src}")`);
+    };
+    updateBackground();
+    let scrollTimer;
+    stack.addEventListener(
+      "scroll",
+      () => {
+        window.clearTimeout(scrollTimer);
+        scrollTimer = window.setTimeout(() => {
+          index = Math.max(0, Math.min(stack.children.length - 1, Math.round(stack.scrollLeft / stack.clientWidth)));
+          updateBackground();
+        }, 90);
+      },
+      { passive: true },
+    );
     setInterval(() => {
       if (stack.matches(":hover")) return;
       index = (index + 1) % stack.children.length;
+      updateBackground();
       stack.scrollTo({ left: stack.clientWidth * index, behavior: "smooth" });
     }, 3600);
   });

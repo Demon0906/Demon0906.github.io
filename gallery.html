@@ -162,6 +162,27 @@
             <div class="story-images">${images}</div>
           </article>
         `;
+        initStoryAutoScroll();
+      }
+
+      function initStoryAutoScroll() {
+        const rail = body.querySelector(".story-images");
+        if (!rail || rail.children.length < 2) return;
+        let index = 0;
+        let paused = false;
+        const move = () => {
+          if (paused) return;
+          index = (index + 1) % rail.children.length;
+          rail.scrollTo({ left: rail.children[index].offsetLeft - rail.offsetLeft, behavior: "smooth" });
+        };
+        rail.addEventListener("pointerenter", () => {
+          paused = true;
+        });
+        rail.addEventListener("pointerleave", () => {
+          paused = false;
+        });
+        window.setTimeout(move, 1200);
+        window.setInterval(move, 3400);
       }
 
       if (!project) {

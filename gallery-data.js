@@ -129,7 +129,6 @@ const portraitCollectionList = [
         photos: [
           "assets/photos/人像摄影/Live（手机）/Mio/拍摄时间：2026.5；模特：Mio；拍摄地点：东京涉谷.jpg",
           "assets/photos/人像摄影/Live（手机）/Mio/模特：Mio；拍摄地点：东京涉谷；拍摄时间：2026.5.jpg",
-          "assets/photos/人像摄影/Live（手机）/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg",
         ],
       },
       {
@@ -139,7 +138,6 @@ const portraitCollectionList = [
         photos: [
           "assets/photos/人像摄影/Live（手机）/Nero/模特：Nero；拍摄地点：东京涉谷；拍摄时间：2026.4.jpg",
           "assets/photos/人像摄影/Live（手机）/Nero/模特：Nero；拍摄时间：2025.5；拍摄地点：东京涉谷.jpg",
-          "assets/photos/人像摄影/Live（手机）/模特：Nero；拍摄时间：2025.5；拍摄地点：东京涉谷.jpg",
         ],
       },
       {
@@ -148,7 +146,6 @@ const portraitCollectionList = [
         description: "柔和、自然，适合被放在松弛的环境里，以更轻的方式保留当下情绪。",
         photos: [
           "assets/photos/人像摄影/Live（手机）/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
-          "assets/photos/人像摄影/Live（手机）/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
         ],
       },
     ],
