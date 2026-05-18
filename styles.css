@@ -4,7 +4,7 @@
   --display-font: "Heiti SC", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, system-ui, sans-serif;
   --serif-font: "Songti SC", "STSong", "SimSun", "Noto Serif SC", "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
   --latin-art-font: "Bodoni 72", Didot, "Hoefler Text", "Times New Roman", serif;
-  --name-font: "Songti SC", "STSong", "Noto Serif SC", "Kaiti SC", "KaiTi", serif;
+  --name-font: "FZKai-Z03", "FZKaiS-Extended", "FangZheng KaiTi", "方正楷体", "STKaiti", "Kaiti SC", "KaiTi", "Songti SC", "STSong", serif;
   --bg: #edf2f2;
   --paper: rgba(255, 255, 255, 0.52);
   --ink: #14181b;
@@ -1412,7 +1412,7 @@ h3 {
   font-weight: 500;
   letter-spacing: 0.03em;
   line-height: 1.08;
-  background: linear-gradient(135deg, #101418 0%, #637984 42%, #9fb0b7 58%, #20333c 100%);
+  background: linear-gradient(150deg, #11181b 0%, #435b64 32%, #a5b8bd 58%, #263b43 100%);
   -webkit-background-clip: text;
   background-clip: text;
 }
