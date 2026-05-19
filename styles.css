@@ -438,8 +438,10 @@ h3 {
 .portfolio-notice p {
   max-width: 880px;
   margin: 0;
-  font-size: 13px;
-  line-height: 1.9;
+  color: #536169;
+  font-size: 14px;
+  font-weight: 520;
+  line-height: 1.95;
 }
 
 .portfolio-group {
@@ -475,9 +477,10 @@ h3 {
   justify-self: start;
   max-width: 420px;
   margin-bottom: 0;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.8;
+  color: #596770;
+  font-size: 15px;
+  font-weight: 560;
+  line-height: 1.85;
 }
 
 .project-grid {
