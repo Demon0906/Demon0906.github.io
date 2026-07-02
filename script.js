@@ -1,37 +1,37 @@
 const translations = {
   zh: {
-    navPortfolio: "作品集",
+    navPortfolio: "影像项目",
     navBooking: "预约拍摄",
     navAbout: "关于",
     navModels: "认识模特",
     aboutMenuMe: "关于我",
     aboutMenuPricing: "价格咨询",
     aboutMenuBusiness: "商务合作",
-    heroEyebrow: "Portrait / Nature / Travel / Journal",
+    heroEyebrow: "Photography Atelier / Visual Essays",
     heroTitle: "Demon Atelier",
-    heroCopy: "以光线、人物与行走中的场景为线索，收集那些值得被慢慢观看的瞬间。",
-    heroPortfolio: "进入作品集",
+    heroCopy: "以光线、人物与行走中的场景为线索，整理那些值得被慢慢观看、反复回到的瞬间。",
+    heroPortfolio: "进入项目",
     heroBooking: "预约拍摄",
     privacyNote: "本网页所有照片均由作者本人拍摄，人像照片已经模特本人同意，未经许可不得下载与转发，请尊重影像隐私与版权。",
     privacyToast: "作品仅供在线预览，请勿保存或截图传播。",
-    openProject: "进入这一辑",
-    projectLabel: "Selected Series",
+    openProject: "阅读项目",
+    projectLabel: "Atelier Project",
     locationLabel: "地点",
     dateLabel: "时间",
     portraitTitle: "人像摄影",
-    portraitIntro: "人物在光线与空间里留下的表情、姿态和短暂情绪。",
+    portraitIntro: "人物在光线与空间之间短暂停留，表情、姿态和情绪被安静地保存下来。",
     natureTitle: "自然风光",
-    natureIntro: "植物、海岸与季节里的细微变化，适合被放慢观看。",
+    natureIntro: "植物、海岸与季节里的细微变化，被放进更慢的观看节奏里。",
     cityTitle: "城市印象",
-    cityIntro: "街道、夜色与建筑片段，构成旅途中关于城市的记忆。",
+    cityIntro: "街道、夜色与建筑片段，像旅途中被折叠收藏的城市注脚。",
     dailyTitle: "日常生活",
-    dailyIntro: "日常生活中不经意的温柔、灵动和轻盈片刻。",
+    dailyIntro: "日常生活中不经意的温柔、灵动和轻盈片刻，构成更私人的观看日记。",
     travelTitle: "旅游记忆",
     travelIntro: "把路线、地方和偶遇整理成可以反复回看的视觉日记。",
     storiesTitle: "摄影故事",
-    storiesIntro: "从一次拍摄的现场出发，记录主题、方法和观看方式。",
+    storiesIntro: "从一次拍摄的现场出发，把照片背后的记忆、方法和情绪写成故事。",
     aboutTitle: "关于我",
-    aboutCopy: "我偏爱自然光与真实场景里的细节：风经过树叶的方向、人物停顿时的眼神、城市忽然落下的一束光。摄影对我来说，是把当下保留下来的一种温柔方式。",
+    aboutCopy: "我偏爱自然光与真实场景里的细节：风经过树叶的方向、人物停顿时的眼神、城市忽然落下的一束光。Demon Atelier 是一间个人影像工作室，也是一册持续生长的摄影画册。",
     aboutDetailCta: "阅读关于我",
     contactEyebrow: "Contact",
     contactTitle: "联系方式",
@@ -52,22 +52,22 @@ const translations = {
     bookingSuccess: "您的预约信息已提交，我们将尽快与您联系，感谢您的预约。",
   },
   en: {
-    navPortfolio: "Portfolio",
+    navPortfolio: "Projects",
     navBooking: "Book",
     navAbout: "About",
     navModels: "Models",
     aboutMenuMe: "About Me",
     aboutMenuPricing: "Pricing",
     aboutMenuBusiness: "Commercial Work",
-    heroEyebrow: "Portrait / Nature / Travel / Journal",
+    heroEyebrow: "Photography Atelier / Visual Essays",
     heroTitle: "Demon Atelier",
     heroCopy: "A quiet archive of light, people, places, and moments worth returning to.",
-    heroPortfolio: "Enter Portfolio",
+    heroPortfolio: "Enter Projects",
     heroBooking: "Book a Session",
     privacyNote: "All photos on this website were taken by the author. Portrait images are published with model consent. Downloading or reposting without permission is prohibited. Please respect image privacy and copyright.",
     privacyToast: "Images are for online preview only. Please do not save or redistribute screenshots.",
-    openProject: "Enter Series",
-    projectLabel: "Selected Series",
+    openProject: "Read Project",
+    projectLabel: "Atelier Project",
     locationLabel: "Place",
     dateLabel: "Date",
     portraitTitle: "Portrait Photography",
@@ -104,22 +104,22 @@ const translations = {
     bookingSuccess: "Your request has been submitted. We will contact you soon. Thank you.",
   },
   ja: {
-    navPortfolio: "作品集",
+    navPortfolio: "作品プロジェクト",
     navBooking: "撮影予約",
     navAbout: "紹介",
     navModels: "モデル",
     aboutMenuMe: "自己紹介",
     aboutMenuPricing: "料金相談",
     aboutMenuBusiness: "商業撮影",
-    heroEyebrow: "Portrait / Nature / Travel / Journal",
+    heroEyebrow: "Photography Atelier / Visual Essays",
     heroTitle: "Demon Atelier",
     heroCopy: "光、人物、場所、そして何度も見返したくなる瞬間を静かに集めています。",
-    heroPortfolio: "作品集へ",
+    heroPortfolio: "プロジェクトへ",
     heroBooking: "撮影予約",
     privacyNote: "本サイトの写真はすべて作者本人が撮影したものです。人物写真はモデル本人の同意を得て掲載しています。許可なく保存・転載しないでください。写真のプライバシーと著作権を尊重してください。",
     privacyToast: "作品はオンラインプレビュー専用です。保存やスクリーンショットの再配布はご遠慮ください。",
-    openProject: "この章を見る",
-    projectLabel: "Selected Series",
+    openProject: "読む",
+    projectLabel: "Atelier Project",
     locationLabel: "場所",
     dateLabel: "日付",
     portraitTitle: "人物写真",
@@ -133,9 +133,9 @@ const translations = {
     travelTitle: "旅の記憶",
     travelIntro: "場所、ルート、偶然の出会いを視覚的な日記として残します。",
     storiesTitle: "写真ストーリー",
-    storiesIntro: "撮影テーマ、技術分析、現場での記録をまとめます。",
+    storiesIntro: "撮影現場から生まれた記憶、方法、感情を物語として綴ります。",
     aboutTitle: "自己紹介",
-    aboutCopy: "自然光と実際の場所に宿る細部に惹かれます。風に揺れる葉、ふと止まる視線、街に落ちる一筋の光を残したいと思っています。",
+    aboutCopy: "自然光と実際の場所に宿る細部に惹かれます。Demon Atelier は、光、人、場所、記憶を集めていく個人の写真アトリエです。",
     aboutDetailCta: "詳しい紹介を見る",
     contactEyebrow: "Contact",
     contactTitle: "連絡先",
@@ -342,8 +342,9 @@ function getProject(sectionId, projectId) {
   return portfolioSections.find((section) => section.id === sectionId)?.projects.find((project) => project.id === projectId);
 }
 
-function renderProjectCard(section, project) {
+function renderProjectCard(section, project, index) {
   const mediaPath = window.thumbImage || window.localImage || ((src) => src);
+  const fullMediaPath = window.localImage || ((src) => src);
   const coverUrl = mediaPath(project.photos[0]);
   const cardClass = `project-card project-card--${section.id}`;
   const coverImages = project.photos
@@ -352,6 +353,7 @@ function renderProjectCard(section, project) {
         <img
           class="protected-media"
           src="${mediaPath(src)}"
+          onerror="this.onerror=null;this.src='${fullMediaPath(src)}';"
           alt="${escapeHtml(localized(project.title))}"
           loading="lazy"
           draggable="false"
@@ -367,7 +369,7 @@ function renderProjectCard(section, project) {
         <span class="project-swipe-hint">${t("swipeHint")}</span>
       </span>
       <span class="project-card-copy">
-        <em>${project.date} · ${localized(project.place)}</em>
+        <em>Project ${String(index + 1).padStart(2, "0")} · ${localized(project.place)}</em>
         <strong>${localized(project.title)}</strong>
         <small>${localized(project.summary)}</small>
         <span class="project-open">${t("openProject")}<span aria-hidden="true">↗</span></span>
@@ -387,7 +389,7 @@ function renderSection(section) {
         <p>${t(section.introKey)}</p>
       </div>
       <div class="project-grid">
-        ${section.projects.map((project) => renderProjectCard(section, project)).join("")}
+        ${section.projects.map((project, index) => renderProjectCard(section, project, index)).join("")}
       </div>
     </section>
   `;

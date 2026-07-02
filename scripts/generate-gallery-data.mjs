@@ -45,7 +45,7 @@ const collectionMeta = {
     place: { zh: "人像摄影", en: "Portrait", ja: "人物写真" },
     title: { zh: "模特展", en: "Model Exhibition", ja: "モデル展" },
     summary: {
-      zh: "以更完整的主题方式呈现人物状态：姿态、衣着、场景与光线共同构成一组可被凝视的肖像叙事。",
+      zh: "以人物、姿态、衣着与现场光线为线索，整理一组可被凝视、也可被阅读的肖像章节。",
       en: "A curated portrait chapter where posture, styling, setting, and light form a fuller visual narrative.",
       ja: "姿勢、装い、場所、光が重なり合い、人物の存在感をひとつの物語として見せる章。",
     },
@@ -58,7 +58,7 @@ const collectionMeta = {
     place: { zh: "现场人像", en: "Live Portrait", ja: "ライブポートレート" },
     title: { zh: "Live（手机）", en: "Live Mobile", ja: "Live（スマホ）" },
     summary: {
-      zh: "保留拍摄现场最直接的光线、表情与行动轨迹，让人物在真实环境里自然显影。",
+      zh: "保留现场最直接的光线、表情与行动轨迹，让人物在真实环境里自然显影。",
       en: "Portraits shaped by available light, candid movement, and the atmosphere of the place.",
       ja: "その場の光、表情、動きの余韻を残し、実際の環境の中で人物を自然に浮かび上がらせる章。",
     },
@@ -73,7 +73,7 @@ const projectMeta = {
     date: "Nature",
     place: { zh: "自然风光", en: "Nature", ja: "自然風景" },
     summary: {
-      zh: "深秋的颜色从叶脉里慢慢透出，枝叶像一层被风翻动的薄纸。",
+      zh: "深秋的颜色从叶脉里慢慢透出，枝叶像一页被风轻轻翻动的季节手稿。",
       en: "Late-autumn color rising through the veins of leaves, like thin pages moved by wind.",
       ja: "晩秋の色が葉脈から滲み出し、風にめくられる薄い紙のように重なる。",
     },
@@ -84,7 +84,7 @@ const projectMeta = {
     date: "Nature",
     place: { zh: "自然风光", en: "Nature", ja: "自然風景" },
     summary: {
-      zh: "花影、浅色天空和短暂的春光，组成一组柔软而易逝的记忆。",
+      zh: "花影、浅色天空和短暂的春光，组成一组柔软而易逝的春日章节。",
       en: "Blossoms, pale skies, and brief spring light become a soft, vanishing memory.",
       ja: "花影、淡い空、短い春の光が、柔らかく儚い記憶になる。",
     },
@@ -95,7 +95,7 @@ const projectMeta = {
     date: "2025-2026",
     place: { zh: "日本海岸", en: "Japanese Coast", ja: "日本の海岸" },
     summary: {
-      zh: "海面把风、云和远处的地平线收进同一层蓝色，安静而辽阔。",
+      zh: "海面把风、云和远处的地平线收进同一层蓝色，像一本安静展开的远方。",
       en: "The sea gathers wind, clouds, and horizon into one quiet field of blue.",
       ja: "海は風、雲、遠い水平線をひとつの静かな青に収める。",
     },
@@ -128,7 +128,7 @@ const projectMeta = {
     date: "2024-2026",
     place: { zh: "上海 / 香港 / 利兹 / 东京", en: "Shanghai / Hong Kong / Leeds / Tokyo", ja: "上海 / 香港 / リーズ / 東京" },
     summary: {
-      zh: "街道、窗光、夜色与建筑立面，在旅行途中留下城市的表情。",
+      zh: "街道、窗光、夜色与建筑立面，在旅行途中留下城市的表情与余温。",
       en: "Streets, window light, night color, and facades hold the expression of each city.",
       ja: "街路、窓明かり、夜の色、建築の断片が都市の表情を残す。",
     },
@@ -139,7 +139,7 @@ const projectMeta = {
     date: "2025.06",
     place: { zh: "日常生活", en: "Daily Life", ja: "日常生活" },
     summary: {
-      zh: "把日常里轻轻发生的可爱瞬间保存下来，像一页不必用力解释的生活注脚。",
+      zh: "把日常里轻轻发生的可爱瞬间保存下来，像一页不必用力解释的生活旁白。",
       en: "Small charming moments from daily life, kept like quiet footnotes to ordinary days.",
       ja: "日常にそっと現れる愛らしい瞬間を、静かな注釈のように残す。",
     },
@@ -150,7 +150,7 @@ const projectMeta = {
     date: "Daily",
     place: { zh: "手机摄影", en: "Mobile Photography", ja: "スマホ写真" },
     summary: {
-      zh: "用随身镜头记录生活里突然出现的色彩、光线和小小场景。",
+      zh: "用随身镜头记录生活里突然出现的色彩、光线和小小场景，形成更私人的影像札记。",
       en: "Small scenes, colors, and light gathered with the camera always nearby.",
       ja: "いつも手元にあるカメラで、日常に現れる色、光、小さな場面を残す。",
     },
@@ -265,9 +265,9 @@ function fallbackProject(sectionName, projectName, photos) {
 
 function summaryFor(sectionName, projectName) {
   const map = {
-    人像摄影: `围绕 ${projectName} 展开的一组影像，保留人物在光线、空间与情绪之间的细微变化。`,
-    自然风光: `${projectName} 里的颜色、风与季节痕迹，被整理成一组适合慢慢观看的自然切片。`,
-    城市印象: `${projectName} 里的街道、建筑与光线，构成旅途中关于城市的记忆。`,
+    人像摄影: `围绕 ${projectName} 展开的人物章节，保留光线、空间与情绪之间的细微变化。`,
+    自然风光: `${projectName} 里的颜色、风与季节痕迹，被整理成一组适合慢慢观看的自然手稿。`,
+    城市印象: `${projectName} 里的街道、建筑与光线，构成旅途中关于城市的影像注脚。`,
     日常生活: `${projectName} 记录了日常里不经意出现的温柔、灵动和轻盈片刻。`,
     摄影故事: `${projectName} 从一次拍摄现场出发，把图片和文字整理成一段可以阅读的影像故事。`,
   };

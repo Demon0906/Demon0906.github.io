@@ -103,7 +103,13 @@
                     : `${getText(activeCollection.title)} / ${group.title}`;
                   return `
                   <button class="portrait-photo" type="button" data-group="${group.id}" data-photo="${index}">
-                    <img src="${window.thumbImage(src)}" alt="${group.title}" loading="lazy" draggable="false">
+                    <img
+                      src="${window.thumbImage(src)}"
+                      onerror="this.onerror=null;this.src='${window.localImage(src)}';"
+                      alt="${group.title}"
+                      loading="lazy"
+                      draggable="false"
+                    >
                     <span class="portrait-photo-info">
                       <small>${meta}</small>
                       <em>${details}</em>

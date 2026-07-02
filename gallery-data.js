@@ -43,17 +43,20 @@ const portraitCollectionList = [
       "ja": "モデル展"
     },
     "summary": {
-      "zh": "以更完整的主题方式呈现人物状态：姿态、衣着、场景与光线共同构成一组可被凝视的肖像叙事。",
+      "zh": "以人物、姿态、衣着与现场光线为线索，整理一组可被凝视、也可被阅读的肖像章节。",
       "en": "A curated portrait chapter where posture, styling, setting, and light form a fuller visual narrative.",
       "ja": "姿勢、装い、場所、光が重なり合い、人物の存在感をひとつの物語として見せる章。"
     },
     "href": "portrait.html?collection=model-show",
     "photos": [
       "assets/photos/人像摄影/模特展/模特：美丽酥酥；拍摄时间：2026.1；拍摄地点：北京.jpg",
+      "assets/photos/人像摄影/模特展/模特：闻轩；拍摄地点：芝公园.jpg",
       "assets/photos/人像摄影/模特展/模特：Celia；拍摄时间：2026.3；拍摄地点：上海迪士尼.jpg",
       "assets/photos/人像摄影/模特展/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.JPG",
+      "assets/photos/人像摄影/模特展/模特：LI.jpg",
       "assets/photos/人像摄影/模特展/模特：Mio；拍摄时间：2026.5；拍摄地点：日本 横滨.jpg",
-      "assets/photos/人像摄影/模特展/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg"
+      "assets/photos/人像摄影/模特展/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg",
+      "assets/photos/人像摄影/模特展/模特：YEYE.jpg"
     ],
     "groups": [
       {
@@ -121,7 +124,7 @@ const portraitCollectionList = [
       "ja": "Live（スマホ）"
     },
     "summary": {
-      "zh": "保留拍摄现场最直接的光线、表情与行动轨迹，让人物在真实环境里自然显影。",
+      "zh": "保留现场最直接的光线、表情与行动轨迹，让人物在真实环境里自然显影。",
       "en": "Portraits shaped by available light, candid movement, and the atmosphere of the place.",
       "ja": "その場の光、表情、動きの余韻を残し、実際の環境の中で人物を自然に浮かび上がらせる章。"
     },
@@ -129,6 +132,7 @@ const portraitCollectionList = [
     "photos": [
       "assets/photos/人像摄影/Live（手机）/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
       "assets/photos/人像摄影/Live（手机）/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
+      "assets/photos/人像摄影/Live（手机）/模特：LI.jpg",
       "assets/photos/人像摄影/Live（手机）/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg",
       "assets/photos/人像摄影/Live（手机）/模特：Nero；拍摄时间：2025.5；拍摄地点：东京涉谷.jpg"
     ],
@@ -189,7 +193,7 @@ const portraitProjects = [
       "ja": "人物写真"
     },
     "summary": {
-      "zh": "以更完整的主题方式呈现人物状态：姿态、衣着、场景与光线共同构成一组可被凝视的肖像叙事。",
+      "zh": "以人物、姿态、衣着与现场光线为线索，整理一组可被凝视、也可被阅读的肖像章节。",
       "en": "A curated portrait chapter where posture, styling, setting, and light form a fuller visual narrative.",
       "ja": "姿勢、装い、場所、光が重なり合い、人物の存在感をひとつの物語として見せる章。"
     },
@@ -212,7 +216,7 @@ const portraitProjects = [
       "ja": "人物写真"
     },
     "summary": {
-      "zh": "以更完整的主题方式呈现人物状态：姿态、衣着、场景与光线共同构成一组可被凝视的肖像叙事。",
+      "zh": "以人物、姿态、衣着与现场光线为线索，整理一组可被凝视、也可被阅读的肖像章节。",
       "en": "A curated portrait chapter where posture, styling, setting, and light form a fuller visual narrative.",
       "ja": "姿勢、装い、場所、光が重なり合い、人物の存在感をひとつの物語として見せる章。"
     },
@@ -235,7 +239,7 @@ const portraitProjects = [
       "ja": "人物写真"
     },
     "summary": {
-      "zh": "以更完整的主题方式呈现人物状态：姿态、衣着、场景与光线共同构成一组可被凝视的肖像叙事。",
+      "zh": "以人物、姿态、衣着与现场光线为线索，整理一组可被凝视、也可被阅读的肖像章节。",
       "en": "A curated portrait chapter where posture, styling, setting, and light form a fuller visual narrative.",
       "ja": "姿勢、装い、場所、光が重なり合い、人物の存在感をひとつの物語として見せる章。"
     },
@@ -260,7 +264,7 @@ const portraitProjects = [
       "ja": "人物写真"
     },
     "summary": {
-      "zh": "以更完整的主题方式呈现人物状态：姿态、衣着、场景与光线共同构成一组可被凝视的肖像叙事。",
+      "zh": "以人物、姿态、衣着与现场光线为线索，整理一组可被凝视、也可被阅读的肖像章节。",
       "en": "A curated portrait chapter where posture, styling, setting, and light form a fuller visual narrative.",
       "ja": "姿勢、装い、場所、光が重なり合い、人物の存在感をひとつの物語として見せる章。"
     },
@@ -285,7 +289,7 @@ const portraitProjects = [
       "ja": "人物写真"
     },
     "summary": {
-      "zh": "以更完整的主题方式呈现人物状态：姿态、衣着、场景与光线共同构成一组可被凝视的肖像叙事。",
+      "zh": "以人物、姿态、衣着与现场光线为线索，整理一组可被凝视、也可被阅读的肖像章节。",
       "en": "A curated portrait chapter where posture, styling, setting, and light form a fuller visual narrative.",
       "ja": "姿勢、装い、場所、光が重なり合い、人物の存在感をひとつの物語として見せる章。"
     },
@@ -307,7 +311,7 @@ const portraitProjects = [
       "ja": "ライブポートレート"
     },
     "summary": {
-      "zh": "保留拍摄现场最直接的光线、表情与行动轨迹，让人物在真实环境里自然显影。",
+      "zh": "保留现场最直接的光线、表情与行动轨迹，让人物在真实环境里自然显影。",
       "en": "Portraits shaped by available light, candid movement, and the atmosphere of the place.",
       "ja": "その場の光、表情、動きの余韻を残し、実際の環境の中で人物を自然に浮かび上がらせる章。"
     },
@@ -329,7 +333,7 @@ const portraitProjects = [
       "ja": "ライブポートレート"
     },
     "summary": {
-      "zh": "保留拍摄现场最直接的光线、表情与行动轨迹，让人物在真实环境里自然显影。",
+      "zh": "保留现场最直接的光线、表情与行动轨迹，让人物在真实环境里自然显影。",
       "en": "Portraits shaped by available light, candid movement, and the atmosphere of the place.",
       "ja": "その場の光、表情、動きの余韻を残し、実際の環境の中で人物を自然に浮かび上がらせる章。"
     },
@@ -353,7 +357,7 @@ const portraitProjects = [
       "ja": "ライブポートレート"
     },
     "summary": {
-      "zh": "保留拍摄现场最直接的光线、表情与行动轨迹，让人物在真实环境里自然显影。",
+      "zh": "保留现场最直接的光线、表情与行动轨迹，让人物在真实环境里自然显影。",
       "en": "Portraits shaped by available light, candid movement, and the atmosphere of the place.",
       "ja": "その場の光、表情、動きの余韻を残し、実際の環境の中で人物を自然に浮かび上がらせる章。"
     },
@@ -377,7 +381,7 @@ const portraitProjects = [
       "ja": "ライブポートレート"
     },
     "summary": {
-      "zh": "保留拍摄现场最直接的光线、表情与行动轨迹，让人物在真实环境里自然显影。",
+      "zh": "保留现场最直接的光线、表情与行动轨迹，让人物在真实环境里自然显影。",
       "en": "Portraits shaped by available light, candid movement, and the atmosphere of the place.",
       "ja": "その場の光、表情、動きの余韻を残し、実際の環境の中で人物を自然に浮かび上がらせる章。"
     },
@@ -409,17 +413,20 @@ const sitePortfolioSections = [
           "ja": "モデル展"
         },
         "summary": {
-          "zh": "以更完整的主题方式呈现人物状态：姿态、衣着、场景与光线共同构成一组可被凝视的肖像叙事。",
+          "zh": "以人物、姿态、衣着与现场光线为线索，整理一组可被凝视、也可被阅读的肖像章节。",
           "en": "A curated portrait chapter where posture, styling, setting, and light form a fuller visual narrative.",
           "ja": "姿勢、装い、場所、光が重なり合い、人物の存在感をひとつの物語として見せる章。"
         },
         "href": "portrait.html?collection=model-show",
         "photos": [
           "assets/photos/人像摄影/模特展/模特：美丽酥酥；拍摄时间：2026.1；拍摄地点：北京.jpg",
+          "assets/photos/人像摄影/模特展/模特：闻轩；拍摄地点：芝公园.jpg",
           "assets/photos/人像摄影/模特展/模特：Celia；拍摄时间：2026.3；拍摄地点：上海迪士尼.jpg",
           "assets/photos/人像摄影/模特展/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.JPG",
+          "assets/photos/人像摄影/模特展/模特：LI.jpg",
           "assets/photos/人像摄影/模特展/模特：Mio；拍摄时间：2026.5；拍摄地点：日本 横滨.jpg",
-          "assets/photos/人像摄影/模特展/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg"
+          "assets/photos/人像摄影/模特展/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg",
+          "assets/photos/人像摄影/模特展/模特：YEYE.jpg"
         ],
         "groups": [
           {
@@ -487,7 +494,7 @@ const sitePortfolioSections = [
           "ja": "Live（スマホ）"
         },
         "summary": {
-          "zh": "保留拍摄现场最直接的光线、表情与行动轨迹，让人物在真实环境里自然显影。",
+          "zh": "保留现场最直接的光线、表情与行动轨迹，让人物在真实环境里自然显影。",
           "en": "Portraits shaped by available light, candid movement, and the atmosphere of the place.",
           "ja": "その場の光、表情、動きの余韻を残し、実際の環境の中で人物を自然に浮かび上がらせる章。"
         },
@@ -495,6 +502,7 @@ const sitePortfolioSections = [
         "photos": [
           "assets/photos/人像摄影/Live（手机）/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
           "assets/photos/人像摄影/Live（手机）/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
+          "assets/photos/人像摄影/Live（手机）/模特：LI.jpg",
           "assets/photos/人像摄影/Live（手机）/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg",
           "assets/photos/人像摄影/Live（手机）/模特：Nero；拍摄时间：2025.5；拍摄地点：东京涉谷.jpg"
         ],
@@ -559,7 +567,7 @@ const sitePortfolioSections = [
           "ja": "自然風景"
         },
         "summary": {
-          "zh": "深秋的颜色从叶脉里慢慢透出，枝叶像一层被风翻动的薄纸。",
+          "zh": "深秋的颜色从叶脉里慢慢透出，枝叶像一页被风轻轻翻动的季节手稿。",
           "en": "Late-autumn color rising through the veins of leaves, like thin pages moved by wind.",
           "ja": "晩秋の色が葉脈から滲み出し、風にめくられる薄い紙のように重なる。"
         },
@@ -586,7 +594,7 @@ const sitePortfolioSections = [
           "ja": "日本の海岸"
         },
         "summary": {
-          "zh": "海面把风、云和远处的地平线收进同一层蓝色，安静而辽阔。",
+          "zh": "海面把风、云和远处的地平线收进同一层蓝色，像一本安静展开的远方。",
           "en": "The sea gathers wind, clouds, and horizon into one quiet field of blue.",
           "ja": "海は風、雲、遠い水平線をひとつの静かな青に収める。"
         },
@@ -643,7 +651,7 @@ const sitePortfolioSections = [
           "ja": "自然風景"
         },
         "summary": {
-          "zh": "花影、浅色天空和短暂的春光，组成一组柔软而易逝的记忆。",
+          "zh": "花影、浅色天空和短暂的春光，组成一组柔软而易逝的春日章节。",
           "en": "Blossoms, pale skies, and brief spring light become a soft, vanishing memory.",
           "ja": "花影、淡い空、短い春の光が、柔らかく儚い記憶になる。"
         },
@@ -704,7 +712,7 @@ const sitePortfolioSections = [
           "ja": "上海 / 香港 / リーズ / 東京"
         },
         "summary": {
-          "zh": "街道、窗光、夜色与建筑立面，在旅行途中留下城市的表情。",
+          "zh": "街道、窗光、夜色与建筑立面，在旅行途中留下城市的表情与余温。",
           "en": "Streets, window light, night color, and facades hold the expression of each city.",
           "ja": "街路、窓明かり、夜の色、建築の断片が都市の表情を残す。"
         },
@@ -766,7 +774,7 @@ const sitePortfolioSections = [
           "ja": "日常生活"
         },
         "summary": {
-          "zh": "把日常里轻轻发生的可爱瞬间保存下来，像一页不必用力解释的生活注脚。",
+          "zh": "把日常里轻轻发生的可爱瞬间保存下来，像一页不必用力解释的生活旁白。",
           "en": "Small charming moments from daily life, kept like quiet footnotes to ordinary days.",
           "ja": "日常にそっと現れる愛らしい瞬間を、静かな注釈のように残す。"
         },
@@ -795,7 +803,7 @@ const sitePortfolioSections = [
           "ja": "スマホ写真"
         },
         "summary": {
-          "zh": "用随身镜头记录生活里突然出现的色彩、光线和小小场景。",
+          "zh": "用随身镜头记录生活里突然出现的色彩、光线和小小场景，形成更私人的影像札记。",
           "en": "Small scenes, colors, and light gathered with the camera always nearby.",
           "ja": "いつも手元にあるカメラで、日常に現れる色、光、小さな場面を残す。"
         },
