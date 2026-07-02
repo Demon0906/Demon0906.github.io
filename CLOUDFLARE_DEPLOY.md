@@ -9,7 +9,7 @@
 3. 选择 `Connect to Git`，授权并选择 GitHub 仓库 `Demon0906/demon.github.io`。
 4. 构建设置：
    - Framework preset: `None`
-   - Build command: 留空
+   - Build command: `npm run build`
    - Build output directory: `.`
 5. 点击部署。部署完成后会得到一个 `*.pages.dev` 访问地址。
 
@@ -34,11 +34,19 @@
 
 - `assets/thumbs`：首页、作品集卡片和列表页优先加载缩略图。
 - `assets/photos`：点击照片打开大图时再加载高清原图。
+- `scripts/generate-gallery-data.mjs`：自动扫描 `assets/photos` 并生成 `gallery-data.js`。
 
 以后新增照片时，请把原图放入 `assets/photos`，并为同路径照片准备缩略图到 `assets/thumbs`，文件名统一为 `.jpg`。例如：
 
 - 原图：`assets/photos/自然风光/枫叶/DSC08494.JPG`
 - 缩略图：`assets/thumbs/自然风光/枫叶/DSC08494.jpg`
+
+如果不使用 R2/D1，只通过 GitHub 更新照片，请在 Cloudflare Pages 项目的构建设置里保持：
+
+- Build command: `npm run build`
+- Build output directory: `.`
+
+这样每次照片提交到 GitHub 后，Cloudflare 会自动重新生成作品集数据。
 
 ## 5. 后台管理与权限
 
