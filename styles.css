@@ -5,15 +5,15 @@
   --serif-font: "Songti SC", "STSong", "SimSun", "Noto Serif SC", "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
   --latin-art-font: "Bodoni 72", Didot, "Hoefler Text", "Times New Roman", serif;
   --name-font: "FZKai-Z03", "FZKaiS-Extended", "FangZheng KaiTi", "方正楷体", "STKaiti", "Kaiti SC", "KaiTi", "Songti SC", "STSong", serif;
-  --bg: #eef3f3;
-  --paper: rgba(255, 255, 255, 0.46);
-  --ink: #14181b;
-  --muted: #5c6970;
-  --quiet: #93a0a8;
-  --line: rgba(54, 70, 80, 0.095);
-  --accent: #667780;
-  --accent-soft: #e1e9ea;
-  --shadow: 0 26px 80px rgba(42, 54, 62, 0.105);
+  --bg: #f6f8f7;
+  --paper: rgba(255, 255, 255, 0.62);
+  --ink: #111518;
+  --muted: #657177;
+  --quiet: #9aa5aa;
+  --line: rgba(35, 48, 55, 0.08);
+  --accent: #5d6d73;
+  --accent-soft: #edf2f2;
+  --shadow: 0 36px 120px rgba(35, 48, 55, 0.09);
 }
 
 * {
@@ -29,9 +29,8 @@ body {
   margin: 0;
   overflow-x: hidden;
   background:
-    radial-gradient(circle at 12% 10%, rgba(255, 255, 255, 0.88), transparent 30%),
-    radial-gradient(circle at 88% 18%, rgba(212, 224, 226, 0.34), transparent 30%),
-    linear-gradient(135deg, #f9fbfa 0%, #edf3f3 52%, #f7f9f8 100%);
+    radial-gradient(circle at 18% 8%, rgba(255, 255, 255, 0.92), transparent 28%),
+    linear-gradient(180deg, #fbfcfb 0%, #f4f7f6 52%, #f8faf9 100%);
   color: var(--ink);
   font-family: var(--body-font);
   line-height: 1.6;
@@ -79,18 +78,18 @@ button {
 .portrait-photo::after,
 .lightbox::after,
 .profile-photo-card::after {
-  content: "Demon Atelier";
+  content: "D";
   position: absolute;
   right: 14px;
   bottom: 12px;
   z-index: 4;
   pointer-events: none;
   border-radius: 999px;
-  padding: 4px 8px;
-  color: rgba(255, 255, 255, 0.54);
-  background: rgba(18, 23, 26, 0.12);
+  padding: 4px 7px;
+  color: rgba(255, 255, 255, 0.5);
+  background: rgba(18, 23, 26, 0.08);
   font-family: var(--latin-art-font);
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.08em;
   line-height: 1;
@@ -124,12 +123,12 @@ button {
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 22px;
-  padding: 13px clamp(18px, 4vw, 54px);
+  padding: 16px clamp(18px, 4vw, 58px);
   color: var(--ink);
-  background: rgba(246, 249, 249, 0.38);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.44);
-  box-shadow: 0 12px 42px rgba(23, 31, 36, 0.035);
-  backdrop-filter: blur(30px) saturate(1.08);
+  background: rgba(248, 250, 249, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.58);
+  box-shadow: 0 10px 46px rgba(23, 31, 36, 0.03);
+  backdrop-filter: blur(34px) saturate(1.06);
 }
 
 .brand,
@@ -140,10 +139,7 @@ button {
 }
 
 .brand {
-  gap: 10px;
-  font-size: 18px;
-  font-weight: 820;
-  letter-spacing: 0;
+  gap: 12px;
   color: rgba(20, 24, 27, 0.88);
 }
 
@@ -152,16 +148,33 @@ button {
   width: 34px;
   height: 34px;
   place-items: center;
-  border: 1px solid rgba(20, 22, 26, 0.24);
+  border: 1px solid rgba(20, 22, 26, 0.14);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.26);
+  background: rgba(255, 255, 255, 0.2);
+  color: rgba(17, 21, 24, 0.84);
+  font-family: var(--latin-art-font);
+  font-size: 19px;
+  font-weight: 400;
+  line-height: 1;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.75),
+    inset 0 -10px 20px rgba(31, 41, 46, 0.03);
+}
+
+.brand-name {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
 .nav {
   justify-content: center;
-  gap: clamp(14px, 3vw, 38px);
-  font-size: 14px;
-  font-weight: 760;
+  gap: clamp(18px, 4vw, 54px);
+  font-size: 13px;
+  font-weight: 640;
 }
 
 .nav a,
@@ -179,7 +192,7 @@ button {
   background: transparent;
   color: var(--ink);
   cursor: pointer;
-  font-weight: 760;
+  font-weight: 640;
 }
 
 .portfolio-menu {
@@ -302,7 +315,7 @@ button {
 .hero {
   position: relative;
   display: grid;
-  min-height: 88vh;
+  min-height: 100svh;
   align-items: end;
   overflow: hidden;
 }
@@ -317,21 +330,21 @@ button {
 
 .hero-image {
   object-fit: cover;
-  opacity: 0.74;
-  filter: grayscale(0.56) sepia(0.02) saturate(0.62) brightness(0.84);
+  opacity: 0.7;
+  filter: grayscale(0.62) saturate(0.54) brightness(0.9);
 }
 
 .hero-shade {
   background:
-    linear-gradient(180deg, rgba(237, 242, 242, 0.05), rgba(19, 22, 22, 0.34)),
-    linear-gradient(90deg, rgba(24, 26, 25, 0.58), rgba(47, 51, 50, 0.06) 74%);
+    linear-gradient(180deg, rgba(246, 248, 247, 0.08), rgba(15, 18, 18, 0.3)),
+    linear-gradient(90deg, rgba(18, 21, 21, 0.5), rgba(47, 51, 50, 0.03) 76%);
 }
 
 .hero-content {
   position: relative;
   width: min(1180px, calc(100% - 36px));
   margin: 0 auto;
-  padding: 130px 0 78px;
+  padding: 170px 0 96px;
   color: #fff;
 }
 
@@ -377,7 +390,7 @@ h1 {
   max-width: 860px;
   margin-bottom: 22px;
   font-size: clamp(50px, 7vw, 96px);
-  font-weight: 760;
+  font-weight: 560;
 }
 
 h2 {
@@ -398,20 +411,21 @@ h3 {
 }
 
 .hero-copy {
-  margin-bottom: 30px;
+  max-width: 520px;
+  margin-bottom: 42px;
   color: rgba(255, 255, 255, 0.86);
-  font-size: clamp(17px, 1.7vw, 21px);
-  line-height: 1.9;
+  font-size: clamp(16px, 1.45vw, 19px);
+  line-height: 2.05;
 }
 
 .hero h1 {
-  max-width: 900px;
+  max-width: 760px;
   font-family: var(--latin-art-font);
-  font-size: clamp(64px, 8.7vw, 126px);
+  font-size: clamp(68px, 9.6vw, 138px);
   font-weight: 400;
-  letter-spacing: 0.02em;
-  line-height: 0.92;
-  text-shadow: 0 18px 54px rgba(0, 0, 0, 0.22);
+  letter-spacing: 0.035em;
+  line-height: 0.9;
+  text-shadow: 0 24px 70px rgba(0, 0, 0, 0.2);
 }
 
 .section-copy {
@@ -427,11 +441,13 @@ h3 {
 }
 
 .button {
-  min-height: 46px;
+  min-height: 44px;
   border: 1px solid transparent;
   border-radius: 999px;
-  padding: 11px 20px;
-  font-weight: 780;
+  padding: 10px 19px;
+  font-size: 13px;
+  font-weight: 560;
+  letter-spacing: 0.08em;
   cursor: pointer;
 }
 
@@ -453,19 +469,19 @@ h3 {
 
 .section,
 .about-band {
-  width: min(1180px, calc(100% - 36px));
+  width: min(1120px, calc(100% - 36px));
   margin: 0 auto;
-  padding: 92px 0;
+  padding: 120px 0;
 }
 
 .portfolio-groups {
   display: grid;
-  gap: 88px;
+  gap: 132px;
   min-width: 0;
 }
 
 .portfolio {
-  padding-top: 76px;
+  padding-top: 112px;
 }
 
 .portfolio-notice {
@@ -473,9 +489,9 @@ h3 {
   grid-template-columns: minmax(120px, 0.24fr) minmax(0, 1fr);
   gap: 16px clamp(18px, 4vw, 46px);
   align-items: start;
-  margin-bottom: 48px;
+  margin-bottom: 110px;
   border-bottom: 1px solid var(--line);
-  padding: 0 0 28px;
+  padding: 0 0 34px;
   color: var(--muted);
 }
 
@@ -506,8 +522,8 @@ h3 {
   display: grid;
   grid-template-columns: minmax(240px, max-content) minmax(0, 420px);
   align-items: center;
-  gap: clamp(16px, 2.2vw, 30px);
-  margin-bottom: 30px;
+  gap: clamp(20px, 5vw, 68px);
+  margin-bottom: 54px;
 }
 
 .group-heading > div {
@@ -527,70 +543,65 @@ h3 {
 
 .group-heading p:last-child {
   justify-self: start;
-  max-width: 420px;
+  max-width: 360px;
   margin-bottom: 0;
-  color: #596770;
-  font-size: 15px;
-  font-weight: 560;
-  line-height: 1.85;
+  color: #657177;
+  font-size: 14px;
+  font-weight: 430;
+  line-height: 2.05;
 }
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(22px, 3.2vw, 36px);
+  gap: clamp(86px, 10vw, 132px);
 }
 
 .project-card {
   position: relative;
   display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.68fr);
+  align-items: center;
+  gap: clamp(34px, 6vw, 82px);
   overflow: hidden;
-  min-height: 470px;
-  border: 1px solid rgba(255, 255, 255, 0.72);
-  border-radius: 18px;
+  min-height: 0;
+  border: 0;
+  border-radius: 0;
   padding: 0;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.62)),
-    var(--cover-bg) center / cover;
+  background: transparent;
   color: var(--ink);
   text-align: left;
-  cursor: zoom-in;
-  box-shadow: 0 18px 54px rgba(46, 54, 60, 0.095);
+  cursor: pointer;
+  box-shadow: none;
   transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
-  backdrop-filter: blur(24px) saturate(1.04);
+  backdrop-filter: none;
 }
 
 .project-card::before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: auto auto 4% 5%;
+  width: min(52vw, 540px);
+  height: min(42vw, 420px);
   z-index: 0;
   background: var(--cover-bg) center / cover;
-  filter: blur(42px) saturate(0.85);
-  opacity: 0.14;
-  transform: scale(1.08);
-}
-
-.project-card--portrait {
-  background:
-    linear-gradient(145deg, rgba(250, 252, 252, 0.86), rgba(221, 231, 235, 0.58) 54%, rgba(248, 251, 251, 0.72)),
-    var(--cover-bg) center / cover;
-  box-shadow: 0 24px 78px rgba(54, 70, 82, 0.105);
+  filter: blur(70px) saturate(0.8);
+  opacity: 0.11;
+  transform: scale(1.02);
 }
 
 .project-card--portrait::before {
   background: var(--cover-bg) center / cover;
-  filter: blur(44px) saturate(0.82);
-  opacity: 0.18;
+  filter: blur(72px) saturate(0.72);
+  opacity: 0.12;
   transform: scale(1.08);
 }
 
 .project-card--portrait .project-cover-shell::before {
-  background: rgba(238, 244, 246, 0.72);
+  background: rgba(255, 255, 255, 0.42);
 }
 
 .project-card--portrait .project-cover-shell::after {
-  background: rgba(211, 224, 230, 0.72);
+  background: rgba(211, 224, 230, 0.52);
 }
 
 .project-card > * {
@@ -599,16 +610,16 @@ h3 {
 }
 
 .project-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   border-color: rgba(154, 163, 178, 0.34);
-  box-shadow: var(--shadow);
+  box-shadow: none;
 }
 
 .project-cover-shell {
   position: relative;
   display: block;
   min-width: 0;
-  padding: 14px 14px 0;
+  padding: 0;
 }
 
 .project-cover-shell::before,
@@ -624,24 +635,24 @@ h3 {
 }
 
 .project-cover-shell::after {
-  top: 30px;
-  right: 10px;
+  top: 28px;
+  right: -14px;
   width: 1px;
-  height: calc(100% - 62px);
-  background: linear-gradient(180deg, rgba(128, 142, 152, 0), rgba(128, 142, 152, 0.36), rgba(128, 142, 152, 0));
+  height: calc(100% - 56px);
+  background: linear-gradient(180deg, rgba(128, 142, 152, 0), rgba(128, 142, 152, 0.2), rgba(128, 142, 152, 0));
 }
 
 .project-cover-stack {
   display: flex;
-  height: 292px;
+  height: clamp(420px, 58vw, 680px);
   overflow: hidden;
   overflow-x: auto;
   gap: 0;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.26);
-  box-shadow: inset -10px 0 18px rgba(44, 57, 68, 0.06);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.36);
+  box-shadow: 0 28px 90px rgba(46, 54, 60, 0.11);
 }
 
 .project-cover-stack::-webkit-scrollbar {
@@ -660,21 +671,22 @@ h3 {
 .project-card-copy {
   display: grid;
   align-content: start;
-  gap: 14px;
-  padding: 24px 28px 28px;
+  gap: 18px;
+  max-width: 420px;
+  padding: 0;
 }
 
 .project-swipe-hint {
   position: absolute;
   z-index: 4;
-  right: 22px;
-  bottom: 10px;
+  right: 18px;
+  bottom: 16px;
   border: 1px solid rgba(255, 255, 255, 0.72);
   border-radius: 999px;
   padding: 5px 9px;
-  background: rgba(248, 250, 250, 0.58);
+  background: rgba(248, 250, 250, 0.64);
   color: rgba(73, 88, 98, 0.82);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 760;
   letter-spacing: 0.08em;
   backdrop-filter: blur(10px);
@@ -682,24 +694,25 @@ h3 {
 
 .project-card-copy em {
   color: var(--quiet);
-  font-size: 11px;
+  font-size: 10px;
   font-style: normal;
-  font-weight: 760;
-  letter-spacing: 0.14em;
+  font-weight: 600;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
 .project-card-copy strong {
   font-family: var(--serif-font);
-  font-size: clamp(27px, 2.55vw, 34px);
-  font-weight: 520;
-  line-height: 1.18;
+  font-size: clamp(34px, 4.1vw, 56px);
+  font-weight: 430;
+  line-height: 1.08;
 }
 
 .project-card-copy small {
   color: var(--muted);
-  font-size: clamp(13px, 1.35vw, 15px);
-  line-height: 1.9;
+  max-width: 360px;
+  font-size: clamp(14px, 1.35vw, 16px);
+  line-height: 2.08;
 }
 
 .project-open {
@@ -708,24 +721,25 @@ h3 {
   align-items: center;
   gap: 8px;
   align-self: end;
-  margin-top: 10px;
-  border: 1px solid rgba(111, 127, 137, 0.22);
-  border-radius: 999px;
-  padding: 8px 12px;
-  background: rgba(255, 255, 255, 0.42);
+  margin-top: 24px;
+  border: 0;
+  border-radius: 0;
+  padding: 0 0 8px;
+  background: transparent;
   color: var(--accent);
-  font-size: 11px;
-  font-weight: 780;
-  letter-spacing: 0.08em;
+  font-size: 12px;
+  font-weight: 520;
+  letter-spacing: 0.14em;
+  border-bottom: 1px solid rgba(93, 109, 115, 0.28);
 }
 
 .project-open span {
   display: grid;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   place-items: center;
   border-radius: 50%;
-  background: rgba(111, 127, 137, 0.12);
+  background: rgba(111, 127, 137, 0.08);
   color: var(--ink);
 }
 
@@ -1935,8 +1949,12 @@ h3 {
 
   .brand {
     gap: 8px;
-    font-size: 16px;
     line-height: 1;
+  }
+
+  .brand-name {
+    font-size: 11px;
+    letter-spacing: 0.18em;
   }
 
   .brand-mark {
@@ -1971,7 +1989,7 @@ h3 {
   }
 
   .hero {
-    min-height: 70vh;
+    min-height: 78svh;
   }
 
   .group-heading,
@@ -2028,7 +2046,7 @@ h3 {
 
   .portfolio-notice {
     grid-template-columns: 1fr;
-    margin-bottom: 22px;
+    margin-bottom: 58px;
     padding-bottom: 22px;
   }
 
@@ -2047,6 +2065,24 @@ h3 {
 
   .project-grid {
     grid-template-columns: 1fr;
+    gap: 84px;
+  }
+
+  .project-card {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .project-cover-stack {
+    height: clamp(310px, 88vw, 520px);
+  }
+
+  .project-card-copy {
+    max-width: 100%;
+  }
+
+  .project-card-copy strong {
+    font-size: clamp(32px, 10vw, 46px);
   }
 
   .booking-modal-shell {
@@ -2123,7 +2159,7 @@ h3 {
 
 @media (max-width: 560px) {
   .hero-content {
-    padding: 108px 0 40px;
+    padding: 120px 0 52px;
   }
 
   h1 {
@@ -2137,28 +2173,40 @@ h3 {
   .section,
   .about-band {
     width: min(100% - 28px, 1180px);
-    padding: 64px 0;
+    padding: 78px 0;
   }
 
   .portfolio {
-    padding-top: 54px;
+    padding-top: 72px;
+  }
+
+  .portfolio-groups {
+    gap: 100px;
+  }
+
+  .group-heading {
+    margin-bottom: 34px;
   }
 
   .contact-section {
     padding: 40px 14px;
   }
 
-  .project-card {
-    min-height: 450px;
-    border-radius: 18px;
-  }
-
   .project-cover-stack {
-    height: 250px;
+    height: min(84vw, 390px);
   }
 
   .project-card-copy {
-    padding: 22px;
+    gap: 13px;
+    padding: 0 2px;
+  }
+
+  .project-card-copy small {
+    line-height: 1.9;
+  }
+
+  .project-open {
+    margin-top: 14px;
   }
 
   .contact-card {
