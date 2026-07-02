@@ -609,22 +609,7 @@ document.addEventListener("click", (event) => {
   }
 });
 
-document.addEventListener("contextmenu", (event) => {
-  if (event.target.closest(".protected-media, .project-card, .lightbox")) {
-    event.preventDefault();
-    showPrivacyToast();
-  }
-});
-
-document.addEventListener("dragstart", (event) => {
-  if (event.target.closest(".protected-media")) {
-    event.preventDefault();
-    showPrivacyToast();
-  }
-});
-
 document.addEventListener("keydown", (event) => {
-  if (event.key === "PrintScreen") showPrivacyToast();
   if (event.key === "Escape" && !bookingModal.hidden) closeBookingModal();
   if (lightbox.open && event.key === "ArrowLeft") moveLightbox(-1);
   if (lightbox.open && event.key === "ArrowRight") moveLightbox(1);

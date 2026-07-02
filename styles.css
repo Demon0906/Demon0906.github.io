@@ -62,6 +62,58 @@ button {
   user-select: none;
 }
 
+.hero,
+.project-cover-stack,
+.gallery-frame button,
+.story-image,
+.portrait-photo,
+.lightbox,
+.profile-photo-card {
+  position: relative;
+}
+
+.hero::after,
+.project-cover-stack::after,
+.gallery-frame button::after,
+.story-image::after,
+.portrait-photo::after,
+.lightbox::after,
+.profile-photo-card::after {
+  content: "Demon Atelier";
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  z-index: 4;
+  pointer-events: none;
+  border-radius: 999px;
+  padding: 4px 8px;
+  color: rgba(255, 255, 255, 0.54);
+  background: rgba(18, 23, 26, 0.12);
+  font-family: var(--latin-art-font);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(8px);
+}
+
+.project-cover-stack::after,
+.gallery-frame button::after,
+.story-image::after,
+.portrait-photo::after,
+.profile-photo-card::after {
+  right: 10px;
+  bottom: 10px;
+  font-size: 9px;
+  opacity: 0.68;
+}
+
+.lightbox::after {
+  right: 22px;
+  bottom: 132px;
+}
+
 .site-header {
   position: fixed;
   z-index: 20;
@@ -1370,6 +1422,244 @@ h3 {
   opacity: 1;
 }
 
+.admin-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(255, 255, 255, 0.95), transparent 28%),
+    radial-gradient(circle at 84% 18%, rgba(206, 220, 224, 0.62), transparent 34%),
+    linear-gradient(135deg, #f8faf9 0%, #e8eff0 56%, #f6f8f7 100%);
+}
+
+.admin-shell {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  width: min(1320px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: 34px 0 72px;
+}
+
+.admin-sidebar {
+  position: sticky;
+  top: 24px;
+  display: grid;
+  align-content: start;
+  gap: 28px;
+  height: calc(100vh - 48px);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 28px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.56);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(24px);
+}
+
+.admin-nav {
+  display: grid;
+  gap: 8px;
+}
+
+.admin-nav a {
+  border-radius: 999px;
+  padding: 11px 14px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 760;
+}
+
+.admin-nav a.is-active,
+.admin-nav a:hover {
+  color: var(--ink);
+  background: rgba(225, 234, 236, 0.82);
+}
+
+.admin-note {
+  margin-top: auto;
+  color: var(--quiet);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.admin-main {
+  display: grid;
+  gap: 24px;
+  min-width: 0;
+}
+
+.admin-hero,
+.admin-panel {
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(22px);
+}
+
+.admin-hero {
+  padding: clamp(28px, 5vw, 58px);
+}
+
+.admin-hero h1 {
+  margin-bottom: 16px;
+  font-family: var(--serif-font);
+  font-size: clamp(36px, 5.6vw, 74px);
+  font-weight: 520;
+  line-height: 1.05;
+}
+
+.admin-hero p:not(.eyebrow) {
+  max-width: 680px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.admin-panel {
+  padding: clamp(22px, 4vw, 38px);
+}
+
+.admin-panel-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.admin-panel-heading h2 {
+  font-size: clamp(24px, 3vw, 38px);
+}
+
+.admin-status {
+  border: 1px solid rgba(128, 142, 152, 0.18);
+  border-radius: 999px;
+  padding: 8px 12px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  font-weight: 720;
+}
+
+.admin-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.admin-form label {
+  display: grid;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 760;
+}
+
+.admin-form input,
+.admin-form select,
+.admin-form textarea {
+  width: 100%;
+  border: 1px solid rgba(116, 130, 139, 0.18);
+  border-radius: 16px;
+  padding: 12px 14px;
+  outline: none;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.68);
+}
+
+.admin-form input:focus,
+.admin-form select:focus,
+.admin-form textarea:focus {
+  border-color: rgba(88, 106, 116, 0.42);
+  box-shadow: 0 0 0 4px rgba(166, 184, 190, 0.18);
+}
+
+.admin-dropzone {
+  border: 1px dashed rgba(116, 130, 139, 0.26);
+  border-radius: 18px;
+  padding: 18px;
+  background: rgba(245, 249, 249, 0.64);
+}
+
+.admin-dropzone input {
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.64);
+}
+
+.admin-dropzone em {
+  color: var(--quiet);
+  font-size: 12px;
+  font-style: normal;
+  line-height: 1.7;
+}
+
+.admin-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  grid-column: 1 / -1;
+}
+
+.admin-preview-button {
+  color: var(--ink);
+  border-color: rgba(116, 130, 139, 0.22);
+  background: rgba(255, 255, 255, 0.52);
+}
+
+.admin-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.admin-preview-card {
+  overflow: hidden;
+  margin: 0;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.admin-preview-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.admin-preview-card figcaption {
+  padding: 10px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.admin-empty {
+  border-radius: 20px;
+  padding: 20px;
+  color: var(--muted);
+  background: rgba(241, 247, 248, 0.62);
+}
+
+.admin-empty strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--ink);
+  font-size: 16px;
+}
+
+.admin-empty p {
+  margin: 0;
+}
+
+.admin-check-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding-left: 20px;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
 .detail-page {
   background:
     radial-gradient(circle at 15% 10%, rgba(255, 255, 255, 0.86), transparent 36%),
@@ -1664,6 +1954,34 @@ h3 {
   .contact-layout {
     display: grid;
     grid-template-columns: 1fr;
+  }
+
+  .admin-shell {
+    grid-template-columns: 1fr;
+    width: min(100% - 28px, 720px);
+    padding-top: 16px;
+  }
+
+  .admin-sidebar {
+    position: static;
+    height: auto;
+    border-radius: 22px;
+  }
+
+  .admin-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .admin-form {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-panel-heading {
+    display: grid;
+  }
+
+  .admin-status {
+    justify-self: start;
   }
 
   .group-heading > div {

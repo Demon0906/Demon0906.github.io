@@ -39,3 +39,65 @@
 
 - 原图：`assets/photos/自然风光/枫叶/DSC08494.JPG`
 - 缩略图：`assets/thumbs/自然风光/枫叶/DSC08494.jpg`
+
+## 5. 后台管理与权限
+
+站点已预留后台页面：
+
+- 后台地址：`/admin.html`
+- 管理 API：`/api/admin/photos`
+- 授权邮箱：`763525586@qq.com`
+
+后台应通过 Cloudflare Access 保护，而不是自己在网页里写密码。
+
+### 5.1 配置 Cloudflare Access
+
+1. 打开 Cloudflare Dashboard。
+2. 进入 `Zero Trust`。
+3. 进入 `Access` -> `Applications`。
+4. 点击 `Add an application`。
+5. 选择 `Self-hosted`。
+6. Application domain 填写你的正式域名后台路径，例如：
+   - `aoruoqin.com/admin.html`
+   - 如需保护 API，可再添加 `aoruoqin.com/api/admin/*`
+7. Policy 设置：
+   - Action: `Allow`
+   - Include: `Emails`
+   - Email: `763525586@qq.com`
+8. 保存后，只有这个邮箱通过验证后才能打开后台。
+
+Cloudflare Access 会把登录邮箱写入请求头 `Cf-Access-Authenticated-User-Email`。当前 Functions 已根据这个邮箱做二次校验，不匹配会返回 403。
+
+### 5.2 创建 R2 存储桶
+
+1. 进入 Cloudflare Dashboard -> `R2`。
+2. 创建 bucket，建议命名为 `demon-photos`。
+3. 在 Pages 项目里进入 `Settings` -> `Bindings`。
+4. 添加 R2 binding：
+   - Variable name: `PHOTO_BUCKET`
+   - Bucket: `demon-photos`
+
+后续照片原图、缩略图、带水印预览图都会放在这里。
+
+### 5.3 创建 D1 数据库
+
+1. 进入 Cloudflare Dashboard -> `D1`。
+2. 创建 database，建议命名为 `demon_portfolio`。
+3. 在 Pages 项目里进入 `Settings` -> `Bindings`。
+4. 添加 D1 binding：
+   - Variable name: `PORTFOLIO_DB`
+   - Database: `demon_portfolio`
+
+后续作品集信息、照片标题、拍摄时间、地点、排序、公开状态都会写入 D1。
+
+### 5.4 当前后台状态
+
+当前版本已经完成：
+
+- `/admin.html` 中文后台界面。
+- 文件选择与本地预览。
+- `/api/admin/photos` 权限校验。
+- 未绑定 R2/D1 时会提示下一步配置。
+- 前台照片展示层增加轻水印。
+
+下一步需要在绑定 R2/D1 后，实现真实上传、缩略图生成和数据库写入。

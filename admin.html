@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Demon Atelier 摄影作品后台管理。">
+    <title>后台管理 | Demon Atelier</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body class="admin-page">
+    <main class="admin-shell">
+      <aside class="admin-sidebar">
+        <a class="brand dark-brand" href="index.html" aria-label="返回 Demon 首页">
+          <span class="brand-mark">D</span>
+          <span>Demon</span>
+        </a>
+        <nav class="admin-nav" aria-label="后台导航">
+          <a href="#upload" class="is-active">上传照片</a>
+          <a href="#collections">作品集</a>
+          <a href="#stories">摄影故事</a>
+          <a href="#protection">版权保护</a>
+        </nav>
+        <p class="admin-note">此后台建议通过 Cloudflare Access 保护，仅允许 763525586@qq.com 访问。</p>
+      </aside>
+
+      <section class="admin-main" id="admin-main" hidden>
+        <header class="admin-hero">
+          <p class="eyebrow">Private Studio</p>
+          <h1>摄影后台管理</h1>
+          <p>上传照片、整理摄影集、编辑展示信息。前台仍保持多语言展示，后台只保留中文操作。</p>
+        </header>
+
+        <section class="admin-panel" id="upload">
+          <div class="admin-panel-heading">
+            <div>
+              <p class="eyebrow">Upload</p>
+              <h2>上传新照片</h2>
+            </div>
+            <span class="admin-status" id="admin-status">等待连接 Cloudflare 存储</span>
+          </div>
+
+          <form class="admin-form" id="admin-upload-form">
+            <label>
+              <span>所属板块</span>
+              <select name="section" required>
+                <option value="portrait">人像摄影</option>
+                <option value="nature">自然风光</option>
+                <option value="city">城市印象</option>
+                <option value="daily">日常生活</option>
+                <option value="stories">摄影故事</option>
+              </select>
+            </label>
+            <label>
+              <span>摄影集名称</span>
+              <input name="collection" type="text" placeholder="例如：Live（手机）、枫叶、光影展" required>
+            </label>
+            <label>
+              <span>标题</span>
+              <input name="title" type="text" placeholder="例如：雨后的海边">
+            </label>
+            <label>
+              <span>拍摄地点</span>
+              <input name="location" type="text" placeholder="例如：日本 镰仓">
+            </label>
+            <label>
+              <span>拍摄时间</span>
+              <input name="date" type="month">
+            </label>
+            <label>
+              <span>模特 / 人物</span>
+              <input name="model" type="text" placeholder="人像照片可填写">
+            </label>
+            <label class="full-field">
+              <span>照片简介</span>
+              <textarea name="description" rows="4" placeholder="写一段适合展示在作品集里的简短介绍。"></textarea>
+            </label>
+            <label class="admin-dropzone full-field">
+              <span>选择照片</span>
+              <input name="photos" type="file" accept="image/*" multiple required>
+              <em>支持一次选择多张。接入 R2 后会自动生成缩略图并写入作品数据。</em>
+            </label>
+            <div class="admin-actions">
+              <button class="button primary" type="submit">保存到作品库</button>
+              <button class="button ghost admin-preview-button" type="button" id="admin-preview-button">预览选择</button>
+            </div>
+          </form>
+
+          <div class="admin-preview-grid" id="admin-preview-grid" aria-live="polite"></div>
+        </section>
+
+        <section class="admin-panel" id="collections">
+          <div class="admin-panel-heading">
+            <div>
+              <p class="eyebrow">Collections</p>
+              <h2>作品集管理</h2>
+            </div>
+          </div>
+          <div class="admin-empty">
+            <strong>下一步接入 D1 数据库</strong>
+            <p>接入后，这里会显示所有摄影集，可编辑标题、简介、排序、公开/隐藏状态。</p>
+          </div>
+        </section>
+
+        <section class="admin-panel" id="stories">
+          <div class="admin-panel-heading">
+            <div>
+              <p class="eyebrow">Journal</p>
+              <h2>摄影故事</h2>
+            </div>
+          </div>
+          <div class="admin-empty">
+            <strong>适合写成图文故事</strong>
+            <p>可以上传故事配图，填写标题、正文段落和展示顺序，前台会以摄影推文形式呈现。</p>
+          </div>
+        </section>
+
+        <section class="admin-panel" id="protection">
+          <div class="admin-panel-heading">
+            <div>
+              <p class="eyebrow">Protection</p>
+              <h2>版权保护</h2>
+            </div>
+          </div>
+          <ul class="admin-check-list">
+            <li>前台照片右下角显示轻水印，不直接修改原图。</li>
+            <li>继续禁止右键保存、拖拽下载和常见复制行为。</li>
+            <li>后续接入 R2 后，前台优先展示缩略图，高清图只在预览时加载。</li>
+            <li>需要更强保护时，可生成带水印预览图，原图仅保留在私有 R2 存储。</li>
+          </ul>
+        </section>
+      </section>
+
+      <section class="admin-main admin-locked" id="admin-locked">
+        <div class="admin-hero">
+          <p class="eyebrow">Access Required</p>
+          <h1>需要授权登录</h1>
+          <p id="admin-lock-message">正在验证后台权限，请使用 763525586@qq.com 通过 Cloudflare Access 登录。</p>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const adminMain = document.querySelector("#admin-main");
+      const adminLocked = document.querySelector("#admin-locked");
+      const lockMessage = document.querySelector("#admin-lock-message");
+      const form = document.querySelector("#admin-upload-form");
+      const previewGrid = document.querySelector("#admin-preview-grid");
+      const previewButton = document.querySelector("#admin-preview-button");
+      const status = document.querySelector("#admin-status");
+
+      async function verifyAdminSession() {
+        try {
+          const response = await fetch("/api/admin/session", { cache: "no-store" });
+          const result = await response.json();
+          if (!response.ok || !result.ok) throw new Error(result.message || "权限验证失败");
+          adminMain.hidden = false;
+          adminLocked.hidden = true;
+          status.textContent = `已授权：${result.email}`;
+        } catch (error) {
+          adminMain.hidden = true;
+          adminLocked.hidden = false;
+          lockMessage.textContent = "后台需要通过 Cloudflare Access 验证，仅允许 763525586@qq.com 登录。";
+        }
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function renderPreview() {
+        const files = [...form.photos.files];
+        previewGrid.innerHTML = files
+          .map((file) => {
+            const url = URL.createObjectURL(file);
+            return `
+              <figure class="admin-preview-card">
+                <img src="${url}" alt="${escapeHtml(file.name)}">
+                <figcaption>${escapeHtml(file.name)}</figcaption>
+              </figure>
+            `;
+          })
+          .join("");
+      }
+
+      previewButton.addEventListener("click", renderPreview);
+      form.photos.addEventListener("change", renderPreview);
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const formData = new FormData(form);
+        status.textContent = "正在尝试连接后台接口...";
+        try {
+          const response = await fetch("/api/admin/photos", {
+            method: "POST",
+            body: formData,
+          });
+          const result = await response.json();
+          if (!response.ok) throw new Error(result.message || "上传失败");
+          status.textContent = "已保存，等待前台刷新";
+        } catch (error) {
+          status.textContent = "后台接口尚未完成绑定：" + error.message;
+        }
+      });
+      verifyAdminSession();
+    </script>
+  </body>
+</html>
