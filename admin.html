@@ -133,9 +133,16 @@
 
       <section class="admin-main admin-locked" id="admin-locked">
         <div class="admin-hero">
-          <p class="eyebrow">Access Required</p>
-          <h1>需要授权登录</h1>
-          <p id="admin-lock-message">正在验证后台权限，请使用 763525586@qq.com 通过 Cloudflare Access 登录。</p>
+          <p class="eyebrow">Private Access</p>
+          <h1>管理员登录</h1>
+          <p id="admin-lock-message">请输入后台管理密码。密码由 Cloudflare Pages 的 ADMIN_PASSWORD 变量保存，不会写入网页代码。</p>
+          <form class="admin-login-form" id="admin-login-form">
+            <label>
+              <span>后台密码</span>
+              <input id="admin-password" name="password" type="password" autocomplete="current-password" required>
+            </label>
+            <button class="button primary" type="submit">进入后台</button>
+          </form>
         </div>
       </section>
     </main>
@@ -144,23 +151,34 @@
       const adminMain = document.querySelector("#admin-main");
       const adminLocked = document.querySelector("#admin-locked");
       const lockMessage = document.querySelector("#admin-lock-message");
+      const loginForm = document.querySelector("#admin-login-form");
+      const passwordInput = document.querySelector("#admin-password");
       const form = document.querySelector("#admin-upload-form");
       const previewGrid = document.querySelector("#admin-preview-grid");
       const previewButton = document.querySelector("#admin-preview-button");
       const status = document.querySelector("#admin-status");
+      const PASSWORD_KEY = "demon-admin-password";
+
+      function adminHeaders() {
+        const password = window.localStorage.getItem(PASSWORD_KEY) || "";
+        return password ? { "X-Admin-Password": password } : {};
+      }
 
       async function verifyAdminSession() {
         try {
-          const response = await fetch("/api/admin/session", { cache: "no-store" });
+          const response = await fetch("/api/admin/session", {
+            cache: "no-store",
+            headers: adminHeaders(),
+          });
           const result = await response.json();
           if (!response.ok || !result.ok) throw new Error(result.message || "权限验证失败");
           adminMain.hidden = false;
           adminLocked.hidden = true;
-          status.textContent = `已授权：${result.email}`;
+          status.textContent = result.mode === "access" ? `已授权：${result.email}` : "已通过后台密码验证";
         } catch (error) {
           adminMain.hidden = true;
           adminLocked.hidden = false;
-          lockMessage.textContent = "后台需要通过 Cloudflare Access 验证，仅允许 763525586@qq.com 登录。";
+          lockMessage.textContent = error.message || "请输入后台管理密码。";
         }
       }
 
@@ -197,6 +215,7 @@
         try {
           const response = await fetch("/api/admin/photos", {
             method: "POST",
+            headers: adminHeaders(),
             body: formData,
           });
           const result = await response.json();
@@ -205,6 +224,13 @@
         } catch (error) {
           status.textContent = "后台接口尚未完成绑定：" + error.message;
         }
+      });
+      loginForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        window.localStorage.setItem(PASSWORD_KEY, passwordInput.value);
+        lockMessage.textContent = "正在验证密码...";
+        await verifyAdminSession();
+        passwordInput.value = "";
       });
       verifyAdminSession();
     </script>

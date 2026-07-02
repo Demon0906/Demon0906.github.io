@@ -48,27 +48,45 @@
 - 管理 API：`/api/admin/photos`
 - 授权邮箱：`763525586@qq.com`
 
-后台应通过 Cloudflare Access 保护，而不是自己在网页里写密码。
+当前后台支持两种保护方式：
 
-### 5.1 配置 Cloudflare Access
+- 推荐但可稍后再配：Cloudflare Access，只允许 `763525586@qq.com`。
+- 当前更容易配置：`ADMIN_PASSWORD` 环境变量，后台输入密码后才能调用管理 API。
+
+如果 Zero Trust 控制台找不到 Access 入口，先使用 `ADMIN_PASSWORD` 方案即可。
+
+### 5.1 配置后台密码
 
 1. 打开 Cloudflare Dashboard。
-2. 进入 `Zero Trust`。
-3. 进入 `Access` -> `Applications`。
-4. 点击 `Add an application`。
-5. 选择 `Self-hosted`。
-6. Application domain 填写你的正式域名后台路径，例如：
+2. 进入 `Workers & Pages`。
+3. 点击 Pages 项目 `demon0906-github-io`。
+4. 进入 `Settings` -> `Variables and Secrets`，中文界面可能叫 `变量和密钥`。
+5. 点击 `Add` 或 `添加`。
+6. 添加变量：
+   - Variable name: `ADMIN_PASSWORD`
+   - Value: 设置一个只有你知道的强密码
+7. 保存后重新部署一次，或等待 Cloudflare 自动应用新变量。
+
+后台地址为 `/admin.html`。打开后输入 `ADMIN_PASSWORD` 的值即可进入后台。
+
+### 5.2 可选：配置 Cloudflare Access
+
+如果后续 Zero Trust 控制台可以正常使用，仍建议再加 Cloudflare Access：
+
+1. 进入 `Zero Trust` -> `Access` -> `Applications`。
+2. 点击 `Add an application`。
+3. 选择 `Self-hosted`。
+4. Application domain 填写你的正式域名后台路径，例如：
    - `aoruoqin.com/admin.html`
    - 如需保护 API，可再添加 `aoruoqin.com/api/admin/*`
-7. Policy 设置：
+5. Policy 设置：
    - Action: `Allow`
    - Include: `Emails`
    - Email: `763525586@qq.com`
-8. 保存后，只有这个邮箱通过验证后才能打开后台。
 
-Cloudflare Access 会把登录邮箱写入请求头 `Cf-Access-Authenticated-User-Email`。当前 Functions 已根据这个邮箱做二次校验，不匹配会返回 403。
+Cloudflare Access 会把登录邮箱写入请求头 `Cf-Access-Authenticated-User-Email`。当前 Functions 同时支持邮箱校验和 `ADMIN_PASSWORD` 校验。
 
-### 5.2 创建 R2 存储桶
+### 5.3 创建 R2 存储桶
 
 1. 进入 Cloudflare Dashboard -> `R2`。
 2. 创建 bucket，建议命名为 `demon-photos`。
@@ -79,7 +97,7 @@ Cloudflare Access 会把登录邮箱写入请求头 `Cf-Access-Authenticated-Use
 
 后续照片原图、缩略图、带水印预览图都会放在这里。
 
-### 5.3 创建 D1 数据库
+### 5.4 创建 D1 数据库
 
 1. 进入 Cloudflare Dashboard -> `D1`。
 2. 创建 database，建议命名为 `demon_portfolio`。
@@ -90,13 +108,13 @@ Cloudflare Access 会把登录邮箱写入请求头 `Cf-Access-Authenticated-Use
 
 后续作品集信息、照片标题、拍摄时间、地点、排序、公开状态都会写入 D1。
 
-### 5.4 当前后台状态
+### 5.5 当前后台状态
 
 当前版本已经完成：
 
 - `/admin.html` 中文后台界面。
 - 文件选择与本地预览。
-- `/api/admin/photos` 权限校验。
+- `/api/admin/photos` 权限校验，支持 `ADMIN_PASSWORD` 和 Cloudflare Access 邮箱。
 - 未绑定 R2/D1 时会提示下一步配置。
 - 前台照片展示层增加轻水印。
 

@@ -8,23 +8,44 @@ export function getAccessEmail(request) {
   ).toLowerCase();
 }
 
-export function requireAdmin(request) {
+export function isPasswordAuthorized(request, env = {}) {
+  const configuredPassword = env.ADMIN_PASSWORD || "";
+  const providedPassword = request.headers.get("X-Admin-Password") || "";
+  return Boolean(configuredPassword && providedPassword && providedPassword === configuredPassword);
+}
+
+export function requireAdmin(request, env = {}) {
   const email = getAccessEmail(request);
-  if (email !== ALLOWED_EMAIL) {
+  if (email === ALLOWED_EMAIL || isPasswordAuthorized(request, env)) {
+    return null;
+  }
+
+  if (!env.ADMIN_PASSWORD) {
     return new Response(
       JSON.stringify({
         ok: false,
-        message: "无权访问后台，请使用授权邮箱登录。",
+        message: "后台尚未配置 ADMIN_PASSWORD，请先在 Cloudflare Pages 的变量和密钥中添加。",
       }),
       {
-        status: 403,
+        status: 503,
         headers: {
           "Content-Type": "application/json; charset=utf-8",
         },
       },
     );
   }
-  return null;
+  return new Response(
+    JSON.stringify({
+      ok: false,
+      message: "密码不正确，或未通过授权邮箱登录。",
+    }),
+    {
+      status: 403,
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+    },
+  );
 }
 
 export function json(data, status = 200) {

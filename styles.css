@@ -1573,6 +1573,32 @@ h3 {
   box-shadow: 0 0 0 4px rgba(166, 184, 190, 0.18);
 }
 
+.admin-login-form {
+  display: grid;
+  grid-template-columns: minmax(220px, 360px) auto;
+  gap: 12px;
+  align-items: end;
+  margin-top: 24px;
+}
+
+.admin-login-form label {
+  display: grid;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 760;
+}
+
+.admin-login-form input {
+  width: 100%;
+  border: 1px solid rgba(116, 130, 139, 0.18);
+  border-radius: 999px;
+  padding: 13px 16px;
+  outline: none;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.68);
+}
+
 .admin-dropzone {
   border: 1px dashed rgba(116, 130, 139, 0.26);
   border-radius: 18px;
@@ -1973,6 +1999,10 @@ h3 {
   }
 
   .admin-form {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-login-form {
     grid-template-columns: 1fr;
   }
 

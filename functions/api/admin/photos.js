@@ -1,7 +1,7 @@
 import { json, requireAdmin } from "./_auth.js";
 
 export async function onRequestGet(context) {
-  const forbidden = requireAdmin(context.request);
+  const forbidden = requireAdmin(context.request, context.env);
   if (forbidden) return forbidden;
 
   return json({
@@ -12,7 +12,7 @@ export async function onRequestGet(context) {
 }
 
 export async function onRequestPost(context) {
-  const forbidden = requireAdmin(context.request);
+  const forbidden = requireAdmin(context.request, context.env);
   if (forbidden) return forbidden;
 
   const formData = await context.request.formData();
