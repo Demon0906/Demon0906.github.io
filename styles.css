@@ -649,55 +649,64 @@ h3 {
 
 .project-grid {
   display: grid;
-  gap: 0;
-  border-top: 1px solid rgba(138, 121, 103, 0.18);
+  gap: clamp(44px, 6.5vw, 104px);
+  border-top: 0;
   counter-reset: project;
 }
 
 .project-card {
   position: relative;
   display: grid;
-  grid-template-columns: clamp(118px, 16vw, 246px) minmax(0, 1fr);
-  align-items: center;
-  gap: clamp(28px, 6vw, 96px);
-  overflow: visible;
-  min-height: clamp(180px, 23vw, 310px);
-  border: 0;
-  border-bottom: 1px solid rgba(138, 121, 103, 0.18);
-  border-radius: 0;
-  padding: clamp(30px, 5vw, 72px) 0;
-  background: transparent;
+  grid-template-columns: minmax(230px, 0.42fr) minmax(0, 0.58fr);
+  align-items: stretch;
+  gap: clamp(34px, 6.4vw, 112px);
+  overflow: hidden;
+  min-height: clamp(360px, 43vw, 600px);
+  border: 1px solid rgba(138, 121, 103, 0.14);
+  border-radius: clamp(24px, 3.2vw, 38px);
+  padding: clamp(24px, 3.8vw, 56px);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.58), rgba(250, 248, 245, 0.2)),
+    rgba(250, 248, 245, 0.34);
   color: var(--ink);
   text-align: left;
   cursor: pointer;
-  box-shadow: none;
-  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
-  backdrop-filter: none;
+  box-shadow: 0 28px 90px rgba(74, 66, 59, 0.08);
+  transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
+  backdrop-filter: blur(18px);
   counter-increment: project;
 }
 
 .project-card::before {
   content: "";
   position: absolute;
-  inset: 50% auto auto 8%;
-  width: min(24vw, 310px);
-  height: min(22vw, 280px);
+  inset: 0;
   z-index: 0;
   background: var(--cover-bg) center / cover;
-  filter: blur(70px) saturate(0.62);
-  opacity: 0.07;
-  transform: translateY(-50%);
+  filter: blur(78px) saturate(0.72);
+  opacity: 0.09;
+  transform: scale(1.08);
 }
 
 .project-card::after {
-  display: none;
+  content: counter(project, decimal-leading-zero);
+  position: absolute;
+  top: clamp(22px, 3.6vw, 54px);
+  right: clamp(24px, 4.8vw, 76px);
+  z-index: 0;
+  color: rgba(138, 121, 103, 0.07);
+  font-family: var(--serif-font);
+  font-size: clamp(92px, 13vw, 220px);
+  font-weight: 360;
+  line-height: 0.8;
+  pointer-events: none;
 }
 
 .project-card--portrait::before {
   background: var(--cover-bg) center / cover;
-  filter: blur(70px) saturate(0.68);
-  opacity: 0.1;
-  transform: translateY(-50%) scale(1.04);
+  filter: blur(82px) saturate(0.74);
+  opacity: 0.11;
+  transform: scale(1.08);
 }
 
 .project-card--portrait .project-cover-shell::before {
@@ -714,23 +723,34 @@ h3 {
 }
 
 .project-card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(138, 121, 103, 0.34);
-  box-shadow: none;
+  transform: translateY(-4px);
+  border-color: rgba(138, 121, 103, 0.26);
+  box-shadow: 0 34px 110px rgba(74, 66, 59, 0.12);
 }
 
 .project-card:nth-child(even) {
-  grid-template-columns: clamp(118px, 16vw, 246px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 0.58fr) minmax(230px, 0.42fr);
 }
 
-.project-card:nth-child(even)::before {
-  inset: 50% auto auto 8%;
+.project-card:nth-child(even)::after {
+  right: auto;
+  left: clamp(24px, 4.8vw, 76px);
+}
+
+.project-card:nth-child(even) .project-cover-shell {
+  grid-column: 2;
+}
+
+.project-card:nth-child(even) .project-card-copy {
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .project-cover-shell {
   position: relative;
   display: block;
   min-width: 0;
+  align-self: stretch;
   padding: 0;
   border: 0;
   background: transparent;
@@ -751,26 +771,27 @@ h3 {
 }
 
 .project-cover-shell::after {
-  top: 14%;
-  right: -18px;
+  top: 10%;
+  right: -20px;
   width: 1px;
-  height: 72%;
-  background: linear-gradient(180deg, rgba(138, 121, 103, 0), rgba(138, 121, 103, 0.32), rgba(138, 121, 103, 0));
+  height: 80%;
+  background: linear-gradient(180deg, rgba(138, 121, 103, 0), rgba(138, 121, 103, 0.28), rgba(138, 121, 103, 0));
 }
 
 .project-cover-stack {
   display: flex;
-  height: clamp(138px, 17vw, 236px);
+  height: 100%;
+  min-height: clamp(300px, 36vw, 510px);
   overflow: hidden;
   overflow-x: auto;
   gap: 0;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  border-radius: 2px;
+  border-radius: clamp(18px, 2.4vw, 30px);
   background:
     linear-gradient(135deg, rgba(250, 248, 245, 0.5), rgba(232, 226, 218, 0.14)),
     rgba(255, 255, 255, 0.14);
-  box-shadow: 0 18px 56px rgba(74, 66, 59, 0.1);
+  box-shadow: 0 24px 76px rgba(74, 66, 59, 0.13);
 }
 
 .project-cover-stack::-webkit-scrollbar {
@@ -787,32 +808,28 @@ h3 {
 }
 
 .project-card-copy {
-  display: grid;
-  grid-template-columns: 46px minmax(0, 1fr) minmax(220px, 360px);
-  grid-template-areas:
-    "index title meta"
-    "index title summary"
-    "index title open";
-  align-items: center;
-  column-gap: clamp(24px, 5vw, 78px);
-  row-gap: 14px;
-  max-width: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(14px, 1.8vw, 22px);
+  max-width: 560px;
   width: 100%;
   padding: 0;
 }
 
 .project-card-copy::before {
-  content: counter(project, decimal-leading-zero);
-  grid-area: index;
+  content: "CHAPTER " counter(project, decimal-leading-zero);
   display: block;
-  justify-self: start;
   color: rgba(138, 121, 103, 0.52);
   font-family: var(--sans-font);
   font-size: 12px;
   font-weight: 680;
   letter-spacing: 0.24em;
-  line-height: 1;
-  writing-mode: vertical-rl;
+  line-height: 1.2;
+  padding-top: 16px;
+  border-top: 1px solid rgba(138, 121, 103, 0.24);
+  writing-mode: initial;
   text-transform: uppercase;
 }
 
@@ -833,8 +850,6 @@ h3 {
 }
 
 .project-card-copy em {
-  grid-area: meta;
-  align-self: end;
   color: rgba(118, 112, 106, 0.62);
   font-size: 11px;
   font-style: normal;
@@ -844,31 +859,28 @@ h3 {
 }
 
 .project-card-copy strong {
-  grid-area: title;
   font-family: var(--serif-font);
-  font-size: clamp(42px, 6.3vw, 94px);
+  font-size: clamp(48px, 7.2vw, 104px);
   font-weight: 380;
-  line-height: 0.96;
+  line-height: 0.98;
   white-space: normal;
   word-break: keep-all;
+  max-width: 8em;
 }
 
 .project-card-copy small {
-  grid-area: summary;
   color: var(--muted);
-  max-width: 360px;
+  max-width: 430px;
   font-size: clamp(13px, 1.14vw, 15px);
-  line-height: 2;
+  line-height: 2.05;
 }
 
 .project-open {
-  grid-area: open;
   display: inline-flex;
   width: fit-content;
   align-items: center;
   gap: 8px;
-  align-self: end;
-  margin-top: 10px;
+  margin-top: clamp(8px, 1.2vw, 18px);
   border: 0;
   border-radius: 0;
   padding: 0 0 8px;
@@ -2309,14 +2321,15 @@ h3 {
 
   .project-grid {
     grid-template-columns: 1fr;
-    gap: 0;
+    gap: 34px;
   }
 
   .project-card {
     grid-template-columns: 1fr;
-    gap: 22px;
+    gap: 24px;
     min-height: 0;
-    padding: 34px 0;
+    padding: 22px;
+    border-radius: 26px;
   }
 
   .project-card:nth-child(even) {
@@ -2332,28 +2345,25 @@ h3 {
   }
 
   .project-cover-stack {
-    height: clamp(170px, 48vw, 260px);
+    height: clamp(240px, 70vw, 380px);
+    min-height: 0;
   }
 
   .project-card-copy {
-    grid-template-columns: 34px minmax(0, 1fr);
-    grid-template-areas:
-      "index meta"
-      "index title"
-      "index summary"
-      "index open";
-    column-gap: 16px;
-    row-gap: 12px;
+    display: flex;
+    gap: 13px;
     max-width: 100%;
     padding-bottom: 0;
   }
 
   .project-card-copy::before {
     letter-spacing: 0.18em;
+    padding-top: 12px;
   }
 
   .project-card-copy strong {
-    font-size: clamp(34px, 11vw, 50px);
+    font-size: clamp(38px, 12vw, 58px);
+    max-width: 100%;
   }
 
   .lightbox {
@@ -2507,7 +2517,8 @@ h3 {
   }
 
   .project-cover-stack {
-    height: min(84vw, 390px);
+    height: min(74vw, 360px);
+    min-height: 0;
   }
 
   .project-card-copy {

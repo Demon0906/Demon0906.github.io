@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import crypto from "node:crypto";
 
 const ROOT = process.cwd();
 const PHOTOS_DIR = path.join(ROOT, "assets", "photos");
@@ -7,7 +8,8 @@ const OUTPUT = path.join(ROOT, "gallery-data.js");
 
 const IMAGE_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".webp", ".gif"]);
 
-const sectionOrder = ["portrait", "nature", "city", "daily", "stories"];
+const sectionOrder = ["portrait", "nature", "architecture", "city", "daily", "stories"];
+const portraitCollectionOrder = ["相机人像", "手机人像"];
 
 const sectionConfig = {
   人像摄影: {
@@ -19,6 +21,11 @@ const sectionConfig = {
     id: "nature",
     titleKey: "natureTitle",
     introKey: "natureIntro",
+  },
+  人文建筑: {
+    id: "architecture",
+    titleKey: "architectureTitle",
+    introKey: "architectureIntro",
   },
   城市印象: {
     id: "city",
@@ -38,31 +45,31 @@ const sectionConfig = {
 };
 
 const collectionMeta = {
-  "人像摄影/模特展": {
-    id: "portrait-model-show",
-    collection: "model-show",
+  "人像摄影/相机人像": {
+    id: "portrait-camera",
+    collection: "camera",
     date: "Portrait",
-    place: { zh: "人像摄影", en: "Portrait", ja: "人物写真" },
-    title: { zh: "模特展", en: "Model Exhibition", ja: "モデル展" },
+    place: { zh: "相机人像", en: "Camera Portrait", ja: "カメラ人物" },
+    title: { zh: "相机肖像", en: "Camera Portraits", ja: "カメラ肖像" },
     summary: {
-      zh: "人物、姿态、衣着与现场光线彼此停靠，形成一段可以慢慢阅读的肖像章节。",
-      en: "A curated portrait chapter where posture, styling, setting, and light form a fuller visual narrative.",
-      ja: "姿勢、装い、場所、光が重なり合い、人物の存在感をひとつの物語として見せる章。",
+      zh: "以相机记录人物、姿态与光线的关系，让肖像成为一页可以停留阅读的影像章节。",
+      en: "Camera portraits shaped by posture, light, and the quiet distance between figure and space.",
+      ja: "人物、姿勢、光の関係をカメラで残し、ゆっくり読める肖像の章にする。",
     },
-    href: "portrait.html?collection=model-show",
+    href: "portrait.html?collection=camera",
   },
-  "人像摄影/Live（手机）": {
-    id: "portrait-live",
-    collection: "live",
+  "人像摄影/手机人像": {
+    id: "portrait-mobile",
+    collection: "mobile",
     date: "Portrait",
-    place: { zh: "现场人像", en: "Live Portrait", ja: "ライブポートレート" },
-    title: { zh: "Live（手机）", en: "Live Mobile", ja: "Live（スマホ）" },
+    place: { zh: "手机人像", en: "Mobile Portrait", ja: "スマホ人物" },
+    title: { zh: "随身肖像", en: "Mobile Portraits", ja: "スマホ肖像" },
     summary: {
-      zh: "不预设太多，只把现场的光线、表情与行动轨迹留在原本发生的地方。",
-      en: "Portraits shaped by available light, candid movement, and the atmosphere of the place.",
-      ja: "その場の光、表情、動きの余韻を残し、実際の環境の中で人物を自然に浮かび上がらせる章。",
+      zh: "用随身镜头靠近现场，把表情、行动和日常光线里稍纵即逝的真实留下。",
+      en: "Mobile portraits kept close to the scene, preserving gestures, expressions, and available light.",
+      ja: "身近なレンズで現場に近づき、表情、動き、その場の光を残す。",
     },
-    href: "portrait.html?collection=live",
+    href: "portrait.html?collection=mobile",
   },
 };
 
@@ -111,15 +118,26 @@ const projectMeta = {
       ja: "花弁の縁、色の移ろい、近づいた細部が、花に肖像のような表情を与える。",
     },
   },
-  "自然风光/植物展": {
-    id: "nature-flower-show",
-    title: { zh: "植物展", en: "Botanical Study", ja: "植物展" },
+  "自然风光/绣球花": {
+    id: "nature-hydrangea",
+    title: { zh: "绣球花", en: "Hydrangea Notes", ja: "紫陽花" },
     date: "Nature",
     place: { zh: "植物现场", en: "Botanical Scene", ja: "植物の展示" },
     summary: {
-      zh: "叶片、花序与展场光线彼此叠合，让植物呈现出近乎静物画的秩序。",
-      en: "Leaves, blossoms, and exhibition light overlap into a quiet still-life order.",
-      ja: "葉、花序、展示空間の光が重なり、静物画のような秩序を見せる。",
+      zh: "绣球在湿润空气里慢慢换色，花团像季节留下的柔软注脚。",
+      en: "Hydrangeas shifting color in humid air, like soft notes left by the season.",
+      ja: "湿った空気の中で色を変える紫陽花が、季節の柔らかな注釈になる。",
+    },
+  },
+  人文建筑: {
+    id: "architecture-human-structures",
+    title: { zh: "人文建筑", en: "Built Memory", ja: "建築の記憶" },
+    date: "Built Space",
+    place: { zh: "建筑与人文", en: "Architecture", ja: "建築" },
+    summary: {
+      zh: "建筑不是静止的背景，它保存人的尺度、时间的痕迹和光经过空间时留下的秩序。",
+      en: "Architecture is not a still backdrop; it keeps human scale, traces of time, and the order of light.",
+      ja: "建築は静かな背景ではなく、人の尺度、時間の痕跡、光の秩序を残す場所。",
     },
   },
   城市印象: {
@@ -166,7 +184,7 @@ const projectMeta = {
       ja: "窓影、壁、通り過ぎる光が、日常の空間を静かな幾何へ変える。",
     },
   },
-  摄影故事: {
+  "摄影故事/小熊摄影故事": {
     id: "story-light-notes",
     title: { zh: "熊大：一只小熊的远方", en: "Bear Da: A Small Companion", ja: "熊大：小さな旅の友" },
     date: "Journal",
@@ -186,6 +204,26 @@ const projectMeta = {
       ],
     },
   },
+  "摄影故事/毕业季摄影故事": {
+    id: "story-graduation-season",
+    title: { zh: "毕业季：把告别留在光里", en: "Graduation Season", ja: "卒業の季節" },
+    date: "Journal",
+    place: { zh: "摄影故事", en: "Photo Story", ja: "写真ストーリー" },
+    summary: {
+      zh: "毕业不是一个突然结束的句号，而是一段在镜头前被慢慢整理的告别。",
+      en: "Graduation is not an abrupt ending, but a farewell slowly arranged in front of the lens.",
+      ja: "卒業は突然の終わりではなく、レンズの前でゆっくり整えられる別れ。",
+    },
+    story: {
+      kicker: "A season of leaving",
+      title: "毕业季：把告别留在光里",
+      paragraphs: [
+        "毕业季的照片总带着一种微妙的双重性：一边是明亮的笑容，一边是即将离开的预感。那些校门、树影、走廊和熟悉的角落，在镜头里突然变得比平时更清晰。",
+        "我希望这组照片不只是纪念某一天，而是保存一段时间的气味。衣服被风吹动的瞬间，朋友之间不自觉靠近的姿态，回头看校园时停顿的一秒，都是告别真正发生的地方。",
+        "拍毕业照时，最重要的不是把人拍得多正式，而是让照片在多年之后还能带回当时的心情：年轻、期待、舍不得，也终于准备好走向下一段路。",
+      ],
+    },
+  },
 };
 
 const groupDescriptions = {
@@ -193,6 +231,8 @@ const groupDescriptions = {
   Mio: "甜美与松弛感很自然地并存，适合明亮街景、咖啡馆和带有日常呼吸感的画面。",
   Nero: "气质干净利落，眼神和姿态都有很强的画面支点，适合街道、树影和更克制的色调。",
   Celia: "明亮、轻盈，带有很好的叙事亲和力，适合游园、花色与更有生命力的场景。",
+  CheriJanie: "自然、明亮，也带一点轻盈的日常感；适合在街景、花影和柔和光线里呈现松弛的现场气息。",
+  Model: "更像一组开放的肖像档案，保留不同人物在不同场景里的轮廓、情绪和光线。",
   美丽酥酥: "柔软、亲切，也有很好的画面适应力；适合用明亮背景和轻盈色彩保留人物的甜感。",
 };
 
@@ -221,9 +261,17 @@ function listDirs(dir) {
 }
 
 function listImages(dir) {
+  const seen = new Set();
   return listEntries(dir)
     .filter((entry) => entry.isFile() && isImage(entry.name))
-    .map((entry) => toAssetPath(path.join(dir, entry.name)))
+    .map((entry) => path.join(dir, entry.name))
+    .filter((filePath) => {
+      const hash = crypto.createHash("sha1").update(fs.readFileSync(filePath)).digest("hex");
+      if (seen.has(hash)) return false;
+      seen.add(hash);
+      return true;
+    })
+    .map((filePath) => toAssetPath(filePath))
     .sort(compareName);
 }
 
@@ -267,6 +315,7 @@ function summaryFor(sectionName, projectName) {
   const map = {
     人像摄影: `围绕 ${projectName} 展开的人物章节，保留光线、空间与情绪之间的细微变化。`,
     自然风光: `${projectName} 里的颜色、风与季节痕迹，被整理成一组适合慢慢观看的自然手稿。`,
+    人文建筑: `${projectName} 记录建筑、街区与人的尺度，让空间里的光和时间成为画面的一部分。`,
     城市印象: `${projectName} 里的街道、建筑与光线，构成旅途中关于城市的影像注脚。`,
     日常生活: `${projectName} 记录了日常里不经意出现的温柔、灵动和轻盈片刻。`,
     摄影故事: `${projectName} 从一次拍摄现场出发，把图片和文字整理成一段可以阅读的影像故事。`,
@@ -293,6 +342,12 @@ function extractDominantPhotoInfo(photos) {
 function buildPortraitCollections() {
   const portraitDir = path.join(PHOTOS_DIR, "人像摄影");
   return listDirs(portraitDir)
+    .sort((a, b) => {
+      const ai = portraitCollectionOrder.indexOf(a);
+      const bi = portraitCollectionOrder.indexOf(b);
+      if (ai !== -1 || bi !== -1) return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+      return compareName(a, b);
+    })
     .map((collectionName) => {
       const dir = path.join(portraitDir, collectionName);
       const key = `人像摄影/${collectionName}`;
