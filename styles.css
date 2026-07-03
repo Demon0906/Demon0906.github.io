@@ -1980,10 +1980,11 @@ h3 {
 
 .story-essay {
   display: grid;
-  grid-template-columns: minmax(280px, 0.92fr) minmax(260px, 0.66fr);
-  gap: clamp(34px, 6vw, 86px);
+  grid-template-columns: minmax(260px, 0.68fr) minmax(280px, 0.72fr);
+  gap: clamp(34px, 5vw, 72px);
   align-items: center;
   margin-top: 34px;
+  width: min(1040px, 100%);
 }
 
 .story-essay-photo {
@@ -1996,8 +1997,9 @@ h3 {
 
 .story-essay-photo img {
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 5 / 4;
   object-fit: cover;
+  object-position: 50% 42%;
 }
 
 .story-essay-copy {
@@ -2017,16 +2019,17 @@ h3 {
 
 .story-essay-copy h3 {
   font-family: var(--serif-font);
-  font-size: clamp(32px, 4vw, 56px);
+  font-size: clamp(28px, 3vw, 42px);
   font-weight: 360;
+  line-height: 1.22;
 }
 
 .story-essay-copy p {
-  max-width: 440px;
+  max-width: 500px;
   margin: 0;
   color: var(--muted);
-  font-size: 15px;
-  line-height: 2.08;
+  font-size: 14px;
+  line-height: 2.02;
 }
 
 .detail-section {
