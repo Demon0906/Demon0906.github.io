@@ -1,7 +1,7 @@
 const translations = {
   zh: {
     navPortfolio: "影像项目",
-    navBooking: "预约拍摄",
+    navBooking: "联系",
     navAbout: "关于",
     navModels: "认识模特",
     aboutMenuMe: "关于我",
@@ -11,7 +11,7 @@ const translations = {
     heroTitle: "Demon Atelier",
     heroCopy: "把短暂的光、安静的人和路过的风景，装订成可以反复翻阅的影像页。",
     heroPortfolio: "Open Journal",
-    heroBooking: "预约拍摄",
+    heroBooking: "Contact",
     privacyNote: "本网页所有照片均由作者本人拍摄，人像照片已经模特本人同意，未经许可不得下载与转发，请尊重影像隐私与版权。",
     privacyToast: "作品仅供在线预览，请勿保存或截图传播。",
     openProject: "Open Journal",
@@ -40,20 +40,20 @@ const translations = {
     contactSocial: "社交媒体",
     wechatSame: "微信同",
     swipeHint: "滑动查看",
-    bookingEyebrow: "Book a Session",
-    bookingTitle: "预约拍摄问卷",
+    bookingEyebrow: "Contact Note",
+    bookingTitle: "拍摄沟通",
     bookingName: "姓名",
     bookingContact: "联系方式",
     bookingDate: "预约拍摄日期与时间",
     bookingTheme: "期望拍摄主题",
     bookingLocation: "拍摄地点",
     bookingNotes: "备注",
-    bookingSubmit: "提交预约信息",
-    bookingSuccess: "您的预约信息已提交，我们将尽快与您联系，感谢您的预约。",
+    bookingSubmit: "发送沟通信息",
+    bookingSuccess: "你的信息已提交，我会尽快与你联系。谢谢你的信任。",
   },
   en: {
     navPortfolio: "Projects",
-    navBooking: "Book",
+    navBooking: "Contact",
     navAbout: "About",
     navModels: "Models",
     aboutMenuMe: "About Me",
@@ -63,7 +63,7 @@ const translations = {
     heroTitle: "Demon Atelier",
     heroCopy: "A visual book of passing light, quiet figures, and places worth returning to.",
     heroPortfolio: "Open Journal",
-    heroBooking: "Book a Session",
+    heroBooking: "Contact",
     privacyNote: "All photos on this website were taken by the author. Portrait images are published with model consent. Downloading or reposting without permission is prohibited. Please respect image privacy and copyright.",
     privacyToast: "Images are for online preview only. Please do not save or redistribute screenshots.",
     openProject: "Open Journal",
@@ -92,20 +92,20 @@ const translations = {
     contactSocial: "Social Media",
     wechatSame: "WeChat available",
     swipeHint: "Swipe",
-    bookingEyebrow: "Book a Session",
-    bookingTitle: "Session Request",
+    bookingEyebrow: "Contact Note",
+    bookingTitle: "Session Note",
     bookingName: "Name",
     bookingContact: "Contact",
     bookingDate: "Date and time",
     bookingTheme: "Preferred theme",
     bookingLocation: "Shooting location",
     bookingNotes: "Notes",
-    bookingSubmit: "Submit Request",
-    bookingSuccess: "Your request has been submitted. We will contact you soon. Thank you.",
+    bookingSubmit: "Send Note",
+    bookingSuccess: "Your note has been submitted. I will contact you soon. Thank you.",
   },
   ja: {
     navPortfolio: "作品プロジェクト",
-    navBooking: "撮影予約",
+    navBooking: "Contact",
     navAbout: "紹介",
     navModels: "モデル",
     aboutMenuMe: "自己紹介",
@@ -115,7 +115,7 @@ const translations = {
     heroTitle: "Demon Atelier",
     heroCopy: "光、人物、場所、そして何度も見返したくなる瞬間を静かに集めています。",
     heroPortfolio: "Open Journal",
-    heroBooking: "撮影予約",
+    heroBooking: "Contact",
     privacyNote: "本サイトの写真はすべて作者本人が撮影したものです。人物写真はモデル本人の同意を得て掲載しています。許可なく保存・転載しないでください。写真のプライバシーと著作権を尊重してください。",
     privacyToast: "作品はオンラインプレビュー専用です。保存やスクリーンショットの再配布はご遠慮ください。",
     openProject: "Open Journal",
@@ -144,16 +144,16 @@ const translations = {
     contactSocial: "SNS",
     wechatSame: "WeChat可",
     swipeHint: "スワイプ",
-    bookingEyebrow: "Book a Session",
-    bookingTitle: "撮影予約フォーム",
+    bookingEyebrow: "Contact Note",
+    bookingTitle: "撮影相談",
     bookingName: "お名前",
     bookingContact: "連絡先",
     bookingDate: "撮影希望日時",
     bookingTheme: "希望テーマ",
     bookingLocation: "撮影場所",
     bookingNotes: "備考",
-    bookingSubmit: "予約内容を送信",
-    bookingSuccess: "予約情報を送信しました。確認後、できるだけ早くご連絡いたします。",
+    bookingSubmit: "相談内容を送信",
+    bookingSuccess: "内容を送信しました。確認後、できるだけ早くご連絡いたします。",
   },
 };
 
@@ -321,6 +321,7 @@ const bookingModalClose = document.querySelector(".modal-close");
 const bookingTriggers = document.querySelectorAll(".booking-trigger");
 const formSuccess = document.querySelector("#form-success");
 const privacyToast = document.querySelector("#privacy-toast");
+const siteHeader = document.querySelector(".site-header");
 let currentLanguage = "zh";
 let toastTimer;
 let lightboxState = { sectionId: "", projectId: "", photoIndex: 0 };
@@ -496,6 +497,13 @@ function showPrivacyToast() {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => privacyToast.classList.remove("is-visible"), 2600);
 }
+
+function updateHeaderState() {
+  siteHeader?.classList.toggle("is-scrolled", window.scrollY > 28);
+}
+
+window.addEventListener("scroll", updateHeaderState, { passive: true });
+updateHeaderState();
 
 languageButtons.forEach((button) => {
   button.addEventListener("click", () => applyLanguage(button.dataset.lang));
