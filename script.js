@@ -37,6 +37,7 @@ const translations = {
     aboutDetailCta: "阅读关于我",
     contactEyebrow: "Contact",
     contactTitle: "联系方式",
+    contactIntro: "如果某一组照片让你想起一段光线，欢迎写信来聊。拍摄、合作与价格咨询都可以从一封简单的邮件开始。",
     contactEmail: "邮箱",
     contactPhone: "联系电话",
     contactSocial: "社交媒体",
@@ -91,6 +92,7 @@ const translations = {
     aboutDetailCta: "Read Full Profile",
     contactEyebrow: "Contact",
     contactTitle: "Contact",
+    contactIntro: "If a series reminds you of a certain light, feel free to write. Sessions, collaborations, and inquiries can begin with a simple note.",
     contactEmail: "Email",
     contactPhone: "Phone",
     contactSocial: "Social Media",
@@ -145,6 +147,7 @@ const translations = {
     aboutDetailCta: "詳しい紹介を見る",
     contactEyebrow: "Contact",
     contactTitle: "連絡先",
+    contactIntro: "気になる光や作品があれば、気軽にご連絡ください。撮影、コラボレーション、ご相談は一通のメッセージから始められます。",
     contactEmail: "メール",
     contactPhone: "電話",
     contactSocial: "SNS",
@@ -353,7 +356,7 @@ function renderProjectCard(section, project, index) {
   const mediaPath = window.thumbImage || window.localImage || ((src) => src);
   const fullMediaPath = window.localImage || ((src) => src);
   const coverUrl = mediaPath(project.photos[0]);
-  const cardClass = `project-card project-card--${section.id}`;
+  const cardClass = `series-card series-card--${section.id}`;
   const coverImages = project.photos
     .map(
       (src, index) => `
@@ -371,12 +374,13 @@ function renderProjectCard(section, project, index) {
     .join("");
   return `
     <button class="${cardClass}" type="button" data-section="${section.id}" data-project="${project.id}" id="${project.id}" aria-label="${escapeHtml(localized(project.title))}" style="--cover-bg: url('${coverUrl}');">
-      <span class="project-cover-shell">
-        <span class="project-cover-stack">${coverImages}</span>
+      <span class="series-index">${String(index + 1).padStart(2, "0")}</span>
+      <span class="series-media">
+        <span class="project-cover-stack series-cover-stack">${coverImages}</span>
         <span class="project-swipe-hint">${t("swipeHint")}</span>
       </span>
-      <span class="project-card-copy">
-        <em>Chapter ${String(index + 1).padStart(2, "0")} · ${localized(project.place)}</em>
+      <span class="series-copy">
+        <em>${localized(project.place)}</em>
         <strong>${localized(project.title)}</strong>
         <small>${localized(project.summary)}</small>
         <span class="project-open">${t("openProject")}<span aria-hidden="true">↗</span></span>
@@ -439,7 +443,7 @@ function initCoverAutoScroll() {
     let index = 0;
     const updateBackground = () => {
       const activeImage = stack.children[index];
-      const card = stack.closest(".project-card");
+      const card = stack.closest(".project-card, .series-card");
       if (!activeImage || !card) return;
       card.style.setProperty("--cover-bg", `url("${activeImage.currentSrc || activeImage.src}")`);
     };
@@ -617,7 +621,7 @@ document.addEventListener("click", (event) => {
     return;
   }
 
-  const projectCard = event.target.closest(".project-card");
+  const projectCard = event.target.closest(".project-card, .series-card");
   if (projectCard) {
     const project = getProject(projectCard.dataset.section, projectCard.dataset.project);
     if (project?.href) {
