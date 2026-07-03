@@ -482,7 +482,11 @@ function openLightbox(sectionId, projectId, photoIndex) {
   lightboxImage.alt = localized(project.title);
   lightboxTitle.textContent = photoInfo?.title || localized(project.title);
   lightboxMeta.textContent = photoInfo?.meta || `${project.date} / ${localized(project.place)}`;
-  lightbox.showModal();
+  if (!lightbox.open) lightbox.showModal();
+  requestAnimationFrame(() => {
+    lightbox.scrollTop = 0;
+    lightboxImage.scrollIntoView({ block: "center", inline: "center" });
+  });
 }
 
 function moveLightbox(direction) {

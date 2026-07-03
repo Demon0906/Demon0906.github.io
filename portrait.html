@@ -146,7 +146,11 @@
         lightboxImage.alt = group.title;
         lightboxTitle.textContent = group.title;
         lightboxMeta.textContent = hasInfo ? info.meta || info.caption : `${getText(activeCollection.title)} / ${group.title}`;
-        lightbox.showModal();
+        if (!lightbox.open) lightbox.showModal();
+        requestAnimationFrame(() => {
+          lightbox.scrollTop = 0;
+          lightboxImage.scrollIntoView({ block: "center", inline: "center" });
+        });
       }
 
       function movePortraitLightbox(direction) {

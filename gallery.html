@@ -94,7 +94,11 @@
         lightboxImage.alt = getText(project.title);
         lightboxTitle.textContent = getText(project.title);
         lightboxMeta.textContent = caption.meta || caption.detail;
-        lightbox.showModal();
+        if (!lightbox.open) lightbox.showModal();
+        requestAnimationFrame(() => {
+          lightbox.scrollTop = 0;
+          lightboxImage.scrollIntoView({ block: "center", inline: "center" });
+        });
       }
 
       function moveLightbox(direction) {
