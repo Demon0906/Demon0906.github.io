@@ -585,14 +585,14 @@ h3 {
   right: -2px;
   width: 1px;
   height: calc(100% - 6px);
-  background: linear-gradient(180deg, rgba(111, 127, 137, 0.16), rgba(111, 127, 137, 0.42), rgba(111, 127, 137, 0.08));
+  background: linear-gradient(180deg, rgba(138, 121, 103, 0.1), rgba(138, 121, 103, 0.34), rgba(138, 121, 103, 0.08));
 }
 
 .group-heading p:last-child {
   justify-self: start;
   max-width: 360px;
   margin-bottom: 0;
-  color: #657177;
+  color: var(--muted);
   font-size: 14px;
   font-weight: 430;
   line-height: 2.05;
@@ -600,17 +600,17 @@ h3 {
 
 .project-grid {
   display: grid;
-  gap: clamp(132px, 16vw, 230px);
+  gap: clamp(118px, 15vw, 214px);
   counter-reset: project;
 }
 
 .project-card {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.28fr) minmax(260px, 0.58fr);
-  align-items: end;
-  gap: clamp(46px, 8vw, 110px);
-  overflow: hidden;
+  grid-template-columns: minmax(0, 0.94fr) minmax(280px, 0.54fr);
+  align-items: center;
+  gap: clamp(42px, 7vw, 96px);
+  overflow: visible;
   min-height: 0;
   border: 0;
   border-radius: 0;
@@ -639,17 +639,7 @@ h3 {
 }
 
 .project-card::after {
-  content: counter(project, decimal-leading-zero);
-  position: absolute;
-  top: -0.22em;
-  right: clamp(-8px, -1vw, 0px);
-  z-index: 0;
-  color: rgba(51, 66, 72, 0.055);
-  font-family: var(--latin-art-font);
-  font-size: clamp(84px, 12vw, 184px);
-  font-weight: 380;
-  line-height: 1;
-  pointer-events: none;
+  display: none;
 }
 
 .project-card--portrait::before {
@@ -679,7 +669,7 @@ h3 {
 }
 
 .project-card:nth-child(even) {
-  grid-template-columns: minmax(260px, 0.58fr) minmax(0, 1.28fr);
+  grid-template-columns: minmax(280px, 0.54fr) minmax(0, 0.94fr);
 }
 
 .project-card:nth-child(even) .project-cover-shell {
@@ -692,6 +682,10 @@ h3 {
   grid-row: 1;
   justify-self: end;
   text-align: right;
+}
+
+.project-card:nth-child(even) .project-card-copy::before {
+  justify-self: end;
 }
 
 .project-card:nth-child(even) .project-card-copy small {
@@ -710,7 +704,11 @@ h3 {
   position: relative;
   display: block;
   min-width: 0;
-  padding: 0;
+  padding: clamp(10px, 1.2vw, 16px);
+  border: 1px solid rgba(138, 121, 103, 0.13);
+  background: rgba(250, 248, 245, 0.46);
+  box-shadow: 0 30px 88px rgba(74, 66, 59, 0.08);
+  backdrop-filter: blur(18px);
 }
 
 .project-cover-shell::before,
@@ -726,30 +724,30 @@ h3 {
 }
 
 .project-cover-shell::after {
-  top: 28px;
-  right: -14px;
+  top: 34px;
+  right: -18px;
   width: 1px;
-  height: calc(100% - 56px);
-  background: linear-gradient(180deg, rgba(128, 142, 152, 0), rgba(128, 142, 152, 0.2), rgba(128, 142, 152, 0));
+  height: calc(100% - 68px);
+  background: linear-gradient(180deg, rgba(138, 121, 103, 0), rgba(138, 121, 103, 0.2), rgba(138, 121, 103, 0));
 }
 
 .project-cover-stack {
   display: flex;
-  height: clamp(460px, 56vw, 720px);
+  height: clamp(360px, 43vw, 560px);
   overflow: hidden;
   overflow-x: auto;
   gap: 0;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
-  border-radius: 2px;
+  border-radius: 1px;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.42), rgba(235, 242, 241, 0.18)),
-    rgba(255, 255, 255, 0.28);
-  box-shadow: 0 44px 120px rgba(46, 54, 60, 0.12);
+    linear-gradient(135deg, rgba(250, 248, 245, 0.48), rgba(232, 226, 218, 0.2)),
+    rgba(255, 255, 255, 0.2);
+  box-shadow: none;
 }
 
 .project-card:not(:first-child) {
-  width: min(960px, 100%);
+  width: min(1040px, 100%);
 }
 
 .project-card:nth-child(odd):not(:first-child) {
@@ -761,7 +759,7 @@ h3 {
 }
 
 .project-card:not(:first-child) .project-cover-stack {
-  height: clamp(360px, 42vw, 560px);
+  height: clamp(300px, 34vw, 460px);
 }
 
 .project-cover-stack::-webkit-scrollbar {
@@ -780,9 +778,24 @@ h3 {
 .project-card-copy {
   display: grid;
   align-content: start;
-  gap: 22px;
-  max-width: 380px;
-  padding: 0 0 7vh;
+  gap: 18px;
+  max-width: 340px;
+  padding: 0;
+}
+
+.project-card-copy::before {
+  content: "Exhibition " counter(project, decimal-leading-zero);
+  display: block;
+  width: fit-content;
+  border-top: 1px solid rgba(138, 121, 103, 0.34);
+  padding-top: 12px;
+  color: var(--quiet);
+  font-family: var(--sans-font);
+  font-size: 10px;
+  font-weight: 760;
+  letter-spacing: 0.22em;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .project-swipe-hint {
@@ -793,8 +806,8 @@ h3 {
   border: 1px solid rgba(255, 255, 255, 0.72);
   border-radius: 999px;
   padding: 5px 9px;
-  background: rgba(248, 250, 250, 0.64);
-  color: rgba(73, 88, 98, 0.82);
+  background: rgba(250, 248, 245, 0.66);
+  color: rgba(91, 80, 70, 0.82);
   font-size: 10px;
   font-weight: 760;
   letter-spacing: 0.08em;
@@ -802,7 +815,7 @@ h3 {
 }
 
 .project-card-copy em {
-  color: rgba(101, 113, 119, 0.62);
+  color: rgba(118, 112, 106, 0.68);
   font-size: 10px;
   font-style: normal;
   font-weight: 600;
@@ -812,7 +825,7 @@ h3 {
 
 .project-card-copy strong {
   font-family: var(--serif-font);
-  font-size: clamp(34px, 3.7vw, 52px);
+  font-size: clamp(30px, 3.1vw, 44px);
   font-weight: 380;
   line-height: 1.08;
   white-space: nowrap;
@@ -821,9 +834,9 @@ h3 {
 
 .project-card-copy small {
   color: var(--muted);
-  max-width: 360px;
+  max-width: 320px;
   font-size: clamp(14px, 1.24vw, 15px);
-  line-height: 2.15;
+  line-height: 2.05;
 }
 
 .project-open {
@@ -850,7 +863,7 @@ h3 {
   height: 20px;
   place-items: center;
   border-radius: 50%;
-  background: rgba(111, 127, 137, 0.08);
+  background: rgba(138, 121, 103, 0.11);
   color: var(--ink);
 }
 
@@ -2284,12 +2297,6 @@ h3 {
     justify-self: start;
   }
 
-  .project-card::after {
-    top: -42px;
-    right: 0;
-    font-size: clamp(58px, 18vw, 104px);
-  }
-
   .project-cover-stack {
     height: clamp(310px, 88vw, 520px);
   }
@@ -2297,6 +2304,10 @@ h3 {
   .project-card-copy {
     max-width: 100%;
     padding-bottom: 0;
+  }
+
+  .project-card-copy::before {
+    letter-spacing: 0.18em;
   }
 
   .project-card-copy strong {
