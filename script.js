@@ -390,6 +390,7 @@ function renderProjectCard(section, project, index) {
 }
 
 function renderSection(section) {
+  const featuredProjects = section.id === "portrait" ? section.projects.slice(0, 2) : section.projects.slice(0, 1);
   return `
     <section class="portfolio-group project-section" id="${section.id}-section" aria-labelledby="${section.id}-title">
       <div class="group-heading">
@@ -400,7 +401,7 @@ function renderSection(section) {
         <p>${t(section.introKey)}</p>
       </div>
       <div class="project-grid">
-        ${section.projects.map((project, index) => renderProjectCard(section, project, index)).join("")}
+        ${featuredProjects.map((project, index) => renderProjectCard(section, project, index)).join("")}
       </div>
     </section>
   `;
