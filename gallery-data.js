@@ -38,14 +38,14 @@ const portraitCollectionList = [
       "ja": "人物写真"
     },
     "title": {
-      "zh": "模特展",
-      "en": "Model Exhibition",
-      "ja": "モデル展"
+      "zh": "相机人像",
+      "en": "Camera Portraits",
+      "ja": "カメラポートレート"
     },
     "summary": {
-      "zh": "人物、姿态、衣着与现场光线彼此停靠，形成一段可以慢慢阅读的肖像章节。",
-      "en": "A curated portrait chapter where posture, styling, setting, and light form a fuller visual narrative.",
-      "ja": "姿勢、装い、場所、光が重なり合い、人物の存在感をひとつの物語として見せる章。"
+      "zh": "以相机记录人物、姿态与光线的关系，让肖像像一页可以停留阅读的影像章节。",
+      "en": "Camera-made portraits where posture, styling, setting, and light settle into a slower visual chapter.",
+      "ja": "カメラで人物、姿勢、装い、光の関係を写し、ゆっくり読める肖像の章にする。"
     },
     "href": "portrait.html?collection=model-show",
     "photos": [
@@ -129,14 +129,14 @@ const portraitCollectionList = [
       "ja": "ライブポートレート"
     },
     "title": {
-      "zh": "Live（手机）",
-      "en": "Live Mobile",
-      "ja": "Live（スマホ）"
+      "zh": "手机人像",
+      "en": "Mobile Portraits",
+      "ja": "スマホポートレート"
     },
     "summary": {
-      "zh": "不预设太多，只把现场的光线、表情与行动轨迹留在原本发生的地方。",
-      "en": "Portraits shaped by available light, candid movement, and the atmosphere of the place.",
-      "ja": "その場の光、表情、動きの余韻を残し、実際の環境の中で人物を自然に浮かび上がらせる章。"
+      "zh": "用手机保留更靠近现场的表情与行动轨迹，让人物停在真实发生的日常光线里。",
+      "en": "Mobile portraits kept close to the scene, preserving available light, gestures, and candid movement.",
+      "ja": "スマホでその場に近い表情と動きを残し、日常の光の中に人物を留める。"
     },
     "href": "portrait.html?collection=live",
     "photos": [
@@ -472,14 +472,14 @@ const sitePortfolioSections = [
           "ja": "人物写真"
         },
         "title": {
-          "zh": "模特展",
-          "en": "Model Exhibition",
-          "ja": "モデル展"
+          "zh": "相机人像",
+          "en": "Camera Portraits",
+          "ja": "カメラポートレート"
         },
         "summary": {
-          "zh": "人物、姿态、衣着与现场光线彼此停靠，形成一段可以慢慢阅读的肖像章节。",
-          "en": "A curated portrait chapter where posture, styling, setting, and light form a fuller visual narrative.",
-          "ja": "姿勢、装い、場所、光が重なり合い、人物の存在感をひとつの物語として見せる章。"
+          "zh": "以相机记录人物、姿态与光线的关系，让肖像像一页可以停留阅读的影像章节。",
+          "en": "Camera-made portraits where posture, styling, setting, and light settle into a slower visual chapter.",
+          "ja": "カメラで人物、姿勢、装い、光の関係を写し、ゆっくり読める肖像の章にする。"
         },
         "href": "portrait.html?collection=model-show",
         "photos": [
@@ -563,14 +563,14 @@ const sitePortfolioSections = [
           "ja": "ライブポートレート"
         },
         "title": {
-          "zh": "Live（手机）",
-          "en": "Live Mobile",
-          "ja": "Live（スマホ）"
+          "zh": "手机人像",
+          "en": "Mobile Portraits",
+          "ja": "スマホポートレート"
         },
         "summary": {
-          "zh": "不预设太多，只把现场的光线、表情与行动轨迹留在原本发生的地方。",
-          "en": "Portraits shaped by available light, candid movement, and the atmosphere of the place.",
-          "ja": "その場の光、表情、動きの余韻を残し、実際の環境の中で人物を自然に浮かび上がらせる章。"
+          "zh": "用手机保留更靠近现场的表情与行动轨迹，让人物停在真实发生的日常光线里。",
+          "en": "Mobile portraits kept close to the scene, preserving available light, gestures, and candid movement.",
+          "ja": "スマホでその場に近い表情と動きを残し、日常の光の中に人物を留める。"
         },
         "href": "portrait.html?collection=live",
         "photos": [
