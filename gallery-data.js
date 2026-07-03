@@ -56,7 +56,7 @@ const portraitCollectionList = [
       "assets/photos/人像摄影/模特展/模特：LI.jpg",
       "assets/photos/人像摄影/模特展/模特：Mio；拍摄时间：2026.5；拍摄地点：日本 横滨.jpg",
       "assets/photos/人像摄影/模特展/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg",
-      "assets/photos/人像摄影/模特展/模特：YEYE.jpg"
+      "assets/photos/人像摄影/模特展/模特：YEYE_.jpg"
     ],
     "groups": [
       {
@@ -97,6 +97,16 @@ const portraitCollectionList = [
           "assets/photos/人像摄影/模特展/Mio/模特：Mio；拍摄时间：2026.5、拍摄地点：日本 横滨；.jpg",
           "assets/photos/人像摄影/模特展/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：日本横滨.jpg",
           "assets/photos/人像摄影/模特展/Mio/拍摄时间：20626.5；模特：Mio；拍摄地点：日本横滨.jpg"
+        ]
+      },
+      {
+        "id": "model-show-model",
+        "title": "Model",
+        "description": "围绕 Model 展开的人物章节，保留光线、空间与情绪之间的细微变化。",
+        "photos": [
+          "assets/photos/人像摄影/模特展/Model/模特：闻轩；拍摄地点：芝公园.jpg",
+          "assets/photos/人像摄影/模特展/Model/模特：LI.jpg",
+          "assets/photos/人像摄影/模特展/Model/模特：YEYE.jpg"
         ]
       },
       {
@@ -163,6 +173,14 @@ const portraitCollectionList = [
           "assets/photos/人像摄影/Live（手机）/Mio/模特：Mio；拍摄地点：东京涉谷；拍摄时间：2026.5.jpg",
           "assets/photos/人像摄影/Live（手机）/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg",
           "assets/photos/人像摄影/Live（手机）/Mio/拍摄时间：2026.5；模特：Mio；拍摄地点：东京涉谷.jpg"
+        ]
+      },
+      {
+        "id": "live-model",
+        "title": "Model",
+        "description": "围绕 Model 展开的人物章节，保留光线、空间与情绪之间的细微变化。",
+        "photos": [
+          "assets/photos/人像摄影/Live（手机）/Model/模特：LI.jpg"
         ]
       },
       {
@@ -276,6 +294,30 @@ const portraitProjects = [
     ]
   },
   {
+    "id": "model-show-model",
+    "title": {
+      "zh": "Model",
+      "en": "Model",
+      "ja": "Model"
+    },
+    "date": "Portrait",
+    "place": {
+      "zh": "人像摄影",
+      "en": "Portrait",
+      "ja": "人物写真"
+    },
+    "summary": {
+      "zh": "人物、姿态、衣着与现场光线彼此停靠，形成一段可以慢慢阅读的肖像章节。",
+      "en": "A curated portrait chapter where posture, styling, setting, and light form a fuller visual narrative.",
+      "ja": "姿勢、装い、場所、光が重なり合い、人物の存在感をひとつの物語として見せる章。"
+    },
+    "photos": [
+      "assets/photos/人像摄影/模特展/Model/模特：闻轩；拍摄地点：芝公园.jpg",
+      "assets/photos/人像摄影/模特展/Model/模特：LI.jpg",
+      "assets/photos/人像摄影/模特展/Model/模特：YEYE.jpg"
+    ]
+  },
+  {
     "id": "model-show-nero",
     "title": {
       "zh": "Nero",
@@ -368,6 +410,28 @@ const portraitProjects = [
     ]
   },
   {
+    "id": "live-model",
+    "title": {
+      "zh": "Model",
+      "en": "Model",
+      "ja": "Model"
+    },
+    "date": "Portrait",
+    "place": {
+      "zh": "现场人像",
+      "en": "Live Portrait",
+      "ja": "ライブポートレート"
+    },
+    "summary": {
+      "zh": "不预设太多，只把现场的光线、表情与行动轨迹留在原本发生的地方。",
+      "en": "Portraits shaped by available light, candid movement, and the atmosphere of the place.",
+      "ja": "その場の光、表情、動きの余韻を残し、実際の環境の中で人物を自然に浮かび上がらせる章。"
+    },
+    "photos": [
+      "assets/photos/人像摄影/Live（手机）/Model/模特：LI.jpg"
+    ]
+  },
+  {
     "id": "live-nero",
     "title": {
       "zh": "Nero",
@@ -426,7 +490,7 @@ const sitePortfolioSections = [
           "assets/photos/人像摄影/模特展/模特：LI.jpg",
           "assets/photos/人像摄影/模特展/模特：Mio；拍摄时间：2026.5；拍摄地点：日本 横滨.jpg",
           "assets/photos/人像摄影/模特展/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg",
-          "assets/photos/人像摄影/模特展/模特：YEYE.jpg"
+          "assets/photos/人像摄影/模特展/模特：YEYE_.jpg"
         ],
         "groups": [
           {
@@ -467,6 +531,16 @@ const sitePortfolioSections = [
               "assets/photos/人像摄影/模特展/Mio/模特：Mio；拍摄时间：2026.5、拍摄地点：日本 横滨；.jpg",
               "assets/photos/人像摄影/模特展/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：日本横滨.jpg",
               "assets/photos/人像摄影/模特展/Mio/拍摄时间：20626.5；模特：Mio；拍摄地点：日本横滨.jpg"
+            ]
+          },
+          {
+            "id": "model-show-model",
+            "title": "Model",
+            "description": "围绕 Model 展开的人物章节，保留光线、空间与情绪之间的细微变化。",
+            "photos": [
+              "assets/photos/人像摄影/模特展/Model/模特：闻轩；拍摄地点：芝公园.jpg",
+              "assets/photos/人像摄影/模特展/Model/模特：LI.jpg",
+              "assets/photos/人像摄影/模特展/Model/模特：YEYE.jpg"
             ]
           },
           {
@@ -533,6 +607,14 @@ const sitePortfolioSections = [
               "assets/photos/人像摄影/Live（手机）/Mio/模特：Mio；拍摄地点：东京涉谷；拍摄时间：2026.5.jpg",
               "assets/photos/人像摄影/Live（手机）/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg",
               "assets/photos/人像摄影/Live（手机）/Mio/拍摄时间：2026.5；模特：Mio；拍摄地点：东京涉谷.jpg"
+            ]
+          },
+          {
+            "id": "live-model",
+            "title": "Model",
+            "description": "围绕 Model 展开的人物章节，保留光线、空间与情绪之间的细微变化。",
+            "photos": [
+              "assets/photos/人像摄影/Live（手机）/Model/模特：LI.jpg"
             ]
           },
           {
