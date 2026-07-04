@@ -32,6 +32,7 @@ const translations = {
     travelIntro: "把路线、地方和偶遇整理成可以反复回看的视觉日记。",
     storiesTitle: "摄影故事",
     storiesIntro: "照片背后的记忆、方法和情绪。",
+    storiesEyebrow: "Visual Journal",
     aboutTitle: "关于我",
     aboutCopy: "我拍照，是为了把那些很快会消失的气息留下来：一次停顿、一束光、风经过植物时改变的方向。Demon Atelier 更像一本慢慢装订的影像书。",
     aboutDetailCta: "阅读关于我",
@@ -87,6 +88,7 @@ const translations = {
     travelIntro: "A visual diary of places, routes, and unexpected encounters.",
     storiesTitle: "Photo Stories",
     storiesIntro: "Photography themes, technique notes, and field journals.",
+    storiesEyebrow: "Visual Journal",
     aboutTitle: "About Me",
     aboutCopy: "I photograph because some moments disappear too quickly: a pause, a beam of light, the direction of wind through leaves. Demon Atelier is a slowly bound visual book.",
     aboutDetailCta: "Read Full Profile",
@@ -142,6 +144,7 @@ const translations = {
     travelIntro: "場所、ルート、偶然の出会いを視覚的な日記として残します。",
     storiesTitle: "写真ストーリー",
     storiesIntro: "撮影現場から生まれた記憶、方法、感情を物語として綴ります。",
+    storiesEyebrow: "Visual Journal",
     aboutTitle: "自己紹介",
     aboutCopy: "すぐに消えてしまう気配を残すために撮っています。沈黙、光、葉を揺らす風。Demon Atelier はゆっくり綴じていく写真の本です。",
     aboutDetailCta: "詳しい紹介を見る",
@@ -311,6 +314,7 @@ const portfolioSections = window.sitePortfolioSections || [
 
 const languageButtons = document.querySelectorAll(".language-button");
 const portfolioMount = document.querySelector("#portfolio-groups");
+const storyMount = document.querySelector("#story-index-grid");
 const portfolioMenuToggle = document.querySelector("#portfolio-menu-toggle");
 const portfolioMenu = document.querySelector("#portfolio-menu");
 const aboutMenuToggle = document.querySelector("#about-menu-toggle");
@@ -352,11 +356,15 @@ function getProject(sectionId, projectId) {
   return portfolioSections.find((section) => section.id === sectionId)?.projects.find((project) => project.id === projectId);
 }
 
-function renderProjectCard(section, project, index) {
+function isStorySection(section) {
+  return section.id === "stories" || section.id === "story" || section.titleKey === "storiesTitle";
+}
+
+function renderProjectCard(section, project, index, extraClass = "") {
   const mediaPath = window.thumbImage || window.localImage || ((src) => src);
   const fullMediaPath = window.localImage || ((src) => src);
   const coverUrl = mediaPath(project.photos[0]);
-  const cardClass = `series-card series-card--${section.id}`;
+  const cardClass = `series-card series-card--${section.id}${extraClass ? ` ${extraClass}` : ""}`;
   const coverImages = project.photos
     .map(
       (src, index) => `
@@ -390,7 +398,7 @@ function renderProjectCard(section, project, index) {
 }
 
 function renderSection(section) {
-  const featuredProjects = section.id === "portrait" ? section.projects.slice(0, 2) : section.projects.slice(0, 1);
+  const featuredProjects = section.projects.slice(0, 1);
   return `
     <section class="portfolio-group project-section" id="${section.id}-section" aria-labelledby="${section.id}-title">
       <div class="group-heading">
@@ -409,6 +417,7 @@ function renderSection(section) {
 
 function renderPortfolioNavigation() {
   const links = portfolioSections
+    .filter((section) => !isStorySection(section))
     .map(
       (section, index) => `
         <details class="portfolio-menu-group" ${index === 0 ? "open" : ""}>
@@ -432,8 +441,15 @@ function renderPortfolioNavigation() {
 }
 
 function renderPortfolio() {
+  const workSections = portfolioSections.filter((section) => !isStorySection(section));
+  const storySection = portfolioSections.find(isStorySection);
   renderPortfolioNavigation();
-  portfolioMount.innerHTML = portfolioSections.map(renderSection).join("");
+  portfolioMount.innerHTML = workSections.map(renderSection).join("");
+  if (storyMount && storySection) {
+    storyMount.innerHTML = storySection.projects
+      .map((project, index) => renderProjectCard(storySection, project, index, "story-index-card"))
+      .join("");
+  }
   initCoverAutoScroll();
 }
 
