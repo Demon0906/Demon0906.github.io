@@ -3,10 +3,10 @@
 
 const localImage = (path) => encodeURI(path);
 const thumbnailMap = {
+  "assets/photos/人像摄影/相机人像/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.JPG": "assets/photos/人像摄影/相机人像/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.JPG",
   "assets/photos/人像摄影/相机人像/模特：美丽酥酥；拍摄时间：2026.1；拍摄地点：北京.jpg": "assets/photos/人像摄影/相机人像/模特：美丽酥酥；拍摄时间：2026.1；拍摄地点：北京.jpg",
   "assets/photos/人像摄影/相机人像/模特：闻轩；拍摄地点：芝公园.jpg": "assets/photos/人像摄影/相机人像/模特：闻轩；拍摄地点：芝公园.jpg",
   "assets/photos/人像摄影/相机人像/模特：Celia；拍摄时间：2026.6；拍摄地点：上海.JPG": "assets/photos/人像摄影/相机人像/模特：Celia；拍摄时间：2026.6；拍摄地点：上海.JPG",
-  "assets/photos/人像摄影/相机人像/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.JPG": "assets/photos/人像摄影/相机人像/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.JPG",
   "assets/photos/人像摄影/相机人像/模特：LI.jpg": "assets/photos/人像摄影/相机人像/模特：LI.jpg",
   "assets/photos/人像摄影/相机人像/模特：Mio；拍摄时间：206.4；拍摄地点：东京迪士尼.jpg": "assets/photos/人像摄影/相机人像/模特：Mio；拍摄时间：206.4；拍摄地点：东京迪士尼.jpg",
   "assets/photos/人像摄影/相机人像/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg": "assets/photos/人像摄影/相机人像/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg",
@@ -151,10 +151,11 @@ const portraitCollectionList = [
       "ja": "カメラ人物"
     },
     "title": {
-      "zh": "相机肖像",
+      "zh": "相机人像",
       "en": "Camera Portraits",
-      "ja": "カメラ肖像"
+      "ja": "カメラ人物"
     },
+    "featuredCover": "assets/photos/人像摄影/相机人像/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.JPG",
     "summary": {
       "zh": "以相机记录人物、姿态与光线的关系，让肖像成为一页可以停留阅读的影像章节。",
       "en": "Camera portraits shaped by posture, light, and the quiet distance between figure and space.",
@@ -620,10 +621,11 @@ const sitePortfolioSections = [
           "ja": "カメラ人物"
         },
         "title": {
-          "zh": "相机肖像",
+          "zh": "相机人像",
           "en": "Camera Portraits",
-          "ja": "カメラ肖像"
+          "ja": "カメラ人物"
         },
+        "featuredCover": "assets/photos/人像摄影/相机人像/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.JPG",
         "summary": {
           "zh": "以相机记录人物、姿态与光线的关系，让肖像成为一页可以停留阅读的影像章节。",
           "en": "Camera portraits shaped by posture, light, and the quiet distance between figure and space.",

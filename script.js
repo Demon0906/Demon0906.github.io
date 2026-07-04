@@ -363,9 +363,10 @@ function isStorySection(section) {
 function renderProjectCard(section, project, index, extraClass = "") {
   const mediaPath = window.thumbImage || window.localImage || ((src) => src);
   const fullMediaPath = window.localImage || ((src) => src);
-  const coverUrl = mediaPath(project.photos[0]);
+  const displayPhotos = [...new Set([project.featuredCover || project.cover || project.photos[0], ...project.photos].filter(Boolean))];
+  const coverUrl = mediaPath(displayPhotos[0]);
   const cardClass = `series-card series-card--${section.id}${extraClass ? ` ${extraClass}` : ""}`;
-  const coverImages = project.photos
+  const coverImages = displayPhotos
     .map(
       (src, index) => `
         <img
@@ -375,7 +376,7 @@ function renderProjectCard(section, project, index, extraClass = "") {
           alt="${escapeHtml(localized(project.title))}"
           loading="lazy"
           draggable="false"
-          style="--photo-index: ${index}; --photo-count: ${project.photos.length};"
+          style="--photo-index: ${index}; --photo-count: ${displayPhotos.length};"
         >
       `,
     )
@@ -512,7 +513,7 @@ function openLightbox(sectionId, projectId, photoIndex) {
   if (!lightbox.open) lightbox.showModal();
   requestAnimationFrame(() => {
     lightbox.scrollTop = 0;
-    lightboxImage.scrollIntoView({ block: "center", inline: "center" });
+    lightbox.scrollLeft = 0;
   });
 }
 

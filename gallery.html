@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Demon Photography 摄影集详情。">
     <title>摄影集 | Demon Photography</title>
-    <link rel="stylesheet" href="styles.css?v=atelier-20260704a">
+    <link rel="stylesheet" href="styles.css?v=atelier-20260704b">
   </head>
   <body class="detail-page gallery-page">
     <header class="detail-header">
@@ -97,7 +97,7 @@
         if (!lightbox.open) lightbox.showModal();
         requestAnimationFrame(() => {
           lightbox.scrollTop = 0;
-          lightboxImage.scrollIntoView({ block: "center", inline: "center" });
+          lightbox.scrollLeft = 0;
         });
       }
 
