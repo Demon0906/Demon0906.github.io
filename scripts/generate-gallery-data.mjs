@@ -64,7 +64,7 @@ const collectionMeta = {
     collection: "mobile",
     date: "Portrait",
     place: { zh: "手机人像", en: "Mobile Portrait", ja: "スマホ人物" },
-    title: { zh: "随身肖像", en: "Mobile Portraits", ja: "スマホ肖像" },
+    title: { zh: "手机人像", en: "Mobile Portraits", ja: "スマホ人物" },
     summary: {
       zh: "用随身镜头靠近现场，把表情、行动和日常光线里稍纵即逝的真实留下。",
       en: "Mobile portraits kept close to the scene, preserving gestures, expressions, and available light.",
@@ -77,11 +77,11 @@ const collectionMeta = {
 const projectMeta = {
   "自然风光/枫叶": {
     id: "nature-maple",
-    title: { zh: "枫叶", en: "Maple Leaves", ja: "紅葉" },
+    title: { zh: "植物 / 风光", en: "Botanical Light", ja: "植物と風景" },
     date: "Nature",
     place: { zh: "自然风光", en: "Nature", ja: "自然風景" },
     summary: {
-      zh: "深秋的颜色从叶脉里慢慢透出，像一页被风轻轻翻动的季节手稿。",
+      zh: "植物、叶脉与风景里的光线被慢慢收集，像一页被季节轻轻翻动的自然手稿。",
       en: "Late-autumn color rising through the veins of leaves, like thin pages moved by wind.",
       ja: "晩秋の色が葉脈から滲み出し、風にめくられる薄い紙のように重なる。",
     },
@@ -408,13 +408,14 @@ function buildPortraitCollections() {
 
 function buildFlatSection(sectionName) {
   const dir = path.join(PHOTOS_DIR, sectionName);
+  const sectionId = sectionConfig[sectionName]?.id || slug(sectionName);
   const childDirs = listDirs(dir);
   const directPhotos = listImages(dir);
 
   if (!childDirs.length) {
     if (!directPhotos.length) return [];
     const meta = fallbackProject(sectionName, "", directPhotos);
-    return [{ ...meta, photos: directPhotos }];
+    return [{ ...meta, href: meta.href || `gallery.html?section=${sectionId}&project=${meta.id}`, photos: directPhotos }];
   }
 
   const projects = childDirs
@@ -422,13 +423,13 @@ function buildFlatSection(sectionName) {
       const photos = listImages(path.join(dir, projectName));
       if (!photos.length) return null;
       const meta = fallbackProject(sectionName, projectName, photos);
-      return { ...meta, photos };
+      return { ...meta, href: meta.href || `gallery.html?section=${sectionId}&project=${meta.id}`, photos };
     })
     .filter(Boolean);
 
   if (directPhotos.length) {
     const meta = fallbackProject(sectionName, "", directPhotos);
-    projects.unshift({ ...meta, photos: directPhotos });
+    projects.unshift({ ...meta, href: meta.href || `gallery.html?section=${sectionId}&project=${meta.id}`, photos: directPhotos });
   }
 
   return projects;

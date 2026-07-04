@@ -5420,3 +5420,139 @@ body .hero-count {
     gap: 8px;
   }
 }
+
+/* Project taxonomy polish: show each folder as an atelier chapter, not just the first cover. */
+body .hero-actions .button {
+  min-height: 46px;
+  border-radius: 999px;
+  padding: 0 24px;
+  border: 1px solid rgba(250, 248, 245, 0.42);
+  backdrop-filter: blur(16px) saturate(1.05);
+  -webkit-backdrop-filter: blur(16px) saturate(1.05);
+}
+
+body .hero-actions .button.primary {
+  background: rgba(250, 248, 245, 0.9);
+  color: #242422;
+}
+
+body .hero-actions .button.ghost {
+  background: rgba(36, 36, 34, 0.18);
+  color: rgba(250, 248, 245, 0.88);
+}
+
+body .project-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(18px, 2vw, 24px);
+}
+
+body .portfolio-group:has(.series-card + .series-card) .series-card {
+  padding-top: clamp(6px, 0.8vw, 10px);
+}
+
+body .portfolio-group:has(.series-card + .series-card) .series-media {
+  width: min(100%, 116px);
+  max-width: 116px;
+}
+
+body .portfolio-group:has(.series-card + .series-card) .series-copy strong {
+  font-size: clamp(15px, 1.12vw, 19px);
+}
+
+body .portfolio-group:has(.series-card + .series-card) .series-copy em {
+  font-size: 11px;
+}
+
+.gallery-project-tabs {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 clamp(18px, 2.5vw, 34px);
+  padding-bottom: clamp(14px, 2vw, 24px);
+  border-bottom: 1px solid rgba(138, 121, 103, 0.18);
+}
+
+.gallery-project-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  border: 1px solid rgba(138, 121, 103, 0.28);
+  border-radius: 999px;
+  padding: 0 16px;
+  color: rgba(43, 43, 43, 0.68);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.gallery-project-tab:hover,
+.gallery-project-tab.is-active {
+  border-color: rgba(95, 107, 90, 0.52);
+  background: rgba(95, 107, 90, 0.12);
+  color: #2b2b2b;
+}
+
+@media (max-width: 1120px) {
+  body .portfolio-groups {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: min(100%, 920px);
+  }
+}
+
+@media (max-width: 760px) {
+  body .hero-actions {
+    gap: 10px;
+  }
+
+  body .hero-actions .button {
+    min-height: 44px;
+    padding: 0 18px;
+    font-size: 12px;
+  }
+
+  .gallery-project-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-inline: -18px;
+    padding-inline: 18px;
+    scrollbar-width: none;
+  }
+
+  .gallery-project-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gallery-project-tab {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 520px) {
+  body .portfolio-group {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  body .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 14px;
+  }
+
+  body .portfolio-group:has(.series-card + .series-card) .series-media,
+  body .series-media {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  body .series-copy strong,
+  body .portfolio-group:has(.series-card + .series-card) .series-copy strong {
+    font-size: clamp(16px, 5vw, 22px);
+  }
+}

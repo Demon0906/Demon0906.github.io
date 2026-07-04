@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Demon Photography 摄影集详情。">
     <title>摄影集 | Demon Photography</title>
-    <link rel="stylesheet" href="styles.css?v=atelier-20260704b">
+    <link rel="stylesheet" href="styles.css?v=atelier-20260704c">
   </head>
   <body class="detail-page gallery-page">
     <header class="detail-header">
@@ -54,7 +54,10 @@
       const prevButton = document.querySelector(".lightbox-prev");
       const nextButton = document.querySelector(".lightbox-next");
       const sections = window.sitePortfolioSections || [];
-      const section = sections.find((item) => item.id === sectionId) || sections.find((item) => item.id !== "portrait");
+      const section =
+        sections.find((item) => item.id === sectionId) ||
+        sections.find((item) => item.projects.some((project) => project.id === projectId)) ||
+        sections.find((item) => item.id !== "portrait");
       const project = section?.projects.find((item) => item.id === projectId) || section?.projects[0];
       let lightboxIndex = 0;
 
@@ -129,7 +132,7 @@
 
       function renderGalleryGrid() {
         body.className = "gallery-body gallery-grid";
-        body.innerHTML = project.photos
+        body.innerHTML = `${renderProjectTabs()}${project.photos
           .map((src, index) => {
             const caption = photoCaption(src, index);
             return `
@@ -151,7 +154,18 @@
               </article>
             `;
           })
+          .join("")}`;
+      }
+
+      function renderProjectTabs() {
+        if (!section?.projects || section.projects.length < 2) return "";
+        const links = section.projects
+          .map((item) => {
+            const active = item.id === project.id ? " is-active" : "";
+            return `<a class="gallery-project-tab${active}" href="gallery.html?section=${section.id}&project=${item.id}">${escapeHtml(getText(item.title))}</a>`;
+          })
           .join("");
+        return `<nav class="gallery-project-tabs" aria-label="摄影集切换">${links}</nav>`;
       }
 
       function renderStory() {
@@ -174,6 +188,7 @@
           )
           .join("");
         body.innerHTML = `
+          ${renderProjectTabs()}
           <article class="story-card">
             <div class="story-copy">
               <p class="eyebrow">${story.kicker}</p>

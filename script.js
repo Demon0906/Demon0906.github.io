@@ -399,7 +399,7 @@ function renderProjectCard(section, project, index, extraClass = "") {
 }
 
 function renderSection(section) {
-  const featuredProjects = section.projects.slice(0, 1);
+  const featuredProjects = section.projects;
   return `
     <section class="portfolio-group project-section" id="${section.id}-section" aria-labelledby="${section.id}-title">
       <div class="group-heading">

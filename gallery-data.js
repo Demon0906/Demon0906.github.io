@@ -245,9 +245,9 @@ const portraitCollectionList = [
       "ja": "スマホ人物"
     },
     "title": {
-      "zh": "随身肖像",
+      "zh": "手机人像",
       "en": "Mobile Portraits",
-      "ja": "スマホ肖像"
+      "ja": "スマホ人物"
     },
     "summary": {
       "zh": "用随身镜头靠近现场，把表情、行动和日常光线里稍纵即逝的真实留下。",
@@ -715,9 +715,9 @@ const sitePortfolioSections = [
           "ja": "スマホ人物"
         },
         "title": {
-          "zh": "随身肖像",
+          "zh": "手机人像",
           "en": "Mobile Portraits",
-          "ja": "スマホ肖像"
+          "ja": "スマホ人物"
         },
         "summary": {
           "zh": "用随身镜头靠近现场，把表情、行动和日常光线里稍纵即逝的真实留下。",
@@ -799,9 +799,9 @@ const sitePortfolioSections = [
       {
         "id": "nature-maple",
         "title": {
-          "zh": "枫叶",
-          "en": "Maple Leaves",
-          "ja": "紅葉"
+          "zh": "植物 / 风光",
+          "en": "Botanical Light",
+          "ja": "植物と風景"
         },
         "date": "Nature",
         "place": {
@@ -810,10 +810,11 @@ const sitePortfolioSections = [
           "ja": "自然風景"
         },
         "summary": {
-          "zh": "深秋的颜色从叶脉里慢慢透出，像一页被风轻轻翻动的季节手稿。",
+          "zh": "植物、叶脉与风景里的光线被慢慢收集，像一页被季节轻轻翻动的自然手稿。",
           "en": "Late-autumn color rising through the veins of leaves, like thin pages moved by wind.",
           "ja": "晩秋の色が葉脈から滲み出し、風にめくられる薄い紙のように重なる。"
         },
+        "href": "gallery.html?section=nature&project=nature-maple",
         "photos": [
           "assets/photos/自然风光/枫叶/DSC07786.JPG",
           "assets/photos/自然风光/枫叶/DSC08494.JPG",
@@ -841,6 +842,7 @@ const sitePortfolioSections = [
           "en": "The sea gathers wind, clouds, and horizon into one quiet field of blue.",
           "ja": "海は風、雲、遠い水平線をひとつの静かな青に収める。"
         },
+        "href": "gallery.html?section=nature&project=nature-sea",
         "photos": [
           "assets/photos/自然风光/海边/拍摄地点：东京 台场；拍摄时间：2026.5.jpg",
           "assets/photos/自然风光/海边/拍摄地点：日本 横须贺；拍摄时间：2025.11.JPG",
@@ -869,6 +871,7 @@ const sitePortfolioSections = [
           "en": "Petal edges, color transitions, and close details give flowers an almost portrait-like expression.",
           "ja": "花弁の縁、色の移ろい、近づいた細部が、花に肖像のような表情を与える。"
         },
+        "href": "gallery.html?section=nature&project=nature-rose",
         "photos": [
           "assets/photos/自然风光/玫瑰/DSC00354.JPG",
           "assets/photos/自然风光/玫瑰/DSC00360.JPG",
@@ -898,6 +901,7 @@ const sitePortfolioSections = [
           "en": "Hydrangeas shifting color in humid air, like soft notes left by the season.",
           "ja": "湿った空気の中で色を変える紫陽花が、季節の柔らかな注釈になる。"
         },
+        "href": "gallery.html?section=nature&project=nature-hydrangea",
         "photos": [
           "assets/photos/自然风光/绣球花/DSC02214.JPG",
           "assets/photos/自然风光/绣球花/DSC02216.JPG",
@@ -924,6 +928,7 @@ const sitePortfolioSections = [
           "en": "Blossoms, pale skies, and brief spring light become a soft, vanishing memory.",
           "ja": "花影、淡い空、短い春の光が、柔らかく儚い記憶になる。"
         },
+        "href": "gallery.html?section=nature&project=nature-sakura",
         "photos": [
           "assets/photos/自然风光/樱花/DSC00156.JPG",
           "assets/photos/自然风光/樱花/DSC00185.JPG",
@@ -958,6 +963,7 @@ const sitePortfolioSections = [
           "en": "Architecture is not a still backdrop; it keeps human scale, traces of time, and the order of light.",
           "ja": "建築は静かな背景ではなく、人の尺度、時間の痕跡、光の秩序を残す場所。"
         },
+        "href": "gallery.html?section=architecture&project=architecture-human-structures",
         "photos": [
           "assets/photos/人文建筑/拍摄地点：东京；拍摄时间：2026.6.JPG",
           "assets/photos/人文建筑/拍摄地点：箱根；拍摄时间：2026.6.JPG",
@@ -989,6 +995,7 @@ const sitePortfolioSections = [
           "en": "Streets, window light, night color, and facades hold the expression of each city.",
           "ja": "街路、窓明かり、夜の色、建築の断片が都市の表情を残す。"
         },
+        "href": "gallery.html?section=city&project=city-impressions",
         "photos": [
           "assets/photos/城市印象/拍摄城市：东京；拍摄时间：2025.10.jpg",
           "assets/photos/城市印象/拍摄城市：香港；拍摄时间：2023.5.JPG",
@@ -1024,6 +1031,7 @@ const sitePortfolioSections = [
           "en": "Window shadows, walls, and passing light turn ordinary rooms into quiet geometry.",
           "ja": "窓影、壁、通り過ぎる光が、日常の空間を静かな幾何へ変える。"
         },
+        "href": "gallery.html?section=daily&project=daily-light-show",
         "photos": [
           "assets/photos/日常生活/光影展/拍摄地点：杭州；拍摄时间：20424.9.JPG",
           "assets/photos/日常生活/光影展/拍摄地点：南多摩；拍摄时间：2026.7.jpg",
@@ -1052,6 +1060,7 @@ const sitePortfolioSections = [
           "en": "Small charming moments from daily life, kept like quiet footnotes to ordinary days.",
           "ja": "日常にそっと現れる愛らしい瞬間を、静かな注釈のように残す。"
         },
+        "href": "gallery.html?section=daily&project=daily-cats",
         "photos": [
           "assets/photos/日常生活/猫咪写真/DSC06090.JPG",
           "assets/photos/日常生活/猫咪写真/DSC06092.JPG",
@@ -1081,6 +1090,7 @@ const sitePortfolioSections = [
           "en": "Small scenes, colors, and light gathered with the camera always nearby.",
           "ja": "いつも手元にあるカメラで、日常に現れる色、光、小さな場面を残す。"
         },
+        "href": "gallery.html?section=daily&project=daily-phone",
         "photos": [
           "assets/photos/日常生活/手机摄影/9b43d1e84121451e9745769a375f1714.jpg",
           "assets/photos/日常生活/手机摄影/78bb5bd3b5448d4fe033bd90b59962d5.jpg",
@@ -1122,6 +1132,7 @@ const sitePortfolioSections = [
             "拍毕业照时，最重要的不是把人拍得多正式，而是让照片在多年之后还能带回当时的心情：年轻、期待、舍不得，也终于准备好走向下一段路。"
           ]
         },
+        "href": "gallery.html?section=stories&project=story-graduation-season",
         "photos": [
           "assets/photos/摄影故事/毕业季摄影故事/45c1e72ca7ec5b6c4856ee0ecca24f3e.jpg",
           "assets/photos/摄影故事/毕业季摄影故事/DSC01200.JPG",
@@ -1156,6 +1167,7 @@ const sitePortfolioSections = [
             "拍摄熊大时，我想记录的不是一件玩偶，而是一段被时间慢慢磨亮的关系。那些毛绒上的痕迹、始终扬起的嘴角，以及被带往不同地方的身影，都在提醒我：快乐不一定宏大，它有时只是一个熟悉的表情，安静地陪你走过很久。"
           ]
         },
+        "href": "gallery.html?section=stories&project=story-light-notes",
         "photos": [
           "assets/photos/摄影故事/小熊摄影故事/1f72afc7fa63715dd658615cf33bffcd.jpg",
           "assets/photos/摄影故事/小熊摄影故事/1f626f17ee2bb2ea44f3ee88b44e0e19.jpg",
