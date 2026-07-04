@@ -1016,9 +1016,9 @@ const sitePortfolioSections = [
       {
         "id": "daily-light-show",
         "title": {
-          "zh": "光影展",
-          "en": "Light Notes",
-          "ja": "光の記録"
+          "zh": "光影 / 生命 / 随拍",
+          "en": "Light / Life / Notes",
+          "ja": "光 / 生活 / 随写"
         },
         "date": "2023-2025",
         "place": {
