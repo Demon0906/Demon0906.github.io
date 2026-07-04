@@ -5745,3 +5745,116 @@ body {
     max-width: 128px !important;
   }
 }
+
+/* Desktop presentation refinements: keep mobile fixes intact while polishing large screens. */
+@media (min-width: 821px) {
+  body .portfolio-notice {
+    grid-template-columns: 220px minmax(0, 1fr);
+    align-items: center;
+    column-gap: clamp(24px, 4vw, 72px);
+    padding-inline: clamp(28px, 4vw, 64px);
+  }
+
+  body .portfolio-notice p {
+    max-width: 920px;
+    justify-self: center;
+    text-align: center;
+    font-size: clamp(13px, 1vw, 16px);
+    line-height: 1.75;
+  }
+
+  body .hero-actions {
+    width: fit-content;
+    max-width: 100%;
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(18px, 2vw, 28px);
+  }
+
+  body .hero-actions .button {
+    min-width: 170px;
+    min-height: 42px;
+    border-radius: 0;
+    padding: 0 0 12px;
+    border: 0;
+    border-bottom: 1px solid rgba(43, 43, 43, 0.42);
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    color: #2b2b2b;
+    justify-content: space-between;
+  }
+
+  body .hero-actions .button.primary,
+  body .hero-actions .button.ghost {
+    background: transparent;
+    color: #2b2b2b;
+  }
+
+  body .hero-actions .button.ghost {
+    opacity: 0.72;
+  }
+
+  body .hero-actions .button:hover {
+    color: var(--accent);
+    border-color: rgba(138, 121, 103, 0.72);
+    transform: none;
+  }
+
+  body .about-band {
+    padding-top: clamp(42px, 5vw, 74px);
+    padding-bottom: clamp(42px, 5vw, 74px);
+  }
+
+  body .about-band > div {
+    width: min(100%, 1100px);
+  }
+
+  body .about-band > div:first-child {
+    padding-left: clamp(28px, 4vw, 80px);
+    align-self: center;
+  }
+
+  body .about-band h2 {
+    font-size: clamp(42px, 5vw, 82px);
+    line-height: 1.05;
+  }
+
+  body .story-index-heading {
+    grid-template-columns: minmax(260px, 0.7fr) minmax(320px, 1fr);
+    align-items: end;
+    column-gap: clamp(38px, 7vw, 140px);
+    margin-inline: auto;
+    width: min(100%, 1180px);
+  }
+
+  body .story-index-heading h2 {
+    font-size: clamp(42px, 4.8vw, 76px);
+    line-height: 1.08;
+  }
+
+  body .story-index-heading p:not(.eyebrow) {
+    justify-self: start;
+    max-width: 24em;
+    margin-bottom: 0.7em;
+    font-size: clamp(14px, 1.1vw, 17px);
+    line-height: 1.75;
+  }
+
+  body .contact-section {
+    padding-top: clamp(30px, 3vw, 46px);
+    padding-bottom: clamp(30px, 3vw, 46px);
+  }
+}
+
+/* About page name treatment: quiet photographer signature instead of gradient display. */
+.profile-copy h1 {
+  font-family: "FZKai-Z03", "FangZheng KaiTi", "STKaiti", "Kaiti SC", "Songti SC", "STSong", serif;
+  font-weight: 400;
+  color: #1f2b2d;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  letter-spacing: 0.03em;
+  text-shadow: 0 18px 42px rgba(31, 43, 45, 0.08);
+}
