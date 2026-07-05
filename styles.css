@@ -1118,7 +1118,7 @@ button {
 .gallery-frame button,
 .story-image,
 .portrait-photo,
-.lightbox,
+.lightbox-frame,
 .profile-photo-card {
   position: relative;
 }
@@ -1128,7 +1128,7 @@ button {
 .gallery-frame button::after,
 .story-image::after,
 .portrait-photo::after,
-.lightbox::after,
+.lightbox-frame::after,
 .profile-photo-card::after {
   content: "D";
   position: absolute;
@@ -1158,11 +1158,6 @@ button {
   bottom: 10px;
   font-size: 9px;
   opacity: 0.68;
-}
-
-.lightbox::after {
-  right: 22px;
-  bottom: 132px;
 }
 
 .site-header {
@@ -2573,6 +2568,22 @@ h3 {
 .lightbox::backdrop {
   background: rgba(18, 16, 14, 0.76);
   backdrop-filter: blur(14px);
+}
+
+.lightbox-frame {
+  display: inline-block;
+  line-height: 0;
+  max-width: 100%;
+  max-height: calc(100dvh - 154px);
+}
+
+.lightbox-frame::after {
+  right: 12px;
+  bottom: 12px;
+  z-index: 5;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.56);
+  background: rgba(16, 16, 14, 0.16);
 }
 
 .lightbox img {
@@ -5350,6 +5361,17 @@ body .hero-count {
     max-height: calc(100dvh - 218px);
     margin: auto;
     object-fit: contain;
+  }
+
+  body .lightbox-frame {
+    max-width: calc(100vw - 28px);
+    max-height: calc(100dvh - 218px);
+  }
+
+  body .lightbox-frame::after {
+    right: 8px;
+    bottom: 8px;
+    font-size: 10px;
   }
 
   body .lightbox-caption {
