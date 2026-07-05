@@ -5967,3 +5967,36 @@ body {
   content-visibility: auto;
   contain-intrinsic-size: 900px;
 }
+
+/* Header typography lock: keep desktop navigation in the same refined sans stack. */
+.site-header .nav,
+.site-header .nav a,
+.site-header .nav-link,
+.site-header .booking-trigger,
+.site-header .language-switcher,
+.site-header .language-button {
+  font-family: var(--body-font);
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+@media (min-width: 821px) {
+  .site-header .nav,
+  .site-header:not(.is-scrolled) .nav {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.045em;
+    text-transform: none;
+  }
+
+  .site-header .nav a,
+  .site-header .nav-link,
+  .site-header:not(.is-scrolled) .nav a,
+  .site-header:not(.is-scrolled) .nav-link {
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    line-height: 1;
+  }
+}
