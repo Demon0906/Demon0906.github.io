@@ -6055,7 +6055,8 @@ body .lightbox-frame::after {
   border: 0 !important;
   border-radius: 0 !important;
   background: url("assets/brand/demon-atelier-watermark.png") center / contain no-repeat !important;
-  opacity: 0.2 !important;
+  opacity: 0.34 !important;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.42)) drop-shadow(0 0 1px rgba(255, 255, 255, 0.28)) !important;
   color: transparent !important;
   text-shadow: none !important;
   box-shadow: none !important;
@@ -6072,5 +6073,5 @@ body .lightbox-frame::after {
 body .lightbox-frame::after {
   width: clamp(30px, 8vw, 44px) !important;
   height: clamp(18px, 5vw, 28px) !important;
-  opacity: 0.18 !important;
+  opacity: 0.32 !important;
 }

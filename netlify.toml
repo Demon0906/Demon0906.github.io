@@ -38,22 +38,22 @@
 [[headers]]
   for = "/*.html"
   [headers.values]
-    Cache-Control = "public, max-age=300, must-revalidate"
+    Cache-Control = "public, max-age=0, no-cache, must-revalidate"
 
 [[headers]]
   for = "/gallery-data.js"
   [headers.values]
-    Cache-Control = "public, max-age=300, must-revalidate"
+    Cache-Control = "public, max-age=0, no-cache, must-revalidate"
 
 [[headers]]
   for = "/script.js"
   [headers.values]
-    Cache-Control = "public, max-age=300, must-revalidate"
+    Cache-Control = "public, max-age=0, no-cache, must-revalidate"
 
 [[headers]]
   for = "/styles.css"
   [headers.values]
-    Cache-Control = "public, max-age=300, must-revalidate"
+    Cache-Control = "public, max-age=0, no-cache, must-revalidate"
 
 [[headers]]
   for = "/admin.html"
