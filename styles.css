@@ -6000,3 +6000,77 @@ body {
     line-height: 1;
   }
 }
+
+/* Final brand treatment: use the supplied Demon Atelier artwork as the mark. */
+.brand-mark,
+.site-header:not(.is-scrolled) .brand-mark,
+.dark-brand .brand-mark,
+body .brand-mark {
+  display: block !important;
+  width: clamp(48px, 4.4vw, 72px) !important;
+  height: clamp(34px, 3vw, 50px) !important;
+  flex: 0 0 auto !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: url("assets/brand/demon-atelier-mark-dark.png") center / contain no-repeat !important;
+  box-shadow: none !important;
+  color: transparent !important;
+  overflow: visible !important;
+}
+
+.brand-mark::before,
+.brand-mark::after,
+.brand-mark-initial,
+.brand-mark-line,
+.brand-mark-line::after {
+  display: none !important;
+  content: none !important;
+}
+
+@media (max-width: 720px) {
+  .brand-mark,
+  .site-header:not(.is-scrolled) .brand-mark,
+  body .brand-mark {
+    width: 50px !important;
+    height: 34px !important;
+  }
+}
+
+/* Quiet photo watermark, anchored to the image frame rather than the page. */
+.project-cover-stack::after,
+.gallery-frame button::after,
+.story-image::after,
+.portrait-photo::after,
+.profile-photo-card::after,
+.lightbox-frame::after,
+body .lightbox-frame::after {
+  content: "" !important;
+  position: absolute !important;
+  right: clamp(10px, 1.1vw, 16px) !important;
+  bottom: clamp(10px, 1.1vw, 16px) !important;
+  z-index: 5 !important;
+  width: clamp(28px, 2.6vw, 42px) !important;
+  height: clamp(18px, 1.8vw, 28px) !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: url("assets/brand/demon-atelier-watermark.png") center / contain no-repeat !important;
+  opacity: 0.2 !important;
+  color: transparent !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  pointer-events: none !important;
+}
+
+.lightbox-frame {
+  position: relative !important;
+  display: inline-block !important;
+  line-height: 0 !important;
+}
+
+body .lightbox-frame::after {
+  width: clamp(30px, 8vw, 44px) !important;
+  height: clamp(18px, 5vw, 28px) !important;
+  opacity: 0.18 !important;
+}

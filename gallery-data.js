@@ -36,8 +36,8 @@ const thumbnailMap = {
   "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：东京迪士尼.jpg": "assets/thumbs/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：东京迪士尼.jpg",
   "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg": "assets/thumbs/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg",
   "assets/photos/人像摄影/手机人像/Nero/模特：Nero；拍摄时间：2025.5；拍摄地点：东京涉谷.jpg": "assets/thumbs/人像摄影/手机人像/Nero/模特：Nero；拍摄时间：2025.5；拍摄地点：东京涉谷.jpg",
-  "assets/photos/自然风光/枫叶/DSC04548.JPG": "assets/thumbs/自然风光/枫叶/DSC04548.jpg",
   "assets/photos/自然风光/枫叶/DSC04549.JPG": "assets/thumbs/自然风光/枫叶/DSC04549.jpg",
+  "assets/photos/自然风光/枫叶/DSC04548.JPG": "assets/thumbs/自然风光/枫叶/DSC04548.jpg",
   "assets/photos/自然风光/枫叶/DSC07786.JPG": "assets/thumbs/自然风光/枫叶/DSC07786.jpg",
   "assets/photos/自然风光/枫叶/DSC08494.JPG": "assets/thumbs/自然风光/枫叶/DSC08494.jpg",
   "assets/photos/自然风光/枫叶/DSC08562.JPG": "assets/thumbs/自然风光/枫叶/DSC08562.jpg",
@@ -76,6 +76,7 @@ const thumbnailMap = {
   "assets/photos/城市印象/拍摄时间：2024.4；拍摄城市：上海.JPG": "assets/thumbs/城市印象/拍摄时间：2024.4；拍摄城市：上海.jpg",
   "assets/photos/城市印象/拍摄时间：2025.10；拍摄城市：东京.jpg": "assets/thumbs/城市印象/拍摄时间：2025.10；拍摄城市：东京.jpg",
   "assets/photos/城市印象/拍摄时间：2026.1；拍摄地点：北京.JPG": "assets/thumbs/城市印象/拍摄时间：2026.1；拍摄地点：北京.jpg",
+  "assets/photos/日常生活/猫咪写真/DSC06128.JPG": "assets/thumbs/日常生活/猫咪写真/DSC06128.jpg",
   "assets/photos/日常生活/光影展/拍摄地点：杭州；拍摄时间：20424.9.JPG": "assets/thumbs/日常生活/光影展/拍摄地点：杭州；拍摄时间：20424.9.jpg",
   "assets/photos/日常生活/光影展/拍摄地点：南多摩；拍摄时间：2026.7.jpg": "assets/thumbs/日常生活/光影展/拍摄地点：南多摩；拍摄时间：2026.7.jpg",
   "assets/photos/日常生活/光影展/拍摄地点：上海；拍摄时间：2025.8.JPG": "assets/thumbs/日常生活/光影展/拍摄地点：上海；拍摄时间：2025.8.jpg",
@@ -86,7 +87,6 @@ const thumbnailMap = {
   "assets/photos/日常生活/猫咪写真/DSC06090.JPG": "assets/thumbs/日常生活/猫咪写真/DSC06090.jpg",
   "assets/photos/日常生活/猫咪写真/DSC06092.JPG": "assets/thumbs/日常生活/猫咪写真/DSC06092.jpg",
   "assets/photos/日常生活/猫咪写真/DSC06114.JPG": "assets/thumbs/日常生活/猫咪写真/DSC06114.jpg",
-  "assets/photos/日常生活/猫咪写真/DSC06128.JPG": "assets/thumbs/日常生活/猫咪写真/DSC06128.jpg",
   "assets/photos/日常生活/猫咪写真/DSC06129.JPG": "assets/thumbs/日常生活/猫咪写真/DSC06129.jpg",
   "assets/photos/日常生活/猫咪写真/DSC06130.JPG": "assets/thumbs/日常生活/猫咪写真/DSC06130.jpg",
   "assets/photos/日常生活/猫咪写真/DSC06139.JPG": "assets/thumbs/日常生活/猫咪写真/DSC06139.jpg",
@@ -105,8 +105,8 @@ const thumbnailMap = {
   "assets/photos/摄影故事/五条老师/3222c5870302e0802c9e7ce6873933c1.jpg": "assets/thumbs/摄影故事/五条老师/3222c5870302e0802c9e7ce6873933c1.jpg",
   "assets/photos/摄影故事/五条老师/df355b47b1ec0048d9cf5c91a84c56b4.jpg": "assets/thumbs/摄影故事/五条老师/df355b47b1ec0048d9cf5c91a84c56b4.jpg",
   "assets/photos/摄影故事/五条老师/e6f577a7fff08d5081a52e15e29a5be7.jpg": "assets/thumbs/摄影故事/五条老师/e6f577a7fff08d5081a52e15e29a5be7.jpg",
-  "assets/photos/摄影故事/小熊摄影故事/1f72afc7fa63715dd658615cf33bffcd.jpg": "assets/thumbs/摄影故事/小熊摄影故事/1f72afc7fa63715dd658615cf33bffcd.jpg",
   "assets/photos/摄影故事/小熊摄影故事/1f626f17ee2bb2ea44f3ee88b44e0e19.jpg": "assets/thumbs/摄影故事/小熊摄影故事/1f626f17ee2bb2ea44f3ee88b44e0e19.jpg",
+  "assets/photos/摄影故事/小熊摄影故事/1f72afc7fa63715dd658615cf33bffcd.jpg": "assets/thumbs/摄影故事/小熊摄影故事/1f72afc7fa63715dd658615cf33bffcd.jpg",
   "assets/photos/摄影故事/小熊摄影故事/095f7496a02454f6fcdfc1f8febda101.jpg": "assets/thumbs/摄影故事/小熊摄影故事/095f7496a02454f6fcdfc1f8febda101.jpg",
   "assets/photos/摄影故事/小熊摄影故事/c8060bfa415a2078475de2a803d9a523.jpg": "assets/thumbs/摄影故事/小熊摄影故事/c8060bfa415a2078475de2a803d9a523.jpg"
 };
@@ -850,6 +850,7 @@ const sitePortfolioSections = [
           "en": "Late-autumn color rising through the veins of leaves, like thin pages moved by wind.",
           "ja": "晩秋の色が葉脈から滲み出し、風にめくられる薄い紙のように重なる。"
         },
+        "featuredCover": "assets/photos/自然风光/枫叶/DSC04549.JPG",
         "href": "gallery.html?section=nature&project=nature-maple",
         "photos": [
           "assets/photos/自然风光/枫叶/DSC04548.JPG",
@@ -1065,6 +1066,7 @@ const sitePortfolioSections = [
           "en": "Window shadows, walls, and passing light turn ordinary rooms into quiet geometry.",
           "ja": "窓影、壁、通り過ぎる光が、日常の空間を静かな幾何へ変える。"
         },
+        "featuredCover": "assets/photos/日常生活/猫咪写真/DSC06128.JPG",
         "href": "gallery.html?section=daily&project=daily-light-show",
         "photos": [
           "assets/photos/日常生活/光影展/拍摄地点：杭州；拍摄时间：20424.9.JPG",
@@ -1220,6 +1222,7 @@ const sitePortfolioSections = [
           "en": "A companion of more than twenty years, carrying smiles, journeys, and the tender residue of time.",
           "ja": "二十年以上寄り添う小さな熊が、笑顔と旅、時間の柔らかな記憶を運んでくる。"
         },
+        "featuredCover": "assets/photos/摄影故事/小熊摄影故事/1f626f17ee2bb2ea44f3ee88b44e0e19.jpg",
         "story": {
           "kicker": "A small companion",
           "title": "熊大：被时间带去远方的笑容",

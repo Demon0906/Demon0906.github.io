@@ -80,6 +80,7 @@ const projectMeta = {
     title: { zh: "植物 / 风光", en: "Botanical Light", ja: "植物と風景" },
     date: "Nature",
     place: { zh: "自然风光", en: "Nature", ja: "自然風景" },
+    featuredCover: "assets/photos/自然风光/枫叶/DSC04549.JPG",
     summary: {
       zh: "植物、叶脉与风景里的光线被慢慢收集，像一页被季节轻轻翻动的自然手稿。",
       en: "Late-autumn color rising through the veins of leaves, like thin pages moved by wind.",
@@ -179,6 +180,7 @@ const projectMeta = {
     title: { zh: "光影 / 生命 / 随拍", en: "Light / Life / Notes", ja: "光 / 生活 / 随写" },
     date: "2023-2025",
     place: { zh: "日常生活", en: "Daily Life", ja: "日常生活" },
+    featuredCover: "assets/photos/日常生活/猫咪写真/DSC06128.JPG",
     summary: {
       zh: "窗影、墙面和路过的光，把普通空间切成安静的几何与余温。",
       en: "Window shadows, walls, and passing light turn ordinary rooms into quiet geometry.",
@@ -190,6 +192,7 @@ const projectMeta = {
     title: { zh: "熊大：一只小熊的远方", en: "Bear Da: A Small Companion", ja: "熊大：小さな旅の友" },
     date: "Journal",
     place: { zh: "摄影故事", en: "Photo Story", ja: "写真ストーリー" },
+    featuredCover: "assets/photos/摄影故事/小熊摄影故事/1f626f17ee2bb2ea44f3ee88b44e0e19.jpg",
     summary: {
       zh: "一只陪伴二十多年的小熊，把笑容、旅途和时间里柔软的部分一起带到镜头前。",
       en: "A companion of more than twenty years, carrying smiles, journeys, and the tender residue of time.",
