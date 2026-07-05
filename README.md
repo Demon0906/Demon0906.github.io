@@ -62,6 +62,27 @@ Build output directory: .
 
 如果暂时不改 Cloudflare 设置，也可以在本地运行 `npm run generate:gallery` 后再提交。
 
+## Netlify / Vercel 镜像部署
+
+仓库已经包含 `netlify.toml` 和 `vercel.json`，可以直接导入 GitHub 仓库作为静态镜像站。
+
+Netlify 设置：
+
+```text
+Build command: npm run build
+Publish directory: .
+```
+
+Vercel 设置：
+
+```text
+Framework Preset: Other
+Build Command: npm run build
+Output Directory: .
+```
+
+部署后，每次推送到 `main` 分支都会自动重新生成 `gallery-data.js` 并发布。Netlify / Vercel 适合作为全球访问备用入口；当前 `functions/api/admin` 是 Cloudflare Pages Functions 写法，后台接口不作为 Netlify / Vercel 镜像站的功能依赖。
+
 ## 本地预览
 
 在仓库目录运行：
