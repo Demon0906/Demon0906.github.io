@@ -4,66 +4,55 @@
 const localImage = (path) => encodeURI(path);
 const thumbnailMap = {
   "assets/photos/人像摄影/相机人像/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.JPG": "assets/thumbs/人像摄影/相机人像/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.jpg",
-  "assets/photos/人像摄影/相机人像/模特：美丽酥酥；拍摄时间：2026.1；拍摄地点：北京.jpg": "assets/thumbs/人像摄影/相机人像/模特：美丽酥酥；拍摄时间：2026.1；拍摄地点：北京.jpg",
-  "assets/photos/人像摄影/相机人像/模特：闻轩；拍摄地点：芝公园.jpg": "assets/thumbs/人像摄影/相机人像/模特：闻轩；拍摄地点：芝公园.jpg",
-  "assets/photos/人像摄影/相机人像/模特：Celia；拍摄时间：2026.6；拍摄地点：上海.JPG": "assets/thumbs/人像摄影/相机人像/模特：Celia；拍摄时间：2026.6；拍摄地点：上海.jpg",
-  "assets/photos/人像摄影/相机人像/模特：LI.jpg": "assets/thumbs/人像摄影/相机人像/模特：LI.jpg",
-  "assets/photos/人像摄影/相机人像/模特：Mio；拍摄时间：206.4；拍摄地点：东京迪士尼.jpg": "assets/thumbs/人像摄影/相机人像/模特：Mio；拍摄时间：206.4；拍摄地点：东京迪士尼.jpg",
-  "assets/photos/人像摄影/相机人像/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg": "assets/thumbs/人像摄影/相机人像/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg",
-  "assets/photos/人像摄影/相机人像/模特：YEYE_.jpg": "assets/thumbs/人像摄影/相机人像/模特：YEYE_.jpg",
   "assets/photos/人像摄影/相机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.1；拍摄地点：北京.jpg": "assets/thumbs/人像摄影/相机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.1；拍摄地点：北京.jpg",
-  "assets/photos/人像摄影/相机人像/美丽酥酥/模特名：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg": "assets/thumbs/人像摄影/相机人像/美丽酥酥/模特名：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
+  "assets/photos/人像摄影/相机人像/一口榴莲派/模特：一口榴莲派；拍摄地点：杭州；拍摄时间：2024.10.JPG": "assets/thumbs/人像摄影/相机人像/一口榴莲派/模特：一口榴莲派；拍摄地点：杭州；拍摄时间：2024.10.jpg",
   "assets/photos/人像摄影/相机人像/Celia/模特：Celia；拍摄地点：上海迪士尼；拍摄时间：2026.3.jpg": "assets/thumbs/人像摄影/相机人像/Celia/模特：Celia；拍摄地点：上海迪士尼；拍摄时间：2026.3.jpg",
+  "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：2026.4；拍摄时间：日本富士山.jpg": "assets/thumbs/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：2026.4；拍摄时间：日本富士山.jpg",
+  "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄地点：东京花火大会；拍摄时间：2026.7.jpg": "assets/thumbs/人像摄影/相机人像/Mio/模特：Mio；拍摄地点：东京花火大会；拍摄时间：2026.7.jpg",
+  "assets/photos/人像摄影/相机人像/Model/模特：闻轩；拍摄地点：芝公园.jpg": "assets/thumbs/人像摄影/相机人像/Model/模特：闻轩；拍摄地点：芝公园.jpg",
+  "assets/photos/人像摄影/相机人像/Nero/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg": "assets/thumbs/人像摄影/相机人像/Nero/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg",
+  "assets/photos/人像摄影/相机人像/美丽酥酥/模特名：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg": "assets/thumbs/人像摄影/相机人像/美丽酥酥/模特名：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
+  "assets/photos/人像摄影/相机人像/一口榴莲派/拍摄地点：杭州；拍摄时间：2024.10、.JPG": "assets/thumbs/人像摄影/相机人像/一口榴莲派/拍摄地点：杭州；拍摄时间：2024.10、.jpg",
+  "assets/photos/人像摄影/相机人像/一口榴莲派/拍摄地点：杭州；拍摄时间：2024.10；.JPG": "assets/thumbs/人像摄影/相机人像/一口榴莲派/拍摄地点：杭州；拍摄时间：2024.10；.jpg",
   "assets/photos/人像摄影/相机人像/Celia/模特：Celia；拍摄时间：2026.3；拍摄地点：上海迪士尼.jpg": "assets/thumbs/人像摄影/相机人像/Celia/模特：Celia；拍摄时间：2026.3；拍摄地点：上海迪士尼.jpg",
   "assets/photos/人像摄影/相机人像/Celia/模特：Celia；拍摄时间：2026.6；拍摄地点：上海.JPG": "assets/thumbs/人像摄影/相机人像/Celia/模特：Celia；拍摄时间：2026.6；拍摄地点：上海.jpg",
-  "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：2026.4；拍摄时间：日本富士山.jpg": "assets/thumbs/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：2026.4；拍摄时间：日本富士山.jpg",
   "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.JPG": "assets/thumbs/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.jpg",
   "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京 台场.JPG": "assets/thumbs/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京 台场.jpg",
   "assets/photos/人像摄影/相机人像/kakiloki/模特：kaliloki；拍摄时间：2026.4；拍摄地点：日本 富士山.JPG": "assets/thumbs/人像摄影/相机人像/kakiloki/模特：kaliloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
-  "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄地点：东京花火大会；拍摄时间：2026.7.jpg": "assets/thumbs/人像摄影/相机人像/Mio/模特：Mio；拍摄地点：东京花火大会；拍摄时间：2026.7.jpg",
   "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：206.4；拍摄地点：东京迪士尼本.jpg": "assets/thumbs/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：206.4；拍摄地点：东京迪士尼本.jpg",
   "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：日本富士山.jpg": "assets/thumbs/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：日本富士山.jpg",
   "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：日本横滨.jpg": "assets/thumbs/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：日本横滨.jpg",
   "assets/photos/人像摄影/相机人像/Mio/拍摄时间：20626.5；模特：Mio；拍摄地点：日本横滨.jpg": "assets/thumbs/人像摄影/相机人像/Mio/拍摄时间：20626.5；模特：Mio；拍摄地点：日本横滨.jpg",
-  "assets/photos/人像摄影/相机人像/Model/模特：闻轩；拍摄地点：芝公园.jpg": "assets/thumbs/人像摄影/相机人像/Model/模特：闻轩；拍摄地点：芝公园.jpg",
   "assets/photos/人像摄影/相机人像/Model/模特：LI.jpg": "assets/thumbs/人像摄影/相机人像/Model/模特：LI.jpg",
   "assets/photos/人像摄影/相机人像/Model/模特：YEYE.jpg": "assets/thumbs/人像摄影/相机人像/Model/模特：YEYE.jpg",
-  "assets/photos/人像摄影/相机人像/Nero/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg": "assets/thumbs/人像摄影/相机人像/Nero/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg",
-  "assets/photos/人像摄影/手机人像/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg": "assets/thumbs/人像摄影/手机人像/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
-  "assets/photos/人像摄影/手机人像/模特：CheriJanie；拍摄地点：上海；拍摄时间：2026.6.jpg": "assets/thumbs/人像摄影/手机人像/模特：CheriJanie；拍摄地点：上海；拍摄时间：2026.6.jpg",
-  "assets/photos/人像摄影/手机人像/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg": "assets/thumbs/人像摄影/手机人像/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
-  "assets/photos/人像摄影/手机人像/模特：LI.jpg": "assets/thumbs/人像摄影/手机人像/模特：LI.jpg",
-  "assets/photos/人像摄影/手机人像/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg": "assets/thumbs/人像摄影/手机人像/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg",
-  "assets/photos/人像摄影/手机人像/模特：Nero；拍摄时间：2025.5；拍摄地点：东京涉谷.jpg": "assets/thumbs/人像摄影/手机人像/模特：Nero；拍摄时间：2025.5；拍摄地点：东京涉谷.jpg",
   "assets/photos/人像摄影/手机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg": "assets/thumbs/人像摄影/手机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
   "assets/photos/人像摄影/手机人像/CheriJanie/模特：CheriJanie；拍摄地点：上海；拍摄时间：206.6.jpg": "assets/thumbs/人像摄影/手机人像/CheriJanie/模特：CheriJanie；拍摄地点：上海；拍摄时间：206.6.jpg",
   "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg": "assets/thumbs/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
-  "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本富士山.jpg": "assets/thumbs/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本富士山.jpg",
-  "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京台场.jpg": "assets/thumbs/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京台场.jpg",
   "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄地点：东京涉谷；拍摄时间：2026.5.jpg": "assets/thumbs/人像摄影/手机人像/Mio/模特：Mio；拍摄地点：东京涉谷；拍摄时间：2026.5.jpg",
-  "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：东京迪士尼.jpg": "assets/thumbs/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：东京迪士尼.jpg",
-  "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg": "assets/thumbs/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg",
   "assets/photos/人像摄影/手机人像/Model/模特：LI.jpg": "assets/thumbs/人像摄影/手机人像/Model/模特：LI.jpg",
   "assets/photos/人像摄影/手机人像/Nero/模特：Nero；拍摄地点：东京涉谷；拍摄时间：2026.4.jpg": "assets/thumbs/人像摄影/手机人像/Nero/模特：Nero；拍摄地点：东京涉谷；拍摄时间：2026.4.jpg",
+  "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本富士山.jpg": "assets/thumbs/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本富士山.jpg",
+  "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京台场.jpg": "assets/thumbs/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京台场.jpg",
+  "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：东京迪士尼.jpg": "assets/thumbs/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：东京迪士尼.jpg",
+  "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg": "assets/thumbs/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg",
   "assets/photos/人像摄影/手机人像/Nero/模特：Nero；拍摄时间：2025.5；拍摄地点：东京涉谷.jpg": "assets/thumbs/人像摄影/手机人像/Nero/模特：Nero；拍摄时间：2025.5；拍摄地点：东京涉谷.jpg",
+  "assets/photos/自然风光/枫叶/DSC04548.JPG": "assets/thumbs/自然风光/枫叶/DSC04548.jpg",
+  "assets/photos/自然风光/枫叶/DSC04549.JPG": "assets/thumbs/自然风光/枫叶/DSC04549.jpg",
   "assets/photos/自然风光/枫叶/DSC07786.JPG": "assets/thumbs/自然风光/枫叶/DSC07786.jpg",
   "assets/photos/自然风光/枫叶/DSC08494.JPG": "assets/thumbs/自然风光/枫叶/DSC08494.jpg",
-  "assets/photos/自然风光/枫叶/DSC08517.JPG": "assets/thumbs/自然风光/枫叶/DSC08517.jpg",
-  "assets/photos/自然风光/枫叶/DSC08560.JPG": "assets/thumbs/自然风光/枫叶/DSC08560.jpg",
   "assets/photos/自然风光/枫叶/DSC08562.JPG": "assets/thumbs/自然风光/枫叶/DSC08562.jpg",
   "assets/photos/自然风光/枫叶/DSC08572.JPG": "assets/thumbs/自然风光/枫叶/DSC08572.jpg",
-  "assets/photos/自然风光/海边/拍摄地点：东京 台场；拍摄时间：2026.5.jpg": "assets/thumbs/自然风光/海边/拍摄地点：东京 台场；拍摄时间：2026.5.jpg",
   "assets/photos/自然风光/海边/拍摄地点：日本 横须贺；拍摄时间：2025.11.JPG": "assets/thumbs/自然风光/海边/拍摄地点：日本 横须贺；拍摄时间：2025.11.jpg",
   "assets/photos/自然风光/海边/拍摄地点：日本 镰仓；拍摄时间：2025.10.JPG": "assets/thumbs/自然风光/海边/拍摄地点：日本 镰仓；拍摄时间：2025.10.jpg",
-  "assets/photos/自然风光/海边/拍摄地点：日本 清水县；拍摄时间：2025.11.JPG": "assets/thumbs/自然风光/海边/拍摄地点：日本 清水县；拍摄时间：2025.11.jpg",
   "assets/photos/自然风光/海边/拍摄地点：日本 三浦半岛；拍摄时间：2026.5.JPG": "assets/thumbs/自然风光/海边/拍摄地点：日本 三浦半岛；拍摄时间：2026.5.jpg",
   "assets/photos/自然风光/海边/拍摄地点：日本 小田原；拍摄时间：2025.12.JPG": "assets/thumbs/自然风光/海边/拍摄地点：日本 小田原；拍摄时间：2025.12.jpg",
   "assets/photos/自然风光/海边/拍摄时间：2025.12；拍摄地点：日本 小田原.JPG": "assets/thumbs/自然风光/海边/拍摄时间：2025.12；拍摄地点：日本 小田原.jpg",
+  "assets/photos/自然风光/海边/拍摄时间：2026.4；拍摄地点：日本 富士山.jpg": "assets/thumbs/自然风光/海边/拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
   "assets/photos/自然风光/玫瑰/DSC00354.JPG": "assets/thumbs/自然风光/玫瑰/DSC00354.jpg",
   "assets/photos/自然风光/玫瑰/DSC00360.JPG": "assets/thumbs/自然风光/玫瑰/DSC00360.jpg",
   "assets/photos/自然风光/玫瑰/DSC00367.JPG": "assets/thumbs/自然风光/玫瑰/DSC00367.jpg",
   "assets/photos/自然风光/玫瑰/DSC00657.JPG": "assets/thumbs/自然风光/玫瑰/DSC00657.jpg",
-  "assets/photos/自然风光/玫瑰/DSC01017.JPG": "assets/thumbs/自然风光/玫瑰/DSC01017.jpg",
+  "assets/photos/自然风光/玫瑰/DSC01020.JPG": "assets/thumbs/自然风光/玫瑰/DSC01020.jpg",
   "assets/photos/自然风光/玫瑰/DSC01073.JPG": "assets/thumbs/自然风光/玫瑰/DSC01073.jpg",
   "assets/photos/自然风光/玫瑰/DSC01075.JPG": "assets/thumbs/自然风光/玫瑰/DSC01075.jpg",
   "assets/photos/自然风光/玫瑰/DSC01134.JPG": "assets/thumbs/自然风光/玫瑰/DSC01134.jpg",
@@ -87,14 +76,13 @@ const thumbnailMap = {
   "assets/photos/城市印象/拍摄时间：2024.4；拍摄城市：上海.JPG": "assets/thumbs/城市印象/拍摄时间：2024.4；拍摄城市：上海.jpg",
   "assets/photos/城市印象/拍摄时间：2025.10；拍摄城市：东京.jpg": "assets/thumbs/城市印象/拍摄时间：2025.10；拍摄城市：东京.jpg",
   "assets/photos/城市印象/拍摄时间：2026.1；拍摄地点：北京.JPG": "assets/thumbs/城市印象/拍摄时间：2026.1；拍摄地点：北京.jpg",
-  "assets/photos/城市印象/拍摄时间：2026.4；拍摄地点：日本 富士山.jpg": "assets/thumbs/城市印象/拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
   "assets/photos/日常生活/光影展/拍摄地点：杭州；拍摄时间：20424.9.JPG": "assets/thumbs/日常生活/光影展/拍摄地点：杭州；拍摄时间：20424.9.jpg",
   "assets/photos/日常生活/光影展/拍摄地点：南多摩；拍摄时间：2026.7.jpg": "assets/thumbs/日常生活/光影展/拍摄地点：南多摩；拍摄时间：2026.7.jpg",
   "assets/photos/日常生活/光影展/拍摄地点：上海；拍摄时间：2025.8.JPG": "assets/thumbs/日常生活/光影展/拍摄地点：上海；拍摄时间：2025.8.jpg",
   "assets/photos/日常生活/光影展/拍摄地点：苏州 虞山；拍摄时间：204.6.JPG": "assets/thumbs/日常生活/光影展/拍摄地点：苏州 虞山；拍摄时间：204.6.jpg",
   "assets/photos/日常生活/光影展/拍摄地点：苏州 虞山；拍摄时间：2024.6.JPG": "assets/thumbs/日常生活/光影展/拍摄地点：苏州 虞山；拍摄时间：2024.6.jpg",
   "assets/photos/日常生活/光影展/拍摄地点：苏州；拍摄时间：2023.JPG": "assets/thumbs/日常生活/光影展/拍摄地点：苏州；拍摄时间：2023.jpg",
-  "assets/photos/日常生活/光影展/拍摄时间：2025.8；拍摄地点：上海.JPG": "assets/thumbs/日常生活/光影展/拍摄时间：2025.8；拍摄地点：上海.jpg",
+  "assets/photos/日常生活/光影展/DSC04550.JPG": "assets/thumbs/日常生活/光影展/DSC04550.jpg",
   "assets/photos/日常生活/猫咪写真/DSC06090.JPG": "assets/thumbs/日常生活/猫咪写真/DSC06090.jpg",
   "assets/photos/日常生活/猫咪写真/DSC06092.JPG": "assets/thumbs/日常生活/猫咪写真/DSC06092.jpg",
   "assets/photos/日常生活/猫咪写真/DSC06114.JPG": "assets/thumbs/日常生活/猫咪写真/DSC06114.jpg",
@@ -103,9 +91,10 @@ const thumbnailMap = {
   "assets/photos/日常生活/猫咪写真/DSC06130.JPG": "assets/thumbs/日常生活/猫咪写真/DSC06130.jpg",
   "assets/photos/日常生活/猫咪写真/DSC06139.JPG": "assets/thumbs/日常生活/猫咪写真/DSC06139.jpg",
   "assets/photos/日常生活/猫咪写真/DSC06143.JPG": "assets/thumbs/日常生活/猫咪写真/DSC06143.jpg",
+  "assets/photos/日常生活/手机摄影/5ceed1c264628002cc88e0f36ec82402.jpg": "assets/thumbs/日常生活/手机摄影/5ceed1c264628002cc88e0f36ec82402.jpg",
   "assets/photos/日常生活/手机摄影/9b43d1e84121451e9745769a375f1714.jpg": "assets/thumbs/日常生活/手机摄影/9b43d1e84121451e9745769a375f1714.jpg",
-  "assets/photos/日常生活/手机摄影/78bb5bd3b5448d4fe033bd90b59962d5.jpg": "assets/thumbs/日常生活/手机摄影/78bb5bd3b5448d4fe033bd90b59962d5.jpg",
   "assets/photos/日常生活/手机摄影/366cd020217abeb9d6e501b3047b341b.jpg": "assets/thumbs/日常生活/手机摄影/366cd020217abeb9d6e501b3047b341b.jpg",
+  "assets/photos/日常生活/手机摄影/578798fac412e9b4197c33ea0ef117b8.jpg": "assets/thumbs/日常生活/手机摄影/578798fac412e9b4197c33ea0ef117b8.jpg",
   "assets/photos/日常生活/手机摄影/cfd624b0f5470b957c8d298b7fe4fade.jpg": "assets/thumbs/日常生活/手机摄影/cfd624b0f5470b957c8d298b7fe4fade.jpg",
   "assets/photos/摄影故事/毕业季摄影故事/45c1e72ca7ec5b6c4856ee0ecca24f3e.jpg": "assets/thumbs/摄影故事/毕业季摄影故事/45c1e72ca7ec5b6c4856ee0ecca24f3e.jpg",
   "assets/photos/摄影故事/毕业季摄影故事/DSC01200.JPG": "assets/thumbs/摄影故事/毕业季摄影故事/DSC01200.jpg",
@@ -168,14 +157,13 @@ const portraitCollectionList = [
     },
     "href": "portrait.html?collection=camera",
     "photos": [
-      "assets/photos/人像摄影/相机人像/模特：美丽酥酥；拍摄时间：2026.1；拍摄地点：北京.jpg",
-      "assets/photos/人像摄影/相机人像/模特：闻轩；拍摄地点：芝公园.jpg",
-      "assets/photos/人像摄影/相机人像/模特：Celia；拍摄时间：2026.6；拍摄地点：上海.JPG",
-      "assets/photos/人像摄影/相机人像/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.JPG",
-      "assets/photos/人像摄影/相机人像/模特：LI.jpg",
-      "assets/photos/人像摄影/相机人像/模特：Mio；拍摄时间：206.4；拍摄地点：东京迪士尼.jpg",
-      "assets/photos/人像摄影/相机人像/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg",
-      "assets/photos/人像摄影/相机人像/模特：YEYE_.jpg"
+      "assets/photos/人像摄影/相机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.1；拍摄地点：北京.jpg",
+      "assets/photos/人像摄影/相机人像/一口榴莲派/模特：一口榴莲派；拍摄地点：杭州；拍摄时间：2024.10.JPG",
+      "assets/photos/人像摄影/相机人像/Celia/模特：Celia；拍摄地点：上海迪士尼；拍摄时间：2026.3.jpg",
+      "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：2026.4；拍摄时间：日本富士山.jpg",
+      "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄地点：东京花火大会；拍摄时间：2026.7.jpg",
+      "assets/photos/人像摄影/相机人像/Model/模特：闻轩；拍摄地点：芝公园.jpg",
+      "assets/photos/人像摄影/相机人像/Nero/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg"
     ],
     "groups": [
       {
@@ -185,6 +173,16 @@ const portraitCollectionList = [
         "photos": [
           "assets/photos/人像摄影/相机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.1；拍摄地点：北京.jpg",
           "assets/photos/人像摄影/相机人像/美丽酥酥/模特名：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg"
+        ]
+      },
+      {
+        "id": "camera-e4b880e58fa3",
+        "title": "一口榴莲派",
+        "description": "一口榴莲派的镜头气质明亮而松弛，适合在自然光与日常场景里呈现亲近、柔和的肖像感。轻微的动作、眼神和衣着细节，会让画面保留一种有记忆点的故事性。",
+        "photos": [
+          "assets/photos/人像摄影/相机人像/一口榴莲派/模特：一口榴莲派；拍摄地点：杭州；拍摄时间：2024.10.JPG",
+          "assets/photos/人像摄影/相机人像/一口榴莲派/拍摄地点：杭州；拍摄时间：2024.10、.JPG",
+          "assets/photos/人像摄影/相机人像/一口榴莲派/拍摄地点：杭州；拍摄时间：2024.10；.JPG"
         ]
       },
       {
@@ -261,12 +259,12 @@ const portraitCollectionList = [
     },
     "href": "portrait.html?collection=mobile",
     "photos": [
-      "assets/photos/人像摄影/手机人像/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
-      "assets/photos/人像摄影/手机人像/模特：CheriJanie；拍摄地点：上海；拍摄时间：2026.6.jpg",
-      "assets/photos/人像摄影/手机人像/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
-      "assets/photos/人像摄影/手机人像/模特：LI.jpg",
-      "assets/photos/人像摄影/手机人像/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg",
-      "assets/photos/人像摄影/手机人像/模特：Nero；拍摄时间：2025.5；拍摄地点：东京涉谷.jpg"
+      "assets/photos/人像摄影/手机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
+      "assets/photos/人像摄影/手机人像/CheriJanie/模特：CheriJanie；拍摄地点：上海；拍摄时间：206.6.jpg",
+      "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
+      "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄地点：东京涉谷；拍摄时间：2026.5.jpg",
+      "assets/photos/人像摄影/手机人像/Model/模特：LI.jpg",
+      "assets/photos/人像摄影/手机人像/Nero/模特：Nero；拍摄地点：东京涉谷；拍摄时间：2026.4.jpg"
     ],
     "groups": [
       {
@@ -348,6 +346,30 @@ const portraitProjects = [
     "photos": [
       "assets/photos/人像摄影/相机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.1；拍摄地点：北京.jpg",
       "assets/photos/人像摄影/相机人像/美丽酥酥/模特名：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg"
+    ]
+  },
+  {
+    "id": "camera-e4b880e58fa3",
+    "title": {
+      "zh": "一口榴莲派",
+      "en": "一口榴莲派",
+      "ja": "一口榴莲派"
+    },
+    "date": "Portrait",
+    "place": {
+      "zh": "相机人像",
+      "en": "Camera Portrait",
+      "ja": "カメラ人物"
+    },
+    "summary": {
+      "zh": "以相机记录人物、姿态与光线的关系，让肖像成为一页可以停留阅读的影像章节。",
+      "en": "Camera portraits shaped by posture, light, and the quiet distance between figure and space.",
+      "ja": "人物、姿勢、光の関係をカメラで残し、ゆっくり読める肖像の章にする。"
+    },
+    "photos": [
+      "assets/photos/人像摄影/相机人像/一口榴莲派/模特：一口榴莲派；拍摄地点：杭州；拍摄时间：2024.10.JPG",
+      "assets/photos/人像摄影/相机人像/一口榴莲派/拍摄地点：杭州；拍摄时间：2024.10、.JPG",
+      "assets/photos/人像摄影/相机人像/一口榴莲派/拍摄地点：杭州；拍摄时间：2024.10；.JPG"
     ]
   },
   {
@@ -638,14 +660,13 @@ const sitePortfolioSections = [
         },
         "href": "portrait.html?collection=camera",
         "photos": [
-          "assets/photos/人像摄影/相机人像/模特：美丽酥酥；拍摄时间：2026.1；拍摄地点：北京.jpg",
-          "assets/photos/人像摄影/相机人像/模特：闻轩；拍摄地点：芝公园.jpg",
-          "assets/photos/人像摄影/相机人像/模特：Celia；拍摄时间：2026.6；拍摄地点：上海.JPG",
-          "assets/photos/人像摄影/相机人像/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.JPG",
-          "assets/photos/人像摄影/相机人像/模特：LI.jpg",
-          "assets/photos/人像摄影/相机人像/模特：Mio；拍摄时间：206.4；拍摄地点：东京迪士尼.jpg",
-          "assets/photos/人像摄影/相机人像/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg",
-          "assets/photos/人像摄影/相机人像/模特：YEYE_.jpg"
+          "assets/photos/人像摄影/相机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.1；拍摄地点：北京.jpg",
+          "assets/photos/人像摄影/相机人像/一口榴莲派/模特：一口榴莲派；拍摄地点：杭州；拍摄时间：2024.10.JPG",
+          "assets/photos/人像摄影/相机人像/Celia/模特：Celia；拍摄地点：上海迪士尼；拍摄时间：2026.3.jpg",
+          "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：2026.4；拍摄时间：日本富士山.jpg",
+          "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄地点：东京花火大会；拍摄时间：2026.7.jpg",
+          "assets/photos/人像摄影/相机人像/Model/模特：闻轩；拍摄地点：芝公园.jpg",
+          "assets/photos/人像摄影/相机人像/Nero/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg"
         ],
         "groups": [
           {
@@ -655,6 +676,16 @@ const sitePortfolioSections = [
             "photos": [
               "assets/photos/人像摄影/相机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.1；拍摄地点：北京.jpg",
               "assets/photos/人像摄影/相机人像/美丽酥酥/模特名：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg"
+            ]
+          },
+          {
+            "id": "camera-e4b880e58fa3",
+            "title": "一口榴莲派",
+            "description": "一口榴莲派的镜头气质明亮而松弛，适合在自然光与日常场景里呈现亲近、柔和的肖像感。轻微的动作、眼神和衣着细节，会让画面保留一种有记忆点的故事性。",
+            "photos": [
+              "assets/photos/人像摄影/相机人像/一口榴莲派/模特：一口榴莲派；拍摄地点：杭州；拍摄时间：2024.10.JPG",
+              "assets/photos/人像摄影/相机人像/一口榴莲派/拍摄地点：杭州；拍摄时间：2024.10、.JPG",
+              "assets/photos/人像摄影/相机人像/一口榴莲派/拍摄地点：杭州；拍摄时间：2024.10；.JPG"
             ]
           },
           {
@@ -731,12 +762,12 @@ const sitePortfolioSections = [
         },
         "href": "portrait.html?collection=mobile",
         "photos": [
-          "assets/photos/人像摄影/手机人像/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
-          "assets/photos/人像摄影/手机人像/模特：CheriJanie；拍摄地点：上海；拍摄时间：2026.6.jpg",
-          "assets/photos/人像摄影/手机人像/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
-          "assets/photos/人像摄影/手机人像/模特：LI.jpg",
-          "assets/photos/人像摄影/手机人像/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg",
-          "assets/photos/人像摄影/手机人像/模特：Nero；拍摄时间：2025.5；拍摄地点：东京涉谷.jpg"
+          "assets/photos/人像摄影/手机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
+          "assets/photos/人像摄影/手机人像/CheriJanie/模特：CheriJanie；拍摄地点：上海；拍摄时间：206.6.jpg",
+          "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
+          "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄地点：东京涉谷；拍摄时间：2026.5.jpg",
+          "assets/photos/人像摄影/手机人像/Model/模特：LI.jpg",
+          "assets/photos/人像摄影/手机人像/Nero/模特：Nero；拍摄地点：东京涉谷；拍摄时间：2026.4.jpg"
         ],
         "groups": [
           {
@@ -821,10 +852,10 @@ const sitePortfolioSections = [
         },
         "href": "gallery.html?section=nature&project=nature-maple",
         "photos": [
+          "assets/photos/自然风光/枫叶/DSC04548.JPG",
+          "assets/photos/自然风光/枫叶/DSC04549.JPG",
           "assets/photos/自然风光/枫叶/DSC07786.JPG",
           "assets/photos/自然风光/枫叶/DSC08494.JPG",
-          "assets/photos/自然风光/枫叶/DSC08517.JPG",
-          "assets/photos/自然风光/枫叶/DSC08560.JPG",
           "assets/photos/自然风光/枫叶/DSC08562.JPG",
           "assets/photos/自然风光/枫叶/DSC08572.JPG"
         ]
@@ -849,13 +880,12 @@ const sitePortfolioSections = [
         },
         "href": "gallery.html?section=nature&project=nature-sea",
         "photos": [
-          "assets/photos/自然风光/海边/拍摄地点：东京 台场；拍摄时间：2026.5.jpg",
           "assets/photos/自然风光/海边/拍摄地点：日本 横须贺；拍摄时间：2025.11.JPG",
           "assets/photos/自然风光/海边/拍摄地点：日本 镰仓；拍摄时间：2025.10.JPG",
-          "assets/photos/自然风光/海边/拍摄地点：日本 清水县；拍摄时间：2025.11.JPG",
           "assets/photos/自然风光/海边/拍摄地点：日本 三浦半岛；拍摄时间：2026.5.JPG",
           "assets/photos/自然风光/海边/拍摄地点：日本 小田原；拍摄时间：2025.12.JPG",
-          "assets/photos/自然风光/海边/拍摄时间：2025.12；拍摄地点：日本 小田原.JPG"
+          "assets/photos/自然风光/海边/拍摄时间：2025.12；拍摄地点：日本 小田原.JPG",
+          "assets/photos/自然风光/海边/拍摄时间：2026.4；拍摄地点：日本 富士山.jpg"
         ]
       },
       {
@@ -882,7 +912,7 @@ const sitePortfolioSections = [
           "assets/photos/自然风光/玫瑰/DSC00360.JPG",
           "assets/photos/自然风光/玫瑰/DSC00367.JPG",
           "assets/photos/自然风光/玫瑰/DSC00657.JPG",
-          "assets/photos/自然风光/玫瑰/DSC01017.JPG",
+          "assets/photos/自然风光/玫瑰/DSC01020.JPG",
           "assets/photos/自然风光/玫瑰/DSC01073.JPG",
           "assets/photos/自然风光/玫瑰/DSC01075.JPG",
           "assets/photos/自然风光/玫瑰/DSC01134.JPG"
@@ -1007,8 +1037,7 @@ const sitePortfolioSections = [
           "assets/photos/城市印象/拍摄城市：英国 利兹；拍摄时间：2025.1.JPG",
           "assets/photos/城市印象/拍摄时间：2024.4；拍摄城市：上海.JPG",
           "assets/photos/城市印象/拍摄时间：2025.10；拍摄城市：东京.jpg",
-          "assets/photos/城市印象/拍摄时间：2026.1；拍摄地点：北京.JPG",
-          "assets/photos/城市印象/拍摄时间：2026.4；拍摄地点：日本 富士山.jpg"
+          "assets/photos/城市印象/拍摄时间：2026.1；拍摄地点：北京.JPG"
         ]
       }
     ]
@@ -1044,7 +1073,7 @@ const sitePortfolioSections = [
           "assets/photos/日常生活/光影展/拍摄地点：苏州 虞山；拍摄时间：204.6.JPG",
           "assets/photos/日常生活/光影展/拍摄地点：苏州 虞山；拍摄时间：2024.6.JPG",
           "assets/photos/日常生活/光影展/拍摄地点：苏州；拍摄时间：2023.JPG",
-          "assets/photos/日常生活/光影展/拍摄时间：2025.8；拍摄地点：上海.JPG"
+          "assets/photos/日常生活/光影展/DSC04550.JPG"
         ]
       },
       {
@@ -1097,9 +1126,10 @@ const sitePortfolioSections = [
         },
         "href": "gallery.html?section=daily&project=daily-phone",
         "photos": [
+          "assets/photos/日常生活/手机摄影/5ceed1c264628002cc88e0f36ec82402.jpg",
           "assets/photos/日常生活/手机摄影/9b43d1e84121451e9745769a375f1714.jpg",
-          "assets/photos/日常生活/手机摄影/78bb5bd3b5448d4fe033bd90b59962d5.jpg",
           "assets/photos/日常生活/手机摄影/366cd020217abeb9d6e501b3047b341b.jpg",
+          "assets/photos/日常生活/手机摄影/578798fac412e9b4197c33ea0ef117b8.jpg",
           "assets/photos/日常生活/手机摄影/cfd624b0f5470b957c8d298b7fe4fade.jpg"
         ]
       }
