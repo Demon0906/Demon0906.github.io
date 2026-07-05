@@ -363,7 +363,7 @@ function isStorySection(section) {
 function renderProjectCard(section, project, index, extraClass = "") {
   const mediaPath = window.thumbImage || window.localImage || ((src) => src);
   const fullMediaPath = window.localImage || ((src) => src);
-  const displayPhotos = [...new Set([project.featuredCover || project.cover || project.photos[0], ...project.photos].filter(Boolean))];
+  const displayPhotos = [...new Set([project.featuredCover || project.cover || project.photos[0], ...project.photos].filter(Boolean))].slice(0, 4);
   const coverUrl = mediaPath(displayPhotos[0]);
   const cardClass = `series-card series-card--${section.id}${extraClass ? ` ${extraClass}` : ""}`;
   const coverImages = displayPhotos
@@ -375,6 +375,8 @@ function renderProjectCard(section, project, index, extraClass = "") {
           onerror="this.onerror=null;this.src='${fullMediaPath(src)}';"
           alt="${escapeHtml(localized(project.title))}"
           loading="lazy"
+          decoding="async"
+          fetchpriority="low"
           draggable="false"
           style="--photo-index: ${index}; --photo-count: ${displayPhotos.length};"
         >

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Demon Photography 摄影集详情。">
     <title>摄影集 | Demon Photography</title>
-    <link rel="stylesheet" href="styles.css?v=atelier-20260705a">
+    <link rel="stylesheet" href="styles.css?v=atelier-20260705b">
   </head>
   <body class="detail-page gallery-page">
     <header class="detail-header">
@@ -146,6 +146,7 @@
                     onerror="this.onerror=null;this.src='${window.localImage(src)}';"
                     alt="${escapeHtml(getText(project.title))}"
                     loading="lazy"
+                    decoding="async"
                     draggable="false"
                   >
                 </button>
@@ -183,6 +184,7 @@
                   onerror="this.onerror=null;this.src='${window.localImage(src)}';"
                   alt="${escapeHtml(getText(project.title))}"
                   loading="lazy"
+                  decoding="async"
                   draggable="false"
                 >
               </button>

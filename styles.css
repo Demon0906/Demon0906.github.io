@@ -5955,3 +5955,15 @@ body {
     white-space: normal;
   }
 }
+
+/* Performance: defer rendering of below-the-fold editorial sections. */
+.portfolio,
+.story-index-section,
+.about-band,
+.contact-section,
+.detail-section,
+.portrait-projects,
+.gallery-body {
+  content-visibility: auto;
+  contain-intrinsic-size: 900px;
+}

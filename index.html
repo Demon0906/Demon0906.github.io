@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Demon Atelier 是一本持续生长的个人摄影画册，以独立影像项目收藏光线、人物、自然与日常故事。">
     <title>Demon Atelier</title>
-    <link rel="preconnect" href="https://images.unsplash.com">
-    <link rel="stylesheet" href="styles.css?v=atelier-20260705a">
+    <link rel="preload" as="image" href="assets/thumbs/自然风光/海边/拍摄地点：日本 镰仓；拍摄时间：2025.10.jpg" fetchpriority="high">
+    <link rel="stylesheet" href="styles.css?v=atelier-20260705b">
   </head>
   <body>
     <header class="site-header">
@@ -51,8 +51,10 @@
       <section class="hero" aria-labelledby="hero-title">
         <img
           class="hero-image protected-media"
-          src="assets/photos/自然风光/海边/拍摄地点：日本 镰仓；拍摄时间：2025.10.JPG"
+          src="assets/thumbs/自然风光/海边/拍摄地点：日本 镰仓；拍摄时间：2025.10.jpg"
           alt="海边落日与云层"
+          decoding="async"
+          fetchpriority="high"
           draggable="false"
         >
         <div class="hero-shade"></div>
