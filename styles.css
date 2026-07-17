@@ -6049,19 +6049,28 @@ body .lightbox-frame::after {
   right: clamp(10px, 1.1vw, 16px) !important;
   bottom: clamp(10px, 1.1vw, 16px) !important;
   z-index: 5 !important;
-  width: clamp(28px, 2.6vw, 42px) !important;
-  height: clamp(18px, 1.8vw, 28px) !important;
-  padding: 0 !important;
+  width: clamp(34px, 3vw, 48px) !important;
+  height: clamp(22px, 2vw, 32px) !important;
+  padding: 4px !important;
   border: 0 !important;
-  border-radius: 0 !important;
-  background: url("assets/brand/demon-atelier-watermark.png") center / contain no-repeat !important;
-  opacity: 0.34 !important;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.42)) drop-shadow(0 0 1px rgba(255, 255, 255, 0.28)) !important;
+  border-radius: 999px !important;
+  background:
+    rgba(255, 255, 255, 0.34)
+    url("assets/brand/demon-atelier-watermark.png") center / 78% auto no-repeat !important;
+  opacity: 0.62 !important;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 1px rgba(255, 255, 255, 0.55)) !important;
   color: transparent !important;
   text-shadow: none !important;
-  box-shadow: none !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.42),
+    0 4px 14px rgba(0, 0, 0, 0.12) !important;
   backdrop-filter: none !important;
   pointer-events: none !important;
+}
+
+.portrait-photo::after {
+  top: 10px !important;
+  bottom: auto !important;
 }
 
 .lightbox-frame {
@@ -6100,7 +6109,7 @@ body .lightbox-frame::after {
 body .lightbox-frame::after {
   width: clamp(30px, 8vw, 44px) !important;
   height: clamp(18px, 5vw, 28px) !important;
-  opacity: 0.32 !important;
+  opacity: 0.58 !important;
 }
 
 /* Mobile hero/contact polish: keep CTA text centered and the booking form escapable. */

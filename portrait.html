@@ -63,7 +63,7 @@
       const selectedCollection = params.get("collection") || "model-show";
       const collections = window.portraitCollections || [];
       const activeCollection = collections.find((item) => item.collection === selectedCollection) || collections[0];
-      let lightboxState = { groupId: "", photoIndex: 0 };
+      let lightboxState = { photoIndex: 0 };
 
       function getText(value) {
         return typeof value === "string" ? value : value.zh;
@@ -71,6 +71,21 @@
 
       function getGroup(groupId) {
         return activeCollection.groups.find((group) => group.id === groupId);
+      }
+
+      function getAllPortraitPhotos() {
+        return activeCollection.groups.flatMap((group) =>
+          group.photos.map((src, photoIndex) => ({
+            group,
+            groupId: group.id,
+            photoIndex,
+            src,
+          })),
+        );
+      }
+
+      function getFlatPhotoIndex(groupId, photoIndex) {
+        return getAllPortraitPhotos().findIndex((item) => item.groupId === groupId && item.photoIndex === Number(photoIndex));
       }
 
       function renderTabs() {
@@ -144,17 +159,17 @@
       }
 
       function openPortraitLightbox(groupId, photoIndex) {
-        const group = getGroup(groupId);
-        const index = Number(photoIndex);
-        const src = group?.photos[index];
-        if (!group || !src) return;
-        const info = window.photoInfoFromPath(src);
+        const allPhotos = getAllPortraitPhotos();
+        const flatIndex = getFlatPhotoIndex(groupId, photoIndex);
+        const item = allPhotos[flatIndex];
+        if (!item) return;
+        const info = window.photoInfoFromPath(item.src);
         const hasInfo = Object.keys(info.fields).length > 0;
-        lightboxState = { groupId, photoIndex: index };
-        lightboxImage.src = window.localImage(src);
-        lightboxImage.alt = group.title;
-        lightboxTitle.textContent = group.title;
-        lightboxMeta.textContent = hasInfo ? info.meta || info.caption : `${getText(activeCollection.title)} / ${group.title}`;
+        lightboxState = { photoIndex: flatIndex };
+        lightboxImage.src = window.localImage(item.src);
+        lightboxImage.alt = item.group.title;
+        lightboxTitle.textContent = item.group.title;
+        lightboxMeta.textContent = hasInfo ? info.meta || info.caption : `${getText(activeCollection.title)} / ${item.group.title}`;
         if (!lightbox.open) lightbox.showModal();
         requestAnimationFrame(() => {
           lightbox.scrollTop = 0;
@@ -163,10 +178,11 @@
       }
 
       function movePortraitLightbox(direction) {
-        const group = getGroup(lightboxState.groupId);
-        if (!group?.photos?.length) return;
-        const nextIndex = (lightboxState.photoIndex + direction + group.photos.length) % group.photos.length;
-        openPortraitLightbox(lightboxState.groupId, nextIndex);
+        const allPhotos = getAllPortraitPhotos();
+        if (!allPhotos.length) return;
+        const nextIndex = (lightboxState.photoIndex + direction + allPhotos.length) % allPhotos.length;
+        const next = allPhotos[nextIndex];
+        openPortraitLightbox(next.groupId, next.photoIndex);
       }
 
       mount.addEventListener("click", (event) => {
