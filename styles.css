@@ -6070,6 +6070,33 @@ body .lightbox-frame::after {
   line-height: 0 !important;
 }
 
+/* Mobile dropdown fix: keep the navigation panels visible outside the compact header. */
+@media (max-width: 820px) {
+  body .site-header,
+  body .nav {
+    overflow: visible;
+  }
+
+  body .site-header {
+    z-index: 60;
+  }
+
+  body .portfolio-menu {
+    position: fixed;
+    top: calc(env(safe-area-inset-top) + 112px);
+    left: 16px;
+    right: 16px;
+    z-index: 80;
+    width: auto;
+    max-height: min(62vh, 460px);
+    min-width: 0;
+    transform: none;
+    overflow-y: auto;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.92);
+  }
+}
+
 body .lightbox-frame::after {
   width: clamp(30px, 8vw, 44px) !important;
   height: clamp(18px, 5vw, 28px) !important;

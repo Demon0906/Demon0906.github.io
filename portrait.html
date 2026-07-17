@@ -135,6 +135,12 @@
             `;
           })
           .join("");
+
+        if (window.location.hash) {
+          requestAnimationFrame(() => {
+            document.querySelector(window.location.hash)?.scrollIntoView({ block: "start" });
+          });
+        }
       }
 
       function openPortraitLightbox(groupId, photoIndex) {

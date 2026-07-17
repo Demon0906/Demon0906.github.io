@@ -443,10 +443,36 @@ function renderPortfolioNavigation() {
   portfolioMenu.innerHTML = links;
 }
 
+function renderModelNavigation() {
+  if (!modelMenu) return;
+  const modelGroups = (window.portraitCollections || [])
+    .flatMap((collection) =>
+      (collection.groups || []).map((group) => ({
+        collection: collection.collection,
+        id: group.id,
+        title: group.title,
+      })),
+    )
+    .filter((group, index, groups) => groups.findIndex((item) => item.title === group.title) === index)
+    .sort((a, b) => a.title.localeCompare(b.title, "zh-Hans-CN", { numeric: true, sensitivity: "base" }));
+
+  if (!modelGroups.length) return;
+  modelMenu.innerHTML = modelGroups
+    .map(
+      (group) => `
+        <a href="portrait.html?collection=${encodeURIComponent(group.collection)}#${encodeURIComponent(group.id)}">
+          ${escapeHtml(group.title)}
+        </a>
+      `,
+    )
+    .join("");
+}
+
 function renderPortfolio() {
   const workSections = portfolioSections.filter((section) => !isStorySection(section));
   const storySection = portfolioSections.find(isStorySection);
   renderPortfolioNavigation();
+  renderModelNavigation();
   portfolioMount.innerHTML = workSections.map(renderSection).join("");
   if (storyMount && storySection) {
     storyMount.innerHTML = storySection.projects
