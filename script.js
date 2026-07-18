@@ -400,6 +400,72 @@ function renderProjectCard(section, project, index, extraClass = "") {
   `;
 }
 
+function renderStoryBookCard(section, project, index) {
+  const mediaPath = window.thumbImage || window.localImage || ((src) => src);
+  const fullMediaPath = window.localImage || ((src) => src);
+  const cover = project.featuredCover || project.cover || project.photos[0];
+  const title = localized(project.title);
+  const teasers = {
+    zh: [
+      "翻开这一页，把告别、时间和光线放回照片发生的地方。",
+      "像进入一本随身携带的小书，慢慢读完一次拍摄留下的余温。",
+      "不急着解释照片，先让故事从一束光和一个停顿开始。",
+    ],
+    en: [
+      "Open this page and return farewell, time, and light to the place where the image began.",
+      "A small book of warmth left by a session, meant to be entered slowly.",
+      "Before the photograph explains itself, let the story begin with light and pause.",
+    ],
+    ja: [
+      "このページを開き、別れ、時間、光を写真が生まれた場所へ戻す。",
+      "撮影の余韻をゆっくり読む、小さな本のような入口。",
+      "写真が説明される前に、光と沈黙から物語を始める。",
+    ],
+  };
+  const teaserList = teasers[currentLanguage] || teasers.zh;
+  const teaser = teaserList[index % teaserList.length];
+  return `
+    <button class="story-book-card" type="button" data-section="${section.id}" data-project="${project.id}" data-page="${index}" aria-label="${escapeHtml(title)}">
+      <span class="story-book-number">${String(index + 1).padStart(2, "0")}</span>
+      <span class="story-book-cover">
+        <img
+          class="protected-media"
+          src="${mediaPath(cover)}"
+          onerror="this.onerror=null;this.src='${fullMediaPath(cover)}';"
+          alt="${escapeHtml(title)}"
+          loading="lazy"
+          decoding="async"
+          draggable="false"
+        >
+      </span>
+      <span class="story-book-copy">
+        <em>${t("storiesTitle")}</em>
+        <strong>${title}</strong>
+        <small>${teaser}</small>
+        <span class="project-open">${t("openProject")}<span aria-hidden="true">↗</span></span>
+      </span>
+    </button>
+  `;
+}
+
+function renderStoryBook(section) {
+  const pages = section.projects.map((project, index) => renderStoryBookCard(section, project, index)).join("");
+  return `
+    <div class="story-book" aria-label="${escapeHtml(t("storiesTitle"))}">
+      <button class="story-book-turn story-book-prev" type="button" aria-label="Previous story page">
+        <span aria-hidden="true">&lsaquo;</span>
+      </button>
+      <div class="story-book-pages" id="story-book-pages">
+        ${pages}
+        <span class="story-turn-sheet" aria-hidden="true"></span>
+      </div>
+      <button class="story-book-turn story-book-next" type="button" aria-label="Next story page">
+        <span aria-hidden="true">&rsaquo;</span>
+      </button>
+    </div>
+  `;
+}
+
 function renderSection(section) {
   const featuredProjects = section.projects.slice(0, 1);
   return `
@@ -475,11 +541,10 @@ function renderPortfolio() {
   renderModelNavigation();
   portfolioMount.innerHTML = workSections.map(renderSection).join("");
   if (storyMount && storySection) {
-    storyMount.innerHTML = storySection.projects
-      .map((project, index) => renderProjectCard(storySection, project, index, "story-index-card"))
-      .join("");
+    storyMount.innerHTML = renderStoryBook(storySection);
   }
   initCoverAutoScroll();
+  initStoryBookPaging();
 }
 
 function initCoverAutoScroll() {
@@ -512,6 +577,46 @@ function initCoverAutoScroll() {
       updateBackground();
       stack.scrollTo({ left: stack.clientWidth * index, behavior: "smooth" });
     }, 3600);
+  });
+}
+
+function initStoryBookPaging() {
+  const storyBook = document.querySelector(".story-book");
+  const pages = [...(storyBook?.querySelectorAll(".story-book-card") || [])];
+  if (!storyBook || !pages.length || storyBook.dataset.pagingReady === "true") return;
+  storyBook.dataset.pagingReady = "true";
+  let activeIndex = 0;
+  let isTurning = false;
+  const updatePages = () => {
+    pages.forEach((page, index) => {
+      page.classList.toggle("is-active", index === activeIndex);
+      page.classList.toggle("is-before", index < activeIndex);
+      page.classList.toggle("is-after", index > activeIndex);
+      page.setAttribute("aria-hidden", index === activeIndex ? "false" : "true");
+    });
+  };
+  const setPage = (nextIndex, direction = "next") => {
+    if (isTurning || nextIndex === activeIndex) return;
+    isTurning = true;
+    storyBook.classList.remove("is-turning-next", "is-turning-prev");
+    storyBook.classList.add(direction === "prev" ? "is-turning-prev" : "is-turning-next");
+    window.setTimeout(() => {
+      activeIndex = (nextIndex + pages.length) % pages.length;
+      updatePages();
+    }, 420);
+    window.setTimeout(() => {
+      storyBook.classList.remove("is-turning-next", "is-turning-prev");
+      isTurning = false;
+    }, 980);
+  };
+  updatePages();
+  storyBook.querySelectorAll(".story-book-turn").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      const direction = button.classList.contains("story-book-prev") ? -1 : 1;
+      setPage(activeIndex + direction, direction < 0 ? "prev" : "next");
+    });
   });
 }
 
@@ -667,7 +772,7 @@ document.addEventListener("click", (event) => {
     return;
   }
 
-  const projectCard = event.target.closest(".project-card, .series-card");
+  const projectCard = event.target.closest(".project-card, .series-card, .story-book-card");
   if (projectCard) {
     const project = getProject(projectCard.dataset.section, projectCard.dataset.project);
     if (project?.href) {
