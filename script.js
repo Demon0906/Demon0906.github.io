@@ -448,6 +448,23 @@ function renderStoryBookCard(section, project, index) {
   `;
 }
 
+function renderStoryBook(section) {
+  const pages = section.projects.map((project, index) => renderStoryBookCard(section, project, index)).join("");
+  return `
+    <div class="story-book" aria-label="${escapeHtml(t("storiesTitle"))}">
+      <button class="story-book-turn story-book-prev" type="button" aria-label="Previous story page">
+        <span aria-hidden="true">&lsaquo;</span>
+      </button>
+      <div class="story-book-pages" id="story-book-pages">
+        ${pages}
+      </div>
+      <button class="story-book-turn story-book-next" type="button" aria-label="Next story page">
+        <span aria-hidden="true">&rsaquo;</span>
+      </button>
+    </div>
+  `;
+}
+
 function renderSection(section) {
   const featuredProjects = section.projects.slice(0, 1);
   return `
@@ -527,11 +544,10 @@ function renderPortfolio() {
   renderModelNavigation();
   portfolioMount.innerHTML = workSections.map(renderSection).join("");
   if (storyMount && storySection) {
-    storyMount.innerHTML = storySection.projects
-      .map((project, index) => renderStoryBookCard(storySection, project, index))
-      .join("");
+    storyMount.innerHTML = renderStoryBook(storySection);
   }
   initCoverAutoScroll();
+  initStoryBookPaging();
 }
 
 function initCoverAutoScroll() {
@@ -564,6 +580,21 @@ function initCoverAutoScroll() {
       updateBackground();
       stack.scrollTo({ left: stack.clientWidth * index, behavior: "smooth" });
     }, 3600);
+  });
+}
+
+function initStoryBookPaging() {
+  const storyBook = document.querySelector(".story-book");
+  const pages = storyBook?.querySelector(".story-book-pages");
+  if (!storyBook || !pages || storyBook.dataset.pagingReady === "true") return;
+  storyBook.dataset.pagingReady = "true";
+  storyBook.querySelectorAll(".story-book-turn").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      const direction = button.classList.contains("story-book-prev") ? -1 : 1;
+      pages.scrollBy({ left: direction * pages.clientWidth, behavior: "smooth" });
+    });
   });
 }
 
