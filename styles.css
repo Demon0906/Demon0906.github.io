@@ -7001,3 +7001,101 @@ body .story-book.is-turning-prev .story-turn-sheet {
     letter-spacing: 0.16em;
   }
 }
+
+/* Final alignment pass for project cards, story extras, and mobile menus. */
+@media (min-width: 821px) {
+  body .portfolio-group {
+    grid-template-rows: auto 1fr;
+  }
+
+  body .group-heading {
+    min-height: 214px;
+  }
+
+  body .project-grid {
+    height: 100%;
+  }
+
+  body .series-card {
+    grid-template-rows: auto 150px 1fr;
+    height: 100%;
+    min-height: 420px;
+  }
+
+  body .series-index {
+    align-self: end;
+  }
+
+  body .series-media {
+    align-self: start;
+    height: 150px;
+  }
+
+  body .series-copy {
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    min-height: 132px;
+  }
+
+  body .series-copy strong {
+    min-height: 52px;
+  }
+
+  body .series-copy .project-open {
+    align-self: end;
+    margin-top: 0;
+  }
+
+  body .story-images-extra {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(240px, 360px));
+    justify-content: center;
+    gap: clamp(18px, 2vw, 28px);
+  }
+
+  body .story-images-extra .story-image {
+    grid-column: auto;
+    width: 100%;
+    max-width: 360px;
+    transform: none;
+  }
+
+  body .story-images-extra .story-image img,
+  body .story-images-extra .story-image:first-child img {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (max-width: 820px) {
+  body .group-heading {
+    display: flex;
+    flex-direction: column;
+  }
+
+  body .group-heading p.mobile-project-title {
+    order: 2;
+    margin: 7px 0 8px !important;
+    color: rgba(43, 43, 43, 0.72) !important;
+    font-size: clamp(17px, 4.8vw, 21px) !important;
+    font-weight: 720 !important;
+    line-height: 1.35 !important;
+  }
+
+  body .group-heading > p:not(.mobile-project-title) {
+    order: 3;
+  }
+
+  body .site-header:not(.is-scrolled) .portfolio-menu,
+  body .site-header .portfolio-menu {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 18px 46px rgba(18, 18, 18, 0.18);
+  }
+
+  body .site-header:not(.is-scrolled) .portfolio-menu a,
+  body .site-header:not(.is-scrolled) .portfolio-menu summary,
+  body .site-header .portfolio-menu a,
+  body .site-header .portfolio-menu summary {
+    color: rgba(32, 32, 32, 0.88) !important;
+    text-shadow: none !important;
+  }
+}
