@@ -457,6 +457,7 @@ function renderStoryBook(section) {
       </button>
       <div class="story-book-pages" id="story-book-pages">
         ${pages}
+        <span class="story-turn-sheet" aria-hidden="true"></span>
       </div>
       <button class="story-book-turn story-book-next" type="button" aria-label="Next story page">
         <span aria-hidden="true">&rsaquo;</span>
@@ -590,28 +591,29 @@ function initStoryBookPaging() {
   storyBook.dataset.pagingReady = "true";
   let activeIndex = 0;
   let isTurning = false;
-  const setPage = (nextIndex, direction = "next") => {
-    if (isTurning || nextIndex === activeIndex) return;
-    isTurning = true;
-    storyBook.classList.remove("is-turning-next", "is-turning-prev");
-    storyBook.classList.add(direction === "prev" ? "is-turning-prev" : "is-turning-next");
-    activeIndex = (nextIndex + pages.length) % pages.length;
+  const updatePages = () => {
     pages.forEach((page, index) => {
       page.classList.toggle("is-active", index === activeIndex);
       page.classList.toggle("is-before", index < activeIndex);
       page.classList.toggle("is-after", index > activeIndex);
       page.setAttribute("aria-hidden", index === activeIndex ? "false" : "true");
     });
+  };
+  const setPage = (nextIndex, direction = "next") => {
+    if (isTurning || nextIndex === activeIndex) return;
+    isTurning = true;
+    storyBook.classList.remove("is-turning-next", "is-turning-prev");
+    storyBook.classList.add(direction === "prev" ? "is-turning-prev" : "is-turning-next");
+    window.setTimeout(() => {
+      activeIndex = (nextIndex + pages.length) % pages.length;
+      updatePages();
+    }, 360);
     window.setTimeout(() => {
       storyBook.classList.remove("is-turning-next", "is-turning-prev");
       isTurning = false;
-    }, 760);
+    }, 920);
   };
-  pages.forEach((page, index) => {
-    page.classList.toggle("is-active", index === 0);
-    page.classList.toggle("is-after", index > 0);
-    page.setAttribute("aria-hidden", index === 0 ? "false" : "true");
-  });
+  updatePages();
   storyBook.querySelectorAll(".story-book-turn").forEach((button) => {
     button.addEventListener("click", (event) => {
       event.preventDefault();
