@@ -425,7 +425,7 @@ function renderStoryBookCard(section, project, index) {
   const teaserList = teasers[currentLanguage] || teasers.zh;
   const teaser = teaserList[index % teaserList.length];
   return `
-    <button class="series-card story-book-card" type="button" data-section="${section.id}" data-project="${project.id}" aria-label="${escapeHtml(title)}">
+    <button class="series-card story-book-card" type="button" data-section="${section.id}" data-project="${project.id}" data-page="${index}" aria-label="${escapeHtml(title)}">
       <span class="story-book-number">${String(index + 1).padStart(2, "0")}</span>
       <span class="story-book-cover">
         <img
@@ -585,15 +585,39 @@ function initCoverAutoScroll() {
 
 function initStoryBookPaging() {
   const storyBook = document.querySelector(".story-book");
-  const pages = storyBook?.querySelector(".story-book-pages");
-  if (!storyBook || !pages || storyBook.dataset.pagingReady === "true") return;
+  const pages = [...(storyBook?.querySelectorAll(".story-book-card") || [])];
+  if (!storyBook || !pages.length || storyBook.dataset.pagingReady === "true") return;
   storyBook.dataset.pagingReady = "true";
+  let activeIndex = 0;
+  let isTurning = false;
+  const setPage = (nextIndex, direction = "next") => {
+    if (isTurning || nextIndex === activeIndex) return;
+    isTurning = true;
+    storyBook.classList.remove("is-turning-next", "is-turning-prev");
+    storyBook.classList.add(direction === "prev" ? "is-turning-prev" : "is-turning-next");
+    activeIndex = (nextIndex + pages.length) % pages.length;
+    pages.forEach((page, index) => {
+      page.classList.toggle("is-active", index === activeIndex);
+      page.classList.toggle("is-before", index < activeIndex);
+      page.classList.toggle("is-after", index > activeIndex);
+      page.setAttribute("aria-hidden", index === activeIndex ? "false" : "true");
+    });
+    window.setTimeout(() => {
+      storyBook.classList.remove("is-turning-next", "is-turning-prev");
+      isTurning = false;
+    }, 760);
+  };
+  pages.forEach((page, index) => {
+    page.classList.toggle("is-active", index === 0);
+    page.classList.toggle("is-after", index > 0);
+    page.setAttribute("aria-hidden", index === 0 ? "false" : "true");
+  });
   storyBook.querySelectorAll(".story-book-turn").forEach((button) => {
     button.addEventListener("click", (event) => {
       event.preventDefault();
       event.stopPropagation();
       const direction = button.classList.contains("story-book-prev") ? -1 : 1;
-      pages.scrollBy({ left: direction * pages.clientWidth, behavior: "smooth" });
+      setPage(activeIndex + direction, direction < 0 ? "prev" : "next");
     });
   });
 }
