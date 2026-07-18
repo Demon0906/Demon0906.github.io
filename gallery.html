@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Demon Photography 摄影集详情。">
     <title>摄影集 | Demon Photography</title>
-    <link rel="stylesheet" href="styles.css?v=atelier-20260718-story">
+    <link rel="stylesheet" href="styles.css?v=atelier-20260719-story-mobile">
   </head>
   <body class="detail-page gallery-page">
     <header class="detail-header">
@@ -40,7 +40,7 @@
 
     <div class="privacy-toast" id="privacy-toast" role="status" aria-live="polite">作品仅供在线预览，请勿保存或截图传播。</div>
 
-    <script src="gallery-data.js?v=atelier-20260718-story"></script>
+    <script src="gallery-data.js?v=atelier-20260719-story-mobile"></script>
     <script src="protection.js?v=atelier-20260705d"></script>
     <script>
       const params = new URLSearchParams(window.location.search);
@@ -220,38 +220,46 @@
       function renderStory() {
         const story = storyForProject();
         body.className = "gallery-body story-article";
-        const images = project.photos
-          .map(
-            (src, index) => `
-              <figure class="story-image story-image-${index % 5}" data-index="${index}">
-                <button type="button" data-index="${index}" aria-label="查看 ${escapeHtml(getText(project.title))} ${index + 1}">
-                  <img
-                    class="protected-media"
-                    src="${window.thumbImage(src)}"
-                    onerror="this.onerror=null;this.src='${window.localImage(src)}';"
-                    alt="${escapeHtml(getText(project.title))}"
-                    loading="lazy"
-                    decoding="async"
-                    draggable="false"
-                  >
-                </button>
-                <figcaption>
-                  <span>${String(index + 1).padStart(2, "0")}</span>
-                  <p>${storyPhotoNote(photoCaption(src, index), index)}</p>
-                </figcaption>
-              </figure>
-            `,
-          )
+        const storyFigure = (src, index) => `
+          <figure class="story-image story-image-${index % 5}" data-index="${index}">
+            <button type="button" data-index="${index}" aria-label="查看 ${escapeHtml(getText(project.title))} ${index + 1}">
+              <img
+                class="protected-media"
+                src="${window.thumbImage(src)}"
+                onerror="this.onerror=null;this.src='${window.localImage(src)}';"
+                alt="${escapeHtml(getText(project.title))}"
+                loading="lazy"
+                decoding="async"
+                draggable="false"
+              >
+            </button>
+            <figcaption>
+              <span>${String(index + 1).padStart(2, "0")}</span>
+              <p>${storyPhotoNote(photoCaption(src, index), index)}</p>
+            </figcaption>
+          </figure>
+        `;
+        const storyBlocks = story.paragraphs
+          .map((paragraph, index) => `
+            <section class="story-flow-block">
+              <p>${paragraph}</p>
+              ${project.photos[index] ? storyFigure(project.photos[index], index) : ""}
+            </section>
+          `)
+          .join("");
+        const remainingImages = project.photos
+          .slice(story.paragraphs.length)
+          .map((src, index) => storyFigure(src, index + story.paragraphs.length))
           .join("");
         body.innerHTML = `
           ${renderProjectTabs()}
-          <article class="story-card">
+          <article class="story-card story-card--flow">
             <div class="story-copy">
               <p class="eyebrow">${story.kicker}</p>
               <h2>${story.title}</h2>
-              ${story.paragraphs.map((paragraph) => `<p>${paragraph}</p>`).join("")}
+              <div class="story-flow">${storyBlocks}</div>
             </div>
-            <div class="story-images" aria-label="摄影故事照片">${images}</div>
+            ${remainingImages ? `<div class="story-images story-images-extra" aria-label="摄影故事照片">${remainingImages}</div>` : ""}
           </article>
         `;
       }

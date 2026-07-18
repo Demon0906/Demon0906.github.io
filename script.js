@@ -468,6 +468,7 @@ function renderStoryBook(section) {
 
 function renderSection(section) {
   const featuredProjects = section.projects.slice(0, 1);
+  const mobileProjectTitle = section.id === "portrait" ? "相机 / 手机人像" : localized(featuredProjects[0]?.title || "");
   return `
     <section class="portfolio-group project-section" id="${section.id}-section" aria-labelledby="${section.id}-title">
       <div class="group-heading">
@@ -476,6 +477,7 @@ function renderSection(section) {
           <h3 id="${section.id}-title">${t(section.titleKey)}</h3>
         </div>
         <p>${t(section.introKey)}</p>
+        <p class="mobile-project-title">${escapeHtml(mobileProjectTitle)}</p>
       </div>
       <div class="project-grid">
         ${featuredProjects.map((project, index) => renderProjectCard(section, project, index)).join("")}
@@ -603,11 +605,11 @@ function initStoryBookPaging() {
     window.setTimeout(() => {
       activeIndex = (nextIndex + pages.length) % pages.length;
       updatePages();
-    }, 420);
+    }, 320);
     window.setTimeout(() => {
       storyBook.classList.remove("is-turning-next", "is-turning-prev");
       isTurning = false;
-    }, 980);
+    }, 720);
   };
   updatePages();
   storyBook.querySelectorAll(".story-book-turn").forEach((button) => {
