@@ -408,6 +408,7 @@ function renderSection(section) {
         <div>
           <p class="eyebrow">${t("projectLabel")}</p>
           <h3 id="${section.id}-title">${t(section.titleKey)}</h3>
+          <span class="chapter-count">${section.projects.length} ${section.projects.length > 1 ? "series" : "series"}</span>
         </div>
         <p>${t(section.introKey)}</p>
       </div>
@@ -469,7 +470,10 @@ function renderModelNavigation() {
 }
 
 function renderPortfolio() {
-  const workSections = portfolioSections.filter((section) => !isStorySection(section));
+  const coldGalleryOrder = ["portrait", "nature", "city", "architecture", "daily"];
+  const workSections = portfolioSections
+    .filter((section) => !isStorySection(section))
+    .sort((a, b) => coldGalleryOrder.indexOf(a.id) - coldGalleryOrder.indexOf(b.id));
   const storySection = portfolioSections.find(isStorySection);
   renderPortfolioNavigation();
   renderModelNavigation();
