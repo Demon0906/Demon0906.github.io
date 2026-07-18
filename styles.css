@@ -6916,3 +6916,88 @@ body .story-book.is-turning-prev .story-turn-sheet {
     font-size: 14px;
   }
 }
+
+/* Mobile portrait detail: each model becomes a compact horizontal photo viewer. */
+@media (max-width: 760px) {
+  body.portrait-page .portrait-projects {
+    gap: 34px;
+    padding-bottom: 54px;
+  }
+
+  body.portrait-page .portrait-project {
+    gap: 16px;
+    padding-top: 24px;
+  }
+
+  body.portrait-page .portrait-project-heading h2 {
+    margin-bottom: 8px;
+    font-size: clamp(28px, 8vw, 36px);
+  }
+
+  body.portrait-page .portrait-project-heading p:not(.eyebrow),
+  body.portrait-page .portrait-project-heading span {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  body.portrait-page .portrait-photo-grid {
+    position: relative;
+    display: flex;
+    grid-template-columns: none;
+    gap: 12px;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 0 18px;
+    scroll-padding-left: 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body.portrait-page .portrait-photo-grid::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  body.portrait-page .portrait-photo-grid::-webkit-scrollbar-track {
+    background: rgba(138, 121, 103, 0.12);
+    border-radius: 999px;
+  }
+
+  body.portrait-page .portrait-photo-grid::-webkit-scrollbar-thumb {
+    background: rgba(138, 121, 103, 0.38);
+    border-radius: 999px;
+  }
+
+  body.portrait-page .portrait-photo {
+    flex: 0 0 100%;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 20px;
+    scroll-snap-align: start;
+  }
+
+  body.portrait-page .portrait-photo img {
+    aspect-ratio: 4 / 5;
+  }
+
+  body.portrait-page .portrait-photo-info {
+    min-height: 70px;
+    padding: 12px 14px 14px;
+  }
+
+  body.portrait-page .portrait-photo-info small,
+  body.portrait-page .portrait-photo-info em {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  body.portrait-page .portrait-project::after {
+    content: "左右滑动查看照片";
+    display: block;
+    width: max-content;
+    margin-top: -8px;
+    color: rgba(43, 43, 43, 0.42);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+  }
+}
