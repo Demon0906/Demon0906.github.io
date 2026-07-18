@@ -31,7 +31,7 @@ const translations = {
     travelTitle: "旅游记忆",
     travelIntro: "把路线、地方和偶遇整理成可以反复回看的视觉日记。",
     storiesTitle: "摄影故事",
-    storiesIntro: "照片背后的记忆、方法和情绪。",
+    storiesIntro: "打开几本照片里的小书，从光、告别和旅途进入故事。",
     storiesEyebrow: "Visual Journal",
     aboutTitle: "关于我",
     aboutCopy: "我拍照，是为了把那些很快会消失的气息留下来：一次停顿、一束光、风经过植物时改变的方向。Demon Atelier 更像一本慢慢装订的影像书。",
@@ -87,7 +87,7 @@ const translations = {
     travelTitle: "Travel Memories",
     travelIntro: "A visual diary of places, routes, and unexpected encounters.",
     storiesTitle: "Photo Stories",
-    storiesIntro: "Photography themes, technique notes, and field journals.",
+    storiesIntro: "Small visual books about light, farewell, travel, and the moments behind the frame.",
     storiesEyebrow: "Visual Journal",
     aboutTitle: "About Me",
     aboutCopy: "I photograph because some moments disappear too quickly: a pause, a beam of light, the direction of wind through leaves. Demon Atelier is a slowly bound visual book.",
@@ -143,7 +143,7 @@ const translations = {
     travelTitle: "旅の記憶",
     travelIntro: "場所、ルート、偶然の出会いを視覚的な日記として残します。",
     storiesTitle: "写真ストーリー",
-    storiesIntro: "撮影現場から生まれた記憶、方法、感情を物語として綴ります。",
+    storiesIntro: "光、別れ、旅をめぐる小さな写真の本を開くように。",
     storiesEyebrow: "Visual Journal",
     aboutTitle: "自己紹介",
     aboutCopy: "すぐに消えてしまう気配を残すために撮っています。沈黙、光、葉を揺らす風。Demon Atelier はゆっくり綴じていく写真の本です。",
@@ -400,6 +400,54 @@ function renderProjectCard(section, project, index, extraClass = "") {
   `;
 }
 
+function renderStoryBookCard(section, project, index) {
+  const mediaPath = window.thumbImage || window.localImage || ((src) => src);
+  const fullMediaPath = window.localImage || ((src) => src);
+  const cover = project.featuredCover || project.cover || project.photos[0];
+  const title = localized(project.title);
+  const teasers = {
+    zh: [
+      "翻开这一页，把告别、时间和光线放回照片发生的地方。",
+      "像进入一本随身携带的小书，慢慢读完一次拍摄留下的余温。",
+      "不急着解释照片，先让故事从一束光和一个停顿开始。",
+    ],
+    en: [
+      "Open this page and return farewell, time, and light to the place where the image began.",
+      "A small book of warmth left by a session, meant to be entered slowly.",
+      "Before the photograph explains itself, let the story begin with light and pause.",
+    ],
+    ja: [
+      "このページを開き、別れ、時間、光を写真が生まれた場所へ戻す。",
+      "撮影の余韻をゆっくり読む、小さな本のような入口。",
+      "写真が説明される前に、光と沈黙から物語を始める。",
+    ],
+  };
+  const teaserList = teasers[currentLanguage] || teasers.zh;
+  const teaser = teaserList[index % teaserList.length];
+  return `
+    <button class="series-card story-book-card" type="button" data-section="${section.id}" data-project="${project.id}" aria-label="${escapeHtml(title)}">
+      <span class="story-book-number">${String(index + 1).padStart(2, "0")}</span>
+      <span class="story-book-cover">
+        <img
+          class="protected-media"
+          src="${mediaPath(cover)}"
+          onerror="this.onerror=null;this.src='${fullMediaPath(cover)}';"
+          alt="${escapeHtml(title)}"
+          loading="lazy"
+          decoding="async"
+          draggable="false"
+        >
+      </span>
+      <span class="story-book-copy">
+        <em>${t("storiesTitle")}</em>
+        <strong>${title}</strong>
+        <small>${teaser}</small>
+        <span class="project-open">${t("openProject")}<span aria-hidden="true">↗</span></span>
+      </span>
+    </button>
+  `;
+}
+
 function renderSection(section) {
   const featuredProjects = section.projects.slice(0, 1);
   return `
@@ -480,7 +528,7 @@ function renderPortfolio() {
   portfolioMount.innerHTML = workSections.map(renderSection).join("");
   if (storyMount && storySection) {
     storyMount.innerHTML = storySection.projects
-      .map((project, index) => renderProjectCard(storySection, project, index, "story-index-card"))
+      .map((project, index) => renderStoryBookCard(storySection, project, index))
       .join("");
   }
   initCoverAutoScroll();

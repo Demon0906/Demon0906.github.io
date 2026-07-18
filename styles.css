@@ -6482,3 +6482,351 @@ body .lightbox-frame::after {
     padding-inline: 22px;
   }
 }
+
+/* Cold Gallery revision 2: transparent gray, compact chapters, storybook entries. */
+.cold-gallery-preview {
+  --bg: #eceff0;
+  --paper: rgba(246, 247, 247, 0.64);
+  --ink: #34383b;
+  --muted: #737b80;
+  --quiet: #9aa0a4;
+  --line: rgba(59, 65, 69, 0.12);
+  --accent: #7d858a;
+  --accent-soft: rgba(226, 230, 232, 0.72);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(228, 232, 234, 0.72)),
+    #eceff0;
+}
+
+.cold-gallery-preview .site-header {
+  background: rgba(222, 226, 228, 0.64);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 18px 52px rgba(72, 78, 83, 0.12);
+}
+
+.cold-gallery-preview .hero {
+  min-height: 88svh;
+  background:
+    linear-gradient(135deg, rgba(240, 243, 244, 0.95), rgba(217, 223, 226, 0.82));
+  border-bottom-color: rgba(80, 87, 92, 0.1);
+}
+
+.cold-gallery-preview .hero-image {
+  opacity: 0.82;
+  filter: saturate(0.72) contrast(0.94) brightness(0.9);
+}
+
+.cold-gallery-preview .hero-shade {
+  background:
+    linear-gradient(90deg, rgba(236, 239, 240, 0.88), rgba(236, 239, 240, 0.18)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(45, 51, 55, 0.22));
+}
+
+.cold-gallery-preview .hero-content,
+.cold-gallery-preview .hero h1 {
+  color: #303538;
+}
+
+.cold-gallery-preview .hero-copy,
+.cold-gallery-preview .hero .eyebrow {
+  color: rgba(52, 56, 59, 0.68);
+}
+
+.cold-gallery-preview .hero-actions .button,
+.cold-gallery-preview .hero-actions .button.primary,
+.cold-gallery-preview .hero-actions .button.ghost {
+  border-color: rgba(71, 79, 85, 0.22);
+  background: rgba(255, 255, 255, 0.28);
+  color: rgba(52, 56, 59, 0.88);
+  backdrop-filter: blur(18px) saturate(1.02);
+  -webkit-backdrop-filter: blur(18px) saturate(1.02);
+}
+
+.cold-gallery-preview .hero-actions .button.primary {
+  background: rgba(255, 255, 255, 0.66);
+}
+
+.cold-gallery-preview .portfolio,
+.cold-gallery-preview .portfolio-groups,
+.cold-gallery-preview .story-index-section,
+.cold-gallery-preview .about-band,
+.cold-gallery-preview .contact-section {
+  background: transparent;
+}
+
+.cold-gallery-preview .portfolio-notice {
+  background: rgba(246, 247, 247, 0.54);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.cold-gallery-preview .group-heading {
+  grid-template-columns: minmax(190px, 0.34fr) minmax(0, 1fr);
+}
+
+.cold-gallery-preview .group-heading h3 {
+  max-width: 7em;
+  font-size: clamp(25px, 2.8vw, 40px);
+  font-weight: 560;
+  line-height: 1.1;
+}
+
+.cold-gallery-preview .group-heading > div {
+  padding-top: clamp(24px, 3.5vw, 48px);
+  padding-bottom: clamp(24px, 3.5vw, 48px);
+}
+
+.cold-gallery-preview .group-heading p:last-child {
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+.cold-gallery-preview .series-card {
+  min-height: 260px;
+  padding: clamp(22px, 2.4vw, 34px);
+  background: rgba(246, 247, 247, 0.42);
+}
+
+.cold-gallery-preview .series-copy {
+  align-self: start;
+}
+
+.cold-gallery-preview .series-copy strong {
+  font-size: clamp(21px, 1.7vw, 30px);
+  font-weight: 560;
+}
+
+.cold-gallery-preview .series-copy small {
+  font-size: 12px;
+  line-height: 1.75;
+}
+
+.cold-gallery-preview .story-index-section {
+  position: relative;
+  padding-top: clamp(34px, 4vw, 58px);
+  padding-bottom: clamp(42px, 5vw, 72px);
+  border-top: 1px solid rgba(80, 87, 92, 0.1);
+}
+
+.cold-gallery-preview .story-index-heading {
+  grid-template-columns: minmax(220px, 0.36fr) minmax(0, 1fr);
+  align-items: end;
+  padding-bottom: clamp(26px, 3vw, 42px);
+}
+
+.cold-gallery-preview .story-index-heading h2 {
+  font-family: var(--display-font);
+  font-size: clamp(32px, 4.1vw, 58px);
+  font-weight: 560;
+  line-height: 1.04;
+}
+
+.cold-gallery-preview .story-index-heading p:not(.eyebrow) {
+  max-width: 24em;
+  color: rgba(75, 82, 87, 0.64);
+  font-size: clamp(14px, 1.2vw, 18px);
+}
+
+.cold-gallery-preview .story-index-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(24px, 4vw, 70px);
+  border-top: 1px solid rgba(80, 87, 92, 0.1);
+  padding-top: clamp(28px, 4vw, 56px);
+}
+
+.cold-gallery-preview .story-book-card {
+  position: relative;
+  grid-template-columns: minmax(160px, 0.34fr) minmax(0, 1fr);
+  gap: clamp(22px, 3vw, 42px);
+  min-height: 0;
+  padding: clamp(20px, 2.6vw, 34px);
+  border: 1px solid rgba(84, 90, 94, 0.12);
+  border-radius: 10px;
+  background:
+    linear-gradient(90deg, rgba(137, 145, 151, 0.18) 0 10px, transparent 10px),
+    rgba(247, 248, 248, 0.58);
+  box-shadow: 0 24px 70px rgba(67, 73, 78, 0.09);
+  text-align: left;
+}
+
+.cold-gallery-preview .story-book-card::before {
+  content: "";
+  position: absolute;
+  inset: 12px 12px 12px auto;
+  width: 1px;
+  background: rgba(82, 90, 96, 0.14);
+}
+
+.cold-gallery-preview .story-book-number {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  color: rgba(83, 91, 96, 0.48);
+  font-family: var(--latin-art-font);
+  font-size: 22px;
+}
+
+.cold-gallery-preview .story-book-cover {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 18px 48px rgba(67, 73, 78, 0.16);
+}
+
+.cold-gallery-preview .story-book-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cold-gallery-preview .story-book-copy {
+  display: grid;
+  align-content: center;
+  gap: 14px;
+  padding-right: 30px;
+}
+
+.cold-gallery-preview .story-book-copy em {
+  color: rgba(113, 121, 126, 0.86);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.cold-gallery-preview .story-book-copy strong {
+  color: #383d40;
+  font-family: var(--display-font);
+  font-size: clamp(23px, 2vw, 34px);
+  line-height: 1.25;
+}
+
+.cold-gallery-preview .story-book-copy small {
+  max-width: 25em;
+  color: rgba(83, 91, 96, 0.68);
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.85;
+}
+
+@media (max-width: 820px) {
+  .cold-gallery-preview .hero {
+    min-height: 82svh;
+  }
+
+  .cold-gallery-preview .hero-content {
+    padding: 138px 24px 70px;
+  }
+
+  .cold-gallery-preview .hero h1 {
+    max-width: 300px;
+    font-size: clamp(42px, 13vw, 54px);
+  }
+
+  .cold-gallery-preview .hero-copy {
+    margin-bottom: 28px;
+  }
+
+  .cold-gallery-preview .portfolio-notice {
+    padding: 22px;
+  }
+
+  .cold-gallery-preview .group-heading {
+    padding: 22px 22px 12px;
+  }
+
+  .cold-gallery-preview .group-heading h3 {
+    font-size: clamp(24px, 7.2vw, 32px);
+    line-height: 1.12;
+  }
+
+  .cold-gallery-preview .group-heading p:last-child {
+    padding-top: 10px;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .cold-gallery-preview .series-card {
+    padding: 0 22px 20px;
+  }
+
+  .cold-gallery-preview .series-media {
+    aspect-ratio: 16 / 9 !important;
+  }
+
+  .cold-gallery-preview .series-copy {
+    padding-top: 12px;
+  }
+
+  .cold-gallery-preview .series-copy strong {
+    font-size: 18px;
+  }
+
+  .cold-gallery-preview .series-copy small {
+    display: none;
+  }
+
+  .cold-gallery-preview .story-index-section {
+    padding: 30px 18px 46px;
+  }
+
+  .cold-gallery-preview .story-index-heading {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding-bottom: 24px;
+  }
+
+  .cold-gallery-preview .story-index-heading h2 {
+    font-size: clamp(28px, 8.4vw, 36px);
+  }
+
+  .cold-gallery-preview .story-index-heading p:not(.eyebrow) {
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  .cold-gallery-preview .story-index-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding-top: 20px;
+  }
+
+  .cold-gallery-preview .story-book-card {
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: 16px;
+    padding: 16px 16px 16px 20px;
+    border-radius: 8px;
+  }
+
+  .cold-gallery-preview .story-book-number {
+    top: 12px;
+    right: 14px;
+    font-size: 15px;
+  }
+
+  .cold-gallery-preview .story-book-cover {
+    aspect-ratio: 3 / 4;
+    border-radius: 6px;
+  }
+
+  .cold-gallery-preview .story-book-copy {
+    gap: 8px;
+    padding-right: 14px;
+  }
+
+  .cold-gallery-preview .story-book-copy em {
+    font-size: 9px;
+    letter-spacing: 0.13em;
+  }
+
+  .cold-gallery-preview .story-book-copy strong {
+    font-size: 18px;
+    line-height: 1.25;
+  }
+
+  .cold-gallery-preview .story-book-copy small {
+    font-size: 12px;
+    line-height: 1.55;
+  }
+}
