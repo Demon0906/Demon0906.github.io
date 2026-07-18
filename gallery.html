@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Demon Photography 摄影集详情。">
     <title>摄影集 | Demon Photography</title>
-    <link rel="stylesheet" href="styles.css?v=atelier-20260705d">
+    <link rel="stylesheet" href="styles.css?v=atelier-20260718-story">
   </head>
   <body class="detail-page gallery-page">
     <header class="detail-header">
@@ -40,7 +40,7 @@
 
     <div class="privacy-toast" id="privacy-toast" role="status" aria-live="polite">作品仅供在线预览，请勿保存或截图传播。</div>
 
-    <script src="gallery-data.js?v=atelier-20260705d"></script>
+    <script src="gallery-data.js?v=atelier-20260718-story"></script>
     <script src="protection.js?v=atelier-20260705d"></script>
     <script>
       const params = new URLSearchParams(window.location.search);
@@ -171,23 +171,75 @@
         return `<nav class="gallery-project-tabs" aria-label="摄影集切换">${links}</nav>`;
       }
 
+      function storyForProject() {
+        if (project.story) return project.story;
+        const title = getText(project.title);
+        return {
+          kicker: "A playful frame",
+          title,
+          paragraphs: [
+            `有些拍摄不是从宏大的计划开始，而是从一个让人会心一笑的对象开始。${title} 的有趣之处就在这里：它把日常里看似轻巧的东西，认真地请到镜头前。`,
+            "当照片不再急着证明什么，观察就会变得轻松。一个表情、一点颜色、一处摆放的角度，都可能成为画面里的小转折。摄影好玩的地方，也许正是它让普通的瞬间突然有了主角。",
+            "所以这组照片更像一段可以慢慢翻看的现场笔记：它记录被看见的过程，也记录拍摄者和被拍摄对象之间，那一点点试探、靠近和发现。"
+          ],
+        };
+      }
+
+      function storyPhotoNote(caption, index) {
+        const notesByProject = {
+          "story-graduation-season": [
+            "从这张开始，告别不是沉重的词，而是被草地、风和笑容托起来的瞬间。",
+            "证书和衣角进入画面时，毕业这件事突然有了可以触摸的形状。",
+            "镜头靠近一点，表情里的期待和舍不得就会同时出现。",
+            "最后一张像一个轻轻的句号：拍完以后，大家就要走向不同的路了。",
+          ],
+          "stories-e4ba94e69da1": [
+            "让角色先占住画面，像一场小剧场正式开灯。",
+            "靠近之后，玩偶的表情会变得很有存在感，仿佛它真的知道镜头在哪里。",
+            "几只角色放在一起，关系感就出现了，照片也从静物变成了小故事。",
+            "背景颜色退到后面，主角的性格反而更明显。",
+            "这类照片好玩的地方，是你会忍不住继续替它们安排下一幕。",
+          ],
+          "story-light-notes": [
+            "第一张像见面：熊大的笑容先把故事打开。",
+            "换一个角度，它就不只是玩偶，而像一个认真参与毕业季的小伙伴。",
+            "光线落在毛绒上，时间感会变得很柔软。",
+            "最后留下的不是摆拍，而是一段被带着走了很久的陪伴。",
+          ],
+        };
+        const notes = notesByProject[project.id] || [
+          "第一眼先交给画面本身：颜色、距离和姿态会替故事开场。",
+          "换一个角度以后，照片里的重点也会移动，新的情绪就从边缘长出来。",
+          "有时最有趣的不是完美构图，而是现场留下的一点偶然。",
+          "当一组照片被放在一起，它们开始像句子一样互相回答。",
+          "最后留下的，不只是画面，也是拍摄时那份好奇心。",
+        ];
+        return notes[index % notes.length] || caption.detail;
+      }
+
       function renderStory() {
-        const story = project.story;
+        const story = storyForProject();
         body.className = "gallery-body story-article";
         const images = project.photos
           .map(
             (src, index) => `
-              <button class="story-image" type="button" data-index="${index}">
-                <img
-                  class="protected-media"
-                  src="${window.thumbImage(src)}"
-                  onerror="this.onerror=null;this.src='${window.localImage(src)}';"
-                  alt="${escapeHtml(getText(project.title))}"
-                  loading="lazy"
-                  decoding="async"
-                  draggable="false"
-                >
-              </button>
+              <figure class="story-image story-image-${index % 5}" data-index="${index}">
+                <button type="button" data-index="${index}" aria-label="查看 ${escapeHtml(getText(project.title))} ${index + 1}">
+                  <img
+                    class="protected-media"
+                    src="${window.thumbImage(src)}"
+                    onerror="this.onerror=null;this.src='${window.localImage(src)}';"
+                    alt="${escapeHtml(getText(project.title))}"
+                    loading="lazy"
+                    decoding="async"
+                    draggable="false"
+                  >
+                </button>
+                <figcaption>
+                  <span>${String(index + 1).padStart(2, "0")}</span>
+                  <p>${storyPhotoNote(photoCaption(src, index), index)}</p>
+                </figcaption>
+              </figure>
             `,
           )
           .join("");
@@ -199,30 +251,9 @@
               <h2>${story.title}</h2>
               ${story.paragraphs.map((paragraph) => `<p>${paragraph}</p>`).join("")}
             </div>
-            <div class="story-images">${images}</div>
+            <div class="story-images" aria-label="摄影故事照片">${images}</div>
           </article>
         `;
-        initStoryAutoScroll();
-      }
-
-      function initStoryAutoScroll() {
-        const rail = body.querySelector(".story-images");
-        if (!rail || rail.children.length < 2) return;
-        let index = 0;
-        let paused = false;
-        const move = () => {
-          if (paused) return;
-          index = (index + 1) % rail.children.length;
-          rail.scrollTo({ left: rail.children[index].offsetLeft - rail.offsetLeft, behavior: "smooth" });
-        };
-        rail.addEventListener("pointerenter", () => {
-          paused = true;
-        });
-        rail.addEventListener("pointerleave", () => {
-          paused = false;
-        });
-        window.setTimeout(move, 1200);
-        window.setInterval(move, 3400);
       }
 
       if (!project) {
@@ -230,7 +261,7 @@
       } else {
         document.title = `${getText(project.title)} | Demon Photography`;
         renderHero();
-        if (project.story) renderStory();
+        if (section.id === "stories" || project.story) renderStory();
         else renderGalleryGrid();
       }
 

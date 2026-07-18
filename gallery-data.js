@@ -157,7 +157,7 @@ const portraitCollectionList = [
       "en": "Camera Portraits",
       "ja": "カメラ人物"
     },
-    "featuredCover": "assets/photos/人像摄影/相机人像/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.JPG",
+    "featuredCover": "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.JPG",
     "summary": {
       "zh": "以相机记录人物、姿态与光线的关系，让肖像成为一页可以停留阅读的影像章节。",
       "en": "Camera portraits shaped by posture, light, and the quiet distance between figure and space.",
@@ -734,7 +734,7 @@ const sitePortfolioSections = [
           "en": "Camera Portraits",
           "ja": "カメラ人物"
         },
-        "featuredCover": "assets/photos/人像摄影/相机人像/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.JPG",
+        "featuredCover": "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.JPG",
         "summary": {
           "zh": "以相机记录人物、姿态与光线的关系，让肖像成为一页可以停留阅读的影像章节。",
           "en": "Camera portraits shaped by posture, light, and the quiet distance between figure and space.",
@@ -1300,6 +1300,15 @@ const sitePortfolioSections = [
           "zh": "五条老师 从一次拍摄现场出发，把图片和文字整理成一段可以阅读的影像故事。",
           "en": "五条老师 从一次拍摄现场出发，把图片和文字整理成一段可以阅读的影像故事。",
           "ja": "五条老师 从一次拍摄现场出发，把图片和文字整理成一段可以阅读的影像故事。"
+        },
+        "story": {
+          "kicker": "A tiny theatre",
+          "title": "五条老师：把玩偶拍成一场小剧场",
+          "paragraphs": [
+            "拍玩偶很有趣，因为它们明明不会移动，却总像有自己的性格。把五条老师放到镜头前时，拍摄就不只是记录一个物件，而像是在替一个小角色寻找登场方式：它要站在哪里，光从哪里来，旁边的颜色要不要退后一步。",
+            "这种拍摄最迷人的地方，是一点点微小调整都会改变故事。角度低一点，玩偶就突然有了气势；背景简单一点，表情就变得更清楚；几只角色靠近时，画面里甚至会出现某种对话感。摄影在这里像搭舞台，认真，但也很好玩。",
+            "最后留下的照片，不只是玩偶本身，而是一次把想象力变成画面的过程。它提醒我，摄影并不总要等待宏大的风景，有时把眼前的小东西看得足够认真，一个普通桌面也能变成故事发生的地方。"
+          ]
         },
         "href": "gallery.html?section=stories&project=stories-e4ba94e69da1",
         "photos": [
