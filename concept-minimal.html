@@ -544,7 +544,8 @@
 
       .contact-lines {
         display: grid;
-        gap: 9px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: clamp(18px, 3vw, 34px);
         margin-top: 28px;
         padding-top: 18px;
         border-top: 1px solid var(--line);
@@ -552,7 +553,7 @@
 
       .contact-lines strong {
         display: block;
-        margin: 12px 0 2px;
+        margin: 0 0 10px;
         color: rgba(17, 18, 20, 0.5);
         font-size: 10px;
         font-weight: 700;
@@ -564,7 +565,8 @@
         display: block;
         color: rgba(17, 18, 20, 0.72);
         font-size: 13px;
-        line-height: 1.5;
+        line-height: 1.7;
+        overflow-wrap: anywhere;
       }
 
       .contact-panel {
@@ -648,7 +650,7 @@
 
       .info-list {
         display: grid;
-        gap: 20px;
+        gap: 14px;
       }
 
       .closing {
@@ -719,6 +721,10 @@
         .contact-panel {
           grid-template-columns: 1fr;
         }
+
+        .contact-lines {
+          grid-template-columns: 1fr 1fr;
+        }
       }
 
       @media (max-width: 520px) {
@@ -748,6 +754,10 @@
 
         .work-image {
           aspect-ratio: 16 / 11;
+        }
+
+        .contact-lines {
+          grid-template-columns: 1fr;
         }
       }
     </style>
@@ -869,11 +879,7 @@
           <div class="info-list">
             <div>
               <h2>Based In Tokyo</h2>
-              <p>主要在东京拍摄，也接受人像、合作和小型视觉项目。</p>
-            </div>
-            <div>
-              <h2>Conversation</h2>
-              <p>沟通可以用中文、英文、日文进行；粤语也可以简单交流，先把想法聊清楚就好。</p>
+              <p>我更喜欢把镜头放在安静的间隙里：人经过光，城市留下影子，一次拍摄慢慢变成可以回看的记忆。现在主要在东京拍摄，也接受人像和小型视觉合作；沟通可以轻松一点，中文、日文、英文，或一点粤语都可以。</p>
             </div>
           </div>
         </section>
@@ -883,12 +889,16 @@
             <h2 id="contact-title">Contact & Booking</h2>
             <p>如果你想预约拍摄，或者只是想先聊一组照片的氛围，可以从一封邮件或一条简短信息开始。</p>
             <div class="contact-lines">
-              <strong>Email</strong>
-              <a href="mailto:763525586@qq.com">763525586@qq.com</a>
-              <a href="mailto:ruoqinao@gmail.com">ruoqinao@gmail.com</a>
-              <strong>Phone</strong>
-              <a href="tel:+8613687951586">+86 13687951586 微信同</a>
-              <a href="tel:+817085503168">+81 07085503168 LINE</a>
+              <div>
+                <strong>Email</strong>
+                <a href="mailto:763525586@qq.com">763525586@qq.com</a>
+                <a href="mailto:ruoqinao@gmail.com">ruoqinao@gmail.com</a>
+              </div>
+              <div>
+                <strong>Phone</strong>
+                <a href="tel:+8613687951586">+86 13687951586 微信同</a>
+                <a href="tel:+817085503168">+81 07085503168 LINE</a>
+              </div>
             </div>
           </div>
           <div class="contact-panel">
