@@ -135,33 +135,28 @@
 
       .social {
         display: grid;
-        gap: 14px;
+        gap: 13px;
         font-size: 10px;
         font-weight: 650;
         letter-spacing: 0.16em;
         text-transform: uppercase;
       }
 
-      .side-contact {
-        display: grid;
-        gap: 10px;
-        color: rgba(17, 18, 20, 0.58);
-        font-size: 9px;
-        line-height: 1.65;
-        letter-spacing: 0.11em;
-        text-transform: uppercase;
+      .social a {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
       }
 
-      .side-contact strong {
-        color: rgba(17, 18, 20, 0.82);
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.18em;
-      }
-
-      .side-contact a {
-        display: block;
-        overflow-wrap: anywhere;
+      .social svg {
+        width: 13px;
+        height: 13px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        opacity: 0.72;
       }
 
       main {
@@ -184,8 +179,8 @@
         inset: 0;
         z-index: 1;
         background:
-          linear-gradient(90deg, rgba(247, 246, 243, 0.9), rgba(247, 246, 243, 0.68) 34%, rgba(247, 246, 243, 0.08) 64%),
-          linear-gradient(180deg, rgba(17, 18, 20, 0.08), rgba(17, 18, 20, 0.2));
+          linear-gradient(90deg, rgba(247, 246, 243, 0.86), rgba(247, 246, 243, 0.58) 34%, rgba(247, 246, 243, 0.04) 66%),
+          linear-gradient(180deg, rgba(15, 21, 32, 0.02), rgba(15, 21, 32, 0.18));
         pointer-events: none;
       }
 
@@ -200,16 +195,18 @@
         align-content: center;
         justify-items: start;
         gap: 24px;
-        background: linear-gradient(90deg, rgba(247, 246, 243, 0.82), rgba(247, 246, 243, 0.42));
-        backdrop-filter: blur(10px);
+        background: linear-gradient(90deg, rgba(247, 246, 243, 0.78), rgba(247, 246, 243, 0.28));
+        backdrop-filter: blur(8px);
       }
 
       .hero-kicker {
         margin: 0;
-        font-size: clamp(18px, 1.7vw, 28px);
-        font-weight: 500;
-        line-height: 1.35;
-        letter-spacing: 0.28em;
+        color: rgba(15, 21, 32, 0.82);
+        font-family: var(--serif);
+        font-size: clamp(24px, 2.75vw, 44px);
+        font-weight: 400;
+        line-height: 1.16;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
       }
 
@@ -240,7 +237,8 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        filter: saturate(0.78) contrast(0.94) brightness(0.96);
+        object-position: 64% center;
+        filter: saturate(0.92) contrast(0.96) brightness(0.86);
       }
 
       .hero-image::after {
@@ -248,8 +246,8 @@
         position: absolute;
         inset: 0;
         background:
-          radial-gradient(circle at 74% 38%, rgba(255, 255, 255, 0.18), transparent 28%),
-          linear-gradient(90deg, rgba(247, 246, 243, 0.2), transparent 42%, rgba(17, 18, 20, 0.1));
+          radial-gradient(circle at 72% 34%, rgba(255, 255, 255, 0.08), transparent 28%),
+          linear-gradient(90deg, rgba(247, 246, 243, 0.12), transparent 42%, rgba(9, 16, 31, 0.12));
       }
 
       .section {
@@ -367,6 +365,7 @@
         width: min(100%, 330px);
         aspect-ratio: 5 / 3.35;
         perspective: 1200px;
+        filter: drop-shadow(0 22px 44px rgba(17, 18, 20, 0.12));
       }
 
       .story-page {
@@ -378,26 +377,29 @@
         padding: 30px 34px;
         border: 1px solid rgba(17, 18, 20, 0.1);
         background:
-          linear-gradient(90deg, rgba(255, 255, 255, 0.94), rgba(238, 236, 231, 0.96)),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.78), rgba(238, 236, 231, 0.9)),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.32)),
+          var(--story-bg) center / cover,
           repeating-linear-gradient(90deg, transparent, transparent 28px, rgba(17, 18, 20, 0.025) 29px);
-        box-shadow: 0 22px 54px rgba(17, 18, 20, 0.1);
-        transform-origin: left center;
-        transform: rotateY(-180deg);
+        box-shadow: none;
+        transform-origin: center;
+        transform: none;
         backface-visibility: hidden;
         opacity: 0;
-        transition: transform 720ms cubic-bezier(.2, .75, .18, 1), opacity 260ms ease;
+        overflow: hidden;
+        transition: opacity 260ms ease;
+        text-shadow: 0 1px 18px rgba(255, 255, 255, 0.36);
       }
 
       .story-page.is-current {
         z-index: 3;
         opacity: 1;
-        transform: rotateY(0deg);
+        pointer-events: auto;
       }
 
       .story-page.is-prev {
         z-index: 2;
         opacity: 0;
-        transform: rotateY(-180deg);
       }
 
       .story-page::before {
@@ -410,8 +412,46 @@
         background: rgba(17, 18, 20, 0.08);
       }
 
+      .story-page::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 50%;
+        z-index: 4;
+        background:
+          linear-gradient(90deg, rgba(255, 255, 255, 0.88), rgba(235, 232, 226, 0.62)),
+          var(--story-bg) center / cover;
+        background-blend-mode: normal;
+        transform-origin: left center;
+        transform: rotateY(0deg);
+        pointer-events: none;
+      }
+
+      .story-book.is-turning .story-page.is-current::after {
+        animation: rightPageTurn 760ms cubic-bezier(.2, .75, .18, 1);
+      }
+
+      @keyframes rightPageTurn {
+        0% {
+          transform: rotateY(0deg);
+        }
+
+        48% {
+          transform: rotateY(-72deg);
+          box-shadow: -18px 0 30px rgba(17, 18, 20, 0.12);
+        }
+
+        100% {
+          transform: rotateY(0deg);
+        }
+      }
+
       .story-page small {
-        color: rgba(17, 18, 20, 0.45);
+        position: relative;
+        z-index: 5;
+        color: rgba(17, 18, 20, 0.52);
         font-size: 10px;
         font-weight: 700;
         letter-spacing: 0.18em;
@@ -419,6 +459,8 @@
       }
 
       .story-page strong {
+        position: relative;
+        z-index: 5;
         max-width: 11em;
         font-size: clamp(18px, 2vw, 25px);
         line-height: 1.35;
@@ -426,6 +468,8 @@
       }
 
       .story-page p {
+        position: relative;
+        z-index: 5;
         max-width: 18em;
         margin: 0;
         color: rgba(17, 18, 20, 0.58);
@@ -476,7 +520,7 @@
 
       .contact-strip {
         display: grid;
-        grid-template-columns: minmax(230px, 0.34fr) minmax(0, 0.66fr);
+        grid-template-columns: minmax(280px, 0.42fr) minmax(0, 0.58fr);
         gap: clamp(26px, 5vw, 70px);
         align-items: start;
         background: rgba(255, 255, 255, 0.42);
@@ -498,19 +542,42 @@
         line-height: 1.9;
       }
 
+      .contact-lines {
+        display: grid;
+        gap: 9px;
+        margin-top: 28px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+      }
+
+      .contact-lines strong {
+        display: block;
+        margin: 12px 0 2px;
+        color: rgba(17, 18, 20, 0.5);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .contact-lines a {
+        display: block;
+        color: rgba(17, 18, 20, 0.72);
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
       .contact-panel {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         gap: 18px;
       }
 
-      .contact-mini,
       .booking-mini {
         border-top: 1px solid var(--line);
         padding-top: 16px;
       }
 
-      .contact-mini strong,
       .booking-mini label span {
         display: block;
         margin-bottom: 8px;
@@ -519,13 +586,6 @@
         font-weight: 700;
         letter-spacing: 0.16em;
         text-transform: uppercase;
-      }
-
-      .contact-mini a {
-        display: block;
-        margin-bottom: 7px;
-        font-size: 12px;
-        line-height: 1.55;
       }
 
       .booking-mini {
@@ -623,8 +683,6 @@
         }
 
         .brand span,
-        .social,
-        .side-contact,
         .social {
           display: none;
         }
@@ -712,15 +770,18 @@
           <a href="#contact" data-copy="navContact">Contact</a>
         </nav>
         <div class="social" aria-label="social">
-          <a href="https://www.instagram.com/de_mon0906?igsh=MXdhN2hiNnZsOWdlOA%3D%3D&utm_source=qr">Instagram</a>
-          <a href="https://xhslink.com/m/vRWzq94lBj">Xiaohongshu</a>
-          <a href="mailto:ruoqinao@gmail.com">Email</a>
-        </div>
-        <div class="side-contact">
-          <strong>Contact</strong>
-          <a href="mailto:ruoqinao@gmail.com">ruoqinao@gmail.com</a>
-          <a href="tel:+8613687951586">+86 13687951586</a>
-          <a href="tel:+817085503168">+81 07085503168</a>
+          <a href="https://www.instagram.com/de_mon0906?igsh=MXdhN2hiNnZsOWdlOA%3D%3D&utm_source=qr" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"></rect><circle cx="12" cy="12" r="3.5"></circle><path d="M17.2 6.8h.01"></path></svg>
+            <span>Instagram</span>
+          </a>
+          <a href="https://xhslink.com/m/vRWzq94lBj" aria-label="Xiaohongshu">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="3"></rect><path d="M8 10h8M8 14h5"></path></svg>
+            <span>Xiaohongshu</span>
+          </a>
+          <a href="mailto:ruoqinao@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="12" rx="2"></rect><path d="m5 8 7 5 7-5"></path></svg>
+            <span>Email</span>
+          </a>
         </div>
       </aside>
 
@@ -732,7 +793,7 @@
             <a href="#works" data-copy="heroCta">View Works →</a>
           </div>
           <div class="hero-image">
-            <img src="assets/thumbs/自然风光/海边/拍摄地点：日本 镰仓；拍摄时间：2025.10.jpg" alt="海边落日横屏背景" loading="eager" decoding="async">
+            <img src="assets/photos/自然风光/海边/拍摄时间：2026.4；拍摄地点：日本 富士山.jpg" alt="富士山蓝调横屏背景" loading="eager" decoding="async">
           </div>
         </section>
 
@@ -748,7 +809,7 @@
             </a>
             <a class="work-card" href="gallery.html?section=city&project=city">
               <span class="work-image"><img src="assets/thumbs/城市印象/拍摄城市：东京；拍摄时间：2025.10.jpg" alt="东京城市夜色" loading="lazy"></span>
-              <span><strong>Tokyo Stories</strong><span>2025</span></span>
+              <span><strong>Tokyo City</strong><span>2025</span></span>
             </a>
             <a class="work-card" href="gallery.html?section=nature&project=nature">
               <span class="work-image"><img src="assets/thumbs/自然风光/海边/拍摄地点：日本 镰仓；拍摄时间：2025.10.jpg" alt="海边风光" loading="lazy"></span>
@@ -756,7 +817,7 @@
             </a>
             <a class="work-card" href="gallery.html?section=city&project=city">
               <span class="work-image"><img src="assets/thumbs/城市印象/拍摄时间：2024.4；拍摄城市：上海.jpg" alt="夜晚街道" loading="lazy"></span>
-              <span><strong>Night</strong><span>2024</span></span>
+              <span><strong>Shanghai Night</strong><span>2024</span></span>
             </a>
             <a class="work-card" href="gallery.html?section=daily&project=daily">
               <span class="work-image"><img src="assets/thumbs/日常生活/光影展/拍摄地点：上海；拍摄时间：2025.8.jpg" alt="光影与静物" loading="lazy"></span>
@@ -768,17 +829,17 @@
         <section class="section story-strip" id="stories" aria-labelledby="stories-title">
           <div class="story-book-wrap">
             <div class="story-book" id="concept-story-book" aria-label="摄影故事翻页书">
-              <a class="story-page is-current" href="gallery.html?section=stories&project=story-graduation-season">
+              <a class="story-page is-current" href="gallery.html?section=stories&project=story-graduation-season" style="--story-bg: url('assets/thumbs/摄影故事/毕业季摄影故事/45c1e72ca7ec5b6c4856ee0ecca24f3e.jpg');">
                 <small>Story 01</small>
                 <strong>毕业季：把告别留在光里</strong>
                 <p>翻开这一页，把告别、时间和光线放回照片发生的地方。</p>
               </a>
-              <a class="story-page" href="gallery.html?section=stories&project=stories-e4ba94e69da1">
+              <a class="story-page" href="gallery.html?section=stories&project=stories-e4ba94e69da1" style="--story-bg: url('assets/thumbs/摄影故事/五条老师/6ef594c14884b70563d266801b713e9e.jpg');">
                 <small>Story 02</small>
                 <strong>五条老师：一场小剧场</strong>
                 <p>很小的角色，也能在镜头前拥有完整的舞台。</p>
               </a>
-              <a class="story-page" href="gallery.html?section=stories&project=story-light-notes">
+              <a class="story-page" href="gallery.html?section=stories&project=story-light-notes" style="--story-bg: url('assets/thumbs/摄影故事/小熊摄影故事/1f626f17ee2bb2ea44f3ee88b44e0e19.jpg');">
                 <small>Story 03</small>
                 <strong>熊大：一只小熊的远方</strong>
                 <p>陪伴被照片保存下来，轻的东西因此变得长久。</p>
@@ -808,11 +869,11 @@
           <div class="info-list">
             <div>
               <h2>Based In Tokyo</h2>
-              <p>Available for portraits, collaborations and visual projects.</p>
+              <p>主要在东京拍摄，也接受人像、合作和小型视觉项目。</p>
             </div>
             <div>
-              <h2>Languages</h2>
-              <p>Chinese / Japanese / English</p>
+              <h2>Conversation</h2>
+              <p>沟通可以用中文、英文、日文进行；粤语也可以简单交流，先把想法聊清楚就好。</p>
             </div>
           </div>
         </section>
@@ -821,9 +882,7 @@
           <div class="contact-copy">
             <h2 id="contact-title">Contact & Booking</h2>
             <p>如果你想预约拍摄，或者只是想先聊一组照片的氛围，可以从一封邮件或一条简短信息开始。</p>
-          </div>
-          <div class="contact-panel">
-            <div class="contact-mini">
+            <div class="contact-lines">
               <strong>Email</strong>
               <a href="mailto:763525586@qq.com">763525586@qq.com</a>
               <a href="mailto:ruoqinao@gmail.com">ruoqinao@gmail.com</a>
@@ -831,6 +890,8 @@
               <a href="tel:+8613687951586">+86 13687951586 微信同</a>
               <a href="tel:+817085503168">+81 07085503168 LINE</a>
             </div>
+          </div>
+          <div class="contact-panel">
             <form class="booking-mini" action="mailto:ruoqinao@gmail.com" method="post" enctype="text/plain">
               <label>
                 <span>Name</span>
@@ -916,13 +977,21 @@
       });
 
       const storyPages = [...document.querySelectorAll(".story-page")];
+      const storyBook = document.querySelector("#concept-story-book");
       let storyIndex = 0;
       function showStoryPage(nextIndex) {
-        storyPages.forEach((page, index) => {
-          page.classList.toggle("is-current", index === nextIndex);
-          page.classList.toggle("is-prev", index < nextIndex);
-        });
-        storyIndex = nextIndex;
+        if (!storyPages.length || nextIndex === storyIndex) return;
+        storyBook?.classList.add("is-turning");
+        window.setTimeout(() => {
+          storyPages.forEach((page, index) => {
+            page.classList.toggle("is-current", index === nextIndex);
+            page.classList.toggle("is-prev", index < nextIndex);
+          });
+          storyIndex = nextIndex;
+        }, 240);
+        window.setTimeout(() => {
+          storyBook?.classList.remove("is-turning");
+        }, 780);
       }
       document.querySelector("[data-story-next]")?.addEventListener("click", () => {
         showStoryPage((storyIndex + 1) % storyPages.length);
