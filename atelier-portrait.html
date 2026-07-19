@@ -10,8 +10,8 @@
         --ink: #111214;
         --muted: #6e6e6a;
         --line: rgba(17, 18, 20, 0.12);
-        --sans: "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", sans-serif;
-        --serif: Georgia, "Times New Roman", serif;
+        --sans: "Helvetica Neue", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", Arial, sans-serif;
+        --serif: "Bodoni 72", Didot, "Hoefler Text", Georgia, "Times New Roman", serif;
       }
 
       * {
@@ -47,8 +47,8 @@
         gap: 24px;
         padding: 18px clamp(20px, 4vw, 54px);
         border-bottom: 1px solid var(--line);
-        background: rgba(247, 246, 243, 0.88);
-        backdrop-filter: blur(16px);
+        background: rgba(247, 246, 243, 0.58);
+        backdrop-filter: blur(18px) saturate(1.08);
       }
 
       .portrait-logo img {
@@ -113,7 +113,7 @@
         position: absolute;
         inset: 0;
         background:
-          linear-gradient(90deg, rgba(247, 246, 243, 0.44), rgba(247, 246, 243, 0.22) 42%, rgba(247, 246, 243, 0.04)),
+          linear-gradient(90deg, rgba(247, 246, 243, 0.28), rgba(247, 246, 243, 0.14) 42%, rgba(247, 246, 243, 0.02)),
           linear-gradient(180deg, transparent 34%, rgba(17, 18, 20, 0.09));
       }
 
@@ -128,7 +128,7 @@
         max-width: 9em;
         margin: 0;
         font-family: var(--serif);
-        font-size: clamp(34px, 6.4vw, 82px);
+        font-size: clamp(34px, 5.4vw, 72px);
         font-weight: 400;
         line-height: 0.98;
         letter-spacing: 0.06em;
@@ -173,7 +173,7 @@
 
       .model-copy h2 {
         margin: 0 0 14px;
-        font-size: clamp(24px, 3vw, 44px);
+        font-size: clamp(22px, 2.45vw, 38px);
         font-weight: 560;
         letter-spacing: 0.08em;
       }
@@ -304,11 +304,12 @@
         .portrait-header {
           grid-template-columns: auto 1fr auto;
           gap: 8px 12px;
-          padding: 9px 14px 10px;
+          padding: 7px 14px 8px;
+          background: rgba(247, 246, 243, 0.52);
         }
 
         .portrait-logo img {
-          width: 70px;
+          width: 62px;
         }
 
         .portrait-nav {
@@ -342,7 +343,7 @@
         }
 
         .portrait-hero h1 {
-          font-size: clamp(34px, 11vw, 48px);
+          font-size: clamp(28px, 8.8vw, 40px);
         }
 
         .portrait-hero p {
@@ -373,7 +374,7 @@
 
         .model-copy h2 {
           margin-bottom: 8px;
-          font-size: clamp(22px, 8vw, 32px);
+          font-size: clamp(20px, 6.8vw, 28px);
         }
 
         .model-copy p {

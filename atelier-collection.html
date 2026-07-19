@@ -10,8 +10,8 @@
         --ink: #111214;
         --muted: #6e6e6a;
         --line: rgba(17, 18, 20, 0.12);
-        --sans: "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", sans-serif;
-        --serif: Georgia, "Times New Roman", serif;
+        --sans: "Helvetica Neue", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", Arial, sans-serif;
+        --serif: "Bodoni 72", Didot, "Hoefler Text", Georgia, "Times New Roman", serif;
       }
 
       * {
@@ -51,8 +51,8 @@
         gap: 24px;
         padding: 18px clamp(20px, 4vw, 54px);
         border-bottom: 1px solid var(--line);
-        background: rgba(247, 246, 243, 0.88);
-        backdrop-filter: blur(16px);
+        background: rgba(247, 246, 243, 0.58);
+        backdrop-filter: blur(18px) saturate(1.08);
       }
 
       .collection-logo img {
@@ -117,7 +117,7 @@
         position: absolute;
         inset: 0;
         background:
-          linear-gradient(90deg, rgba(247, 246, 243, 0.44), rgba(247, 246, 243, 0.22) 42%, rgba(247, 246, 243, 0.04)),
+          linear-gradient(90deg, rgba(247, 246, 243, 0.28), rgba(247, 246, 243, 0.14) 42%, rgba(247, 246, 243, 0.02)),
           linear-gradient(180deg, transparent 34%, rgba(17, 18, 20, 0.09));
       }
 
@@ -141,7 +141,7 @@
       .hero-copy h1 {
         margin: 0;
         font-family: var(--serif);
-        font-size: clamp(34px, 6.4vw, 82px);
+        font-size: clamp(34px, 5.4vw, 72px);
         font-weight: 400;
         line-height: 0.98;
         letter-spacing: 0.06em;
@@ -185,7 +185,7 @@
 
       .group-copy h2 {
         margin: 0 0 12px;
-        font-size: clamp(22px, 2.8vw, 42px);
+        font-size: clamp(22px, 2.35vw, 36px);
         font-weight: 560;
         line-height: 1.15;
         letter-spacing: 0.08em;
@@ -317,11 +317,12 @@
         .collection-header {
           grid-template-columns: auto 1fr auto;
           gap: 8px 12px;
-          padding: 9px 14px 10px;
+          padding: 7px 14px 8px;
+          background: rgba(247, 246, 243, 0.52);
         }
 
         .collection-logo img {
-          width: 70px;
+          width: 62px;
         }
 
         .collection-nav {
@@ -360,7 +361,7 @@
         }
 
         .hero-copy h1 {
-          font-size: clamp(34px, 11vw, 48px);
+          font-size: clamp(28px, 8.8vw, 40px);
         }
 
         .hero-copy p {
@@ -392,7 +393,7 @@
 
         .group-copy h2 {
           margin-bottom: 8px;
-          font-size: clamp(22px, 8vw, 32px);
+          font-size: clamp(20px, 6.8vw, 28px);
         }
 
         .group-copy p {
@@ -656,9 +657,10 @@
       const params = new URLSearchParams(window.location.search);
       const collectionKey = collections[params.get("collection")] ? params.get("collection") : "city";
       const collection = collections[collectionKey];
+      const safeGroups = (collection.groups || []).filter((group) => (group.photos || []).length);
 
       const mount = document.querySelector("#collections");
-      const allPhotos = collection.groups.flatMap((group) => group.photos);
+      const allPhotos = safeGroups.flatMap((group) => group.photos);
       function textFor(lang) {
         return collectionCopy[lang]?.[collectionKey] || collection;
       }
@@ -675,19 +677,22 @@
           const key = node.dataset.copy;
           if (collectionCopy[lang]?.[key]) node.textContent = collectionCopy[lang][key];
         });
-        mount.innerHTML = collection.groups.map((group, index) => {
-          const groupText = text.groups?.[index] || [group.title, group.label, group.description];
+        mount.innerHTML = safeGroups.map((group, index) => {
+          const groupText = text.groups?.[index] || [];
+          const groupTitle = groupText[0] || group.title || text.title || collection.title;
+          const groupLabel = groupText[1] || group.label || groupTitle;
+          const groupDescription = groupText[2] || group.description || text.summary || collection.summary || "";
           return `
             <article class="collection-group">
               <div class="group-copy">
-                <small>${String(index + 1).padStart(2, "0")} / ${groupText[1]}</small>
-                <h2>${groupText[0]}</h2>
-                <p>${groupText[2]}</p>
+                <small>${String(index + 1).padStart(2, "0")} / ${groupLabel}</small>
+                <h2>${groupTitle}</h2>
+                <p>${groupDescription}</p>
               </div>
-              <div class="group-slider" aria-label="${groupText[0]} photos">
+              <div class="group-slider" aria-label="${groupTitle} photos">
                 ${group.photos.map((photo) => `
                   <button class="group-slide" type="button" data-index="${allPhotos.indexOf(photo)}" data-full="${photo}">
-                    <img src="${photo}" alt="${groupText[0]}" loading="lazy" decoding="async">
+                    <img src="${photo}" alt="${groupTitle}" loading="lazy" decoding="async" onerror="this.closest('.group-slide')?.remove();">
                   </button>
                 `).join("")}
               </div>
