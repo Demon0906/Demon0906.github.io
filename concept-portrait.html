@@ -12,6 +12,7 @@
         --muted: #6e6e6a;
         --line: rgba(17, 18, 20, 0.12);
         --sans: "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", sans-serif;
+        --serif: Georgia, "Times New Roman", serif;
       }
 
       * {
@@ -101,10 +102,11 @@
       .portrait-hero h1 {
         max-width: 9em;
         margin: 0;
-        font-size: clamp(28px, 4.5vw, 64px);
-        font-weight: 560;
-        line-height: 1.05;
-        letter-spacing: 0.12em;
+        font-family: var(--serif);
+        font-size: clamp(38px, 6vw, 82px);
+        font-weight: 400;
+        line-height: 0.98;
+        letter-spacing: 0.06em;
         text-transform: uppercase;
       }
 
@@ -214,16 +216,37 @@
         display: grid;
       }
 
+      .lightbox-frame {
+        position: relative;
+        display: grid;
+        place-items: center;
+      }
+
+      .lightbox-frame::after {
+        content: "";
+        position: absolute;
+        right: clamp(16px, 4vw, 34px);
+        bottom: clamp(16px, 4vw, 34px);
+        width: clamp(58px, 9vw, 96px);
+        height: clamp(40px, 6vw, 68px);
+        border-radius: 999px;
+        background:
+          rgba(247, 246, 243, 0.34)
+          url("assets/brand/demon-atelier-mark-dark.png") center / 74% auto no-repeat;
+        opacity: 0.76;
+        backdrop-filter: blur(12px);
+        pointer-events: none;
+      }
+
       .lightbox img {
         max-width: min(92vw, 1100px);
         max-height: 84vh;
         object-fit: contain;
       }
 
-      .lightbox button {
+      .lightbox-close,
+      .lightbox-nav {
         position: absolute;
-        top: 22px;
-        right: 24px;
         border: 1px solid rgba(255, 255, 255, 0.28);
         width: 42px;
         height: 42px;
@@ -232,6 +255,24 @@
         color: #fff;
         cursor: pointer;
         font-size: 24px;
+      }
+
+      .lightbox-close {
+        top: 22px;
+        right: 24px;
+      }
+
+      .lightbox-nav {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .lightbox-prev {
+        left: clamp(16px, 4vw, 44px);
+      }
+
+      .lightbox-next {
+        right: clamp(16px, 4vw, 44px);
       }
 
       @media (max-width: 760px) {
@@ -290,16 +331,64 @@
     </main>
 
     <div class="lightbox" id="portrait-lightbox" aria-label="照片预览">
-      <button type="button" aria-label="关闭">×</button>
-      <img alt="">
+      <button class="lightbox-close" type="button" aria-label="关闭">×</button>
+      <button class="lightbox-nav lightbox-prev" type="button" aria-label="上一张">‹</button>
+      <span class="lightbox-frame">
+        <img alt="">
+      </span>
+      <button class="lightbox-nav lightbox-next" type="button" aria-label="下一张">›</button>
     </div>
 
     <script src="gallery-data.js?v=atelier-20260719-story-mobile"></script>
     <script>
+      const availablePortraitPhotos = new Set([
+        "assets/photos/人像摄影/手机人像/CheriJanie/模特：CheriJanie；拍摄地点：上海；拍摄时间：206.6.jpg",
+        "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄地点：东京涉谷；拍摄时间：2026.5.jpg",
+        "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：东京迪士尼.jpg",
+        "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg",
+        "assets/photos/人像摄影/手机人像/Model/模特：LI.jpg",
+        "assets/photos/人像摄影/手机人像/Nero/模特：Nero；拍摄地点：东京涉谷；拍摄时间：2026.4.jpg",
+        "assets/photos/人像摄影/手机人像/Nero/模特：Nero；拍摄时间：2025.5；拍摄地点：东京涉谷.jpg",
+        "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
+        "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本富士山.jpg",
+        "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京台场.jpg",
+        "assets/photos/人像摄影/手机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
+        "assets/photos/人像摄影/相机人像/Celia/模特：Celia；拍摄地点：上海迪士尼；拍摄时间：2026.3.jpg",
+        "assets/photos/人像摄影/相机人像/Celia/模特：Celia；拍摄时间：2026.3；拍摄地点：上海迪士尼.jpg",
+        "assets/photos/人像摄影/相机人像/Celia/模特：Celia；拍摄时间：2026.6；拍摄地点：上海.JPG",
+        "assets/photos/人像摄影/相机人像/LMH/模特：LMH；拍摄地点：日本 浅草寺；拍摄时间：2026.7.jpg",
+        "assets/photos/人像摄影/相机人像/LMH/模特：LMH；拍摄地点：日本浅草寺；拍摄时间：2026.7 .jpg",
+        "assets/photos/人像摄影/相机人像/LMH/模特：LMH；拍摄地点：日本浅草寺；拍摄时间：2026.7.JPG.jpg",
+        "assets/photos/人像摄影/相机人像/Mio/拍摄时间：20626.5；模特：Mio；拍摄地点：日本横滨.jpg",
+        "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄地点：东京花火大会；拍摄时间：2026.7.jpg",
+        "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：日本富士山.jpg",
+        "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：日本横滨.jpg",
+        "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：206.4；拍摄地点：东京迪士尼本.jpg",
+        "assets/photos/人像摄影/相机人像/Nero/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg",
+        "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：2026.4；拍摄时间：日本富士山.jpg",
+        "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.JPG",
+        "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：羽田机场；拍摄时间：2026.7.JPG.jpg",
+        "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京 台场.JPG",
+        "assets/photos/人像摄影/相机人像/kakiloki/模特：kaliloki；拍摄时间：2026.4；拍摄地点：日本 富士山.JPG",
+        "assets/photos/人像摄影/相机人像/momo/模特：momo；拍摄地点：浅草寺；拍摄时间：2026.7..jpg",
+        "assets/photos/人像摄影/相机人像/momo/模特：momo；拍摄地点：芝公园；拍摄时间：2026.7.jpg",
+        "assets/photos/人像摄影/相机人像/一口榴莲派/拍摄地点：杭州；拍摄时间：2024.10、.JPG",
+        "assets/photos/人像摄影/相机人像/一口榴莲派/拍摄地点：杭州；拍摄时间：2024.10；.JPG",
+        "assets/photos/人像摄影/相机人像/一口榴莲派/模特：一口榴莲派；拍摄地点：杭州；拍摄时间：2024.10.JPG",
+        "assets/photos/人像摄影/相机人像/美丽酥酥/模特名：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
+        "assets/photos/人像摄影/相机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.1；拍摄地点：北京.jpg",
+        "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：东京塔；拍摄时间：2026.7.jpg",
+        "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：六本木；拍摄时间：2026.7.jpg",
+        "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：芝公园；拍摄时间：2026.7 .jpg",
+        "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：芝公园；拍摄时间：2026.7..jpg",
+        "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：赤羽桥；拍摄时间：2026.7.jpg"
+      ]);
       const modelMount = document.querySelector("#models");
       const modelMap = new Map();
       (window.portraitCollections || []).forEach((collection) => {
         (collection.groups || []).forEach((group) => {
+          const photos = (group.photos || []).filter((photo) => availablePortraitPhotos.has(photo));
+          if (!photos.length) return;
           if (!modelMap.has(group.title)) {
             modelMap.set(group.title, {
               title: group.title,
@@ -307,7 +396,7 @@
               photos: []
             });
           }
-          modelMap.get(group.title).photos.push(...(group.photos || []));
+          modelMap.get(group.title).photos.push(...photos);
         });
       });
 
@@ -315,6 +404,7 @@
         .map((model) => ({ ...model, photos: [...new Set(model.photos)].slice(0, 8) }))
         .filter((model) => model.photos.length)
         .slice(0, 10);
+      const allPhotos = models.flatMap((model) => model.photos.map((photo) => window.localImage(photo)));
 
       modelMount.innerHTML = models.map((model, index) => `
         <article class="model-section">
@@ -325,8 +415,8 @@
           </div>
           <div class="model-slider" aria-label="${model.title} photos">
             ${model.photos.map((photo) => `
-              <button class="model-slide" type="button" data-full="${window.localImage(photo)}">
-                <img src="${window.thumbImage(photo)}" data-full="${window.localImage(photo)}" alt="${model.title}" loading="lazy">
+              <button class="model-slide" type="button" data-index="${allPhotos.indexOf(window.localImage(photo))}" data-full="${window.localImage(photo)}">
+                <img src="${window.thumbImage(photo)}" data-full="${window.localImage(photo)}" onerror="this.onerror=null;this.src=this.dataset.full;" alt="${model.title}" loading="lazy">
               </button>
             `).join("")}
           </div>
@@ -341,21 +431,45 @@
 
       const lightbox = document.querySelector("#portrait-lightbox");
       const lightboxImage = lightbox.querySelector("img");
+      const closeButton = lightbox.querySelector(".lightbox-close");
+      const prevButton = lightbox.querySelector(".lightbox-prev");
+      const nextButton = lightbox.querySelector(".lightbox-next");
+      let lightboxIndex = 0;
+
+      function openLightbox(index) {
+        lightboxIndex = (index + allPhotos.length) % allPhotos.length;
+        lightboxImage.src = allPhotos[lightboxIndex];
+        if (!lightbox.classList.contains("is-open")) lightbox.classList.add("is-open");
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("is-open");
+        lightboxImage.removeAttribute("src");
+      }
+
+      function moveLightbox(direction) {
+        openLightbox(lightboxIndex + direction);
+      }
+
       document.addEventListener("click", (event) => {
         const slide = event.target.closest(".model-slide");
         if (!slide) return;
-        lightboxImage.src = slide.dataset.full;
-        lightbox.classList.add("is-open");
+        openLightbox(Number(slide.dataset.index));
       });
-      lightbox.querySelector("button").addEventListener("click", () => {
-        lightbox.classList.remove("is-open");
-        lightboxImage.removeAttribute("src");
-      });
+
+      closeButton.addEventListener("click", closeLightbox);
+      prevButton.addEventListener("click", () => moveLightbox(-1));
+      nextButton.addEventListener("click", () => moveLightbox(1));
+
       lightbox.addEventListener("click", (event) => {
-        if (event.target === lightbox) {
-          lightbox.classList.remove("is-open");
-          lightboxImage.removeAttribute("src");
-        }
+        if (event.target === lightbox) closeLightbox();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (!lightbox.classList.contains("is-open")) return;
+        if (event.key === "Escape") closeLightbox();
+        if (event.key === "ArrowLeft") moveLightbox(-1);
+        if (event.key === "ArrowRight") moveLightbox(1);
       });
       document.querySelectorAll(".lang-switch button").forEach((button) => {
         button.addEventListener("click", () => {

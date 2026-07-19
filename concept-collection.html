@@ -255,16 +255,37 @@
         display: grid;
       }
 
+      .lightbox-frame {
+        position: relative;
+        display: grid;
+        place-items: center;
+      }
+
+      .lightbox-frame::after {
+        content: "";
+        position: absolute;
+        right: clamp(16px, 4vw, 34px);
+        bottom: clamp(16px, 4vw, 34px);
+        width: clamp(58px, 9vw, 96px);
+        height: clamp(40px, 6vw, 68px);
+        border-radius: 999px;
+        background:
+          rgba(247, 246, 243, 0.34)
+          url("assets/brand/demon-atelier-mark-dark.png") center / 74% auto no-repeat;
+        opacity: 0.76;
+        backdrop-filter: blur(12px);
+        pointer-events: none;
+      }
+
       .lightbox img {
         max-width: min(92vw, 1100px);
         max-height: 84vh;
         object-fit: contain;
       }
 
-      .lightbox button {
+      .lightbox-close,
+      .lightbox-nav {
         position: absolute;
-        top: 22px;
-        right: 24px;
         border: 1px solid rgba(255, 255, 255, 0.28);
         width: 42px;
         height: 42px;
@@ -273,6 +294,24 @@
         color: #fff;
         cursor: pointer;
         font-size: 24px;
+      }
+
+      .lightbox-close {
+        top: 22px;
+        right: 24px;
+      }
+
+      .lightbox-nav {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .lightbox-prev {
+        left: clamp(16px, 4vw, 44px);
+      }
+
+      .lightbox-next {
+        right: clamp(16px, 4vw, 44px);
       }
 
       @media (max-width: 760px) {
@@ -333,8 +372,12 @@
     </main>
 
     <div class="lightbox" id="collection-lightbox" aria-label="照片预览">
-      <button type="button" aria-label="关闭">×</button>
-      <img alt="">
+      <button class="lightbox-close" type="button" aria-label="关闭">×</button>
+      <button class="lightbox-nav lightbox-prev" type="button" aria-label="上一张">‹</button>
+      <span class="lightbox-frame">
+        <img alt="">
+      </span>
+      <button class="lightbox-nav lightbox-next" type="button" aria-label="下一张">›</button>
     </div>
 
     <script>
@@ -371,6 +414,43 @@
             }
           ]
         },
+        travel: {
+          kicker: "Nature / Travel",
+          title: "Travel",
+          summary: "把海边、季节、花和远处的风景放在一起。旅行里的照片不一定要宏大，它也可以只是某一束光、某一种颜色，或者一段路途里忽然安静下来的瞬间。",
+          cover: "assets/thumbs/自然风光/海边/拍摄地点：日本 镰仓；拍摄时间：2025.10.jpg",
+          groups: [
+            {
+              title: "海边",
+              label: "Seaside",
+              description: "海岸、天空和远处的城市边缘，是旅途中最容易让时间慢下来的地方。",
+              photos: [
+                "assets/thumbs/自然风光/海边/拍摄地点：日本 镰仓；拍摄时间：2025.10.jpg",
+                "assets/thumbs/自然风光/海边/拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
+                "assets/thumbs/自然风光/海边/拍摄地点：日本 小田原；拍摄时间：2025.12.jpg",
+                "assets/thumbs/自然风光/海边/拍摄时间：2025.12；拍摄地点：日本 小田原.jpg",
+                "assets/thumbs/自然风光/海边/拍摄地点：日本 横须贺；拍摄时间：2025.11.jpg",
+                "assets/thumbs/自然风光/海边/拍摄地点：日本 三浦半岛；拍摄时间：2026.5.jpg",
+                "assets/thumbs/自然风光/海边/拍摄时间：2026.5；拍摄地点：日本 三浦半岛.jpg"
+              ]
+            },
+            {
+              title: "植物 / 风光",
+              label: "Botanical",
+              description: "花、叶和季节的颜色，像自然写下的轻量手稿。",
+              photos: [
+                "assets/thumbs/自然风光/玫瑰/DSC01020.jpg",
+                "assets/thumbs/自然风光/玫瑰/DSC01134.jpg",
+                "assets/thumbs/自然风光/绣球花/DSC02239.jpg",
+                "assets/thumbs/自然风光/绣球花/DSC02214.jpg",
+                "assets/thumbs/自然风光/樱花/DSC00201.jpg",
+                "assets/thumbs/自然风光/樱花/DSC00185.jpg",
+                "assets/thumbs/自然风光/枫叶/DSC08562.jpg",
+                "assets/thumbs/自然风光/枫叶/DSC07786.jpg"
+              ]
+            }
+          ]
+        },
         animals: {
           kicker: "Animal Portraits",
           title: "Soft Companions",
@@ -393,6 +473,40 @@
               ]
             }
           ]
+        },
+        quiet: {
+          kicker: "Daily / Quiet Light",
+          title: "Quiet Light",
+          summary: "日常里的光、物件和手机里留下的片段。它们没有太多戏剧性，却很适合慢慢看，因为这些画面常常比记忆本身更早提醒我们：那一天确实存在过。",
+          cover: "assets/thumbs/日常生活/光影展/拍摄地点：上海；拍摄时间：2025.8.jpg",
+          groups: [
+            {
+              title: "光影展",
+              label: "Light Notes",
+              description: "玻璃、墙面、树影和展览里的微光，把普通空间整理得更安静。",
+              photos: [
+                "assets/thumbs/日常生活/光影展/拍摄地点：上海；拍摄时间：2025.8.jpg",
+                "assets/thumbs/日常生活/光影展/拍摄时间：2025.8；拍摄地点：上海.jpg",
+                "assets/thumbs/日常生活/光影展/拍摄地点：苏州；拍摄时间：2023.jpg",
+                "assets/thumbs/日常生活/光影展/拍摄地点：苏州 虞山；拍摄时间：2024.6.jpg",
+                "assets/thumbs/日常生活/光影展/拍摄地点：南多摩；拍摄时间：2026.7.jpg",
+                "assets/thumbs/日常生活/光影展/DSC04550.jpg"
+              ]
+            },
+            {
+              title: "手机摄影",
+              label: "Phone Diary",
+              description: "手机里的随手记录，保留的是没有准备好的真实和轻盈。",
+              photos: [
+                "assets/thumbs/日常生活/手机摄影/cfd624b0f5470b957c8d298b7fe4fade.jpg",
+                "assets/thumbs/日常生活/手机摄影/578798fac412e9b4197c33ea0ef117b8.jpg",
+                "assets/thumbs/日常生活/手机摄影/366cd020217abeb9d6e501b3047b341b.jpg",
+                "assets/thumbs/日常生活/手机摄影/78bb5bd3b5448d4fe033bd90b59962d5.jpg",
+                "assets/thumbs/日常生活/手机摄影/9b43d1e84121451e9745769a375f1714.jpg",
+                "assets/thumbs/日常生活/手机摄影/5ceed1c264628002cc88e0f36ec82402.jpg"
+              ]
+            }
+          ]
         }
       };
 
@@ -405,6 +519,7 @@
       document.querySelector("#collection-summary").textContent = collection.summary;
 
       const mount = document.querySelector("#collections");
+      const allPhotos = collection.groups.flatMap((group) => group.photos);
       mount.innerHTML = collection.groups.map((group, index) => `
         <article class="collection-group">
           <div class="group-copy">
@@ -414,7 +529,7 @@
           </div>
           <div class="group-slider" aria-label="${group.title} photos">
             ${group.photos.map((photo) => `
-              <button class="group-slide" type="button" data-full="${photo}">
+              <button class="group-slide" type="button" data-index="${allPhotos.indexOf(photo)}" data-full="${photo}">
                 <img src="${photo}" alt="${group.title}" loading="lazy" decoding="async">
               </button>
             `).join("")}
@@ -424,23 +539,45 @@
 
       const lightbox = document.querySelector("#collection-lightbox");
       const lightboxImage = lightbox.querySelector("img");
+      const closeButton = lightbox.querySelector(".lightbox-close");
+      const prevButton = lightbox.querySelector(".lightbox-prev");
+      const nextButton = lightbox.querySelector(".lightbox-next");
+      let lightboxIndex = 0;
+
+      function openLightbox(index) {
+        lightboxIndex = (index + allPhotos.length) % allPhotos.length;
+        lightboxImage.src = allPhotos[lightboxIndex];
+        if (!lightbox.classList.contains("is-open")) lightbox.classList.add("is-open");
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("is-open");
+        lightboxImage.removeAttribute("src");
+      }
+
+      function moveLightbox(direction) {
+        openLightbox(lightboxIndex + direction);
+      }
+
       document.addEventListener("click", (event) => {
         const slide = event.target.closest(".group-slide");
         if (!slide) return;
-        lightboxImage.src = slide.dataset.full;
-        lightbox.classList.add("is-open");
+        openLightbox(Number(slide.dataset.index));
       });
 
-      lightbox.querySelector("button").addEventListener("click", () => {
-        lightbox.classList.remove("is-open");
-        lightboxImage.removeAttribute("src");
-      });
+      closeButton.addEventListener("click", closeLightbox);
+      prevButton.addEventListener("click", () => moveLightbox(-1));
+      nextButton.addEventListener("click", () => moveLightbox(1));
 
       lightbox.addEventListener("click", (event) => {
-        if (event.target === lightbox) {
-          lightbox.classList.remove("is-open");
-          lightboxImage.removeAttribute("src");
-        }
+        if (event.target === lightbox) closeLightbox();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (!lightbox.classList.contains("is-open")) return;
+        if (event.key === "Escape") closeLightbox();
+        if (event.key === "ArrowLeft") moveLightbox(-1);
+        if (event.key === "ArrowRight") moveLightbox(1);
       });
 
       document.querySelectorAll(".lang-switch button").forEach((button) => {
