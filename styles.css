@@ -1,7 +1,7 @@
 :root {
   color-scheme: light;
-  --body-font: "PingFang SC", "Microsoft YaHei", "Heiti SC", "Helvetica Neue", Arial, "Hiragino Sans", "Yu Gothic", system-ui, -apple-system, sans-serif;
-  --display-font: "Heiti SC", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --body-font: "Microsoft YaHei", "PingFang SC", "Heiti SC", "Helvetica Neue", Arial, "Hiragino Sans", "Yu Gothic", system-ui, -apple-system, sans-serif;
+  --display-font: "Microsoft YaHei", "PingFang SC", "Heiti SC", "Helvetica Neue", Arial, system-ui, sans-serif;
   --serif-font: "Songti SC", "STSong", "SimSun", "Noto Serif SC", "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
   --latin-art-font: "Bodoni 72", Didot, "Hoefler Text", "Times New Roman", serif;
   --name-font: "FZKai-Z03", "FZKaiS-Extended", "FangZheng KaiTi", "方正楷体", "STKaiti", "Kaiti SC", "KaiTi", "Songti SC", "STSong", serif;
@@ -7213,5 +7213,700 @@ body .story-book.is-turning-prev .story-turn-sheet {
 
   body .series-copy .project-open {
     margin-top: 8px;
+  }
+}
+
+/* Formal site refinement: quieter typography and larger mobile imagery. */
+body {
+  font-family: var(--body-font);
+  font-weight: 400;
+  text-rendering: geometricPrecision;
+}
+
+body h1,
+body h2,
+body h3,
+body h4,
+body .nav,
+body .button,
+body .project-open,
+body .portfolio-notice span,
+body .eyebrow {
+  font-family: var(--display-font);
+}
+
+body .group-heading h3,
+body .about-band h2,
+body .story-index-heading h2,
+body .gallery-hero h1,
+body .portrait-hero h1 {
+  font-weight: 430;
+  letter-spacing: 0.01em;
+}
+
+body .portfolio-notice {
+  margin-bottom: clamp(32px, 4.5vw, 58px);
+  opacity: 0.72;
+}
+
+body .story-index-section {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.34fr) minmax(0, 0.66fr);
+  gap: clamp(24px, 5vw, 76px);
+  align-items: center;
+  padding-block: clamp(42px, 6vw, 84px);
+  background:
+    linear-gradient(135deg, rgba(250, 248, 245, 0.88), rgba(238, 234, 229, 0.5)),
+    radial-gradient(circle at 75% 18%, rgba(70, 87, 100, 0.08), transparent 36%);
+}
+
+body .story-index-heading,
+body .story-index-grid {
+  max-width: none;
+  margin: 0;
+}
+
+body .story-index-heading {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  align-self: center;
+}
+
+body .story-index-heading h2 {
+  font-size: clamp(34px, 4.4vw, 62px);
+  line-height: 1.06;
+}
+
+body .story-index-heading p:not(.eyebrow) {
+  max-width: 26em;
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.9;
+}
+
+body .story-index-grid {
+  display: block;
+  border-top: 0;
+}
+
+body .story-book {
+  width: min(100%, 760px);
+  margin-inline: auto;
+}
+
+body .story-book-pages {
+  min-height: clamp(280px, 32vw, 430px);
+  border-radius: 6px;
+  box-shadow: 0 22px 72px rgba(74, 66, 59, 0.12);
+}
+
+body .story-book-card {
+  background:
+    linear-gradient(90deg, rgba(250, 248, 245, 0.88), rgba(250, 248, 245, 0.46)),
+    var(--story-cover, transparent);
+}
+
+body .about-band {
+  grid-template-columns: minmax(220px, 0.38fr) minmax(0, 0.62fr);
+  background:
+    linear-gradient(90deg, rgba(250, 248, 245, 0.92), rgba(235, 231, 224, 0.44)),
+    radial-gradient(circle at 12% 50%, rgba(138, 121, 103, 0.08), transparent 34%);
+}
+
+body .about-summary p {
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.9;
+}
+
+body .gallery-hero,
+body .portrait-hero {
+  border-radius: 0;
+  border-left: 0;
+  border-right: 0;
+  background:
+    linear-gradient(90deg, rgba(250, 248, 245, 0.78), rgba(250, 248, 245, 0.2)),
+    var(--gallery-cover) center / cover;
+  box-shadow: none;
+}
+
+body .gallery-hero::before {
+  filter: blur(34px) saturate(0.96);
+  opacity: 0.16;
+}
+
+body .gallery-hero h1,
+body .portrait-hero h1 {
+  max-width: 9em;
+  font-size: clamp(34px, 5.4vw, 76px);
+  line-height: 1.02;
+}
+
+body .gallery-hero p:not(.eyebrow),
+body .portrait-hero p:last-child {
+  max-width: 46em;
+  font-size: clamp(13px, 1.15vw, 16px);
+  line-height: 1.86;
+}
+
+body .gallery-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(14px, 2vw, 24px);
+}
+
+body .gallery-frame {
+  border-radius: 8px;
+  box-shadow: 0 12px 34px rgba(45, 58, 68, 0.07);
+}
+
+body .gallery-frame img {
+  aspect-ratio: 4 / 5;
+}
+
+body .portrait-photo {
+  border-radius: 8px;
+  box-shadow: 0 12px 34px rgba(45, 58, 68, 0.08);
+}
+
+@media (max-width: 820px) {
+  body {
+    --mobile-gutter: 14px;
+  }
+
+  body .site-header {
+    font-family: var(--display-font);
+  }
+
+  body .portfolio {
+    width: min(100% - 28px, 720px);
+    padding-top: 18px;
+  }
+
+  body .portfolio-notice {
+    margin-bottom: 22px;
+    padding: 20px 0 18px;
+  }
+
+  body .portfolio-notice span {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+  }
+
+  body .portfolio-notice p {
+    font-size: 12px;
+    line-height: 1.68;
+  }
+
+  body .portfolio-groups {
+    display: grid;
+    gap: 20px;
+    border: 0;
+  }
+
+  body .portfolio-group {
+    display: grid;
+    grid-template-columns: minmax(112px, 0.58fr) minmax(0, 1.42fr);
+    gap: 12px;
+    align-items: center;
+    padding: 16px 0 22px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(138, 121, 103, 0.13);
+  }
+
+  body .group-heading {
+    min-width: 0;
+    align-self: center;
+  }
+
+  body .group-heading .eyebrow {
+    margin-bottom: 7px;
+    padding-left: 20px;
+    font-size: 8px;
+    letter-spacing: 0.18em;
+  }
+
+  body .group-heading .eyebrow::before {
+    width: 14px;
+  }
+
+  body .group-heading h3 {
+    max-width: 6.5em;
+    margin-bottom: 7px;
+    font-size: clamp(22px, 6.4vw, 30px);
+    line-height: 1.12;
+    word-break: keep-all;
+    overflow-wrap: normal;
+  }
+
+  body .group-heading p.mobile-project-title {
+    max-width: 8em;
+    margin-bottom: 6px !important;
+    font-size: clamp(12px, 3.4vw, 14px) !important;
+    font-weight: 600 !important;
+    line-height: 1.38 !important;
+  }
+
+  body .group-heading > p:not(.mobile-project-title) {
+    max-width: 9.2em;
+    font-size: clamp(11px, 3vw, 12px);
+    line-height: 1.55;
+  }
+
+  body .project-grid {
+    min-width: 0;
+  }
+
+  body .series-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 0;
+  }
+
+  body .series-index,
+  body .series-copy em,
+  body .series-copy strong,
+  body .series-copy small {
+    display: none;
+  }
+
+  body .series-media {
+    width: 100%;
+    max-width: none;
+    aspect-ratio: 4 / 5;
+    border-radius: 4px;
+  }
+
+  body .project-cover-stack {
+    height: auto;
+    min-height: 0;
+    border-radius: 4px;
+  }
+
+  body .series-cover-stack img {
+    aspect-ratio: 4 / 5;
+  }
+
+  body .series-copy {
+    min-height: 0;
+    gap: 0;
+  }
+
+  body .series-copy .project-open {
+    width: 100%;
+    margin-top: 0;
+    padding: 0 0 8px;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+  }
+
+  body .story-index-section,
+  body .about-band {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    padding: 34px 18px;
+    gap: 22px;
+  }
+
+  body .story-index-heading h2,
+  body .about-band h2 {
+    font-size: clamp(26px, 8vw, 36px);
+  }
+
+  body .story-index-heading p:not(.eyebrow),
+  body .about-summary p {
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  body .story-book-pages {
+    min-height: 260px;
+  }
+
+  body .gallery-hero,
+  body .portrait-hero {
+    width: 100%;
+    margin-top: 0;
+    padding: 92px 18px 34px;
+  }
+
+  body .gallery-hero h1,
+  body .portrait-hero h1 {
+    font-size: clamp(28px, 9vw, 42px);
+  }
+
+  body .gallery-hero p:not(.eyebrow),
+  body .portrait-hero p:last-child {
+    font-size: 12px;
+    line-height: 1.75;
+  }
+
+  body .gallery-grid {
+    width: min(100% - 28px, 720px);
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding-top: 24px;
+  }
+
+  body .portrait-projects {
+    width: min(100% - 28px, 720px);
+  }
+
+  body .portrait-project-heading h2 {
+    font-size: clamp(24px, 7vw, 34px);
+  }
+}
+
+@media (max-width: 520px) {
+  body .portfolio-group {
+    grid-template-columns: minmax(104px, 0.54fr) minmax(0, 1.46fr);
+    gap: 10px;
+  }
+
+  body .group-heading h3 {
+    font-size: clamp(21px, 6vw, 28px);
+  }
+
+  body .hero-copy {
+    font-size: 13px;
+    line-height: 1.72;
+  }
+}
+
+/* Root formal refinement 02: softer type, denser mobile cards, calmer detail pages. */
+html[lang],
+body {
+  font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", Arial, sans-serif !important;
+}
+
+body h1,
+body h2,
+body h3,
+body .nav,
+body .detail-nav,
+body .button,
+body .project-open,
+body .gallery-project-tab,
+body .portrait-tabs a {
+  font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", Arial, sans-serif !important;
+  font-weight: 500;
+}
+
+body .group-heading h3,
+body .series-copy strong,
+body .gallery-hero h1,
+body .portrait-hero h1,
+body .profile-copy h1,
+body .story-copy h2 {
+  font-weight: 500 !important;
+  letter-spacing: 0;
+}
+
+body .portfolio-notice {
+  margin-bottom: clamp(24px, 3.4vw, 44px);
+}
+
+body .story-index-section {
+  background:
+    linear-gradient(135deg, rgba(250, 248, 245, 0.78), rgba(238, 234, 229, 0.36)),
+    radial-gradient(circle at 72% 20%, rgba(70, 87, 100, 0.06), transparent 38%);
+}
+
+body .story-index-heading p:not(.eyebrow),
+body .about-summary p {
+  color: rgba(43, 43, 43, 0.64);
+}
+
+body .story-book-card {
+  background:
+    linear-gradient(90deg, rgba(250, 248, 245, 0.78), rgba(250, 248, 245, 0.38)),
+    var(--story-cover, transparent);
+}
+
+body .gallery-hero,
+body .portrait-hero,
+body .profile-hero {
+  background:
+    linear-gradient(90deg, rgba(250, 248, 245, 0.7), rgba(250, 248, 245, 0.2)),
+    var(--gallery-cover) center / cover;
+}
+
+body .gallery-hero h1,
+body .portrait-hero h1 {
+  font-size: clamp(30px, 4.8vw, 64px);
+}
+
+body .gallery-meta span,
+body .portrait-tabs a,
+body .gallery-project-tab {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.54);
+  border-color: rgba(138, 121, 103, 0.2);
+}
+
+body .gallery-frame-copy p,
+body .gallery-frame-copy span,
+body .portrait-project-heading p:not(.eyebrow),
+body .portrait-project-heading span,
+body .story-copy p {
+  font-size: clamp(12px, 0.95vw, 14px);
+  line-height: 1.75;
+  color: rgba(43, 43, 43, 0.64);
+}
+
+body .story-card,
+body .portrait-project {
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: 0 18px 58px rgba(45, 58, 68, 0.065);
+}
+
+body .story-flow {
+  gap: clamp(18px, 2.4vw, 34px);
+}
+
+body .profile-hero {
+  width: min(100% - 40px, 1180px);
+  margin-inline: auto;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+@media (min-width: 821px) {
+  body .portfolio-groups {
+    min-height: 0;
+  }
+
+  body .portfolio-group {
+    padding-top: clamp(28px, 3vw, 48px);
+    padding-bottom: clamp(28px, 3vw, 48px);
+  }
+
+  body .group-heading {
+    display: flex;
+    flex-direction: column;
+    min-height: 180px;
+  }
+
+  body .group-heading h3 {
+    font-size: clamp(26px, 2.1vw, 36px);
+    line-height: 1.15;
+  }
+
+  body .group-heading > p:not(.mobile-project-title) {
+    margin-top: 22px;
+    font-size: clamp(13px, 0.95vw, 15px);
+    line-height: 1.75;
+  }
+
+  body .series-card {
+    min-height: 360px;
+    align-content: end;
+  }
+
+  body .series-media {
+    width: min(100%, 250px);
+    max-width: 250px;
+  }
+
+  body .series-copy {
+    min-height: 114px;
+  }
+
+  body .gallery-body.gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+
+  body .portrait-project {
+    grid-template-columns: minmax(230px, 0.28fr) minmax(0, 0.72fr);
+    gap: clamp(22px, 3vw, 52px);
+    align-items: start;
+  }
+}
+
+@media (max-width: 820px) {
+  body .site-header {
+    top: max(8px, env(safe-area-inset-top));
+    left: 12px;
+    right: 12px;
+    padding: 9px 12px 11px;
+    row-gap: 8px;
+    border-radius: 24px;
+  }
+
+  body .brand-mark,
+  body .site-header:not(.is-scrolled) .brand-mark,
+  body .dark-brand .brand-mark {
+    width: 44px !important;
+    height: 29px !important;
+  }
+
+  body .language-switcher {
+    min-height: 34px;
+  }
+
+  body .language-button {
+    min-width: 36px;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  body .nav a,
+  body .nav-link,
+  body .about-menu-trigger,
+  body .models-menu-trigger {
+    padding: 2px 0;
+    font-size: clamp(12px, 3vw, 14px);
+  }
+
+  body .portfolio {
+    width: min(100% - 20px, 720px);
+    padding-inline: 0;
+  }
+
+  body .portfolio-notice {
+    margin-bottom: 16px;
+    padding: 16px 0 14px;
+  }
+
+  body .portfolio-notice p {
+    font-size: 11px;
+    line-height: 1.6;
+  }
+
+  body .portfolio-groups {
+    gap: 12px !important;
+    border-top: 0 !important;
+  }
+
+  body .portfolio-group {
+    grid-template-columns: minmax(92px, 0.48fr) minmax(0, 1.52fr) !important;
+    gap: 10px !important;
+    padding: 13px 0 16px !important;
+  }
+
+  body .group-heading .eyebrow {
+    margin-bottom: 5px;
+    padding-left: 16px;
+    font-size: 7px;
+    letter-spacing: 0.16em;
+  }
+
+  body .group-heading .eyebrow::before {
+    width: 11px;
+  }
+
+  body .group-heading h3 {
+    max-width: 7em;
+    margin-bottom: 5px;
+    font-size: clamp(18px, 5.3vw, 24px) !important;
+    line-height: 1.12;
+  }
+
+  body .group-heading p.mobile-project-title {
+    max-width: 8.5em;
+    margin-bottom: 4px !important;
+    font-size: clamp(10px, 3vw, 12px) !important;
+    line-height: 1.32 !important;
+  }
+
+  body .group-heading > p:not(.mobile-project-title) {
+    max-width: 9.5em;
+    font-size: clamp(10px, 2.8vw, 11px) !important;
+    line-height: 1.45;
+  }
+
+  body .series-card {
+    gap: 8px !important;
+  }
+
+  body .series-media {
+    width: 100% !important;
+    max-width: none !important;
+    aspect-ratio: 4 / 4.7;
+  }
+
+  body .series-cover-stack img {
+    aspect-ratio: 4 / 4.7;
+  }
+
+  body .series-copy .project-open,
+  body .project-open {
+    font-size: 8px !important;
+    letter-spacing: 0.2em;
+    padding-bottom: 7px;
+  }
+
+  body .story-index-section,
+  body .about-band {
+    padding: 28px 14px;
+    gap: 18px;
+  }
+
+  body .story-index-heading h2,
+  body .about-band h2 {
+    font-size: clamp(23px, 7vw, 31px) !important;
+  }
+
+  body .story-index-heading p:not(.eyebrow),
+  body .about-summary p {
+    font-size: 11px;
+    line-height: 1.72;
+  }
+
+  body .gallery-hero,
+  body .portrait-hero {
+    padding: 76px 16px 28px;
+  }
+
+  body .gallery-hero h1,
+  body .portrait-hero h1 {
+    max-width: 9.8em;
+    font-size: clamp(23px, 7.2vw, 34px) !important;
+    line-height: 1.08;
+  }
+
+  body .gallery-hero p:not(.eyebrow),
+  body .portrait-hero p:last-child {
+    font-size: 11px;
+    line-height: 1.68;
+  }
+
+  body .gallery-body.gallery-grid,
+  body .portrait-projects {
+    width: min(100% - 20px, 720px);
+  }
+
+  body .gallery-frame img {
+    aspect-ratio: 4 / 4.6;
+  }
+
+  body .portrait-project {
+    padding: 18px 14px;
+    border-radius: 10px;
+  }
+
+  body .portrait-project-heading h2 {
+    font-size: clamp(21px, 6.4vw, 30px) !important;
+  }
+
+  body .profile-hero {
+    width: min(100% - 20px, 720px);
+    padding: 76px 16px 28px;
+  }
+}
+
+@media (max-width: 390px) {
+  body .portfolio-group {
+    grid-template-columns: minmax(84px, 0.43fr) minmax(0, 1.57fr) !important;
+  }
+
+  body .group-heading h3 {
+    font-size: clamp(17px, 5vw, 22px) !important;
+  }
+
+  body .group-heading > p:not(.mobile-project-title),
+  body .group-heading p.mobile-project-title {
+    font-size: 10px !important;
   }
 }
