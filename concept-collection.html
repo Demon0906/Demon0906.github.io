@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <title>Demon Atelier | Collection Concept</title>
+    <style>
+      :root {
+        --paper: #f7f6f3;
+        --ink: #111214;
+        --muted: #6e6e6a;
+        --line: rgba(17, 18, 20, 0.12);
+        --sans: "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", sans-serif;
+        --serif: Georgia, "Times New Roman", serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+        -webkit-user-drag: none;
+        user-select: none;
+      }
+
+      .collection-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 24px;
+        padding: 18px clamp(20px, 4vw, 54px);
+        border-bottom: 1px solid var(--line);
+        background: rgba(247, 246, 243, 0.88);
+        backdrop-filter: blur(16px);
+      }
+
+      .collection-logo img {
+        width: 112px;
+        height: auto;
+      }
+
+      .collection-nav {
+        justify-self: center;
+        display: flex;
+        gap: clamp(18px, 4vw, 48px);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .lang-switch {
+        display: inline-grid;
+        grid-template-columns: repeat(3, auto);
+        gap: 2px;
+        border: 1px solid rgba(17, 18, 20, 0.14);
+        padding: 3px;
+        background: rgba(255, 255, 255, 0.5);
+      }
+
+      .lang-switch button {
+        min-width: 28px;
+        border: 0;
+        padding: 7px 8px;
+        background: transparent;
+        color: rgba(17, 18, 20, 0.54);
+        cursor: pointer;
+        font: 700 10px var(--sans);
+      }
+
+      .lang-switch button.is-active {
+        background: rgba(17, 18, 20, 0.9);
+        color: #fff;
+      }
+
+      .collection-hero {
+        position: relative;
+        min-height: clamp(320px, 42vw, 520px);
+        display: grid;
+        align-items: end;
+        overflow: hidden;
+        border-bottom: 1px solid var(--line);
+        background: #dedbd5;
+      }
+
+      .collection-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--cover) center / cover no-repeat;
+        filter: saturate(0.82) contrast(0.94);
+      }
+
+      .collection-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(247, 246, 243, 0.92), rgba(247, 246, 243, 0.56) 42%, rgba(247, 246, 243, 0.12)),
+          linear-gradient(180deg, transparent 34%, rgba(17, 18, 20, 0.18));
+      }
+
+      .hero-copy {
+        position: relative;
+        z-index: 1;
+        width: min(760px, 100%);
+        padding: clamp(46px, 8vw, 96px) clamp(22px, 5vw, 82px);
+      }
+
+      .hero-copy small {
+        display: block;
+        margin-bottom: 18px;
+        color: rgba(17, 18, 20, 0.5);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .hero-copy h1 {
+        margin: 0;
+        font-family: var(--serif);
+        font-size: clamp(38px, 7vw, 92px);
+        font-weight: 400;
+        line-height: 0.98;
+        letter-spacing: 0.06em;
+      }
+
+      .hero-copy p {
+        max-width: 42em;
+        margin: 24px 0 0;
+        color: rgba(17, 18, 20, 0.64);
+        font-size: 13px;
+        line-height: 1.9;
+      }
+
+      .collection-body {
+        display: grid;
+      }
+
+      .collection-group {
+        display: grid;
+        grid-template-columns: minmax(210px, 0.23fr) minmax(0, 0.77fr);
+        gap: clamp(20px, 4vw, 58px);
+        padding: clamp(28px, 4.6vw, 62px) clamp(20px, 5vw, 82px);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .group-copy {
+        align-self: start;
+        position: sticky;
+        top: 96px;
+      }
+
+      .group-copy small {
+        display: block;
+        margin-bottom: 14px;
+        color: rgba(17, 18, 20, 0.45);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .group-copy h2 {
+        margin: 0 0 12px;
+        font-size: clamp(22px, 2.8vw, 42px);
+        font-weight: 560;
+        line-height: 1.15;
+        letter-spacing: 0.08em;
+      }
+
+      .group-copy p {
+        margin: 0;
+        color: rgba(17, 18, 20, 0.58);
+        font-size: 12px;
+        line-height: 1.85;
+      }
+
+      .group-slider {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(178px, 22%);
+        gap: 12px;
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        scroll-snap-type: inline mandatory;
+        padding-bottom: 14px;
+      }
+
+      .group-slide {
+        position: relative;
+        border: 0;
+        padding: 0;
+        background: transparent;
+        cursor: zoom-in;
+        scroll-snap-align: start;
+      }
+
+      .group-slide img {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        filter: saturate(0.88) contrast(0.96);
+      }
+
+      .group-slide::after {
+        content: "";
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        width: 42px;
+        height: 42px;
+        border-radius: 999px;
+        background:
+          rgba(247, 246, 243, 0.42)
+          url("assets/brand/demon-atelier-mark-dark.png") center / 74% auto no-repeat;
+        opacity: 0.72;
+        backdrop-filter: blur(12px);
+      }
+
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 80;
+        display: none;
+        place-items: center;
+        padding: 28px;
+        background: rgba(15, 15, 15, 0.86);
+      }
+
+      .lightbox.is-open {
+        display: grid;
+      }
+
+      .lightbox img {
+        max-width: min(92vw, 1100px);
+        max-height: 84vh;
+        object-fit: contain;
+      }
+
+      .lightbox button {
+        position: absolute;
+        top: 22px;
+        right: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+        cursor: pointer;
+        font-size: 24px;
+      }
+
+      @media (max-width: 760px) {
+        .collection-header {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+
+        .collection-nav {
+          justify-self: stretch;
+          justify-content: space-between;
+        }
+
+        .lang-switch {
+          justify-self: start;
+        }
+
+        .collection-group {
+          grid-template-columns: 1fr;
+        }
+
+        .group-copy {
+          position: static;
+        }
+
+        .group-slider {
+          grid-auto-columns: minmax(180px, 68%);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="collection-header">
+      <a class="collection-logo" href="concept-minimal.html" aria-label="Demon Atelier">
+        <img src="assets/brand/demon-atelier-logo-dark.png" alt="Demon Atelier">
+      </a>
+      <nav class="collection-nav">
+        <a href="concept-minimal.html">Home</a>
+        <a href="#collections">Works</a>
+        <a href="concept-minimal.html#contact">Contact</a>
+      </nav>
+      <div class="lang-switch" aria-label="Language">
+        <button type="button" class="is-active">中</button>
+        <button type="button">EN</button>
+        <button type="button">日</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="collection-hero" id="collection-hero">
+        <div class="hero-copy">
+          <small id="collection-kicker">Collection</small>
+          <h1 id="collection-title"></h1>
+          <p id="collection-summary"></p>
+        </div>
+      </section>
+      <section class="collection-body" id="collections"></section>
+    </main>
+
+    <div class="lightbox" id="collection-lightbox" aria-label="照片预览">
+      <button type="button" aria-label="关闭">×</button>
+      <img alt="">
+    </div>
+
+    <script>
+      const collections = {
+        city: {
+          kicker: "City / Architecture",
+          title: "City Impressions",
+          summary: "把城市的夜色、街道、建筑和旅行里偶遇的空间收在一起。这里不急着讲完整的地点，而是让线条、灯光和路过的人慢慢构成印象。",
+          cover: "assets/thumbs/城市印象/拍摄时间：2024.4；拍摄城市：上海.jpg",
+          groups: [
+            {
+              title: "城市风光",
+              label: "Urban View",
+              description: "街道、夜色和城市片段，像从旅途中剪下来的短句。",
+              photos: [
+                "assets/thumbs/城市印象/拍摄城市：东京；拍摄时间：2025.10.jpg",
+                "assets/thumbs/城市印象/拍摄时间：2025.10；拍摄城市：东京.jpg",
+                "assets/thumbs/城市印象/拍摄时间：2024.4；拍摄城市：上海.jpg",
+                "assets/thumbs/城市印象/拍摄城市：香港；拍摄时间：2023.5.jpg",
+                "assets/thumbs/城市印象/拍摄城市：英国 利兹；拍摄时间：2025.1.jpg",
+                "assets/thumbs/城市印象/拍摄时间：2026.1；拍摄地点：北京.jpg",
+                "assets/thumbs/城市印象/拍摄时间：2026.4；拍摄地点：日本 富士山.jpg"
+              ]
+            },
+            {
+              title: "人文建筑",
+              label: "Architecture",
+              description: "建筑不只是背景，它也会记录人走过之后留下的秩序与温度。",
+              photos: [
+                "assets/thumbs/人文建筑/拍摄地点：箱根；拍摄时间：2026.6.jpg",
+                "assets/thumbs/人文建筑/拍摄时间：206.6；拍摄地点：箱根.jpg",
+                "assets/thumbs/人文建筑/拍摄地点：东京；拍摄时间：2026.6.jpg"
+              ]
+            }
+          ]
+        },
+        animals: {
+          kicker: "Animal Portraits",
+          title: "Soft Companions",
+          summary: "从猫咪写真开始，把动物在日常里最松弛、最有性格的一瞬间留下来。这个板块未来也会慢慢加入更多动物的拍摄。",
+          cover: "assets/thumbs/日常生活/猫咪写真/DSC06129.jpg",
+          groups: [
+            {
+              title: "猫咪写真",
+              label: "Cat Portraits",
+              description: "它们不需要被安排，只要等待眼神、姿态和一点点脾气出现。",
+              photos: [
+                "assets/thumbs/日常生活/猫咪写真/DSC06129.jpg",
+                "assets/thumbs/日常生活/猫咪写真/DSC06114.jpg",
+                "assets/thumbs/日常生活/猫咪写真/DSC06128.jpg",
+                "assets/thumbs/日常生活/猫咪写真/DSC06139.jpg",
+                "assets/thumbs/日常生活/猫咪写真/DSC06090.jpg",
+                "assets/thumbs/日常生活/猫咪写真/DSC06092.jpg",
+                "assets/thumbs/日常生活/猫咪写真/DSC06130.jpg",
+                "assets/thumbs/日常生活/猫咪写真/DSC06143.jpg"
+              ]
+            }
+          ]
+        }
+      };
+
+      const params = new URLSearchParams(window.location.search);
+      const collection = collections[params.get("collection")] || collections.city;
+      document.title = `${collection.title} | Demon Atelier`;
+      document.querySelector("#collection-hero").style.setProperty("--cover", `url("${collection.cover}")`);
+      document.querySelector("#collection-kicker").textContent = collection.kicker;
+      document.querySelector("#collection-title").textContent = collection.title;
+      document.querySelector("#collection-summary").textContent = collection.summary;
+
+      const mount = document.querySelector("#collections");
+      mount.innerHTML = collection.groups.map((group, index) => `
+        <article class="collection-group">
+          <div class="group-copy">
+            <small>${String(index + 1).padStart(2, "0")} / ${group.label}</small>
+            <h2>${group.title}</h2>
+            <p>${group.description}</p>
+          </div>
+          <div class="group-slider" aria-label="${group.title} photos">
+            ${group.photos.map((photo) => `
+              <button class="group-slide" type="button" data-full="${photo}">
+                <img src="${photo}" alt="${group.title}" loading="lazy" decoding="async">
+              </button>
+            `).join("")}
+          </div>
+        </article>
+      `).join("");
+
+      const lightbox = document.querySelector("#collection-lightbox");
+      const lightboxImage = lightbox.querySelector("img");
+      document.addEventListener("click", (event) => {
+        const slide = event.target.closest(".group-slide");
+        if (!slide) return;
+        lightboxImage.src = slide.dataset.full;
+        lightbox.classList.add("is-open");
+      });
+
+      lightbox.querySelector("button").addEventListener("click", () => {
+        lightbox.classList.remove("is-open");
+        lightboxImage.removeAttribute("src");
+      });
+
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) {
+          lightbox.classList.remove("is-open");
+          lightboxImage.removeAttribute("src");
+        }
+      });
+
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          document.querySelectorAll(".lang-switch button").forEach((item) => item.classList.toggle("is-active", item === button));
+        });
+      });
+    </script>
+  </body>
+</html>
