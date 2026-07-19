@@ -10,8 +10,11 @@
         --ink: #111214;
         --muted: #6e6e6a;
         --line: rgba(17, 18, 20, 0.12);
-        --sans: "Helvetica Neue", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", Arial, sans-serif;
-        --serif: "Bodoni 72", Didot, "Hoefler Text", Georgia, "Times New Roman", serif;
+        --cjk: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Yu Gothic", sans-serif;
+        --latin: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+        --display: "Bodoni 72", Didot, "Baskerville", "Hoefler Text", Georgia, "Times New Roman", serif;
+        --sans: var(--latin), var(--cjk);
+        --serif: var(--display);
       }
 
       * {
@@ -51,8 +54,8 @@
         gap: 24px;
         padding: 18px clamp(20px, 4vw, 54px);
         border-bottom: 1px solid var(--line);
-        background: rgba(247, 246, 243, 0.58);
-        backdrop-filter: blur(18px) saturate(1.08);
+        background: rgba(247, 246, 243, 0.42);
+        backdrop-filter: blur(14px) saturate(1.05);
       }
 
       .collection-logo img {
@@ -117,7 +120,7 @@
         position: absolute;
         inset: 0;
         background:
-          linear-gradient(90deg, rgba(247, 246, 243, 0.28), rgba(247, 246, 243, 0.14) 42%, rgba(247, 246, 243, 0.02)),
+          linear-gradient(90deg, rgba(247, 246, 243, 0.18), rgba(247, 246, 243, 0.08) 42%, rgba(247, 246, 243, 0.01)),
           linear-gradient(180deg, transparent 34%, rgba(17, 18, 20, 0.09));
       }
 
@@ -318,7 +321,7 @@
           grid-template-columns: auto 1fr auto;
           gap: 8px 12px;
           padding: 7px 14px 8px;
-          background: rgba(247, 246, 243, 0.52);
+          background: rgba(247, 246, 243, 0.36);
         }
 
         .collection-logo img {
@@ -445,13 +448,13 @@
         city: {
           kicker: "City / Architecture",
           title: "City Impressions",
-          summary: "把城市的夜色、街道、建筑和旅行里偶遇的空间收在一起。这里不急着讲完整的地点，而是让线条、灯光和路过的人慢慢构成印象。",
+          summary: "城市不是一个固定的地点，而是灯光、道路、建筑立面和路过的人共同留下的气息。这里收集那些在行走中忽然成立的画面，让空间慢慢变成可以回看的印象。",
           cover: "assets/thumbs/城市印象/拍摄时间：2024.4；拍摄城市：上海.jpg",
           groups: [
             {
               title: "城市风光",
               label: "Urban View",
-              description: "街道、夜色和城市片段，像从旅途中剪下来的短句。",
+              description: "夜色、路口和城市边缘被收成短句，保留旅途中最先被记住的光。",
               photos: [
                 "assets/thumbs/城市印象/拍摄城市：东京；拍摄时间：2025.10.jpg",
                 "assets/thumbs/城市印象/拍摄时间：2025.10；拍摄城市：东京.jpg",
@@ -465,7 +468,7 @@
             {
               title: "人文建筑",
               label: "Architecture",
-              description: "建筑不只是背景，它也会记录人走过之后留下的秩序与温度。",
+              description: "建筑不只是背景，它用线条、阴影和尺度记录人经过之后留下的秩序。",
               photos: [
                 "assets/thumbs/人文建筑/拍摄地点：箱根；拍摄时间：2026.6.jpg",
                 "assets/thumbs/人文建筑/拍摄时间：206.6；拍摄地点：箱根.jpg",
@@ -477,13 +480,13 @@
         travel: {
           kicker: "Nature / Travel",
           title: "Travel",
-          summary: "把海边、季节、花和远处的风景放在一起。旅行里的照片不一定要宏大，它也可以只是某一束光、某一种颜色，或者一段路途里忽然安静下来的瞬间。",
+          summary: "旅行里的风景不一定宏大。它可以是一片海的颜色、山影被雾气压低的时刻，也可以是植物在季节里慢慢转向的细节。",
           cover: "assets/thumbs/自然风光/海边/拍摄地点：日本 镰仓；拍摄时间：2025.10.jpg",
           groups: [
             {
               title: "海边",
               label: "Seaside",
-              description: "海岸、天空和远处的城市边缘，是旅途中最容易让时间慢下来的地方。",
+              description: "海岸、天空和远处的城市边缘，让时间在画面里自然放慢。",
               photos: [
                 "assets/thumbs/自然风光/海边/拍摄地点：日本 镰仓；拍摄时间：2025.10.jpg",
                 "assets/thumbs/自然风光/海边/拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
@@ -497,7 +500,7 @@
             {
               title: "植物 / 风光",
               label: "Botanical",
-              description: "花、叶和季节的颜色，像自然写下的轻量手稿。",
+              description: "花、叶和季节的颜色，像自然写下的一页轻量手稿。",
               photos: [
                 "assets/thumbs/自然风光/玫瑰/DSC01020.jpg",
                 "assets/thumbs/自然风光/玫瑰/DSC01134.jpg",
@@ -514,13 +517,13 @@
         animals: {
           kicker: "Animal Portraits",
           title: "Soft Companions",
-          summary: "从猫咪写真开始，把动物在日常里最松弛、最有性格的一瞬间留下来。这个板块未来也会慢慢加入更多动物的拍摄。",
+          summary: "动物的神情很少服从安排。这个章节从猫咪写真开始，记录它们在日常里最松弛、最有性格，也最接近自己的瞬间。",
           cover: "assets/thumbs/日常生活/猫咪写真/DSC06129.jpg",
           groups: [
             {
               title: "猫咪写真",
               label: "Cat Portraits",
-              description: "它们不需要被安排，只要等待眼神、姿态和一点点脾气出现。",
+              description: "它们不需要被安排，只要等待眼神、姿态和一点点脾气自然出现。",
               photos: [
                 "assets/thumbs/日常生活/猫咪写真/DSC06129.jpg",
                 "assets/thumbs/日常生活/猫咪写真/DSC06114.jpg",
@@ -537,7 +540,7 @@
         quiet: {
           kicker: "Daily / Quiet Light",
           title: "Quiet Light",
-          summary: "日常里的光、物件和手机里留下的片段。它们没有太多戏剧性，却很适合慢慢看，因为这些画面常常比记忆本身更早提醒我们：那一天确实存在过。",
+          summary: "日常里常有一些不需要解释的画面：墙上的光、展览里的反射、手机随手留下的片段。它们安静，却会在很久以后提醒我们，那一天确实存在过。",
           cover: "assets/thumbs/日常生活/光影展/拍摄地点：上海；拍摄时间：2025.8.jpg",
           groups: [
             {
@@ -556,7 +559,7 @@
             {
               title: "手机摄影",
               label: "Phone Diary",
-              description: "手机里的随手记录，保留的是没有准备好的真实和轻盈。",
+              description: "手机里的随手记录，保留没有准备好的真实，也保留那一刻的轻盈。",
               photos: [
                 "assets/thumbs/日常生活/手机摄影/cfd624b0f5470b957c8d298b7fe4fade.jpg",
                 "assets/thumbs/日常生活/手机摄影/578798fac412e9b4197c33ea0ef117b8.jpg",

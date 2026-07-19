@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demon Atelier 摄影者介绍：关于观看、拍摄与影像故事。">
+    <title>About | Demon Atelier Photography Journal</title>
+    <style>
+      :root {
+        --paper: #f7f6f3;
+        --ink: #111214;
+        --muted: rgba(17, 18, 20, 0.58);
+        --line: rgba(17, 18, 20, 0.12);
+        --cjk: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Yu Gothic", sans-serif;
+        --latin: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+        --display: "Bodoni 72", Didot, "Baskerville", "Hoefler Text", Georgia, "Times New Roman", serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--cjk);
+        letter-spacing: 0;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+        -webkit-user-drag: none;
+        user-select: none;
+      }
+
+      .about-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 24px;
+        padding: 16px clamp(20px, 4vw, 56px);
+        border-bottom: 1px solid var(--line);
+        background: rgba(247, 246, 243, 0.42);
+        backdrop-filter: blur(14px) saturate(1.05);
+      }
+
+      .about-logo img {
+        width: 112px;
+        height: auto;
+      }
+
+      .about-nav {
+        justify-self: center;
+        display: flex;
+        gap: clamp(18px, 4vw, 50px);
+        font-family: var(--latin);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .about-note {
+        justify-self: end;
+        max-width: 18em;
+        color: rgba(17, 18, 20, 0.5);
+        font-family: var(--latin);
+        font-size: 10px;
+        font-weight: 650;
+        line-height: 1.6;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .about-hero {
+        display: grid;
+        grid-template-columns: minmax(300px, 0.46fr) minmax(0, 0.54fr);
+        min-height: clamp(520px, 72vh, 760px);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .hero-copy {
+        align-self: center;
+        padding: clamp(44px, 7vw, 104px) clamp(24px, 6vw, 96px);
+      }
+
+      .kicker {
+        margin: 0 0 18px;
+        color: rgba(17, 18, 20, 0.48);
+        font-family: var(--latin);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        max-width: 9em;
+        margin: 0;
+        font-family: var(--display);
+        font-size: clamp(44px, 6.5vw, 96px);
+        font-weight: 400;
+        line-height: 0.98;
+        letter-spacing: 0.04em;
+      }
+
+      .lead {
+        max-width: 34em;
+        margin: clamp(28px, 4vw, 46px) 0 0;
+        color: rgba(17, 18, 20, 0.7);
+        font-size: clamp(14px, 1.15vw, 17px);
+        line-height: 2;
+      }
+
+      .hero-photo {
+        min-height: 420px;
+        overflow: hidden;
+        background: #dedbd5;
+      }
+
+      .hero-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        filter: saturate(1.02) contrast(0.99);
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: minmax(220px, 0.28fr) minmax(0, 0.72fr);
+        gap: clamp(28px, 5vw, 78px);
+        padding: clamp(36px, 6vw, 86px) clamp(22px, 6vw, 96px);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section-title {
+        position: sticky;
+        top: 92px;
+        align-self: start;
+      }
+
+      .section-title p {
+        margin: 0 0 14px;
+      }
+
+      .section-title h2 {
+        margin: 0;
+        font-family: var(--display);
+        font-size: clamp(30px, 4vw, 58px);
+        font-weight: 400;
+        line-height: 1.04;
+        letter-spacing: 0.04em;
+      }
+
+      .essay {
+        display: grid;
+        gap: clamp(22px, 3vw, 36px);
+      }
+
+      .essay p {
+        max-width: 48em;
+        margin: 0;
+        color: rgba(17, 18, 20, 0.68);
+        font-size: 14px;
+        line-height: 2.05;
+      }
+
+      .essay blockquote {
+        max-width: 40em;
+        margin: 0;
+        padding: 24px 0 0;
+        border-top: 1px solid var(--line);
+        color: rgba(17, 18, 20, 0.82);
+        font-family: var(--display);
+        font-size: clamp(24px, 3vw, 42px);
+        font-weight: 400;
+        line-height: 1.24;
+        letter-spacing: 0.03em;
+      }
+
+      .practice-list {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        border-top: 1px solid var(--line);
+      }
+
+      .practice-list article {
+        min-height: 260px;
+        padding: clamp(24px, 4vw, 48px);
+        border-right: 1px solid var(--line);
+      }
+
+      .practice-list article:last-child {
+        border-right: 0;
+      }
+
+      .practice-list h3 {
+        margin: 0 0 26px;
+        font-family: var(--display);
+        font-size: clamp(26px, 3.4vw, 48px);
+        font-weight: 400;
+        line-height: 1.04;
+        letter-spacing: 0.04em;
+      }
+
+      .practice-list p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.95;
+      }
+
+      .closing {
+        padding: 22px clamp(22px, 6vw, 96px) 34px;
+        color: rgba(17, 18, 20, 0.5);
+        font-family: var(--latin);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      @media (max-width: 820px) {
+        .about-header {
+          grid-template-columns: auto 1fr;
+          gap: 8px 14px;
+          padding: 8px 14px;
+          background: rgba(247, 246, 243, 0.36);
+        }
+
+        .about-logo img {
+          width: 64px;
+        }
+
+        .about-nav {
+          grid-column: 1 / -1;
+          justify-self: stretch;
+          justify-content: space-between;
+          font-size: 9px;
+        }
+
+        .about-note {
+          justify-self: end;
+          font-size: 9px;
+          line-height: 1.45;
+        }
+
+        .about-hero,
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .about-hero {
+          min-height: 0;
+        }
+
+        .hero-copy {
+          padding: 34px 18px 28px;
+        }
+
+        h1 {
+          font-size: clamp(38px, 12vw, 58px);
+        }
+
+        .lead,
+        .essay p {
+          font-size: 13px;
+          line-height: 1.9;
+        }
+
+        .hero-photo {
+          min-height: 320px;
+        }
+
+        .about-grid {
+          gap: 22px;
+          padding: 34px 18px;
+        }
+
+        .section-title {
+          position: static;
+        }
+
+        .essay blockquote {
+          font-size: clamp(22px, 7vw, 34px);
+        }
+
+        .practice-list {
+          grid-template-columns: 1fr;
+        }
+
+        .practice-list article {
+          min-height: 0;
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="about-header">
+      <a class="about-logo" href="atelier.html" aria-label="Demon Atelier">
+        <img src="assets/brand/demon-atelier-logo-dark.png" alt="Demon Atelier">
+      </a>
+      <nav class="about-nav" aria-label="About navigation">
+        <a href="atelier.html">Home</a>
+        <a href="atelier.html#works">Works</a>
+        <a href="atelier.html#contact">Contact</a>
+      </nav>
+      <p class="about-note">Photography Journal</p>
+    </header>
+
+    <main>
+      <section class="about-hero">
+        <div class="hero-copy">
+          <p class="kicker">About Demon Atelier</p>
+          <h1>Light, distance and quiet memory.</h1>
+          <p class="lead">我拍照，是想把那些很快会从日常里消失的气息留下来：一次停顿、一束光、风经过植物时改变的方向，或是人物在镜头前忽然放松的瞬间。Demon Atelier 更像一本慢慢装订的影像手记，每一组作品都来自一次真实的相遇。</p>
+        </div>
+        <figure class="hero-photo">
+          <img src="assets/profile.jpg" alt="Demon Atelier 摄影者照片" loading="eager" decoding="async">
+        </figure>
+      </section>
+
+      <section class="about-grid">
+        <div class="section-title">
+          <p class="kicker">Why I Photograph</p>
+          <h2>在安静处观看。</h2>
+        </div>
+        <div class="essay">
+          <p>我更在意照片里有没有空气。漂亮当然重要，但我希望画面不只是漂亮，而是能让人想起当时的温度、光线和心情。拍摄时，我会先观察环境与人的关系：光从哪里来，人物如何停下来，背景是否正在讲述另一层情绪。</p>
+          <p>我的生活和学习经验在中国与日本之间展开，也让我习惯在不同语言和城市节奏里寻找细微的秩序。沟通可以轻松一点，中文、日文、英文，或一点粤语都可以；真正重要的是先把想留下的感觉说清楚。</p>
+          <blockquote>Photography is a quiet way to remember that something ordinary once mattered.</blockquote>
+        </div>
+      </section>
+
+      <section class="practice-list" aria-label="创作方向">
+        <article>
+          <h3>Portrait</h3>
+          <p>人像不是把人固定成某种样子，而是在光线、空间和情绪之间，等到人物最自然的一秒出现。</p>
+        </article>
+        <article>
+          <h3>Places</h3>
+          <p>城市、建筑、海岸和植物都有自己的节奏。镜头靠近它们时，风景会从背景变成记忆的一部分。</p>
+        </article>
+        <article>
+          <h3>Stories</h3>
+          <p>我喜欢把照片写成可以翻阅的故事。文字不解释照片，而是把拍摄当天的等待、偶然和情绪轻轻打开。</p>
+        </article>
+      </section>
+    </main>
+
+    <p class="closing">Demon Atelier · photographs of people, places and quiet moments.</p>
+  </body>
+</html>

@@ -10,8 +10,11 @@
         --ink: #111214;
         --muted: #6e6e6a;
         --line: rgba(17, 18, 20, 0.12);
-        --sans: "Helvetica Neue", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", Arial, sans-serif;
-        --serif: "Bodoni 72", Didot, "Hoefler Text", Georgia, "Times New Roman", serif;
+        --cjk: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Yu Gothic", sans-serif;
+        --latin: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+        --display: "Bodoni 72", Didot, "Baskerville", "Hoefler Text", Georgia, "Times New Roman", serif;
+        --sans: var(--latin), var(--cjk);
+        --serif: var(--display);
       }
 
       * {
@@ -47,8 +50,8 @@
         gap: 24px;
         padding: 18px clamp(20px, 4vw, 54px);
         border-bottom: 1px solid var(--line);
-        background: rgba(247, 246, 243, 0.58);
-        backdrop-filter: blur(18px) saturate(1.08);
+        background: rgba(247, 246, 243, 0.42);
+        backdrop-filter: blur(14px) saturate(1.05);
       }
 
       .portrait-logo img {
@@ -113,7 +116,7 @@
         position: absolute;
         inset: 0;
         background:
-          linear-gradient(90deg, rgba(247, 246, 243, 0.28), rgba(247, 246, 243, 0.14) 42%, rgba(247, 246, 243, 0.02)),
+          linear-gradient(90deg, rgba(247, 246, 243, 0.18), rgba(247, 246, 243, 0.08) 42%, rgba(247, 246, 243, 0.01)),
           linear-gradient(180deg, transparent 34%, rgba(17, 18, 20, 0.09));
       }
 
@@ -305,7 +308,7 @@
           grid-template-columns: auto 1fr auto;
           gap: 8px 12px;
           padding: 7px 14px 8px;
-          background: rgba(247, 246, 243, 0.52);
+          background: rgba(247, 246, 243, 0.36);
         }
 
         .portrait-logo img {
@@ -405,7 +408,7 @@
       <section class="portrait-hero">
         <div class="portrait-hero-copy">
           <h1 data-copy="heroTitle">Portrait Index</h1>
-          <p data-copy="heroCopy">人像在这里按模特分成不同章节。每一个板块保留简洁介绍，照片采用横向滑动播放，点开后可以放大查看，让测试版在人像浏览上更接近一个轻量的摄影画册。</p>
+          <p data-copy="heroCopy">人像在这里按模特分成不同章节。每一组照片都从一次真实的相遇开始：光线、场景和人物状态互相靠近，最后留下可以慢慢回看的瞬间。</p>
         </div>
       </section>
       <section class="model-list" id="models"></section>
@@ -428,7 +431,7 @@
           navModels: "Models",
           navContact: "Contact",
           heroTitle: "Portrait Index",
-          heroCopy: "人像在这里按模特分成不同章节。每一个板块保留简洁介绍，照片采用横向滑动播放，点开后可以放大查看，让测试版在人像浏览上更接近一个轻量的摄影画册。"
+          heroCopy: "人像在这里按模特分成不同章节。每一组照片都从一次真实的相遇开始：光线、场景和人物状态互相靠近，最后留下可以慢慢回看的瞬间。"
         },
         en: {
           navHome: "Home",

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Demon Atelier | Minimal Concept</title>
+    <title>Demon Atelier | Photography Journal</title>
     <style>
       :root {
         --paper: #f7f6f3;
@@ -13,8 +13,11 @@
         --line: rgba(17, 18, 20, 0.12);
         --sidebar: 188px;
         --space: clamp(26px, 4vw, 58px);
-        --sans: "Helvetica Neue", "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", Arial, sans-serif;
-        --serif: "Bodoni 72", Didot, "Hoefler Text", Georgia, "Times New Roman", serif;
+        --cjk: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Yu Gothic", sans-serif;
+        --latin: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+        --display: "Bodoni 72", Didot, "Baskerville", "Hoefler Text", Georgia, "Times New Roman", serif;
+        --sans: var(--latin), var(--cjk);
+        --serif: var(--display);
       }
 
       * {
@@ -59,8 +62,8 @@
         display: grid;
         grid-template-rows: auto auto auto 1fr;
         gap: 26px;
-        background: rgba(255, 255, 255, 0.38);
-        backdrop-filter: blur(18px) saturate(1.12);
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(14px) saturate(1.08);
         border-right: 1px solid var(--line);
       }
 
@@ -121,7 +124,7 @@
         width: max-content;
         border: 1px solid rgba(17, 18, 20, 0.14);
         padding: 3px;
-        background: rgba(247, 246, 243, 0.64);
+        background: rgba(247, 246, 243, 0.42);
       }
 
       .lang-switch button {
@@ -203,7 +206,7 @@
         inset: 0;
         z-index: 1;
         background:
-          linear-gradient(90deg, rgba(247, 246, 243, 0.24), rgba(247, 246, 243, 0.12) 34%, rgba(247, 246, 243, 0.01) 66%),
+          linear-gradient(90deg, rgba(247, 246, 243, 0.16), rgba(247, 246, 243, 0.08) 34%, rgba(247, 246, 243, 0.01) 66%),
           linear-gradient(180deg, rgba(15, 21, 32, 0.01), rgba(15, 21, 32, 0.08));
         pointer-events: none;
       }
@@ -219,15 +222,15 @@
         align-content: center;
         justify-items: start;
         gap: 24px;
-        background: linear-gradient(90deg, rgba(247, 246, 243, 0.2), rgba(247, 246, 243, 0.035));
-        backdrop-filter: blur(5px);
+        background: linear-gradient(90deg, rgba(247, 246, 243, 0.12), rgba(247, 246, 243, 0.02));
+        backdrop-filter: blur(3px);
       }
 
       .hero-kicker {
         margin: 0;
         color: rgba(15, 21, 32, 0.82);
         font-family: var(--serif);
-        font-size: clamp(25px, 2.9vw, 48px);
+        font-size: clamp(25px, 2.85vw, 46px);
         font-weight: 400;
         line-height: 1.16;
         letter-spacing: 0.08em;
@@ -281,8 +284,8 @@
 
       .section-head {
         margin-bottom: 20px;
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: auto minmax(220px, 0.56fr) auto;
         align-items: center;
         gap: 22px;
         padding-right: clamp(18px, 2.2vw, 34px);
@@ -294,6 +297,17 @@
         font-weight: 650;
         letter-spacing: 0.18em;
         text-transform: uppercase;
+      }
+
+      .copyright-inline {
+        max-width: 54em;
+        margin: 0;
+        justify-self: center;
+        color: rgba(17, 18, 20, 0.5);
+        font-family: var(--cjk);
+        font-size: 11px;
+        line-height: 1.8;
+        letter-spacing: 0.04em;
       }
 
       .work-grid {
@@ -353,6 +367,7 @@
       }
 
       .work-card strong {
+        font-family: var(--latin);
         font-weight: 700;
       }
 
@@ -360,6 +375,15 @@
         margin-top: 8px;
         color: var(--muted);
         font-weight: 520;
+      }
+
+      .work-note {
+        margin: -2px 0 0;
+        color: rgba(17, 18, 20, 0.56);
+        font-family: var(--cjk);
+        font-size: 11px;
+        line-height: 1.65;
+        letter-spacing: 0.03em;
       }
 
       .about-strip {
@@ -700,8 +724,8 @@
           padding: 12px 18px;
           align-items: center;
           gap: 10px 18px;
-          background: rgba(247, 246, 243, 0.54);
-          backdrop-filter: blur(18px) saturate(1.08);
+          background: rgba(247, 246, 243, 0.38);
+          backdrop-filter: blur(13px) saturate(1.04);
         }
 
         .brand strong {
@@ -721,6 +745,18 @@
           margin-top: 0;
           gap: 16px;
           font-size: 10px;
+        }
+
+        .section-head {
+          grid-template-columns: auto auto;
+        }
+
+        .copyright-inline {
+          grid-column: 1 / -1;
+          grid-row: 2;
+          justify-self: start;
+          font-size: 10.5px;
+          line-height: 1.65;
         }
 
         .hero-copy {
@@ -799,7 +835,7 @@
 
         .hero-kicker {
           max-width: 13em;
-          font-size: clamp(20px, 6.2vw, 27px);
+          font-size: clamp(19px, 5.8vw, 25px);
           line-height: 1.18;
         }
 
@@ -810,6 +846,15 @@
         .work-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 16px 9px;
+        }
+
+        .work-card {
+          gap: 8px;
+        }
+
+        .work-note {
+          font-size: 10px;
+          line-height: 1.55;
         }
 
         .work-image {
@@ -883,28 +928,34 @@
         <section class="section works" id="works" aria-labelledby="works-title">
           <div class="section-head">
             <h2 class="section-title" id="works-title" data-copy="worksTitle">Works</h2>
+            <p class="copyright-inline">本网页所有照片均由作者本人拍摄，人像照片已经模特本人同意，未经许可不得下载与转发，请尊重影像隐私与版权。</p>
             <a class="section-link" href="index.html#portfolio" data-copy="worksCta">View All Works →</a>
           </div>
           <div class="work-grid">
             <a class="work-card" href="atelier-portrait.html">
               <span class="work-image"><img src="assets/thumbs/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：日本横滨.jpg" alt="人像摄影" loading="lazy"></span>
               <span><strong>Portrait</strong><span>2026</span></span>
+              <p class="work-note">人物在光线、距离和情绪里短暂停留，留下温柔而清晰的轮廓。</p>
             </a>
             <a class="work-card" href="atelier-collection.html?collection=city">
               <span class="work-image"><img src="assets/thumbs/城市印象/拍摄城市：东京；拍摄时间：2025.10.jpg" alt="东京城市夜色" loading="lazy"></span>
               <span><strong>City Impressions</strong><span>2023-2026</span></span>
+              <p class="work-note">街道、建筑和夜色被整理成城市的片段，像行走中留下的注脚。</p>
             </a>
             <a class="work-card" href="atelier-collection.html?collection=travel">
               <span class="work-image"><img src="assets/thumbs/自然风光/海边/拍摄地点：日本 镰仓；拍摄时间：2025.10.jpg" alt="海边风光" loading="lazy"></span>
               <span><strong>Travel</strong><span>2025-2026</span></span>
+              <p class="work-note">海岸、山影与季节的颜色，记录旅途中忽然安静下来的时刻。</p>
             </a>
             <a class="work-card" href="atelier-collection.html?collection=animals">
               <span class="work-image"><img src="assets/thumbs/日常生活/猫咪写真/DSC06129.jpg" alt="猫咪写真" loading="lazy"></span>
               <span><strong>Animal Portraits</strong><span>2026</span></span>
+              <p class="work-note">从猫咪开始，等待动物自然露出眼神、姿态和一点不受安排的性格。</p>
             </a>
             <a class="work-card" href="atelier-collection.html?collection=quiet">
               <span class="work-image"><img src="assets/thumbs/日常生活/光影展/拍摄地点：上海；拍摄时间：2025.8.jpg" alt="光影与静物" loading="lazy"></span>
               <span><strong>Quiet Light</strong><span>2025</span></span>
+              <p class="work-note">日常里的光、物件和偶然反射，被保存为轻而长久的记忆。</p>
             </a>
           </div>
         </section>
@@ -947,7 +998,7 @@
           <div class="about-copy">
             <h2 id="about-title" data-copy="aboutTitle">About Demon Atelier</h2>
             <p data-copy="aboutCopy">Demon Atelier 是一本持续生长的个人摄影画册，记录人物、城市、风景和那些很快会消失的安静时刻。这个测试页尝试更克制、更平面化的摄影作品集风格。</p>
-            <a class="text-link" href="about.html" data-copy="aboutCta">了解我 →</a>
+            <a class="text-link" href="atelier-about.html" data-copy="aboutCta">了解我 →</a>
           </div>
           <div class="info-list">
             <div>
@@ -1011,7 +1062,7 @@
           storiesCopy: "摄影故事不是把作品简单排列出来，而是把一次拍摄里的等待、偶然、情绪和记忆装订成可以慢慢翻阅的章节。每一页都是一次进入照片背后的入口。",
           storiesCta: "Open Story →",
           aboutTitle: "About Demon Atelier",
-          aboutCopy: "Demon Atelier 是一本持续生长的个人摄影画册，记录人物、城市、风景和那些很快会消失的安静时刻。这个测试页尝试更克制、更平面化的摄影作品集风格。",
+          aboutCopy: "Demon Atelier 像一本持续装订的摄影手记，收集人物、城市、风景与日常里很快会消失的安静时刻。影像在这里不是炫耀，而是慢慢确认：那些微小的光和停顿，确实曾经发生过。",
           aboutCta: "了解我 →"
         },
         en: {
@@ -1027,7 +1078,7 @@
           storiesCopy: "Photo stories are not simple galleries. They bind the waiting, accidents, emotions and memories of a shoot into chapters you can slowly turn through.",
           storiesCta: "Open Story →",
           aboutTitle: "About Demon Atelier",
-          aboutCopy: "Demon Atelier is a growing personal photo book, collecting people, cities, landscapes and quiet moments that would otherwise disappear quickly.",
+          aboutCopy: "Demon Atelier is a slowly bound photography journal, collecting people, cities, landscapes and quiet moments before they disappear. The images are less about spectacle than the small proof that a pause, a light, a feeling once existed.",
           aboutCta: "About Me →"
         },
         ja: {
@@ -1043,7 +1094,7 @@
           storiesCopy: "写真ストーリーは作品を並べるだけではなく、撮影の日の偶然、感情、記憶をゆっくりめくれる章として綴る場所です。",
           storiesCta: "Open Story →",
           aboutTitle: "About Demon Atelier",
-          aboutCopy: "Demon Atelier は、人物、街、風景、そしてすぐに消えてしまう静かな瞬間を集める、成長し続ける個人写真集です。",
+          aboutCopy: "Demon Atelier は、人物、街、風景、そしてすぐに消えてしまう静かな瞬間を少しずつ綴る写真のノートです。写真は派手さよりも、光や沈黙が確かに存在したことを残すためにあります。",
           aboutCta: "About Me →"
         }
       };
