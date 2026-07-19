@@ -8374,3 +8374,186 @@ body.portrait-page .portrait-project {
     box-shadow: none;
   }
 }
+
+/* Root formal refinement 04: clearer image layers, calmer typography, sturdier gallery data fallbacks. */
+body {
+  --latin-display: "Bodoni 72", Didot, "Hoefler Text", Georgia, "Times New Roman", serif;
+  --body-font: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", Arial, sans-serif;
+  --display-font: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", Arial, sans-serif;
+}
+
+html[lang="en"] body h1,
+html[lang="en"] body h2,
+html[lang="en"] body h3,
+html[lang="en"] body .hero-title,
+html[lang="en"] body .gallery-hero h1,
+html[lang="en"] body .portrait-hero h1,
+html[lang="en"] body .group-heading h3,
+html[lang="en"] body .series-copy strong,
+html[lang="en"] body .gallery-strip-copy h2 {
+  font-family: var(--latin-display) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.035em;
+}
+
+body .site-header {
+  background: rgba(250, 248, 245, 0.58) !important;
+  backdrop-filter: blur(22px) saturate(1.16) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(1.16) !important;
+}
+
+body .site-header:not(.is-scrolled) {
+  background: rgba(250, 248, 245, 0.42) !important;
+}
+
+body .site-header:not(.is-scrolled)::before {
+  opacity: 0.18;
+}
+
+body .hero {
+  background-color: #dce4eb;
+}
+
+body .hero::after {
+  background:
+    linear-gradient(90deg, rgba(252, 250, 246, 0.28), rgba(252, 250, 246, 0.09) 42%, rgba(252, 250, 246, 0) 70%),
+    linear-gradient(180deg, rgba(16, 22, 34, 0.02), rgba(16, 22, 34, 0.08));
+}
+
+body .hero-content,
+body .hero-copy {
+  background-color: rgba(250, 248, 245, 0.18);
+  backdrop-filter: blur(8px) saturate(1.08);
+  -webkit-backdrop-filter: blur(8px) saturate(1.08);
+}
+
+body .gallery-hero,
+body .portrait-hero,
+body .profile-hero {
+  background:
+    linear-gradient(90deg, rgba(250, 248, 245, 0.52), rgba(250, 248, 245, 0.08)),
+    var(--gallery-cover) center / cover;
+}
+
+body .gallery-hero h1,
+body .portrait-hero h1 {
+  font-size: clamp(28px, 4vw, 52px) !important;
+  line-height: 1.06;
+}
+
+body .gallery-hero p:not(.eyebrow),
+body .portrait-hero p:last-child {
+  max-width: 42em;
+  font-size: clamp(12px, 0.9vw, 14px);
+  line-height: 1.78;
+}
+
+body .gallery-body.gallery-strip-list {
+  gap: clamp(26px, 3.6vw, 56px);
+  padding-top: clamp(24px, 3vw, 42px);
+}
+
+body .gallery-strip-row {
+  gap: clamp(22px, 4vw, 56px);
+  padding-bottom: clamp(24px, 3.4vw, 44px);
+}
+
+body .gallery-strip-copy h2 {
+  font-size: clamp(30px, 2.8vw, 52px) !important;
+  font-weight: 500 !important;
+}
+
+body .gallery-strip-copy p:not(.eyebrow) {
+  font-size: clamp(12px, 0.9vw, 14px);
+  line-height: 1.78;
+}
+
+body .gallery-strip-photo {
+  flex-basis: clamp(250px, 20vw, 360px);
+}
+
+body .gallery-strip-photo img {
+  aspect-ratio: 4 / 5;
+}
+
+body .social-icon {
+  width: 46px;
+  height: 46px;
+}
+
+body .social-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+@media (max-width: 820px) {
+  body .site-header {
+    top: max(7px, env(safe-area-inset-top));
+    padding: 7px 11px 9px;
+    row-gap: 6px;
+    background: rgba(250, 248, 245, 0.48) !important;
+  }
+
+  body .site-header:not(.is-scrolled) {
+    background: rgba(250, 248, 245, 0.36) !important;
+  }
+
+  body .brand-mark,
+  body .site-header:not(.is-scrolled) .brand-mark,
+  body .dark-brand .brand-mark {
+    width: 40px !important;
+    height: 26px !important;
+  }
+
+  body .language-switcher {
+    min-height: 30px;
+  }
+
+  body .language-button {
+    min-width: 32px;
+    height: 27px;
+    font-size: 11px;
+  }
+
+  body .nav a,
+  body .nav-link,
+  body .about-menu-trigger,
+  body .models-menu-trigger {
+    font-size: clamp(11px, 2.8vw, 13px);
+  }
+
+  body .gallery-hero,
+  body .portrait-hero,
+  body .profile-hero {
+    padding-top: 68px;
+  }
+
+  body .gallery-hero h1,
+  body .portrait-hero h1 {
+    font-size: clamp(22px, 6.6vw, 31px) !important;
+  }
+
+  body .gallery-body.gallery-strip-list {
+    width: min(100% - 20px, 720px);
+    gap: 24px;
+    padding-top: 22px;
+  }
+
+  body .gallery-strip-row {
+    gap: 12px;
+    padding-bottom: 22px;
+  }
+
+  body .gallery-strip-copy h2 {
+    font-size: clamp(22px, 6vw, 29px) !important;
+  }
+
+  body .gallery-strip-photo {
+    flex-basis: min(76vw, 300px);
+  }
+
+  body .social-icon {
+    width: 42px;
+    height: 42px;
+  }
+}
