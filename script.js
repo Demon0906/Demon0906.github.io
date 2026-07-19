@@ -468,7 +468,7 @@ function renderStoryBook(section) {
 
 function renderSection(section) {
   const featuredProjects = section.projects.slice(0, 1);
-  const projectTitle = section.id === "portrait" ? "相机 / 手机人像" : localized(featuredProjects[0]?.title || "");
+  const projectTitle = section.id === "portrait" ? "相机/手机人像" : localized(featuredProjects[0]?.title || "");
   return `
     <section class="portfolio-group project-section" id="${section.id}-section" aria-labelledby="${section.id}-title">
       <div class="group-heading">
