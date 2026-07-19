@@ -3,208 +3,593 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Demon Photography 人像摄影作品，按模特分组展示。">
-    <title>人像摄影 | Demon Photography</title>
-    <link rel="stylesheet" href="styles.css?v=atelier-20260719-root-refine-04">
+    <title>Portrait | Demon Atelier</title>
+    <style>
+      :root {
+        --paper: #f7f6f3;
+        --ink: #111214;
+        --muted: #6e6e6a;
+        --line: rgba(17, 18, 20, 0.12);
+        --cjk: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Yu Gothic", sans-serif;
+        --latin: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+        --display: "Bodoni 72", Didot, "Baskerville", "Hoefler Text", Georgia, "Times New Roman", serif;
+        --sans: var(--latin), var(--cjk);
+        --serif: var(--display);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+        -webkit-user-drag: none;
+        user-select: none;
+      }
+
+      .portrait-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 24px;
+        padding: 18px clamp(20px, 4vw, 54px);
+        border-bottom: 1px solid var(--line);
+        background: rgba(247, 246, 243, 0.42);
+        backdrop-filter: blur(14px) saturate(1.05);
+      }
+
+      .portrait-logo img {
+        width: 112px;
+        height: auto;
+      }
+
+      .portrait-nav {
+        justify-self: center;
+        display: flex;
+        gap: clamp(18px, 4vw, 48px);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .lang-switch {
+        display: inline-grid;
+        grid-template-columns: repeat(3, auto);
+        gap: 2px;
+        border: 1px solid rgba(17, 18, 20, 0.14);
+        padding: 3px;
+        background: rgba(255, 255, 255, 0.5);
+      }
+
+      .lang-switch button {
+        min-width: 28px;
+        border: 0;
+        padding: 7px 8px;
+        background: transparent;
+        color: rgba(17, 18, 20, 0.54);
+        cursor: pointer;
+        font: 700 10px var(--sans);
+      }
+
+      .lang-switch button.is-active {
+        background: rgba(17, 18, 20, 0.9);
+        color: #fff;
+      }
+
+      .portrait-hero {
+        position: relative;
+        min-height: clamp(320px, 42vw, 520px);
+        display: grid;
+        align-items: end;
+        overflow: hidden;
+        border-bottom: 1px solid var(--line);
+        background: #dedbd5;
+      }
+
+      .portrait-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("assets/thumbs/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：日本横滨.jpg") center / cover no-repeat;
+        filter: saturate(1.02) contrast(0.99) brightness(0.98);
+      }
+
+      .portrait-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(247, 246, 243, 0.18), rgba(247, 246, 243, 0.08) 42%, rgba(247, 246, 243, 0.01)),
+          linear-gradient(180deg, transparent 34%, rgba(17, 18, 20, 0.09));
+      }
+
+      .portrait-hero-copy {
+        position: relative;
+        z-index: 1;
+        width: min(760px, 100%);
+        padding: clamp(46px, 8vw, 96px) clamp(22px, 5vw, 82px);
+      }
+
+      .portrait-hero h1 {
+        max-width: 9em;
+        margin: 0;
+        font-family: var(--serif);
+        font-size: clamp(34px, 5.4vw, 72px);
+        font-weight: 400;
+        line-height: 0.98;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .portrait-hero p {
+        max-width: 42em;
+        margin: 24px 0 0;
+        color: rgba(17, 18, 20, 0.62);
+        font-size: 13px;
+        line-height: 1.9;
+      }
+
+      .model-list {
+        display: grid;
+      }
+
+      .model-section {
+        display: grid;
+        grid-template-columns: minmax(220px, 0.24fr) minmax(0, 0.76fr);
+        gap: clamp(24px, 4vw, 64px);
+        padding: clamp(30px, 4.2vw, 58px) clamp(20px, 5vw, 82px);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .model-copy {
+        align-self: start;
+        position: sticky;
+        top: 98px;
+      }
+
+      .model-copy small {
+        display: block;
+        margin-bottom: 16px;
+        color: rgba(17, 18, 20, 0.46);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .model-copy h2 {
+        margin: 0 0 14px;
+        font-size: clamp(22px, 2.45vw, 38px);
+        font-weight: 560;
+        letter-spacing: 0.08em;
+      }
+
+      .model-copy p {
+        margin: 0;
+        color: rgba(17, 18, 20, 0.58);
+        font-size: 12px;
+        line-height: 1.85;
+      }
+
+      .model-slider {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(220px, 31%);
+        gap: 12px;
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        scroll-snap-type: inline mandatory;
+        padding-bottom: 14px;
+      }
+
+      .model-slide {
+        position: relative;
+        border: 0;
+        padding: 0;
+        background: transparent;
+        cursor: zoom-in;
+        scroll-snap-align: start;
+      }
+
+      .model-slide img {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        filter: saturate(1) contrast(0.98);
+      }
+
+      .model-slide::after {
+        content: "";
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        background:
+          rgba(247, 246, 243, 0.42)
+          url("assets/brand/demon-atelier-mark-dark.png") center / 74% auto no-repeat;
+        opacity: 0.72;
+        backdrop-filter: blur(12px);
+      }
+
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 80;
+        display: none;
+        place-items: center;
+        padding: 28px;
+        background: rgba(15, 15, 15, 0.86);
+      }
+
+      .lightbox.is-open {
+        display: grid;
+      }
+
+      .lightbox-frame {
+        position: relative;
+        display: grid;
+        place-items: center;
+      }
+
+      .lightbox-frame::after {
+        content: "";
+        position: absolute;
+        right: clamp(16px, 4vw, 34px);
+        bottom: clamp(16px, 4vw, 34px);
+        width: clamp(58px, 9vw, 96px);
+        height: clamp(40px, 6vw, 68px);
+        border-radius: 999px;
+        background:
+          rgba(247, 246, 243, 0.34)
+          url("assets/brand/demon-atelier-mark-dark.png") center / 74% auto no-repeat;
+        opacity: 0.76;
+        backdrop-filter: blur(12px);
+        pointer-events: none;
+      }
+
+      .lightbox img {
+        max-width: min(92vw, 1100px);
+        max-height: 84vh;
+        object-fit: contain;
+      }
+
+      .lightbox-close,
+      .lightbox-nav {
+        position: absolute;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+        cursor: pointer;
+        font-size: 24px;
+      }
+
+      .lightbox-close {
+        top: 22px;
+        right: 24px;
+      }
+
+      .lightbox-nav {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .lightbox-prev {
+        left: clamp(16px, 4vw, 44px);
+      }
+
+      .lightbox-next {
+        right: clamp(16px, 4vw, 44px);
+      }
+
+      @media (max-width: 760px) {
+        .portrait-header {
+          grid-template-columns: auto 1fr auto;
+          gap: 8px 12px;
+          padding: 7px 14px 8px;
+          background: rgba(247, 246, 243, 0.36);
+        }
+
+        .portrait-logo img {
+          width: 62px;
+        }
+
+        .portrait-nav {
+          grid-column: 1 / -1;
+          grid-row: 2;
+          justify-self: stretch;
+          justify-content: space-between;
+          font-size: 9px;
+          gap: 8px;
+        }
+
+        .lang-switch {
+          justify-self: end;
+          grid-column: 3;
+          grid-row: 1;
+          align-self: center;
+        }
+
+        .lang-switch button {
+          min-width: 25px;
+          padding: 6px 7px;
+          font-size: 9px;
+        }
+
+        .portrait-hero {
+          min-height: 260px;
+        }
+
+        .portrait-hero-copy {
+          padding: 42px 18px 34px;
+        }
+
+        .portrait-hero h1 {
+          font-size: clamp(28px, 8.8vw, 40px);
+        }
+
+        .portrait-hero p {
+          margin-top: 16px;
+          font-size: 11px;
+          line-height: 1.75;
+        }
+
+        .model-section {
+          grid-template-columns: 1fr;
+          gap: 16px;
+          padding: 22px 14px;
+        }
+
+        .model-copy {
+          position: static;
+        }
+
+        .model-slider {
+          grid-auto-columns: minmax(148px, 52%);
+          gap: 9px;
+        }
+
+        .model-copy small {
+          margin-bottom: 10px;
+          font-size: 9px;
+        }
+
+        .model-copy h2 {
+          margin-bottom: 8px;
+          font-size: clamp(20px, 6.8vw, 28px);
+        }
+
+        .model-copy p {
+          font-size: 11px;
+          line-height: 1.7;
+        }
+      }
+    </style>
   </head>
-  <body class="detail-page portrait-page">
-    <header class="detail-header">
-      <a class="brand dark-brand" href="index.html" aria-label="返回 Demon 首页">
-        <span class="brand-mark">D</span>
-        <span>Demon</span>
+  <body>
+    <header class="portrait-header">
+      <a class="portrait-logo" href="index.html" aria-label="Demon Atelier">
+        <img src="assets/brand/demon-atelier-logo-dark.png" alt="Demon Atelier">
       </a>
-      <nav class="detail-nav" aria-label="Portrait navigation">
-        <a href="index.html#portfolio">作品集</a>
-        <a href="about.html">关于我</a>
-        <a href="index.html#contact">联系方式</a>
+      <nav class="portrait-nav">
+        <a href="index.html" data-copy="navHome">Home</a>
+        <a href="#models" data-copy="navModels">Models</a>
+        <a href="index.html#contact" data-copy="navContact">Contact</a>
       </nav>
+      <div class="lang-switch" aria-label="Language">
+        <button type="button" class="is-active" data-lang="zh">中</button>
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="ja">日</button>
+      </div>
     </header>
 
     <main>
       <section class="portrait-hero">
-        <p class="eyebrow">Portrait</p>
-        <h1 id="portrait-title">人像摄影</h1>
-        <p id="portrait-intro">把人物的状态放进光线、地点和时间里，让每一组肖像都保留自己的节奏。</p>
-        <div class="portrait-tabs" id="portrait-tabs" aria-label="人像摄影分类"></div>
+        <div class="portrait-hero-copy">
+          <h1 data-copy="heroTitle">Portrait Index</h1>
+          <p data-copy="heroCopy">人像在这里按模特分成不同章节。每一组照片都从一次真实的相遇开始：光线、场景和人物状态互相靠近，最后留下可以慢慢回看的瞬间。</p>
+        </div>
       </section>
-
-      <section class="portrait-projects" id="portrait-projects" aria-label="模特作品集"></section>
+      <section class="model-list" id="models"></section>
     </main>
 
-    <dialog class="lightbox" id="portrait-lightbox" aria-label="人像作品预览">
-      <button class="lightbox-close" type="button" aria-label="关闭预览">×</button>
+    <div class="lightbox" id="portrait-lightbox" aria-label="照片预览">
+      <button class="lightbox-close" type="button" aria-label="关闭">×</button>
       <button class="lightbox-nav lightbox-prev" type="button" aria-label="上一张">‹</button>
       <span class="lightbox-frame">
-        <img id="portrait-lightbox-image" class="protected-media" alt="" draggable="false">
+        <img alt="">
       </span>
       <button class="lightbox-nav lightbox-next" type="button" aria-label="下一张">›</button>
-      <div class="lightbox-caption">
-        <h3 id="portrait-lightbox-title"></h3>
-        <p id="portrait-lightbox-meta"></p>
-      </div>
-    </dialog>
+    </div>
 
-    <div class="privacy-toast" id="privacy-toast" role="status" aria-live="polite">作品仅供在线预览，请勿保存或截图传播。</div>
-
-    <script src="gallery-data.js?v=atelier-20260719-gallery-fix-04"></script>
-    <script src="protection.js?v=atelier-20260705d"></script>
+    <script src="gallery-data.js?v=atelier-20260719-story-mobile"></script>
     <script>
-      const mount = document.querySelector("#portrait-projects");
-      const tabsMount = document.querySelector("#portrait-tabs");
-      const pageTitle = document.querySelector("#portrait-title");
-      const pageIntro = document.querySelector("#portrait-intro");
-      const lightbox = document.querySelector("#portrait-lightbox");
-      const lightboxImage = document.querySelector("#portrait-lightbox-image");
-      const lightboxTitle = document.querySelector("#portrait-lightbox-title");
-      const lightboxMeta = document.querySelector("#portrait-lightbox-meta");
-      const lightboxPrev = document.querySelector(".lightbox-prev");
-      const lightboxNext = document.querySelector(".lightbox-next");
-      const params = new URLSearchParams(window.location.search);
-      const selectedCollection = params.get("collection") || "model-show";
-      const collections = window.portraitCollections || [];
-      const activeCollection = collections.find((item) => item.collection === selectedCollection) || collections[0];
-      let lightboxState = { photoIndex: 0 };
-
-      function getText(value) {
-        return typeof value === "string" ? value : value.zh;
-      }
-
-      function getGroup(groupId) {
-        return activeCollection.groups.find((group) => group.id === groupId);
-      }
-
-      function getAllPortraitPhotos() {
-        return activeCollection.groups.flatMap((group) =>
-          group.photos.map((src, photoIndex) => ({
-            group,
-            groupId: group.id,
-            photoIndex,
-            src,
-          })),
-        );
-      }
-
-      function getFlatPhotoIndex(groupId, photoIndex) {
-        return getAllPortraitPhotos().findIndex((item) => item.groupId === groupId && item.photoIndex === Number(photoIndex));
-      }
-
-      function renderTabs() {
-        tabsMount.innerHTML = collections
-          .map(
-            (collection) => `
-              <a class="${collection.collection === activeCollection.collection ? "is-active" : ""}" href="portrait.html?collection=${collection.collection}">
-                ${getText(collection.title)}
-              </a>
-            `,
-          )
-          .join("");
-      }
-
-      function renderPortraitProjects() {
-        pageTitle.textContent = getText(activeCollection.title);
-        pageIntro.textContent = getText(activeCollection.summary);
-        mount.innerHTML = activeCollection.groups
-          .filter((group) => group.photos.length)
-          .map((group) => {
-            const photos = group.photos
-              .map(
-                (src, index) => {
-                  const info = window.photoInfoFromPath(src);
-                  const hasInfo = Object.keys(info.fields).length > 0;
-                  const meta = info.meta || getText(activeCollection.place);
-                  const details = hasInfo
-                    ? Object.entries(info.fields)
-                        .filter(([key]) => key !== "模特" && key !== "模特名")
-                        .map(([key, value]) => `${key}: ${value}`)
-                        .join(" / ")
-                    : `${getText(activeCollection.title)} / ${group.title}`;
-                  return `
-                  <button class="portrait-photo" type="button" data-group="${group.id}" data-photo="${index}">
-                    <img
-                      src="${window.thumbImage(src)}"
-                      onerror="this.onerror=null;this.src='${window.localImage(src)}';"
-                      alt="${group.title}"
-                      loading="lazy"
-                      decoding="async"
-                      draggable="false"
-                    >
-                    <span class="portrait-photo-info">
-                      <small>${meta}</small>
-                      <em>${details}</em>
-                    </span>
-                  </button>
-                `;
-                },
-              )
-              .join("");
-            return `
-              <article class="portrait-project" id="${group.id}">
-                <div class="portrait-project-heading">
-                  <p class="eyebrow">Model</p>
-                  <h2>${group.title}</h2>
-                  <p>${getText(activeCollection.title)} · ${getText(activeCollection.place)}</p>
-                  <span>${group.description || "在自然光和真实场景中保留人物的独特气质，让画面拥有更安静的叙事感。"}</span>
-                </div>
-                <div class="portrait-photo-grid">${photos}</div>
-              </article>
-            `;
-          })
-          .join("");
-
-        if (window.location.hash) {
-          requestAnimationFrame(() => {
-            document.querySelector(window.location.hash)?.scrollIntoView({ block: "start" });
-          });
+      const portraitCopy = {
+        zh: {
+          navHome: "Home",
+          navModels: "Models",
+          navContact: "Contact",
+          heroTitle: "Portrait Index",
+          heroCopy: "人像在这里按模特分成不同章节。每一组照片都从一次真实的相遇开始：光线、场景和人物状态互相靠近，最后留下可以慢慢回看的瞬间。"
+        },
+        en: {
+          navHome: "Home",
+          navModels: "Models",
+          navContact: "Contact",
+          heroTitle: "Portrait Index",
+          heroCopy: "Portraits are arranged by model as quiet chapters. Each section keeps a short introduction, the photos slide horizontally, and every image can be opened for a closer look."
+        },
+        ja: {
+          navHome: "Home",
+          navModels: "Models",
+          navContact: "Contact",
+          heroTitle: "Portrait Index",
+          heroCopy: "ポートレートはモデルごとに静かな章として整理しています。各セクションは短い紹介と横スクロールの写真で構成され、画像は拡大して見ることができます。"
         }
-      }
+      };
 
-      function openPortraitLightbox(groupId, photoIndex) {
-        const allPhotos = getAllPortraitPhotos();
-        const flatIndex = getFlatPhotoIndex(groupId, photoIndex);
-        const item = allPhotos[flatIndex];
-        if (!item) return;
-        const info = window.photoInfoFromPath(item.src);
-        const hasInfo = Object.keys(info.fields).length > 0;
-        lightboxState = { photoIndex: flatIndex };
-        lightboxImage.src = window.localImage(item.src);
-        lightboxImage.alt = item.group.title;
-        lightboxTitle.textContent = item.group.title;
-        lightboxMeta.textContent = hasInfo ? info.meta || info.caption : `${getText(activeCollection.title)} / ${item.group.title}`;
-        if (!lightbox.open) lightbox.showModal();
-        requestAnimationFrame(() => {
-          lightbox.scrollTop = 0;
-          lightbox.scrollLeft = 0;
+      const availablePortraitPhotos = new Set([
+        "assets/photos/人像摄影/手机人像/CheriJanie/模特：CheriJanie；拍摄地点：上海；拍摄时间：206.6.jpg",
+        "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄地点：东京涉谷；拍摄时间：2026.5.jpg",
+        "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：东京迪士尼.jpg",
+        "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg",
+        "assets/photos/人像摄影/手机人像/Model/模特：LI.jpg",
+        "assets/photos/人像摄影/手机人像/Nero/模特：Nero；拍摄地点：东京涉谷；拍摄时间：2026.4.jpg",
+        "assets/photos/人像摄影/手机人像/Nero/模特：Nero；拍摄时间：2025.5；拍摄地点：东京涉谷.jpg",
+        "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
+        "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本富士山.jpg",
+        "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京台场.jpg",
+        "assets/photos/人像摄影/手机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
+        "assets/photos/人像摄影/相机人像/Celia/模特：Celia；拍摄地点：上海迪士尼；拍摄时间：2026.3.jpg",
+        "assets/photos/人像摄影/相机人像/Celia/模特：Celia；拍摄时间：2026.3；拍摄地点：上海迪士尼.jpg",
+        "assets/photos/人像摄影/相机人像/Celia/模特：Celia；拍摄时间：2026.6；拍摄地点：上海.JPG",
+        "assets/photos/人像摄影/相机人像/LMH/模特：LMH；拍摄地点：日本 浅草寺；拍摄时间：2026.7.jpg",
+        "assets/photos/人像摄影/相机人像/LMH/模特：LMH；拍摄地点：日本浅草寺；拍摄时间：2026.7 .jpg",
+        "assets/photos/人像摄影/相机人像/LMH/模特：LMH；拍摄地点：日本浅草寺；拍摄时间：2026.7.JPG.jpg",
+        "assets/photos/人像摄影/相机人像/Mio/拍摄时间：20626.5；模特：Mio；拍摄地点：日本横滨.jpg",
+        "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄地点：东京花火大会；拍摄时间：2026.7.jpg",
+        "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：日本富士山.jpg",
+        "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：日本横滨.jpg",
+        "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：206.4；拍摄地点：东京迪士尼本.jpg",
+        "assets/photos/人像摄影/相机人像/Nero/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg",
+        "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：2026.4；拍摄时间：日本富士山.jpg",
+        "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.JPG",
+        "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：羽田机场；拍摄时间：2026.7.JPG.jpg",
+        "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京 台场.JPG",
+        "assets/photos/人像摄影/相机人像/kakiloki/模特：kaliloki；拍摄时间：2026.4；拍摄地点：日本 富士山.JPG",
+        "assets/photos/人像摄影/相机人像/momo/模特：momo；拍摄地点：浅草寺；拍摄时间：2026.7..jpg",
+        "assets/photos/人像摄影/相机人像/momo/模特：momo；拍摄地点：芝公园；拍摄时间：2026.7.jpg",
+        "assets/photos/人像摄影/相机人像/一口榴莲派/拍摄地点：杭州；拍摄时间：2024.10、.JPG",
+        "assets/photos/人像摄影/相机人像/一口榴莲派/拍摄地点：杭州；拍摄时间：2024.10；.JPG",
+        "assets/photos/人像摄影/相机人像/一口榴莲派/模特：一口榴莲派；拍摄地点：杭州；拍摄时间：2024.10.JPG",
+        "assets/photos/人像摄影/相机人像/美丽酥酥/模特名：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
+        "assets/photos/人像摄影/相机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.1；拍摄地点：北京.jpg",
+        "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：东京塔；拍摄时间：2026.7.jpg",
+        "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：六本木；拍摄时间：2026.7.jpg",
+        "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：芝公园；拍摄时间：2026.7 .jpg",
+        "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：芝公园；拍摄时间：2026.7..jpg",
+        "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：赤羽桥；拍摄时间：2026.7.jpg"
+      ]);
+      const modelMount = document.querySelector("#models");
+      const modelMap = new Map();
+      (window.portraitCollections || []).forEach((collection) => {
+        (collection.groups || []).forEach((group) => {
+          const photos = (group.photos || []).filter((photo) => availablePortraitPhotos.has(photo));
+          if (!photos.length) return;
+          if (!modelMap.has(group.title)) {
+            modelMap.set(group.title, {
+              title: group.title,
+              description: group.description,
+              photos: []
+            });
+          }
+          modelMap.get(group.title).photos.push(...photos);
         });
-      }
-
-      function movePortraitLightbox(direction) {
-        const allPhotos = getAllPortraitPhotos();
-        if (!allPhotos.length) return;
-        const nextIndex = (lightboxState.photoIndex + direction + allPhotos.length) % allPhotos.length;
-        const next = allPhotos[nextIndex];
-        openPortraitLightbox(next.groupId, next.photoIndex);
-      }
-
-      mount.addEventListener("click", (event) => {
-        const button = event.target.closest(".portrait-photo");
-        if (!button) return;
-        openPortraitLightbox(button.dataset.group, button.dataset.photo);
       });
 
-      document.querySelector(".lightbox-close").addEventListener("click", () => lightbox.close());
-      lightboxPrev.addEventListener("click", () => movePortraitLightbox(-1));
-      lightboxNext.addEventListener("click", () => movePortraitLightbox(1));
+      const models = [...modelMap.values()]
+        .map((model) => ({ ...model, photos: [...new Set(model.photos)].slice(0, 8) }))
+        .filter((model) => model.photos.length)
+        .slice(0, 10);
+      const allPhotos = models.flatMap((model) => model.photos.map((photo) => window.localImage(photo)));
+
+      modelMount.innerHTML = models.map((model, index) => `
+        <article class="model-section">
+          <div class="model-copy">
+            <small>${String(index + 1).padStart(2, "0")} / Model</small>
+            <h2>${model.title}</h2>
+            <p>${model.description || "以光线、姿态和场景整理成一组安静的人像章节。"}</p>
+          </div>
+          <div class="model-slider" aria-label="${model.title} photos">
+            ${model.photos.map((photo) => `
+              <button class="model-slide" type="button" data-index="${allPhotos.indexOf(window.localImage(photo))}" data-full="${window.localImage(photo)}">
+                <img src="${window.thumbImage(photo)}" data-full="${window.localImage(photo)}" onerror="this.onerror=null;this.src=this.dataset.full;" alt="${model.title}" loading="lazy">
+              </button>
+            `).join("")}
+          </div>
+        </article>
+      `).join("");
+
+      document.querySelectorAll(".model-slide img").forEach((image) => {
+        image.addEventListener("error", () => {
+          if (image.src !== image.dataset.full) image.src = image.dataset.full;
+        }, { once: true });
+      });
+
+      const lightbox = document.querySelector("#portrait-lightbox");
+      const lightboxImage = lightbox.querySelector("img");
+      const closeButton = lightbox.querySelector(".lightbox-close");
+      const prevButton = lightbox.querySelector(".lightbox-prev");
+      const nextButton = lightbox.querySelector(".lightbox-next");
+      let lightboxIndex = 0;
+
+      function openLightbox(index) {
+        lightboxIndex = (index + allPhotos.length) % allPhotos.length;
+        lightboxImage.src = allPhotos[lightboxIndex];
+        if (!lightbox.classList.contains("is-open")) lightbox.classList.add("is-open");
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("is-open");
+        lightboxImage.removeAttribute("src");
+      }
+
+      function moveLightbox(direction) {
+        openLightbox(lightboxIndex + direction);
+      }
+
+      document.addEventListener("click", (event) => {
+        const slide = event.target.closest(".model-slide");
+        if (!slide) return;
+        openLightbox(Number(slide.dataset.index));
+      });
+
+      closeButton.addEventListener("click", closeLightbox);
+      prevButton.addEventListener("click", () => moveLightbox(-1));
+      nextButton.addEventListener("click", () => moveLightbox(1));
+
       lightbox.addEventListener("click", (event) => {
-        if (event.target === lightbox) lightbox.close();
-      });
-      document.addEventListener("keydown", (event) => {
-        if (!lightbox.open) return;
-        if (event.key === "ArrowLeft") movePortraitLightbox(-1);
-        if (event.key === "ArrowRight") movePortraitLightbox(1);
+        if (event.target === lightbox) closeLightbox();
       });
 
-      renderTabs();
-      renderPortraitProjects();
+      document.addEventListener("keydown", (event) => {
+        if (!lightbox.classList.contains("is-open")) return;
+        if (event.key === "Escape") closeLightbox();
+        if (event.key === "ArrowLeft") moveLightbox(-1);
+        if (event.key === "ArrowRight") moveLightbox(1);
+      });
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          const lang = button.dataset.lang;
+          document.querySelectorAll(".lang-switch button").forEach((item) => item.classList.toggle("is-active", item === button));
+          document.documentElement.lang = lang === "ja" ? "ja" : lang === "en" ? "en" : "zh-CN";
+          document.querySelectorAll("[data-copy]").forEach((node) => {
+            const key = node.dataset.copy;
+            if (portraitCopy[lang]?.[key]) node.textContent = portraitCopy[lang][key];
+          });
+        });
+      });
     </script>
   </body>
 </html>

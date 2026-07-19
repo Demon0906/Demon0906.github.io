@@ -3,198 +3,1163 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Demon Atelier 是一本持续生长的个人摄影画册，以独立影像项目收藏光线、人物、自然与日常故事。">
-    <title>Demon Atelier</title>
-    <link rel="preload" as="image" href="assets/thumbs/自然风光/海边/拍摄地点：日本 镰仓；拍摄时间：2025.10.jpg" fetchpriority="high">
-    <link rel="stylesheet" href="styles.css?v=atelier-20260719-root-refine-04">
+    <title>Demon Atelier | Photography Journal</title>
+    <style>
+      :root {
+        --paper: #f7f6f3;
+        --paper-soft: #eeece7;
+        --ink: #111214;
+        --muted: #6e6e6a;
+        --line: rgba(17, 18, 20, 0.12);
+        --sidebar: 188px;
+        --space: clamp(26px, 4vw, 58px);
+        --cjk: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Yu Gothic", sans-serif;
+        --latin: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+        --display: "Bodoni 72", Didot, "Baskerville", "Hoefler Text", Georgia, "Times New Roman", serif;
+        --sans: var(--latin), var(--cjk);
+        --serif: var(--display);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
+        letter-spacing: 0;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+        -webkit-user-drag: none;
+        user-select: none;
+      }
+
+      .concept-shell {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: var(--sidebar) minmax(0, 1fr);
+      }
+
+      .side-nav {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        padding: clamp(34px, 6vh, 76px) 34px 34px;
+        display: grid;
+        grid-template-rows: auto auto auto 1fr;
+        gap: 26px;
+        background: rgba(255, 255, 255, 0.24);
+        backdrop-filter: blur(10px) saturate(1.05);
+        border-right: 1px solid var(--line);
+      }
+
+      .brand strong {
+        display: block;
+        font-size: 28px;
+        font-weight: 500;
+        letter-spacing: 0.28em;
+      }
+
+      .brand span {
+        display: block;
+        margin-top: 8px;
+        font-size: 11px;
+        font-weight: 650;
+        letter-spacing: 0.24em;
+      }
+
+      .brand img {
+        width: 104px;
+        height: auto;
+        object-fit: contain;
+      }
+
+      .nav-links {
+        align-self: start;
+        margin-top: clamp(36px, 8vh, 76px);
+        display: grid;
+        gap: 20px;
+        font-size: 11px;
+        font-weight: 650;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .nav-links a::before {
+        content: "";
+        width: 5px;
+        height: 5px;
+        margin-right: 9px;
+        display: inline-block;
+        border-radius: 50%;
+        background: var(--ink);
+        opacity: 0;
+        transform: translateY(-1px);
+        transition: opacity 180ms ease;
+      }
+
+      .nav-links a.is-active::before {
+        opacity: 1;
+      }
+
+      .lang-switch {
+        align-self: start;
+        display: inline-grid;
+        grid-template-columns: repeat(3, auto);
+        gap: 2px;
+        width: max-content;
+        border: 1px solid rgba(17, 18, 20, 0.14);
+        padding: 3px;
+        background: rgba(247, 246, 243, 0.42);
+      }
+
+      .lang-switch button {
+        min-width: 28px;
+        border: 0;
+        padding: 7px 8px;
+        background: transparent;
+        color: rgba(17, 18, 20, 0.54);
+        cursor: pointer;
+        font: 700 10px var(--sans);
+        letter-spacing: 0.08em;
+      }
+
+      .lang-switch button.is-active {
+        background: rgba(17, 18, 20, 0.9);
+        color: #fff;
+      }
+
+      .social {
+        align-self: end;
+        display: grid;
+        justify-items: center;
+        gap: 16px;
+        font-size: 10px;
+        font-weight: 650;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .social a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        border: 1px solid rgba(17, 18, 20, 0.12);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.24);
+        backdrop-filter: blur(10px);
+      }
+
+      .social svg {
+        width: 21px;
+        height: 21px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.65;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        opacity: 0.88;
+      }
+
+      .social span {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+      }
+
+      main {
+        min-width: 0;
+      }
+
+      .hero {
+        min-height: 430px;
+        position: relative;
+        display: grid;
+        align-items: stretch;
+        overflow: hidden;
+        border-bottom: 1px solid var(--line);
+        background: #d8d4cd;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background:
+          linear-gradient(90deg, rgba(247, 246, 243, 0.16), rgba(247, 246, 243, 0.08) 34%, rgba(247, 246, 243, 0.01) 66%),
+          linear-gradient(180deg, rgba(15, 21, 32, 0.01), rgba(15, 21, 32, 0.08));
+        pointer-events: none;
+      }
+
+      .hero-copy {
+        position: relative;
+        z-index: 2;
+        width: min(42vw, 520px);
+        min-width: 360px;
+        min-height: 520px;
+        padding: clamp(58px, 9vw, 132px) var(--space) clamp(46px, 7vw, 82px);
+        display: grid;
+        align-content: center;
+        justify-items: start;
+        gap: 24px;
+        background: linear-gradient(90deg, rgba(247, 246, 243, 0.12), rgba(247, 246, 243, 0.02));
+        backdrop-filter: blur(3px);
+      }
+
+      .hero-kicker {
+        margin: 0;
+        color: rgba(15, 21, 32, 0.82);
+        font-family: var(--serif);
+        font-size: clamp(25px, 2.85vw, 46px);
+        font-weight: 400;
+        line-height: 1.16;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .rule {
+        width: 36px;
+        height: 1px;
+        background: var(--ink);
+      }
+
+      .hero-copy a,
+      .section-link {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        font-size: 11px;
+        font-weight: 650;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .section-link {
+        justify-self: end;
+        transform: translateX(10px);
+      }
+
+      .hero-image {
+        position: absolute;
+        inset: 0;
+        min-height: 430px;
+        overflow: hidden;
+      }
+
+      .hero-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 64% center;
+        filter: saturate(1.04) contrast(1) brightness(0.96);
+      }
+
+      .hero-image::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 72% 34%, rgba(255, 255, 255, 0.08), transparent 28%),
+          linear-gradient(90deg, rgba(247, 246, 243, 0.12), transparent 42%, rgba(9, 16, 31, 0.12));
+      }
+
+      .section {
+        padding: 28px var(--space);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section-head {
+        margin-bottom: 20px;
+        display: grid;
+        grid-template-columns: auto minmax(220px, 0.56fr) auto;
+        align-items: center;
+        gap: 22px;
+        padding-right: clamp(18px, 2.2vw, 34px);
+      }
+
+      .section-title {
+        margin: 0;
+        font-size: 13px;
+        font-weight: 650;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .copyright-inline {
+        max-width: 54em;
+        margin: 0;
+        justify-self: center;
+        color: rgba(17, 18, 20, 0.5);
+        font-family: var(--cjk);
+        font-size: 12px;
+        line-height: 1.8;
+        letter-spacing: 0.04em;
+      }
+
+      .work-grid {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .work-card {
+        display: grid;
+        gap: 11px;
+      }
+
+      .work-image {
+        position: relative;
+        aspect-ratio: 4 / 5;
+        overflow: hidden;
+        background: #ddd9d2;
+      }
+
+      .work-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: saturate(0.98) contrast(0.98);
+        transition: transform 420ms ease, filter 420ms ease;
+      }
+
+      .work-card:hover .work-image img {
+        transform: scale(1.035);
+        filter: saturate(1.05) contrast(1.02);
+      }
+
+      .work-image::after {
+        content: "";
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        background:
+          rgba(247, 246, 243, 0.42)
+          url("assets/brand/demon-atelier-mark-dark.png") center / 74% auto no-repeat;
+        opacity: 0.72;
+        backdrop-filter: blur(12px);
+      }
+
+      .work-card strong,
+      .work-card span {
+        display: block;
+        font-size: 10px;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      .work-card strong {
+        font-family: var(--latin);
+        font-weight: 700;
+      }
+
+      .work-card span {
+        margin-top: 8px;
+        color: var(--muted);
+        font-weight: 520;
+      }
+
+      .work-note {
+        margin: -2px 0 0;
+        color: rgba(17, 18, 20, 0.56);
+        font-family: var(--cjk);
+        font-size: 11px;
+        line-height: 1.65;
+        letter-spacing: 0.03em;
+      }
+
+      .about-strip {
+        display: grid;
+        grid-template-columns: minmax(220px, 0.28fr) minmax(280px, 0.42fr) minmax(220px, 0.3fr);
+        gap: clamp(28px, 5vw, 74px);
+        align-items: end;
+        background: rgba(255, 255, 255, 0.34);
+      }
+
+      .story-strip {
+        display: grid;
+        grid-template-columns: minmax(260px, 0.36fr) minmax(300px, 0.64fr);
+        gap: clamp(30px, 5vw, 76px);
+        align-items: center;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.38), rgba(238, 236, 231, 0.46));
+      }
+
+      .story-book-wrap {
+        display: grid;
+        justify-items: center;
+        gap: 14px;
+      }
+
+      .story-book {
+        position: relative;
+        width: min(100%, 330px);
+        aspect-ratio: 5 / 3.35;
+        perspective: 1200px;
+        filter: drop-shadow(0 22px 44px rgba(17, 18, 20, 0.12));
+      }
+
+      .story-page {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        align-content: center;
+        gap: 14px;
+        padding: 30px 34px;
+        border: 1px solid rgba(17, 18, 20, 0.1);
+        background:
+          linear-gradient(90deg, rgba(255, 255, 255, 0.78), rgba(238, 236, 231, 0.9)),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.32)),
+          var(--story-bg) center / cover,
+          repeating-linear-gradient(90deg, transparent, transparent 28px, rgba(17, 18, 20, 0.025) 29px);
+        box-shadow: none;
+        transform-origin: center;
+        transform: none;
+        backface-visibility: hidden;
+        opacity: 0;
+        overflow: hidden;
+        transition: opacity 260ms ease;
+        text-shadow: 0 1px 18px rgba(255, 255, 255, 0.36);
+      }
+
+      .story-page.is-current {
+        z-index: 3;
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .story-page.is-prev {
+        z-index: 2;
+        opacity: 0;
+      }
+
+      .story-page::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 1px;
+        background: rgba(17, 18, 20, 0.08);
+      }
+
+      .story-page::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 50%;
+        z-index: 4;
+        background:
+          linear-gradient(90deg, rgba(255, 255, 255, 0.88), rgba(235, 232, 226, 0.62)),
+          var(--story-bg) center / cover;
+        background-blend-mode: normal;
+        transform-origin: left center;
+        transform: rotateY(0deg);
+        pointer-events: none;
+      }
+
+      .story-book.is-turning .story-page.is-current::after {
+        animation: rightPageTurn 760ms cubic-bezier(.2, .75, .18, 1);
+      }
+
+      @keyframes rightPageTurn {
+        0% {
+          transform: rotateY(0deg);
+        }
+
+        48% {
+          transform: rotateY(-72deg);
+          box-shadow: -18px 0 30px rgba(17, 18, 20, 0.12);
+        }
+
+        100% {
+          transform: rotateY(0deg);
+        }
+      }
+
+      .story-page small {
+        position: relative;
+        z-index: 5;
+        color: rgba(17, 18, 20, 0.52);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .story-page strong {
+        position: relative;
+        z-index: 5;
+        max-width: 11em;
+        font-size: clamp(18px, 2vw, 25px);
+        line-height: 1.35;
+        letter-spacing: 0.04em;
+      }
+
+      .story-page p {
+        position: relative;
+        z-index: 5;
+        max-width: 18em;
+        margin: 0;
+        color: rgba(17, 18, 20, 0.58);
+        font-size: 12px;
+        line-height: 1.8;
+      }
+
+      .story-controls {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .story-controls button {
+        width: 34px;
+        height: 34px;
+        border: 1px solid rgba(17, 18, 20, 0.16);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.52);
+        cursor: pointer;
+        font-size: 18px;
+      }
+
+      .story-copy h2 {
+        margin: 0 0 18px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .story-copy p {
+        max-width: 38em;
+        margin: 0 0 18px;
+        color: rgba(17, 18, 20, 0.66);
+        font-size: 13px;
+        line-height: 1.9;
+      }
+
+      .text-link {
+        display: inline-block;
+        margin-top: 6px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .contact-strip {
+        display: grid;
+        grid-template-columns: minmax(280px, 0.42fr) minmax(0, 0.58fr);
+        gap: clamp(26px, 5vw, 70px);
+        align-items: start;
+        background: rgba(255, 255, 255, 0.42);
+      }
+
+      .contact-copy h2 {
+        margin: 0 0 16px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .contact-copy p {
+        max-width: 28em;
+        margin: 0;
+        color: rgba(17, 18, 20, 0.62);
+        font-size: 12px;
+        line-height: 1.9;
+      }
+
+      .contact-lines {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: clamp(18px, 3vw, 34px);
+        margin-top: 28px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+      }
+
+      .contact-lines strong {
+        display: block;
+        margin: 0 0 10px;
+        color: rgba(17, 18, 20, 0.5);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .contact-lines a {
+        display: block;
+        color: rgba(17, 18, 20, 0.72);
+        font-size: 13px;
+        line-height: 1.7;
+        overflow-wrap: anywhere;
+      }
+
+      .contact-panel {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .booking-mini {
+        border-top: 1px solid var(--line);
+        padding-top: 16px;
+      }
+
+      .booking-mini label span {
+        display: block;
+        margin-bottom: 8px;
+        color: rgba(17, 18, 20, 0.58);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .booking-mini {
+        display: grid;
+        gap: 10px;
+      }
+
+      .booking-mini input {
+        width: 100%;
+        border: 0;
+        border-bottom: 1px solid rgba(17, 18, 20, 0.16);
+        padding: 8px 0;
+        background: transparent;
+        color: var(--ink);
+        font: 12px var(--sans);
+        outline: none;
+      }
+
+      .booking-mini button {
+        justify-self: start;
+        border: 1px solid rgba(17, 18, 20, 0.2);
+        padding: 10px 16px;
+        background: rgba(247, 246, 243, 0.58);
+        color: var(--ink);
+        cursor: pointer;
+        font: 700 10px var(--sans);
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .about-photo {
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+        background: #dedbd5;
+      }
+
+      .about-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: saturate(0.96) contrast(0.98);
+      }
+
+      .about-copy h2,
+      .info-list h2 {
+        margin: 0 0 14px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .about-copy p,
+      .info-list p {
+        margin: 0;
+        color: rgba(17, 18, 20, 0.72);
+        font-size: 12px;
+        line-height: 1.9;
+      }
+
+      .info-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .closing {
+        padding: 18px var(--space) 28px;
+        color: rgba(17, 18, 20, 0.55);
+        text-align: center;
+        font-size: 12px;
+        letter-spacing: 0.04em;
+      }
+
+      @media (max-width: 980px) {
+        .concept-shell {
+          grid-template-columns: 1fr;
+        }
+
+        .side-nav {
+          position: sticky;
+          z-index: 10;
+          height: auto;
+          top: 0;
+          grid-template-columns: auto 1fr;
+          grid-template-rows: auto auto;
+          padding: 12px 18px;
+          align-items: center;
+          gap: 10px 18px;
+          background: rgba(247, 246, 243, 0.24);
+          backdrop-filter: blur(10px) saturate(1.02);
+        }
+
+        .brand strong {
+          font-size: 20px;
+        }
+
+        .brand span,
+        .social {
+          display: none;
+        }
+
+        .nav-links {
+          grid-column: 1 / -1;
+          justify-self: end;
+          grid-auto-flow: column;
+          align-self: center;
+          margin-top: 0;
+          gap: 16px;
+          font-size: 10px;
+        }
+
+        .section-head {
+          grid-template-columns: auto auto;
+        }
+
+        .copyright-inline {
+          grid-column: 1 / -1;
+          grid-row: 2;
+          justify-self: start;
+          font-size: 11.5px;
+          line-height: 1.65;
+        }
+
+        .hero-copy {
+          width: min(100%, 520px);
+          min-width: 0;
+          min-height: 300px;
+          padding: 54px 24px 34px;
+          background: linear-gradient(90deg, rgba(247, 246, 243, 0.1), rgba(247, 246, 243, 0.012));
+          backdrop-filter: blur(2px);
+        }
+
+        .hero-image {
+          min-height: 280px;
+        }
+
+        .hero {
+          min-height: 320px;
+        }
+
+        .work-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 18px 10px;
+        }
+
+        .about-strip,
+        .story-strip,
+        .contact-strip,
+        .contact-panel {
+          grid-template-columns: 1fr;
+        }
+
+        .contact-lines {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .side-nav {
+          grid-template-columns: auto 1fr;
+          padding: 7px 14px 8px;
+          gap: 6px 12px;
+        }
+
+        .brand img {
+          width: 62px;
+        }
+
+        .lang-switch {
+          justify-self: end;
+          align-self: center;
+        }
+
+        .lang-switch button {
+          min-width: 25px;
+          padding: 6px 7px;
+          font-size: 9px;
+        }
+
+        .nav-links {
+          grid-column: 1 / -1;
+          justify-self: stretch;
+          width: 100%;
+          justify-content: space-between;
+          gap: 8px;
+          font-size: 9px;
+        }
+
+        .hero {
+          min-height: 300px;
+        }
+
+        .hero-copy {
+          min-height: 300px;
+          padding: 42px 18px 28px;
+        }
+
+        .hero-kicker {
+          max-width: 13em;
+          font-size: clamp(19px, 5.8vw, 25px);
+          line-height: 1.18;
+        }
+
+        .section {
+          padding: 18px 14px;
+        }
+
+        .work-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 16px 9px;
+        }
+
+        .work-card {
+          gap: 8px;
+        }
+
+        .work-note {
+          font-size: 10px;
+          line-height: 1.55;
+        }
+
+        .work-image {
+          aspect-ratio: 4 / 5;
+        }
+
+        .contact-lines {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 12px;
+          margin-top: 18px;
+          padding-top: 14px;
+        }
+
+        .contact-lines strong {
+          margin-bottom: 7px;
+          font-size: 9px;
+        }
+
+        .contact-lines a {
+          font-size: 10.5px;
+          line-height: 1.55;
+        }
+      }
+    </style>
   </head>
   <body>
-    <header class="site-header">
-      <a class="brand" href="#top" aria-label="Demon">
-        <span class="brand-mark" aria-hidden="true">
-          <span class="brand-mark-initial">D</span>
-          <span class="brand-mark-line"></span>
-        </span>
-        <span class="brand-name">Demon Atelier</span>
-      </a>
-      <nav class="nav" aria-label="Main navigation">
-        <div class="nav-menu">
-          <button class="nav-link" id="portfolio-menu-toggle" type="button" aria-expanded="false" aria-controls="portfolio-menu" data-i18n="navPortfolio">影像项目</button>
-          <div class="portfolio-menu" id="portfolio-menu"></div>
+    <div class="concept-shell">
+      <aside class="side-nav" aria-label="测试页导航">
+        <a class="brand" href="#top" aria-label="Demon Atelier">
+          <img src="assets/brand/demon-atelier-logo-dark.png" alt="Demon Atelier">
+        </a>
+        <div class="lang-switch" aria-label="Language">
+          <button type="button" class="is-active" data-lang="zh">中</button>
+          <button type="button" data-lang="en">EN</button>
+          <button type="button" data-lang="ja">日</button>
         </div>
-        <a class="booking-trigger" href="#booking-form-panel" data-i18n="navBooking">联系</a>
-        <div class="nav-menu about-nav">
-          <button class="nav-link" id="about-menu-toggle" type="button" aria-expanded="false" aria-controls="about-menu" data-i18n="navAbout">关于</button>
-          <div class="portfolio-menu about-menu" id="about-menu">
-            <a href="about.html" data-i18n="aboutMenuMe">关于我</a>
-            <a href="#contact" data-i18n="aboutMenuPricing">价格咨询</a>
-            <a href="#contact" data-i18n="aboutMenuBusiness">商务合作</a>
+        <nav class="nav-links">
+          <a class="is-active" href="#top" data-copy="navHome">Home</a>
+          <a href="#works" data-copy="navWorks">Works</a>
+          <a href="#about" data-copy="navAbout">About</a>
+          <a href="#contact" data-copy="navContact">Contact</a>
+        </nav>
+        <div class="social" aria-label="social">
+          <a href="https://www.instagram.com/de_mon0906?igsh=MXdhN2hiNnZsOWdlOA%3D%3D&utm_source=qr" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"></rect><circle cx="12" cy="12" r="3.5"></circle><path d="M17.2 6.8h.01"></path></svg>
+            <span>Instagram</span>
+          </a>
+          <a href="https://xhslink.com/m/vRWzq94lBj" aria-label="Xiaohongshu">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="3"></rect><path d="M8 10h8M8 14h5"></path></svg>
+            <span>Xiaohongshu</span>
+          </a>
+          <a href="mailto:ruoqinao@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="12" rx="2"></rect><path d="m5 8 7 5 7-5"></path></svg>
+            <span>Email</span>
+          </a>
+        </div>
+      </aside>
+
+      <main id="top">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <h1 class="hero-kicker" id="hero-title" data-copy="heroTitle">Photographs of people, places and quiet moments.</h1>
+            <span class="rule" aria-hidden="true"></span>
+            <a href="#works" data-copy="heroCta">View Works →</a>
           </div>
-        </div>
-        <div class="nav-menu model-nav">
-          <button class="nav-link" id="model-menu-toggle" type="button" aria-expanded="false" aria-controls="model-menu" data-i18n="navModels">认识模特</button>
-          <div class="portfolio-menu model-menu" id="model-menu">
-            <a href="portrait.html#model-kakiloki">kakiloki</a>
-            <a href="https://xhslink.com/m/73aezRvndz8">Mio</a>
-            <a href="https://nero-kong.github.io">Nero</a>
+          <div class="hero-image">
+            <img src="assets/photos/自然风光/海边/拍摄时间：2026.4；拍摄地点：日本 富士山.jpg" alt="富士山蓝调横屏背景" loading="eager" decoding="async">
           </div>
-        </div>
-      </nav>
-      <div class="language-switcher" aria-label="Language">
-        <button class="language-button is-active" type="button" data-lang="zh">中</button>
-        <button class="language-button" type="button" data-lang="en">EN</button>
-        <button class="language-button" type="button" data-lang="ja">日</button>
-      </div>
-    </header>
+        </section>
 
-    <main id="top">
-      <section class="hero" aria-labelledby="hero-title">
-        <img
-          class="hero-image protected-media"
-          src="assets/thumbs/自然风光/海边/拍摄地点：日本 镰仓；拍摄时间：2025.10.jpg"
-          alt="海边落日与云层"
-          decoding="async"
-          fetchpriority="high"
-          draggable="false"
-        >
-        <div class="hero-shade"></div>
-        <div class="hero-content">
-          <span class="hero-monogram" aria-hidden="true">DA</span>
-          <p class="eyebrow" data-i18n="heroEyebrow">Photography Atelier / Slow Looking</p>
-          <h1 id="hero-title" data-i18n="heroTitle">Demon Atelier</h1>
-          <p class="hero-copy" data-i18n="heroCopy">把短暂的光、安静的人和路过的风景，装订成可以反复翻阅的影像页。</p>
-          <div class="hero-actions">
-            <a class="button primary" href="#portfolio" data-i18n="heroPortfolio">Open Journal</a>
-            <a class="button ghost booking-trigger" href="#booking-form-panel" data-i18n="heroBooking">Contact</a>
+        <section class="section works" id="works" aria-labelledby="works-title">
+          <div class="section-head">
+            <h2 class="section-title" id="works-title" data-copy="worksTitle">Works</h2>
+            <p class="copyright-inline">本网页所有照片均由作者本人拍摄，人像照片已经模特本人同意，未经许可不得下载与转发，请尊重影像隐私与版权。</p>
+            <a class="section-link" href="gallery.html" data-copy="worksCta">View All Works →</a>
           </div>
-        </div>
-        <p class="hero-vertical" aria-hidden="true">CAPTURING LIGHT AND MOMENT</p>
-      </section>
+          <div class="work-grid">
+            <a class="work-card" href="portrait.html">
+              <span class="work-image"><img src="assets/thumbs/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：日本横滨.jpg" alt="人像摄影" loading="lazy"></span>
+              <span><strong>Portrait</strong><span>2026</span></span>
+              <p class="work-note">人物在光线、距离和情绪里短暂停留，留下温柔而清晰的轮廓。</p>
+            </a>
+            <a class="work-card" href="collection.html?collection=city">
+              <span class="work-image"><img src="assets/thumbs/城市印象/拍摄城市：东京；拍摄时间：2025.10.jpg" alt="东京城市夜色" loading="lazy"></span>
+              <span><strong>City Impressions</strong><span>2023-2026</span></span>
+              <p class="work-note">街道、建筑和夜色被整理成城市的片段，像行走中留下的注脚。</p>
+            </a>
+            <a class="work-card" href="collection.html?collection=travel">
+              <span class="work-image"><img src="assets/thumbs/自然风光/海边/拍摄地点：日本 镰仓；拍摄时间：2025.10.jpg" alt="海边风光" loading="lazy"></span>
+              <span><strong>Travel</strong><span>2025-2026</span></span>
+              <p class="work-note">海岸、山影与季节的颜色，记录旅途中忽然安静下来的时刻。</p>
+            </a>
+            <a class="work-card" href="collection.html?collection=animals">
+              <span class="work-image"><img src="assets/thumbs/日常生活/猫咪写真/DSC06129.jpg" alt="猫咪写真" loading="lazy"></span>
+              <span><strong>Animal Portraits</strong><span>2026</span></span>
+              <p class="work-note">从猫咪开始，等待动物自然露出眼神、姿态和一点不受安排的性格。</p>
+            </a>
+            <a class="work-card" href="collection.html?collection=quiet">
+              <span class="work-image"><img src="assets/thumbs/日常生活/光影展/拍摄地点：上海；拍摄时间：2025.8.jpg" alt="光影与静物" loading="lazy"></span>
+              <span><strong>Quiet Light</strong><span>2025</span></span>
+              <p class="work-note">日常里的光、物件和偶然反射，被保存为轻而长久的记忆。</p>
+            </a>
+          </div>
+        </section>
 
-      <section class="section portfolio" id="portfolio" aria-label="作品集">
-        <aside class="portfolio-notice" aria-label="版权与隐私说明">
-          <span>Copyright Notice</span>
-          <p data-i18n="privacyNote">本网页所有照片均由作者本人拍摄，人像照片已经模特本人同意，未经许可不得下载与转发，请尊重影像隐私与版权。</p>
-        </aside>
-        <div class="portfolio-groups" id="portfolio-groups"></div>
-      </section>
-
-      <section class="section story-index-section" id="stories" aria-labelledby="stories-title">
-        <div class="story-index-heading">
-          <p class="eyebrow" data-i18n="storiesEyebrow">Visual Journal</p>
-          <h2 id="stories-title" data-i18n="storiesTitle">摄影故事</h2>
-          <p data-i18n="storiesIntro">照片背后的记忆、方法和情绪。</p>
-          <a class="story-open-cta" href="gallery.html?section=stories&project=story-graduation-season">OPEN STORY →</a>
-        </div>
-        <div class="story-index-grid" id="story-index-grid"></div>
-      </section>
-
-      <section class="about-band" id="about" aria-labelledby="about-title">
-        <div>
-          <p class="eyebrow">About</p>
-          <h2 id="about-title" data-i18n="aboutTitle">关于我</h2>
-        </div>
-        <div class="about-summary">
-          <p data-i18n="aboutCopy">
-            我拍照，是为了把那些很快会消失的气息留下来：一次停顿、一束光、风经过植物时改变的方向。Demon Atelier 更像一本慢慢装订的影像书。
-          </p>
-          <a class="text-link" href="about.html" data-i18n="aboutDetailCta">查看详细介绍</a>
-        </div>
-      </section>
-
-      <section class="section contact-section" id="contact" aria-labelledby="contact-title">
-        <div class="contact-heading">
-          <p class="eyebrow" data-i18n="contactEyebrow">Contact</p>
-          <h2 id="contact-title" data-i18n="contactTitle">联系方式</h2>
-          <p class="contact-intro" data-i18n="contactIntro">如果某一组照片让你想起一段光线，欢迎写信来聊。拍摄、合作与价格咨询都可以从一封简单的邮件开始。</p>
-        </div>
-
-        <div class="contact-layout">
-          <article class="contact-card">
-            <p class="contact-kicker" data-i18n="contactEmail">邮箱</p>
-            <a href="mailto:763525586@qq.com">763525586@qq.com</a>
-            <a href="mailto:ruoqinao@gmail.com">ruoqinao@gmail.com</a>
-          </article>
-
-          <article class="contact-card">
-            <p class="contact-kicker" data-i18n="contactPhone">联系电话</p>
-            <a href="tel:+8613687951586">+86 13687951586 <span data-i18n="wechatSame">微信同</span></a>
-            <a href="tel:+817085503168">+81 07085503168 <span>LINE</span></a>
-          </article>
-
-          <article class="contact-card">
-            <p class="contact-kicker" data-i18n="contactSocial">社交媒体</p>
-            <div class="social-links" aria-label="Social media">
-              <a class="social-icon xhs" href="https://xhslink.com/m/vRWzq94lBj" aria-label="小红书">
-                <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="6" y="8" width="28" height="24" rx="6"></rect><path d="M14 17h12M14 23h9"></path></svg>
+        <section class="section story-strip" id="stories" aria-labelledby="stories-title">
+          <div class="story-book-wrap">
+            <div class="story-book" id="concept-story-book" aria-label="摄影故事翻页书">
+              <a class="story-page is-current" href="gallery.html?section=stories&project=story-graduation-season" style="--story-bg: url('assets/thumbs/摄影故事/毕业季摄影故事/45c1e72ca7ec5b6c4856ee0ecca24f3e.jpg');">
+                <small>Story 01</small>
+                <strong>毕业季：把告别留在光里</strong>
+                <p>翻开这一页，把告别、时间和光线放回照片发生的地方。</p>
               </a>
-              <a class="social-icon ins" href="https://www.instagram.com/de_mon0906?igsh=MXdhN2hiNnZsOWdlOA%3D%3D&utm_source=qr" aria-label="Instagram">
-                <svg viewBox="0 0 40 40" aria-hidden="true"><rect x="9" y="9" width="22" height="22" rx="7"></rect><circle cx="20" cy="20" r="5"></circle><circle cx="27" cy="13" r="1.6"></circle></svg>
+              <a class="story-page" href="gallery.html?section=stories&project=stories-e4ba94e69da1" style="--story-bg: url('assets/thumbs/摄影故事/五条老师/6ef594c14884b70563d266801b713e9e.jpg');">
+                <small>Story 02</small>
+                <strong>五条老师：一场小剧场</strong>
+                <p>很小的角色，也能在镜头前拥有完整的舞台。</p>
               </a>
-              <a class="social-icon douyin" href="#" aria-label="抖音">
-                <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M22 9v17a6 6 0 1 1-5-5.9"></path><path d="M22 10c2 5 5 7 9 7"></path></svg>
+              <a class="story-page" href="gallery.html?section=stories&project=story-light-notes" style="--story-bg: url('assets/thumbs/摄影故事/小熊摄影故事/1f626f17ee2bb2ea44f3ee88b44e0e19.jpg');">
+                <small>Story 03</small>
+                <strong>熊大：一只小熊的远方</strong>
+                <p>陪伴被照片保存下来，轻的东西因此变得长久。</p>
               </a>
             </div>
-          </article>
-        </div>
-      </section>
-    </main>
+            <div class="story-controls">
+              <button type="button" data-story-prev aria-label="上一页">‹</button>
+              <button type="button" data-story-next aria-label="下一页">›</button>
+            </div>
+          </div>
+          <div class="story-copy">
+            <h2 id="stories-title" data-copy="storiesTitle">Visual Stories</h2>
+            <p data-copy="storiesCopy">摄影故事不是把作品简单排列出来，而是把一次拍摄里的等待、偶然、情绪和记忆装订成可以慢慢翻阅的章节。每一页都是一次进入照片背后的入口。</p>
+            <a class="text-link" href="gallery.html?section=stories&project=story-graduation-season" data-copy="storiesCta">Open Story →</a>
+          </div>
+        </section>
 
-    <div class="booking-modal-shell" id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="booking-modal-title" hidden>
-      <div class="booking-modal" id="booking-form-panel">
-        <button class="modal-close" type="button" aria-label="关闭预约问卷">×</button>
-        <div class="modal-heading">
-          <p class="eyebrow" data-i18n="bookingEyebrow">Contact Note</p>
-          <h2 id="booking-modal-title" data-i18n="bookingTitle">拍摄沟通</h2>
-        </div>
-        <form class="booking-form" id="booking-form">
-          <label>
-            <span data-i18n="bookingName">姓名</span>
-            <input id="client-name" name="name" type="text" autocomplete="name" required>
-          </label>
-          <label>
-            <span data-i18n="bookingContact">联系方式</span>
-            <input name="contact" type="text" autocomplete="tel email" required>
-          </label>
-          <label>
-            <span data-i18n="bookingDate">预约拍摄日期与时间</span>
-            <input name="datetime" type="datetime-local" required>
-          </label>
-          <label>
-            <span data-i18n="bookingTheme">期望拍摄主题</span>
-            <input name="theme" type="text" required>
-          </label>
-          <label class="full-field">
-            <span data-i18n="bookingLocation">拍摄地点</span>
-            <input name="location" type="text" required>
-          </label>
-          <label class="full-field">
-            <span data-i18n="bookingNotes">备注</span>
-            <textarea name="notes" rows="4"></textarea>
-          </label>
-          <button class="button primary form-submit" type="submit" data-i18n="bookingSubmit">发送沟通信息</button>
-          <p class="form-success" id="form-success" data-i18n="bookingSuccess" hidden>你的信息已提交，我会尽快与你联系。谢谢你的信任。</p>
-        </form>
-      </div>
+        <section class="section about-strip" id="about" aria-labelledby="about-title">
+          <div class="about-photo">
+            <img src="assets/profile.jpg" alt="摄影者照片" loading="lazy">
+          </div>
+          <div class="about-copy">
+            <h2 id="about-title" data-copy="aboutTitle">About Demon Atelier</h2>
+            <p data-copy="aboutCopy">Demon Atelier 是一本持续生长的个人摄影画册，记录人物、城市、风景和那些很快会消失的安静时刻。这个测试页尝试更克制、更平面化的摄影作品集风格。</p>
+            <a class="text-link" href="about.html" data-copy="aboutCta">了解我 →</a>
+          </div>
+          <div class="info-list">
+            <div>
+              <h2>Based In Tokyo</h2>
+              <p>我更喜欢把镜头放在安静的间隙里：人经过光，城市留下影子，一次拍摄慢慢变成可以回看的记忆。现在主要在东京拍摄，也接受人像和小型视觉合作；沟通可以轻松一点，中文、日文、英文，或一点粤语都可以。</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section contact-strip" id="contact" aria-labelledby="contact-title">
+          <div class="contact-copy">
+            <h2 id="contact-title">Contact & Booking</h2>
+            <p>如果你想预约拍摄，或者只是想先聊一组照片的氛围，可以从一封邮件或一条简短信息开始。</p>
+            <div class="contact-lines">
+              <div>
+                <strong>Email</strong>
+                <a href="mailto:763525586@qq.com">763525586@qq.com</a>
+                <a href="mailto:ruoqinao@gmail.com">ruoqinao@gmail.com</a>
+              </div>
+              <div>
+                <strong>Phone</strong>
+                <a href="tel:+8613687951586">+86 13687951586 微信同</a>
+                <a href="tel:+817085503168">+81 07085503168 LINE</a>
+              </div>
+            </div>
+          </div>
+          <div class="contact-panel">
+            <form class="booking-mini" action="mailto:ruoqinao@gmail.com" method="post" enctype="text/plain">
+              <label>
+                <span>Name</span>
+                <input name="name" type="text" autocomplete="name">
+              </label>
+              <label>
+                <span>Contact</span>
+                <input name="contact" type="text" autocomplete="email tel">
+              </label>
+              <label>
+                <span>Theme / Date</span>
+                <input name="booking" type="text" placeholder="Portrait, city walk, or a quiet story">
+              </label>
+              <button type="submit">Book a Session →</button>
+            </form>
+          </div>
+        </section>
+
+        <p class="closing">Sometimes the most ordinary light becomes the most precious memory.</p>
+      </main>
     </div>
+    <script>
+      const conceptCopy = {
+        zh: {
+          navHome: "Home",
+          navWorks: "Works",
+          navAbout: "About",
+          navContact: "Contact",
+          heroTitle: "Photographs of people, places and quiet moments.",
+          heroCta: "View Works →",
+          worksTitle: "Works",
+          worksCta: "View All Works →",
+          storiesTitle: "Visual Stories",
+          storiesCopy: "摄影故事不是把作品简单排列出来，而是把一次拍摄里的等待、偶然、情绪和记忆装订成可以慢慢翻阅的章节。每一页都是一次进入照片背后的入口。",
+          storiesCta: "Open Story →",
+          aboutTitle: "About Demon Atelier",
+          aboutCopy: "Demon Atelier 像一本持续装订的摄影手记，收集人物、城市、风景与日常里很快会消失的安静时刻。影像在这里不是炫耀，而是慢慢确认：那些微小的光和停顿，确实曾经发生过。",
+          aboutCta: "了解我 →"
+        },
+        en: {
+          navHome: "Home",
+          navWorks: "Works",
+          navAbout: "About",
+          navContact: "Contact",
+          heroTitle: "Photographs of people, places and quiet moments.",
+          heroCta: "View Works →",
+          worksTitle: "Works",
+          worksCta: "View All Works →",
+          storiesTitle: "Visual Stories",
+          storiesCopy: "Photo stories are not simple galleries. They bind the waiting, accidents, emotions and memories of a shoot into chapters you can slowly turn through.",
+          storiesCta: "Open Story →",
+          aboutTitle: "About Demon Atelier",
+          aboutCopy: "Demon Atelier is a slowly bound photography journal, collecting people, cities, landscapes and quiet moments before they disappear. The images are less about spectacle than the small proof that a pause, a light, a feeling once existed.",
+          aboutCta: "About Me →"
+        },
+        ja: {
+          navHome: "Home",
+          navWorks: "Works",
+          navAbout: "About",
+          navContact: "Contact",
+          heroTitle: "Photographs of people, places and quiet moments.",
+          heroCta: "View Works →",
+          worksTitle: "Works",
+          worksCta: "View All Works →",
+          storiesTitle: "Visual Stories",
+          storiesCopy: "写真ストーリーは作品を並べるだけではなく、撮影の日の偶然、感情、記憶をゆっくりめくれる章として綴る場所です。",
+          storiesCta: "Open Story →",
+          aboutTitle: "About Demon Atelier",
+          aboutCopy: "Demon Atelier は、人物、街、風景、そしてすぐに消えてしまう静かな瞬間を少しずつ綴る写真のノートです。写真は派手さよりも、光や沈黙が確かに存在したことを残すためにあります。",
+          aboutCta: "About Me →"
+        }
+      };
 
-    <dialog class="lightbox" id="lightbox" aria-label="作品预览">
-      <button class="lightbox-close" type="button" aria-label="关闭预览">×</button>
-      <button class="lightbox-nav lightbox-prev" type="button" aria-label="上一张">‹</button>
-      <span class="lightbox-frame">
-        <img id="lightbox-image" class="protected-media" alt="" draggable="false">
-      </span>
-      <button class="lightbox-nav lightbox-next" type="button" aria-label="下一张">›</button>
-      <div class="lightbox-caption">
-        <h3 id="lightbox-title"></h3>
-        <p id="lightbox-meta"></p>
-      </div>
-    </dialog>
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          const lang = button.dataset.lang;
+          document.querySelectorAll(".lang-switch button").forEach((item) => item.classList.toggle("is-active", item === button));
+          document.documentElement.lang = lang === "ja" ? "ja" : lang === "en" ? "en" : "zh-CN";
+          document.querySelectorAll("[data-copy]").forEach((node) => {
+            const key = node.dataset.copy;
+            if (conceptCopy[lang]?.[key]) node.textContent = conceptCopy[lang][key];
+          });
+        });
+      });
 
-    <div class="privacy-toast" id="privacy-toast" role="status" aria-live="polite" data-i18n="privacyToast">作品仅供在线预览，请勿保存或截图传播。</div>
+      const navLinks = [...document.querySelectorAll(".nav-links a[href^='#']")];
+      const navTargets = navLinks
+        .map((link) => ({ link, target: document.querySelector(link.getAttribute("href")) }))
+        .filter((item) => item.target);
+      function updateActiveNav() {
+        const marker = Math.min(180, window.innerHeight * 0.28);
+        const current = navTargets.reduce((active, item) => {
+          const top = item.target.getBoundingClientRect().top;
+          return top <= marker ? item : active;
+        }, navTargets[0]);
+        navLinks.forEach((link) => link.classList.toggle("is-active", link === current?.link));
+      }
+      updateActiveNav();
+      window.addEventListener("scroll", updateActiveNav, { passive: true });
+      navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.forEach((item) => item.classList.toggle("is-active", item === link));
+          window.setTimeout(updateActiveNav, 420);
+        });
+      });
 
-    <script src="gallery-data.js?v=atelier-20260719-gallery-fix-04"></script>
-    <script src="script.js?v=atelier-20260719-root-refine-04"></script>
-    <script src="protection.js?v=atelier-20260718-story"></script>
+      const storyPages = [...document.querySelectorAll(".story-page")];
+      const storyBook = document.querySelector("#concept-story-book");
+      let storyIndex = 0;
+      function showStoryPage(nextIndex) {
+        if (!storyPages.length || nextIndex === storyIndex) return;
+        storyBook?.classList.add("is-turning");
+        window.setTimeout(() => {
+          storyPages.forEach((page, index) => {
+            page.classList.toggle("is-current", index === nextIndex);
+            page.classList.toggle("is-prev", index < nextIndex);
+          });
+          storyIndex = nextIndex;
+        }, 240);
+        window.setTimeout(() => {
+          storyBook?.classList.remove("is-turning");
+        }, 780);
+      }
+      document.querySelector("[data-story-next]")?.addEventListener("click", () => {
+        showStoryPage((storyIndex + 1) % storyPages.length);
+      });
+      document.querySelector("[data-story-prev]")?.addEventListener("click", () => {
+        showStoryPage((storyIndex - 1 + storyPages.length) % storyPages.length);
+      });
+    </script>
   </body>
 </html>

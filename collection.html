@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demon Atelier | Collection Concept</title>
+    <style>
+      :root {
+        --paper: #f7f6f3;
+        --ink: #111214;
+        --muted: #6e6e6a;
+        --line: rgba(17, 18, 20, 0.12);
+        --cjk: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "Yu Gothic", sans-serif;
+        --latin: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+        --display: "Bodoni 72", Didot, "Baskerville", "Hoefler Text", Georgia, "Times New Roman", serif;
+        --sans: var(--latin), var(--cjk);
+        --serif: var(--display);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+        -webkit-user-drag: none;
+        user-select: none;
+      }
+
+      .collection-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 24px;
+        padding: 18px clamp(20px, 4vw, 54px);
+        border-bottom: 1px solid var(--line);
+        background: rgba(247, 246, 243, 0.42);
+        backdrop-filter: blur(14px) saturate(1.05);
+      }
+
+      .collection-logo img {
+        width: 112px;
+        height: auto;
+      }
+
+      .collection-nav {
+        justify-self: center;
+        display: flex;
+        gap: clamp(18px, 4vw, 48px);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .lang-switch {
+        display: inline-grid;
+        grid-template-columns: repeat(3, auto);
+        gap: 2px;
+        border: 1px solid rgba(17, 18, 20, 0.14);
+        padding: 3px;
+        background: rgba(255, 255, 255, 0.5);
+      }
+
+      .lang-switch button {
+        min-width: 28px;
+        border: 0;
+        padding: 7px 8px;
+        background: transparent;
+        color: rgba(17, 18, 20, 0.54);
+        cursor: pointer;
+        font: 700 10px var(--sans);
+      }
+
+      .lang-switch button.is-active {
+        background: rgba(17, 18, 20, 0.9);
+        color: #fff;
+      }
+
+      .collection-hero {
+        position: relative;
+        min-height: clamp(320px, 42vw, 520px);
+        display: grid;
+        align-items: end;
+        overflow: hidden;
+        border-bottom: 1px solid var(--line);
+        background: #dedbd5;
+      }
+
+      .collection-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--cover) center / cover no-repeat;
+        filter: saturate(1.02) contrast(0.99) brightness(0.98);
+      }
+
+      .collection-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(247, 246, 243, 0.18), rgba(247, 246, 243, 0.08) 42%, rgba(247, 246, 243, 0.01)),
+          linear-gradient(180deg, transparent 34%, rgba(17, 18, 20, 0.09));
+      }
+
+      .hero-copy {
+        position: relative;
+        z-index: 1;
+        width: min(760px, 100%);
+        padding: clamp(46px, 8vw, 96px) clamp(22px, 5vw, 82px);
+      }
+
+      .hero-copy small {
+        display: block;
+        margin-bottom: 18px;
+        color: rgba(17, 18, 20, 0.5);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .hero-copy h1 {
+        margin: 0;
+        font-family: var(--serif);
+        font-size: clamp(34px, 5.4vw, 72px);
+        font-weight: 400;
+        line-height: 0.98;
+        letter-spacing: 0.06em;
+      }
+
+      .hero-copy p {
+        max-width: 42em;
+        margin: 24px 0 0;
+        color: rgba(17, 18, 20, 0.64);
+        font-size: 13px;
+        line-height: 1.9;
+      }
+
+      .collection-body {
+        display: grid;
+      }
+
+      .collection-group {
+        display: grid;
+        grid-template-columns: minmax(210px, 0.23fr) minmax(0, 0.77fr);
+        gap: clamp(20px, 4vw, 58px);
+        padding: clamp(28px, 4.6vw, 62px) clamp(20px, 5vw, 82px);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .group-copy {
+        align-self: start;
+        position: sticky;
+        top: 96px;
+      }
+
+      .group-copy small {
+        display: block;
+        margin-bottom: 14px;
+        color: rgba(17, 18, 20, 0.45);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .group-copy h2 {
+        margin: 0 0 12px;
+        font-size: clamp(22px, 2.35vw, 36px);
+        font-weight: 560;
+        line-height: 1.15;
+        letter-spacing: 0.08em;
+      }
+
+      .group-copy p {
+        margin: 0;
+        color: rgba(17, 18, 20, 0.58);
+        font-size: 12px;
+        line-height: 1.85;
+      }
+
+      .group-slider {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(178px, 22%);
+        gap: 12px;
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        scroll-snap-type: inline mandatory;
+        padding-bottom: 14px;
+      }
+
+      .group-slide {
+        position: relative;
+        border: 0;
+        padding: 0;
+        background: transparent;
+        cursor: zoom-in;
+        scroll-snap-align: start;
+      }
+
+      .group-slide img {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        filter: saturate(1) contrast(0.98);
+      }
+
+      .group-slide::after {
+        content: "";
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        width: 42px;
+        height: 42px;
+        border-radius: 999px;
+        background:
+          rgba(247, 246, 243, 0.42)
+          url("assets/brand/demon-atelier-mark-dark.png") center / 74% auto no-repeat;
+        opacity: 0.72;
+        backdrop-filter: blur(12px);
+      }
+
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 80;
+        display: none;
+        place-items: center;
+        padding: 28px;
+        background: rgba(15, 15, 15, 0.86);
+      }
+
+      .lightbox.is-open {
+        display: grid;
+      }
+
+      .lightbox-frame {
+        position: relative;
+        display: grid;
+        place-items: center;
+      }
+
+      .lightbox-frame::after {
+        content: "";
+        position: absolute;
+        right: clamp(16px, 4vw, 34px);
+        bottom: clamp(16px, 4vw, 34px);
+        width: clamp(58px, 9vw, 96px);
+        height: clamp(40px, 6vw, 68px);
+        border-radius: 999px;
+        background:
+          rgba(247, 246, 243, 0.34)
+          url("assets/brand/demon-atelier-mark-dark.png") center / 74% auto no-repeat;
+        opacity: 0.76;
+        backdrop-filter: blur(12px);
+        pointer-events: none;
+      }
+
+      .lightbox img {
+        max-width: min(92vw, 1100px);
+        max-height: 84vh;
+        object-fit: contain;
+      }
+
+      .lightbox-close,
+      .lightbox-nav {
+        position: absolute;
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+        cursor: pointer;
+        font-size: 24px;
+      }
+
+      .lightbox-close {
+        top: 22px;
+        right: 24px;
+      }
+
+      .lightbox-nav {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .lightbox-prev {
+        left: clamp(16px, 4vw, 44px);
+      }
+
+      .lightbox-next {
+        right: clamp(16px, 4vw, 44px);
+      }
+
+      @media (max-width: 760px) {
+        .collection-header {
+          grid-template-columns: auto 1fr auto;
+          gap: 8px 12px;
+          padding: 7px 14px 8px;
+          background: rgba(247, 246, 243, 0.36);
+        }
+
+        .collection-logo img {
+          width: 62px;
+        }
+
+        .collection-nav {
+          grid-column: 1 / -1;
+          grid-row: 2;
+          justify-self: stretch;
+          justify-content: space-between;
+          font-size: 9px;
+          gap: 8px;
+        }
+
+        .lang-switch {
+          justify-self: end;
+          grid-column: 3;
+          grid-row: 1;
+          align-self: center;
+        }
+
+        .lang-switch button {
+          min-width: 25px;
+          padding: 6px 7px;
+          font-size: 9px;
+        }
+
+        .collection-hero {
+          min-height: 260px;
+        }
+
+        .hero-copy {
+          padding: 42px 18px 34px;
+        }
+
+        .hero-copy small {
+          margin-bottom: 12px;
+          font-size: 9px;
+        }
+
+        .hero-copy h1 {
+          font-size: clamp(28px, 8.8vw, 40px);
+        }
+
+        .hero-copy p {
+          max-width: 30em;
+          margin-top: 16px;
+          font-size: 11px;
+          line-height: 1.75;
+        }
+
+        .collection-group {
+          grid-template-columns: 1fr;
+          gap: 16px;
+          padding: 22px 14px;
+        }
+
+        .group-copy {
+          position: static;
+        }
+
+        .group-slider {
+          grid-auto-columns: minmax(148px, 52%);
+          gap: 9px;
+        }
+
+        .group-copy small {
+          margin-bottom: 10px;
+          font-size: 9px;
+        }
+
+        .group-copy h2 {
+          margin-bottom: 8px;
+          font-size: clamp(20px, 6.8vw, 28px);
+        }
+
+        .group-copy p {
+          font-size: 11px;
+          line-height: 1.7;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="collection-header">
+      <a class="collection-logo" href="index.html" aria-label="Demon Atelier">
+        <img src="assets/brand/demon-atelier-logo-dark.png" alt="Demon Atelier">
+      </a>
+      <nav class="collection-nav">
+        <a href="index.html" data-copy="navHome">Home</a>
+        <a href="#collections" data-copy="navWorks">Works</a>
+        <a href="index.html#contact" data-copy="navContact">Contact</a>
+      </nav>
+      <div class="lang-switch" aria-label="Language">
+        <button type="button" class="is-active" data-lang="zh">中</button>
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="ja">日</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="collection-hero" id="collection-hero">
+        <div class="hero-copy">
+          <small id="collection-kicker">Collection</small>
+          <h1 id="collection-title"></h1>
+          <p id="collection-summary"></p>
+        </div>
+      </section>
+      <section class="collection-body" id="collections"></section>
+    </main>
+
+    <div class="lightbox" id="collection-lightbox" aria-label="照片预览">
+      <button class="lightbox-close" type="button" aria-label="关闭">×</button>
+      <button class="lightbox-nav lightbox-prev" type="button" aria-label="上一张">‹</button>
+      <span class="lightbox-frame">
+        <img alt="">
+      </span>
+      <button class="lightbox-nav lightbox-next" type="button" aria-label="下一张">›</button>
+    </div>
+
+    <script>
+      const collections = {
+        city: {
+          kicker: "City / Architecture",
+          title: "City Impressions",
+          summary: "城市不是一个固定的地点，而是灯光、道路、建筑立面和路过的人共同留下的气息。这里收集那些在行走中忽然成立的画面，让空间慢慢变成可以回看的印象。",
+          cover: "assets/thumbs/城市印象/拍摄时间：2024.4；拍摄城市：上海.jpg",
+          groups: [
+            {
+              title: "城市风光",
+              label: "Urban View",
+              description: "夜色、路口和城市边缘被收成短句，保留旅途中最先被记住的光。",
+              photos: [
+                "assets/thumbs/城市印象/拍摄城市：东京；拍摄时间：2025.10.jpg",
+                "assets/thumbs/城市印象/拍摄时间：2025.10；拍摄城市：东京.jpg",
+                "assets/thumbs/城市印象/拍摄时间：2024.4；拍摄城市：上海.jpg",
+                "assets/thumbs/城市印象/拍摄城市：香港；拍摄时间：2023.5.jpg",
+                "assets/thumbs/城市印象/拍摄城市：英国 利兹；拍摄时间：2025.1.jpg",
+                "assets/thumbs/城市印象/拍摄时间：2026.1；拍摄地点：北京.jpg",
+                "assets/thumbs/城市印象/拍摄时间：2026.4；拍摄地点：日本 富士山.jpg"
+              ]
+            },
+            {
+              title: "人文建筑",
+              label: "Architecture",
+              description: "建筑不只是背景，它用线条、阴影和尺度记录人经过之后留下的秩序。",
+              photos: [
+                "assets/thumbs/人文建筑/拍摄地点：箱根；拍摄时间：2026.6.jpg",
+                "assets/thumbs/人文建筑/拍摄时间：206.6；拍摄地点：箱根.jpg",
+                "assets/thumbs/人文建筑/拍摄地点：东京；拍摄时间：2026.6.jpg"
+              ]
+            }
+          ]
+        },
+        travel: {
+          kicker: "Nature / Travel",
+          title: "Travel",
+          summary: "旅行里的风景不一定宏大。它可以是一片海的颜色、山影被雾气压低的时刻，也可以是植物在季节里慢慢转向的细节。",
+          cover: "assets/thumbs/自然风光/海边/拍摄地点：日本 镰仓；拍摄时间：2025.10.jpg",
+          groups: [
+            {
+              title: "海边",
+              label: "Seaside",
+              description: "海岸、天空和远处的城市边缘，让时间在画面里自然放慢。",
+              photos: [
+                "assets/thumbs/自然风光/海边/拍摄地点：日本 镰仓；拍摄时间：2025.10.jpg",
+                "assets/thumbs/自然风光/海边/拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
+                "assets/thumbs/自然风光/海边/拍摄地点：日本 小田原；拍摄时间：2025.12.jpg",
+                "assets/thumbs/自然风光/海边/拍摄时间：2025.12；拍摄地点：日本 小田原.jpg",
+                "assets/thumbs/自然风光/海边/拍摄地点：日本 横须贺；拍摄时间：2025.11.jpg",
+                "assets/thumbs/自然风光/海边/拍摄地点：日本 三浦半岛；拍摄时间：2026.5.jpg",
+                "assets/thumbs/自然风光/海边/拍摄时间：2026.5；拍摄地点：日本 三浦半岛.jpg"
+              ]
+            },
+            {
+              title: "植物 / 风光",
+              label: "Botanical",
+              description: "花、叶和季节的颜色，像自然写下的一页轻量手稿。",
+              photos: [
+                "assets/thumbs/自然风光/玫瑰/DSC01020.jpg",
+                "assets/thumbs/自然风光/玫瑰/DSC01134.jpg",
+                "assets/thumbs/自然风光/绣球花/DSC02239.jpg",
+                "assets/thumbs/自然风光/绣球花/DSC02214.jpg",
+                "assets/thumbs/自然风光/樱花/DSC00201.jpg",
+                "assets/thumbs/自然风光/樱花/DSC00185.jpg",
+                "assets/thumbs/自然风光/枫叶/DSC08562.jpg",
+                "assets/thumbs/自然风光/枫叶/DSC07786.jpg"
+              ]
+            }
+          ]
+        },
+        animals: {
+          kicker: "Animal Portraits",
+          title: "Soft Companions",
+          summary: "动物的神情很少服从安排。这个章节从猫咪写真开始，记录它们在日常里最松弛、最有性格，也最接近自己的瞬间。",
+          cover: "assets/thumbs/日常生活/猫咪写真/DSC06129.jpg",
+          groups: [
+            {
+              title: "猫咪写真",
+              label: "Cat Portraits",
+              description: "它们不需要被安排，只要等待眼神、姿态和一点点脾气自然出现。",
+              photos: [
+                "assets/thumbs/日常生活/猫咪写真/DSC06129.jpg",
+                "assets/thumbs/日常生活/猫咪写真/DSC06114.jpg",
+                "assets/thumbs/日常生活/猫咪写真/DSC06128.jpg",
+                "assets/thumbs/日常生活/猫咪写真/DSC06139.jpg",
+                "assets/thumbs/日常生活/猫咪写真/DSC06090.jpg",
+                "assets/thumbs/日常生活/猫咪写真/DSC06092.jpg",
+                "assets/thumbs/日常生活/猫咪写真/DSC06130.jpg",
+                "assets/thumbs/日常生活/猫咪写真/DSC06143.jpg"
+              ]
+            }
+          ]
+        },
+        quiet: {
+          kicker: "Daily / Quiet Light",
+          title: "Quiet Light",
+          summary: "日常里常有一些不需要解释的画面：墙上的光、展览里的反射、手机随手留下的片段。它们安静，却会在很久以后提醒我们，那一天确实存在过。",
+          cover: "assets/thumbs/日常生活/光影展/拍摄地点：上海；拍摄时间：2025.8.jpg",
+          groups: [
+            {
+              title: "光影展",
+              label: "Light Notes",
+              description: "玻璃、墙面、树影和展览里的微光，把普通空间整理得更安静。",
+              photos: [
+                "assets/thumbs/日常生活/光影展/拍摄地点：上海；拍摄时间：2025.8.jpg",
+                "assets/thumbs/日常生活/光影展/拍摄时间：2025.8；拍摄地点：上海.jpg",
+                "assets/thumbs/日常生活/光影展/拍摄地点：苏州；拍摄时间：2023.jpg",
+                "assets/thumbs/日常生活/光影展/拍摄地点：苏州 虞山；拍摄时间：2024.6.jpg",
+                "assets/thumbs/日常生活/光影展/拍摄地点：南多摩；拍摄时间：2026.7.jpg",
+                "assets/thumbs/日常生活/光影展/DSC04550.jpg"
+              ]
+            },
+            {
+              title: "手机摄影",
+              label: "Phone Diary",
+              description: "手机里的随手记录，保留没有准备好的真实，也保留那一刻的轻盈。",
+              photos: [
+                "assets/thumbs/日常生活/手机摄影/cfd624b0f5470b957c8d298b7fe4fade.jpg",
+                "assets/thumbs/日常生活/手机摄影/578798fac412e9b4197c33ea0ef117b8.jpg",
+                "assets/thumbs/日常生活/手机摄影/366cd020217abeb9d6e501b3047b341b.jpg",
+                "assets/thumbs/日常生活/手机摄影/78bb5bd3b5448d4fe033bd90b59962d5.jpg",
+                "assets/thumbs/日常生活/手机摄影/9b43d1e84121451e9745769a375f1714.jpg",
+                "assets/thumbs/日常生活/手机摄影/5ceed1c264628002cc88e0f36ec82402.jpg"
+              ]
+            }
+          ]
+        }
+      };
+
+      const collectionCopy = {
+        zh: {
+          navHome: "Home",
+          navWorks: "Works",
+          navContact: "Contact"
+        },
+        en: {
+          navHome: "Home",
+          navWorks: "Works",
+          navContact: "Contact",
+          city: {
+            kicker: "City / Architecture",
+            title: "City Impressions",
+            summary: "Night streets, architecture and passing spaces collected as quiet impressions rather than loud destinations.",
+            groups: [
+              ["Urban View", "Urban View", "Streets, night light and fragments of a city, kept like short sentences from a walk."],
+              ["Architecture", "Architecture", "Buildings are not only backgrounds. They hold the order and warmth left by people passing through."]
+            ]
+          },
+          travel: {
+            kicker: "Nature / Travel",
+            title: "Travel",
+            summary: "Seaside light, seasons and distant views gathered into a slower travel diary.",
+            groups: [
+              ["Seaside", "Seaside", "Coasts, skies and far city edges are where time softens first."],
+              ["Botanical", "Botanical", "Flowers, leaves and seasonal color, like light notes written by nature."]
+            ]
+          },
+          animals: {
+            kicker: "Animal Portraits",
+            title: "Soft Companions",
+            summary: "Beginning with cats, this chapter keeps the relaxed and stubborn little moments animals give us.",
+            groups: [["Cat Portraits", "Cat Portraits", "They do not need to be arranged. Waiting is enough for their gaze, posture and personality to appear."]]
+          },
+          quiet: {
+            kicker: "Daily / Quiet Light",
+            title: "Quiet Light",
+            summary: "Small light, objects and everyday fragments that feel ordinary until they become memory.",
+            groups: [
+              ["Light Notes", "Light Notes", "Glass, walls, shadows and exhibition light make ordinary rooms become quiet."],
+              ["Phone Diary", "Phone Diary", "Casual phone photographs keep the truth of moments that were never staged."]
+            ]
+          }
+        },
+        ja: {
+          navHome: "Home",
+          navWorks: "Works",
+          navContact: "Contact",
+          city: {
+            kicker: "City / Architecture",
+            title: "City Impressions",
+            summary: "夜の街、建築、旅先で出会った空間を、静かな印象として集めています。",
+            groups: [
+              ["Urban View", "Urban View", "街路、夜の光、都市の断片を、散歩中の短い文章のように残します。"],
+              ["Architecture", "Architecture", "建築は背景ではなく、人が通ったあとに残る秩序と温度も写します。"]
+            ]
+          },
+          travel: {
+            kicker: "Nature / Travel",
+            title: "Travel",
+            summary: "海辺、季節、花、遠くの風景を、ゆっくりした旅の記録としてまとめています。",
+            groups: [
+              ["Seaside", "Seaside", "海岸、空、遠い街の輪郭は、時間がふっと遅くなる場所です。"],
+              ["Botanical", "Botanical", "花や葉、季節の色を、自然が書いた小さな手紙のように。"]
+            ]
+          },
+          animals: {
+            kicker: "Animal Portraits",
+            title: "Soft Companions",
+            summary: "猫の写真から始まる、動物たちのゆるやかで個性的な瞬間の章です。",
+            groups: [["Cat Portraits", "Cat Portraits", "待っているだけで、視線や姿勢、小さな性格が自然に現れます。"]]
+          },
+          quiet: {
+            kicker: "Daily / Quiet Light",
+            title: "Quiet Light",
+            summary: "日常の光、物、スマートフォンに残った小さな断片を集めています。",
+            groups: [
+              ["Light Notes", "Light Notes", "ガラス、壁、影、展示の光が、普通の空間を静かに整えます。"],
+              ["Phone Diary", "Phone Diary", "スマートフォンの記録には、準備されていない軽さと本当らしさがあります。"]
+            ]
+          }
+        }
+      };
+
+      const params = new URLSearchParams(window.location.search);
+      const collectionKey = collections[params.get("collection")] ? params.get("collection") : "city";
+      const collection = collections[collectionKey];
+      const safeGroups = (collection.groups || []).filter((group) => (group.photos || []).length);
+
+      const mount = document.querySelector("#collections");
+      const allPhotos = safeGroups.flatMap((group) => group.photos);
+      function textFor(lang) {
+        return collectionCopy[lang]?.[collectionKey] || collection;
+      }
+
+      function applyLanguage(lang) {
+        const text = textFor(lang);
+        document.documentElement.lang = lang === "ja" ? "ja" : lang === "en" ? "en" : "zh-CN";
+        document.title = `${text.title} | Demon Atelier`;
+        document.querySelector("#collection-hero").style.setProperty("--cover", `url("${collection.cover}")`);
+        document.querySelector("#collection-kicker").textContent = text.kicker;
+        document.querySelector("#collection-title").textContent = text.title;
+        document.querySelector("#collection-summary").textContent = text.summary;
+        document.querySelectorAll("[data-copy]").forEach((node) => {
+          const key = node.dataset.copy;
+          if (collectionCopy[lang]?.[key]) node.textContent = collectionCopy[lang][key];
+        });
+        mount.innerHTML = safeGroups.map((group, index) => {
+          const groupText = text.groups?.[index] || [];
+          const groupTitle = groupText[0] || group.title || text.title || collection.title;
+          const groupLabel = groupText[1] || group.label || groupTitle;
+          const groupDescription = groupText[2] || group.description || text.summary || collection.summary || "";
+          return `
+            <article class="collection-group">
+              <div class="group-copy">
+                <small>${String(index + 1).padStart(2, "0")} / ${groupLabel}</small>
+                <h2>${groupTitle}</h2>
+                <p>${groupDescription}</p>
+              </div>
+              <div class="group-slider" aria-label="${groupTitle} photos">
+                ${group.photos.map((photo) => `
+                  <button class="group-slide" type="button" data-index="${allPhotos.indexOf(photo)}" data-full="${photo}">
+                    <img src="${photo}" alt="${groupTitle}" loading="lazy" decoding="async" onerror="this.closest('.group-slide')?.remove();">
+                  </button>
+                `).join("")}
+              </div>
+            </article>
+          `;
+        }).join("");
+      }
+      applyLanguage("zh");
+
+      const lightbox = document.querySelector("#collection-lightbox");
+      const lightboxImage = lightbox.querySelector("img");
+      const closeButton = lightbox.querySelector(".lightbox-close");
+      const prevButton = lightbox.querySelector(".lightbox-prev");
+      const nextButton = lightbox.querySelector(".lightbox-next");
+      let lightboxIndex = 0;
+
+      function openLightbox(index) {
+        lightboxIndex = (index + allPhotos.length) % allPhotos.length;
+        lightboxImage.src = allPhotos[lightboxIndex];
+        if (!lightbox.classList.contains("is-open")) lightbox.classList.add("is-open");
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("is-open");
+        lightboxImage.removeAttribute("src");
+      }
+
+      function moveLightbox(direction) {
+        openLightbox(lightboxIndex + direction);
+      }
+
+      document.addEventListener("click", (event) => {
+        const slide = event.target.closest(".group-slide");
+        if (!slide) return;
+        openLightbox(Number(slide.dataset.index));
+      });
+
+      closeButton.addEventListener("click", closeLightbox);
+      prevButton.addEventListener("click", () => moveLightbox(-1));
+      nextButton.addEventListener("click", () => moveLightbox(1));
+
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) closeLightbox();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (!lightbox.classList.contains("is-open")) return;
+        if (event.key === "Escape") closeLightbox();
+        if (event.key === "ArrowLeft") moveLightbox(-1);
+        if (event.key === "ArrowRight") moveLightbox(1);
+      });
+
+      document.querySelectorAll(".lang-switch button").forEach((button) => {
+        button.addEventListener("click", () => {
+          const lang = button.dataset.lang;
+          document.querySelectorAll(".lang-switch button").forEach((item) => item.classList.toggle("is-active", item === button));
+          applyLanguage(lang);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -88,14 +88,14 @@
 
       .about-hero {
         display: grid;
-        grid-template-columns: minmax(300px, 0.46fr) minmax(0, 0.54fr);
-        min-height: clamp(520px, 72vh, 760px);
+        grid-template-columns: minmax(320px, 0.44fr) minmax(0, 0.56fr);
+        min-height: clamp(500px, 68vh, 700px);
         border-bottom: 1px solid var(--line);
       }
 
       .hero-copy {
         align-self: center;
-        padding: clamp(44px, 7vw, 104px) clamp(24px, 6vw, 96px);
+        padding: clamp(38px, 6vw, 88px) clamp(24px, 6vw, 92px);
       }
 
       .kicker {
@@ -109,21 +109,39 @@
       }
 
       h1 {
-        max-width: 9em;
+        max-width: 11em;
         margin: 0;
         font-family: var(--display);
-        font-size: clamp(44px, 6.5vw, 96px);
+        font-size: clamp(34px, 4.6vw, 68px);
         font-weight: 400;
-        line-height: 0.98;
+        line-height: 1.04;
         letter-spacing: 0.04em;
       }
 
+      .name-line {
+        margin: 18px 0 0;
+        color: rgba(17, 18, 20, 0.72);
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+      }
+
+      .name-line span {
+        margin-left: 12px;
+        color: rgba(17, 18, 20, 0.48);
+        font-family: var(--latin);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
       .lead {
-        max-width: 34em;
-        margin: clamp(28px, 4vw, 46px) 0 0;
+        max-width: 38em;
+        margin: clamp(24px, 3.2vw, 38px) 0 0;
         color: rgba(17, 18, 20, 0.7);
-        font-size: clamp(14px, 1.15vw, 17px);
-        line-height: 2;
+        font-size: clamp(13px, 1vw, 15px);
+        line-height: 1.95;
       }
 
       .hero-photo {
@@ -161,7 +179,7 @@
       .section-title h2 {
         margin: 0;
         font-family: var(--display);
-        font-size: clamp(30px, 4vw, 58px);
+        font-size: clamp(28px, 3vw, 44px);
         font-weight: 400;
         line-height: 1.04;
         letter-spacing: 0.04em;
@@ -173,11 +191,11 @@
       }
 
       .essay p {
-        max-width: 48em;
+        max-width: 50em;
         margin: 0;
         color: rgba(17, 18, 20, 0.68);
-        font-size: 14px;
-        line-height: 2.05;
+        font-size: 13.5px;
+        line-height: 2;
       }
 
       .essay blockquote {
@@ -187,7 +205,7 @@
         border-top: 1px solid var(--line);
         color: rgba(17, 18, 20, 0.82);
         font-family: var(--display);
-        font-size: clamp(24px, 3vw, 42px);
+        font-size: clamp(20px, 2.2vw, 32px);
         font-weight: 400;
         line-height: 1.24;
         letter-spacing: 0.03em;
@@ -212,7 +230,7 @@
       .practice-list h3 {
         margin: 0 0 26px;
         font-family: var(--display);
-        font-size: clamp(26px, 3.4vw, 48px);
+        font-size: clamp(24px, 2.8vw, 38px);
         font-weight: 400;
         line-height: 1.04;
         letter-spacing: 0.04em;
@@ -239,7 +257,7 @@
           grid-template-columns: auto 1fr;
           gap: 8px 14px;
           padding: 8px 14px;
-          background: rgba(247, 246, 243, 0.36);
+          background: rgba(247, 246, 243, 0.24);
         }
 
         .about-logo img {
@@ -273,12 +291,16 @@
         }
 
         h1 {
-          font-size: clamp(38px, 12vw, 58px);
+          font-size: clamp(30px, 8.5vw, 42px);
+        }
+
+        .name-line {
+          font-size: 15px;
         }
 
         .lead,
         .essay p {
-          font-size: 13px;
+          font-size: 12.5px;
           line-height: 1.9;
         }
 
@@ -296,7 +318,7 @@
         }
 
         .essay blockquote {
-          font-size: clamp(22px, 7vw, 34px);
+          font-size: clamp(20px, 6vw, 28px);
         }
 
         .practice-list {
@@ -328,8 +350,9 @@
       <section class="about-hero">
         <div class="hero-copy">
           <p class="kicker">About Demon Atelier</p>
-          <h1>Light, distance and quiet memory.</h1>
-          <p class="lead">我拍照，是想把那些很快会从日常里消失的气息留下来：一次停顿、一束光、风经过植物时改变的方向，或是人物在镜头前忽然放松的瞬间。Demon Atelier 更像一本慢慢装订的影像手记，每一组作品都来自一次真实的相遇。</p>
+          <h1>A quiet journal of light and encounters.</h1>
+          <p class="name-line">敖若钦 <span>Photographer / Demon Atelier</span></p>
+          <p class="lead">Demon Atelier 是我持续整理的个人摄影画册。它记录人物、城市、风景和日常里很快会消失的安静时刻：一束光、一次停顿、风经过植物时改变的方向，或是人物在镜头前忽然放松的瞬间。</p>
         </div>
         <figure class="hero-photo">
           <img src="assets/profile.jpg" alt="Demon Atelier 摄影者照片" loading="eager" decoding="async">
@@ -339,12 +362,13 @@
       <section class="about-grid">
         <div class="section-title">
           <p class="kicker">Why I Photograph</p>
-          <h2>在安静处观看。</h2>
+          <h2>关于我与拍摄。</h2>
         </div>
         <div class="essay">
-          <p>我更在意照片里有没有空气。漂亮当然重要，但我希望画面不只是漂亮，而是能让人想起当时的温度、光线和心情。拍摄时，我会先观察环境与人的关系：光从哪里来，人物如何停下来，背景是否正在讲述另一层情绪。</p>
-          <p>我的生活和学习经验在中国与日本之间展开，也让我习惯在不同语言和城市节奏里寻找细微的秩序。沟通可以轻松一点，中文、日文、英文，或一点粤语都可以；真正重要的是先把想留下的感觉说清楚。</p>
-          <blockquote>Photography is a quiet way to remember that something ordinary once mattered.</blockquote>
+          <p>我是敖若钦。拍照对我来说不是把场景变得更热闹，而是在它消失之前，给那些细小但真实的气息留下位置。我更喜欢自然光、安静的空间和没有被过度安排的表情，因为这些东西更接近记忆本来的样子。</p>
+          <p>拍摄时，我会先观察人和环境的关系：光从哪里来，人物如何停下来，背景是否正在讲述另一层情绪。无论是人像、城市、海岸、植物，还是日常里偶然出现的光影，我都希望照片保留一点空气感，让观看的人可以慢慢进入画面。</p>
+          <p>我目前主要在东京拍摄，也接受人像、合作和小型视觉项目。沟通可以轻松一点，中文、日文、英文，或一点粤语都可以；重要的是先把想留下的氛围说清楚，再一起把它变成照片。</p>
+          <blockquote>Photography is a quiet way to keep what almost passed unnoticed.</blockquote>
         </div>
       </section>
 
