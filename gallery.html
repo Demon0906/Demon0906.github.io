@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Demon Photography 摄影集详情。">
     <title>摄影集 | Demon Photography</title>
-    <link rel="stylesheet" href="styles.css?v=atelier-20260719-root-refine-02">
+    <link rel="stylesheet" href="styles.css?v=atelier-20260719-root-refine-03">
   </head>
   <body class="detail-page gallery-page">
     <header class="detail-header">
@@ -62,6 +62,7 @@
         sections.find((item) => item.id !== "portrait");
       const project = section?.projects.find((item) => item.id === projectId) || section?.projects[0];
       let lightboxIndex = 0;
+      let lightboxProject = project;
 
       function getText(value) {
         return typeof value === "string" ? value : value?.zh || "";
@@ -90,14 +91,16 @@
         };
       }
 
-      function openLightbox(index) {
-        const src = project.photos[index];
+      function openLightbox(index, targetProject = project) {
+        const activeProject = targetProject || project;
+        const src = activeProject.photos[index];
         if (!src) return;
         const caption = photoCaption(src, index);
+        lightboxProject = activeProject;
         lightboxIndex = index;
         lightboxImage.src = window.localImage(src);
-        lightboxImage.alt = getText(project.title);
-        lightboxTitle.textContent = getText(project.title);
+        lightboxImage.alt = getText(activeProject.title);
+        lightboxTitle.textContent = getText(activeProject.title);
         lightboxMeta.textContent = caption.meta || caption.detail;
         if (!lightbox.open) lightbox.showModal();
         requestAnimationFrame(() => {
@@ -107,8 +110,9 @@
       }
 
       function moveLightbox(direction) {
-        const nextIndex = (lightboxIndex + direction + project.photos.length) % project.photos.length;
-        openLightbox(nextIndex);
+        const activeProject = lightboxProject || project;
+        const nextIndex = (lightboxIndex + direction + activeProject.photos.length) % activeProject.photos.length;
+        openLightbox(nextIndex, activeProject);
       }
 
       function renderHero() {
@@ -133,31 +137,41 @@
       }
 
       function renderGalleryGrid() {
-        body.className = "gallery-body gallery-grid";
-        body.innerHTML = `${renderProjectTabs()}${project.photos
-          .map((src, index) => {
-            const caption = photoCaption(src, index);
+        body.className = "gallery-body gallery-strip-list";
+        const projects = section?.projects?.length ? section.projects : [project];
+        body.innerHTML = projects
+          .map((item, projectIndex) => {
+            const photos = item.photos
+              .map((src, index) => {
+                const caption = photoCaption(src, index);
+                return `
+                  <button class="gallery-strip-photo" type="button" data-project="${item.id}" data-index="${index}" aria-label="查看 ${escapeHtml(getText(item.title))}">
+                    <img
+                      class="protected-media"
+                      src="${window.thumbImage(src)}"
+                      onerror="this.onerror=null;this.src='${window.localImage(src)}';"
+                      alt="${escapeHtml(getText(item.title))}"
+                      loading="lazy"
+                      decoding="async"
+                      draggable="false"
+                    >
+                    <span>${caption.meta || getText(item.place)}</span>
+                  </button>
+                `;
+              })
+              .join("");
             return `
-              <article class="gallery-frame">
-                <button type="button" data-index="${index}" aria-label="查看 ${escapeHtml(getText(project.title))}">
-                  <img
-                    class="protected-media"
-                    src="${window.thumbImage(src)}"
-                    onerror="this.onerror=null;this.src='${window.localImage(src)}';"
-                    alt="${escapeHtml(getText(project.title))}"
-                    loading="lazy"
-                    decoding="async"
-                    draggable="false"
-                  >
-                </button>
-                <div class="gallery-frame-copy">
-                  <p>${caption.meta}</p>
-                  <span>${caption.detail}</span>
+              <article class="gallery-strip-row" id="${item.id}">
+                <div class="gallery-strip-copy">
+                  <p class="eyebrow">${String(projectIndex + 1).padStart(2, "0")} / ${escapeHtml(getText(item.place) || "Gallery")}</p>
+                  <h2>${escapeHtml(getText(item.title) || getText(section.titleKey) || "Visual Chapter")}</h2>
+                  <p>${escapeHtml(getText(item.summary) || "把这组照片整理成一段可以慢慢观看的影像章节。")}</p>
                 </div>
+                <div class="gallery-strip-rail" aria-label="${escapeHtml(getText(item.title))}">${photos}</div>
               </article>
             `;
           })
-          .join("")}`;
+          .join("");
       }
 
       function renderProjectTabs() {
@@ -276,7 +290,8 @@
       body.addEventListener("click", (event) => {
         const trigger = event.target.closest("[data-index]");
         if (!trigger) return;
-        openLightbox(Number(trigger.dataset.index));
+        const targetProject = section?.projects?.find((item) => item.id === trigger.dataset.project) || project;
+        openLightbox(Number(trigger.dataset.index), targetProject);
       });
 
       closeButton.addEventListener("click", () => lightbox.close());
