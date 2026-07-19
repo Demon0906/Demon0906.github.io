@@ -676,21 +676,18 @@
           if (collectionCopy[lang]?.[key]) node.textContent = collectionCopy[lang][key];
         });
         mount.innerHTML = collection.groups.map((group, index) => {
-          const groupText = text.groups?.[index] || [];
-          const groupTitle = groupText[0] || group.title || "Untitled";
-          const groupLabel = groupText[1] || group.label || collection.kicker || "Collection";
-          const groupDescription = groupText[2] || group.description || "";
+          const groupText = text.groups?.[index] || [group.title, group.label, group.description];
           return `
             <article class="collection-group">
               <div class="group-copy">
-                <small>${String(index + 1).padStart(2, "0")} / ${groupLabel}</small>
-                <h2>${groupTitle}</h2>
-                <p>${groupDescription}</p>
+                <small>${String(index + 1).padStart(2, "0")} / ${groupText[1]}</small>
+                <h2>${groupText[0]}</h2>
+                <p>${groupText[2]}</p>
               </div>
-              <div class="group-slider" aria-label="${groupTitle} photos">
+              <div class="group-slider" aria-label="${groupText[0]} photos">
                 ${group.photos.map((photo) => `
                   <button class="group-slide" type="button" data-index="${allPhotos.indexOf(photo)}" data-full="${photo}">
-                    <img src="${photo}" alt="${groupTitle}" loading="lazy" decoding="async" onerror="this.closest('.group-slide')?.remove();">
+                    <img src="${photo}" alt="${groupText[0]}" loading="lazy" decoding="async">
                   </button>
                 `).join("")}
               </div>
