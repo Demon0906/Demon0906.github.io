@@ -109,12 +109,26 @@
         text-transform: uppercase;
       }
 
-      .copyright {
-        color: rgba(17, 18, 20, 0.46);
+      .side-contact {
+        display: grid;
+        gap: 10px;
+        color: rgba(17, 18, 20, 0.58);
         font-size: 9px;
-        line-height: 1.8;
-        letter-spacing: 0.12em;
+        line-height: 1.65;
+        letter-spacing: 0.11em;
         text-transform: uppercase;
+      }
+
+      .side-contact strong {
+        color: rgba(17, 18, 20, 0.82);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+      }
+
+      .side-contact a {
+        display: block;
+        overflow-wrap: anywhere;
       }
 
       main {
@@ -123,20 +137,38 @@
 
       .hero {
         min-height: 430px;
+        position: relative;
         display: grid;
-        grid-template-columns: minmax(270px, 0.38fr) minmax(0, 0.62fr);
+        align-items: stretch;
+        overflow: hidden;
         border-bottom: 1px solid var(--line);
+        background: #d8d4cd;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
         background:
-          linear-gradient(90deg, rgba(247, 246, 243, 0.98), rgba(247, 246, 243, 0.72) 42%, rgba(247, 246, 243, 0.12)),
-          var(--paper);
+          linear-gradient(90deg, rgba(247, 246, 243, 0.9), rgba(247, 246, 243, 0.68) 34%, rgba(247, 246, 243, 0.08) 64%),
+          linear-gradient(180deg, rgba(17, 18, 20, 0.08), rgba(17, 18, 20, 0.2));
+        pointer-events: none;
       }
 
       .hero-copy {
+        position: relative;
+        z-index: 2;
+        width: min(42vw, 520px);
+        min-width: 360px;
+        min-height: 520px;
         padding: clamp(58px, 9vw, 132px) var(--space) clamp(46px, 7vw, 82px);
         display: grid;
         align-content: center;
         justify-items: start;
         gap: 24px;
+        background: linear-gradient(90deg, rgba(247, 246, 243, 0.82), rgba(247, 246, 243, 0.42));
+        backdrop-filter: blur(10px);
       }
 
       .hero-kicker {
@@ -157,6 +189,7 @@
       .hero-copy a,
       .section-link {
         flex: 0 0 auto;
+        white-space: nowrap;
         font-size: 11px;
         font-weight: 650;
         letter-spacing: 0.16em;
@@ -164,7 +197,8 @@
       }
 
       .hero-image {
-        position: relative;
+        position: absolute;
+        inset: 0;
         min-height: 430px;
         overflow: hidden;
       }
@@ -173,14 +207,16 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        filter: grayscale(0.72) contrast(0.92) brightness(1.04) saturate(0.72);
+        filter: saturate(0.78) contrast(0.94) brightness(0.96);
       }
 
       .hero-image::after {
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(90deg, rgba(247, 246, 243, 0.42), transparent 26%, rgba(17, 18, 20, 0.12));
+        background:
+          radial-gradient(circle at 74% 38%, rgba(255, 255, 255, 0.18), transparent 28%),
+          linear-gradient(90deg, rgba(247, 246, 243, 0.2), transparent 42%, rgba(17, 18, 20, 0.1));
       }
 
       .section {
@@ -194,7 +230,7 @@
         justify-content: space-between;
         align-items: center;
         gap: 22px;
-        padding-right: 6px;
+        padding-right: clamp(18px, 2.2vw, 34px);
       }
 
       .section-title {
@@ -279,6 +315,88 @@
         background: rgba(255, 255, 255, 0.34);
       }
 
+      .contact-strip {
+        display: grid;
+        grid-template-columns: minmax(230px, 0.34fr) minmax(0, 0.66fr);
+        gap: clamp(26px, 5vw, 70px);
+        align-items: start;
+        background: rgba(255, 255, 255, 0.42);
+      }
+
+      .contact-copy h2 {
+        margin: 0 0 16px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .contact-copy p {
+        max-width: 28em;
+        margin: 0;
+        color: rgba(17, 18, 20, 0.62);
+        font-size: 12px;
+        line-height: 1.9;
+      }
+
+      .contact-panel {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+
+      .contact-mini,
+      .booking-mini {
+        border-top: 1px solid var(--line);
+        padding-top: 16px;
+      }
+
+      .contact-mini strong,
+      .booking-mini label span {
+        display: block;
+        margin-bottom: 8px;
+        color: rgba(17, 18, 20, 0.58);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .contact-mini a {
+        display: block;
+        margin-bottom: 7px;
+        font-size: 12px;
+        line-height: 1.55;
+      }
+
+      .booking-mini {
+        display: grid;
+        gap: 10px;
+      }
+
+      .booking-mini input {
+        width: 100%;
+        border: 0;
+        border-bottom: 1px solid rgba(17, 18, 20, 0.16);
+        padding: 8px 0;
+        background: transparent;
+        color: var(--ink);
+        font: 12px var(--sans);
+        outline: none;
+      }
+
+      .booking-mini button {
+        justify-self: start;
+        border: 1px solid rgba(17, 18, 20, 0.2);
+        padding: 10px 16px;
+        background: rgba(247, 246, 243, 0.58);
+        color: var(--ink);
+        cursor: pointer;
+        font: 700 10px var(--sans);
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
       .about-photo {
         aspect-ratio: 16 / 10;
         overflow: hidden;
@@ -347,7 +465,8 @@
 
         .brand span,
         .social,
-        .copyright {
+        .side-contact,
+        .social {
           display: none;
         }
 
@@ -359,13 +478,13 @@
           font-size: 10px;
         }
 
-        .hero {
-          grid-template-columns: 1fr;
-        }
-
         .hero-copy {
+          width: min(100%, 520px);
+          min-width: 0;
           min-height: 300px;
           padding: 54px 24px 34px;
+          background: linear-gradient(90deg, rgba(247, 246, 243, 0.82), rgba(247, 246, 243, 0.26));
+          backdrop-filter: blur(6px);
         }
 
         .hero-image {
@@ -377,7 +496,9 @@
           gap: 18px 10px;
         }
 
-        .about-strip {
+        .about-strip,
+        .contact-strip,
+        .contact-panel {
           grid-template-columns: 1fr;
         }
       }
@@ -424,14 +545,19 @@
           <a href="#top">Home</a>
           <a href="#works">Works</a>
           <a href="#about">About</a>
-          <a href="index.html">Back</a>
+          <a href="#contact">Contact</a>
         </nav>
         <div class="social" aria-label="social">
           <a href="https://www.instagram.com/de_mon0906?igsh=MXdhN2hiNnZsOWdlOA%3D%3D&utm_source=qr">Instagram</a>
           <a href="https://xhslink.com/m/vRWzq94lBj">Xiaohongshu</a>
           <a href="mailto:ruoqinao@gmail.com">Email</a>
         </div>
-        <p class="copyright">Concept page only<br>Current homepage unchanged.</p>
+        <div class="side-contact">
+          <strong>Contact</strong>
+          <a href="mailto:ruoqinao@gmail.com">ruoqinao@gmail.com</a>
+          <a href="tel:+8613687951586">+86 13687951586</a>
+          <a href="tel:+817085503168">+81 07085503168</a>
+        </div>
       </aside>
 
       <main id="top">
@@ -442,7 +568,7 @@
             <a href="#works">View Works →</a>
           </div>
           <div class="hero-image">
-            <img src="assets/thumbs/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：日本富士山.jpg" alt="富士山与人像" loading="eager" decoding="async">
+            <img src="assets/thumbs/自然风光/海边/拍摄地点：日本 镰仓；拍摄时间：2025.10.jpg" alt="海边落日横屏背景" loading="eager" decoding="async">
           </div>
         </section>
 
@@ -492,6 +618,38 @@
               <h2>Languages</h2>
               <p>Chinese / Japanese / English</p>
             </div>
+          </div>
+        </section>
+
+        <section class="section contact-strip" id="contact" aria-labelledby="contact-title">
+          <div class="contact-copy">
+            <h2 id="contact-title">Contact & Booking</h2>
+            <p>如果你想预约拍摄，或者只是想先聊一组照片的氛围，可以从一封邮件或一条简短信息开始。</p>
+          </div>
+          <div class="contact-panel">
+            <div class="contact-mini">
+              <strong>Email</strong>
+              <a href="mailto:763525586@qq.com">763525586@qq.com</a>
+              <a href="mailto:ruoqinao@gmail.com">ruoqinao@gmail.com</a>
+              <strong>Phone</strong>
+              <a href="tel:+8613687951586">+86 13687951586 微信同</a>
+              <a href="tel:+817085503168">+81 07085503168 LINE</a>
+            </div>
+            <form class="booking-mini" action="mailto:ruoqinao@gmail.com" method="post" enctype="text/plain">
+              <label>
+                <span>Name</span>
+                <input name="name" type="text" autocomplete="name">
+              </label>
+              <label>
+                <span>Contact</span>
+                <input name="contact" type="text" autocomplete="email tel">
+              </label>
+              <label>
+                <span>Theme / Date</span>
+                <input name="booking" type="text" placeholder="Portrait, city walk, or a quiet story">
+              </label>
+              <button type="submit">Book a Session →</button>
+            </form>
           </div>
         </section>
 
