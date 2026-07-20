@@ -156,6 +156,8 @@
         gap: clamp(24px, 4vw, 64px);
         padding: clamp(30px, 4.2vw, 58px) clamp(20px, 5vw, 82px);
         border-bottom: 1px solid var(--line);
+        content-visibility: auto;
+        contain-intrinsic-size: 640px;
       }
 
       .model-copy {
@@ -512,7 +514,13 @@
         .map((model) => ({ ...model, photos: [...new Set(model.photos)].slice(0, 8) }))
         .filter((model) => model.photos.length)
         .slice(0, 10);
-      const allPhotos = models.flatMap((model) => model.photos.map((photo) => window.localImage(photo)));
+      const allPhotos = models.flatMap((model) =>
+        model.photos.map((photo) => ({
+          preview: window.thumbImage(photo),
+          full: window.localImage(photo),
+        }))
+      );
+      let photoCursor = 0;
 
       modelMount.innerHTML = models.map((model, index) => `
         <article class="model-section">
@@ -522,11 +530,14 @@
             <p>${model.description || "以光线、姿态和场景整理成一组安静的人像章节。"}</p>
           </div>
           <div class="model-slider" aria-label="${model.title} photos">
-            ${model.photos.map((photo) => `
-              <button class="model-slide" type="button" data-index="${allPhotos.indexOf(window.localImage(photo))}" data-full="${window.localImage(photo)}">
-                <img src="${window.thumbImage(photo)}" data-full="${window.localImage(photo)}" onerror="this.onerror=null;this.src=this.dataset.full;" alt="${model.title}" loading="lazy">
+            ${model.photos.map((photo) => {
+              const itemIndex = photoCursor++;
+              return `
+              <button class="model-slide" type="button" data-index="${itemIndex}" data-full="${window.localImage(photo)}">
+                <img src="${window.thumbImage(photo)}" data-full="${window.localImage(photo)}" onerror="this.onerror=null;this.src=this.dataset.full;" alt="${model.title}" loading="lazy" decoding="async" fetchpriority="low">
               </button>
-            `).join("")}
+            `;
+            }).join("")}
           </div>
         </article>
       `).join("");
@@ -546,13 +557,16 @@
 
       function openLightbox(index) {
         lightboxIndex = (index + allPhotos.length) % allPhotos.length;
-        lightboxImage.src = allPhotos[lightboxIndex];
+        const photo = allPhotos[lightboxIndex];
+        lightboxImage.src = photo.preview;
+        lightboxImage.dataset.full = photo.full;
         if (!lightbox.classList.contains("is-open")) lightbox.classList.add("is-open");
       }
 
       function closeLightbox() {
         lightbox.classList.remove("is-open");
         lightboxImage.removeAttribute("src");
+        lightboxImage.removeAttribute("data-full");
       }
 
       function moveLightbox(direction) {
