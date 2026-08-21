@@ -5,44 +5,30 @@ const localImage = (path) => encodeURI(path);
 const thumbnailMap = {
   "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.JPG": "assets/thumbs/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.jpg",
   "assets/photos/人像摄影/相机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.1；拍摄地点：北京.jpg": "assets/thumbs/人像摄影/相机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.1；拍摄地点：北京.jpg",
-  "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：赤羽桥；拍摄时间：2026.7.jpg": "assets/thumbs/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：赤羽桥；拍摄时间：2026.7.jpg",
   "assets/photos/人像摄影/相机人像/一口榴莲派/模特：一口榴莲派；拍摄地点：杭州；拍摄时间：2024.10.JPG": "assets/thumbs/人像摄影/相机人像/一口榴莲派/模特：一口榴莲派；拍摄地点：杭州；拍摄时间：2024.10.jpg",
   "assets/photos/人像摄影/相机人像/Celia/模特：Celia；拍摄地点：上海迪士尼；拍摄时间：2026.3.jpg": "assets/thumbs/人像摄影/相机人像/Celia/模特：Celia；拍摄地点：上海迪士尼；拍摄时间：2026.3.jpg",
+  "assets/photos/人像摄影/相机人像/CheriJanie/模特：CheriJanie；拍摄地点：上海；拍摄时间：206.6.jpg": "assets/thumbs/人像摄影/相机人像/CheriJanie/模特：CheriJanie；拍摄地点：上海；拍摄时间：206.6.jpg",
   "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：2026.4；拍摄时间：日本富士山.jpg": "assets/thumbs/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：2026.4；拍摄时间：日本富士山.jpg",
-  "assets/photos/人像摄影/相机人像/LMH/模特：LMH；拍摄地点：日本 浅草寺；拍摄时间：2026.7.jpg": "assets/thumbs/人像摄影/相机人像/LMH/模特：LMH；拍摄地点：日本 浅草寺；拍摄时间：2026.7.jpg",
   "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄地点：东京花火大会；拍摄时间：2026.7.jpg": "assets/thumbs/人像摄影/相机人像/Mio/模特：Mio；拍摄地点：东京花火大会；拍摄时间：2026.7.jpg",
-  "assets/photos/人像摄影/相机人像/momo/模特：momo；拍摄地点：浅草寺；拍摄时间：2026.7..jpg": "assets/thumbs/人像摄影/相机人像/momo/模特：momo；拍摄地点：浅草寺；拍摄时间：2026.7..jpg",
-  "assets/photos/人像摄影/相机人像/Nero/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg": "assets/thumbs/人像摄影/相机人像/Nero/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg",
+  "assets/photos/人像摄影/相机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg": "assets/thumbs/人像摄影/相机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
   "assets/photos/人像摄影/相机人像/美丽酥酥/模特名：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg": "assets/thumbs/人像摄影/相机人像/美丽酥酥/模特名：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
-  "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：东京塔；拍摄时间：2026.7.jpg": "assets/thumbs/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：东京塔；拍摄时间：2026.7.jpg",
-  "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：六本木；拍摄时间：2026.7.jpg": "assets/thumbs/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：六本木；拍摄时间：2026.7.jpg",
-  "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：芝公园；拍摄时间：2026.7 .jpg": "assets/thumbs/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：芝公园；拍摄时间：2026.7 .jpg",
-  "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：芝公园；拍摄时间：2026.7..jpg": "assets/thumbs/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：芝公园；拍摄时间：2026.7..jpg",
   "assets/photos/人像摄影/相机人像/一口榴莲派/拍摄地点：杭州；拍摄时间：2024.10、.JPG": "assets/thumbs/人像摄影/相机人像/一口榴莲派/拍摄地点：杭州；拍摄时间：2024.10、.jpg",
   "assets/photos/人像摄影/相机人像/一口榴莲派/拍摄地点：杭州；拍摄时间：2024.10；.JPG": "assets/thumbs/人像摄影/相机人像/一口榴莲派/拍摄地点：杭州；拍摄时间：2024.10；.jpg",
   "assets/photos/人像摄影/相机人像/Celia/模特：Celia；拍摄时间：2026.3；拍摄地点：上海迪士尼.jpg": "assets/thumbs/人像摄影/相机人像/Celia/模特：Celia；拍摄时间：2026.3；拍摄地点：上海迪士尼.jpg",
   "assets/photos/人像摄影/相机人像/Celia/模特：Celia；拍摄时间：2026.6；拍摄地点：上海.JPG": "assets/thumbs/人像摄影/相机人像/Celia/模特：Celia；拍摄时间：2026.6；拍摄地点：上海.jpg",
   "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：羽田机场；拍摄时间：2026.7.JPG.jpg": "assets/thumbs/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：羽田机场；拍摄时间：2026.7.JPG.jpg",
+  "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg": "assets/thumbs/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
+  "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本富士山.jpg": "assets/thumbs/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本富士山.jpg",
   "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京 台场.JPG": "assets/thumbs/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京 台场.jpg",
+  "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京台场.jpg": "assets/thumbs/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京台场.jpg",
   "assets/photos/人像摄影/相机人像/kakiloki/模特：kaliloki；拍摄时间：2026.4；拍摄地点：日本 富士山.JPG": "assets/thumbs/人像摄影/相机人像/kakiloki/模特：kaliloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
-  "assets/photos/人像摄影/相机人像/LMH/模特：LMH；拍摄地点：日本浅草寺；拍摄时间：2026.7 .jpg": "assets/thumbs/人像摄影/相机人像/LMH/模特：LMH；拍摄地点：日本浅草寺；拍摄时间：2026.7 .jpg",
-  "assets/photos/人像摄影/相机人像/LMH/模特：LMH；拍摄地点：日本浅草寺；拍摄时间：2026.7.JPG.jpg": "assets/thumbs/人像摄影/相机人像/LMH/模特：LMH；拍摄地点：日本浅草寺；拍摄时间：2026.7.JPG.jpg",
+  "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄地点：东京涉谷；拍摄时间：2026.5.jpg": "assets/thumbs/人像摄影/相机人像/Mio/模特：Mio；拍摄地点：东京涉谷；拍摄时间：2026.5.jpg",
   "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：206.4；拍摄地点：东京迪士尼本.jpg": "assets/thumbs/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：206.4；拍摄地点：东京迪士尼本.jpg",
+  "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：东京迪士尼.jpg": "assets/thumbs/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：东京迪士尼.jpg",
   "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：日本富士山.jpg": "assets/thumbs/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：日本富士山.jpg",
+  "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg": "assets/thumbs/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg",
   "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：日本横滨.jpg": "assets/thumbs/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：日本横滨.jpg",
   "assets/photos/人像摄影/相机人像/Mio/拍摄时间：20626.5；模特：Mio；拍摄地点：日本横滨.jpg": "assets/thumbs/人像摄影/相机人像/Mio/拍摄时间：20626.5；模特：Mio；拍摄地点：日本横滨.jpg",
-  "assets/photos/人像摄影/相机人像/momo/模特：momo；拍摄地点：芝公园；拍摄时间：2026.7.jpg": "assets/thumbs/人像摄影/相机人像/momo/模特：momo；拍摄地点：芝公园；拍摄时间：2026.7.jpg",
-  "assets/photos/人像摄影/手机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg": "assets/thumbs/人像摄影/手机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
-  "assets/photos/人像摄影/手机人像/CheriJanie/模特：CheriJanie；拍摄地点：上海；拍摄时间：206.6.jpg": "assets/thumbs/人像摄影/手机人像/CheriJanie/模特：CheriJanie；拍摄地点：上海；拍摄时间：206.6.jpg",
-  "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg": "assets/thumbs/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
-  "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄地点：东京涉谷；拍摄时间：2026.5.jpg": "assets/thumbs/人像摄影/手机人像/Mio/模特：Mio；拍摄地点：东京涉谷；拍摄时间：2026.5.jpg",
-  "assets/photos/人像摄影/手机人像/Model/模特：LI.jpg": "assets/thumbs/人像摄影/手机人像/Model/模特：LI.jpg",
-  "assets/photos/人像摄影/手机人像/Nero/模特：Nero；拍摄地点：东京涉谷；拍摄时间：2026.4.jpg": "assets/thumbs/人像摄影/手机人像/Nero/模特：Nero；拍摄地点：东京涉谷；拍摄时间：2026.4.jpg",
-  "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本富士山.jpg": "assets/thumbs/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本富士山.jpg",
-  "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京台场.jpg": "assets/thumbs/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京台场.jpg",
-  "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：东京迪士尼.jpg": "assets/thumbs/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：东京迪士尼.jpg",
-  "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg": "assets/thumbs/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg",
-  "assets/photos/人像摄影/手机人像/Nero/模特：Nero；拍摄时间：2025.5；拍摄地点：东京涉谷.jpg": "assets/thumbs/人像摄影/手机人像/Nero/模特：Nero；拍摄时间：2025.5；拍摄地点：东京涉谷.jpg",
   "assets/photos/自然风光/枫叶/DSC04549.JPG": "assets/thumbs/自然风光/枫叶/DSC04549.jpg",
   "assets/photos/自然风光/枫叶/DSC04548.JPG": "assets/thumbs/自然风光/枫叶/DSC04548.jpg",
   "assets/photos/自然风光/枫叶/DSC07786.JPG": "assets/thumbs/自然风光/枫叶/DSC07786.jpg",
@@ -165,14 +151,11 @@ const portraitCollectionList = [
     "href": "portrait.html?collection=camera",
     "photos": [
       "assets/photos/人像摄影/相机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.1；拍摄地点：北京.jpg",
-      "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：赤羽桥；拍摄时间：2026.7.jpg",
       "assets/photos/人像摄影/相机人像/一口榴莲派/模特：一口榴莲派；拍摄地点：杭州；拍摄时间：2024.10.JPG",
       "assets/photos/人像摄影/相机人像/Celia/模特：Celia；拍摄地点：上海迪士尼；拍摄时间：2026.3.jpg",
+      "assets/photos/人像摄影/相机人像/CheriJanie/模特：CheriJanie；拍摄地点：上海；拍摄时间：206.6.jpg",
       "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：2026.4；拍摄时间：日本富士山.jpg",
-      "assets/photos/人像摄影/相机人像/LMH/模特：LMH；拍摄地点：日本 浅草寺；拍摄时间：2026.7.jpg",
-      "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄地点：东京花火大会；拍摄时间：2026.7.jpg",
-      "assets/photos/人像摄影/相机人像/momo/模特：momo；拍摄地点：浅草寺；拍摄时间：2026.7..jpg",
-      "assets/photos/人像摄影/相机人像/Nero/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg"
+      "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄地点：东京花火大会；拍摄时间：2026.7.jpg"
     ],
     "groups": [
       {
@@ -181,19 +164,8 @@ const portraitCollectionList = [
         "description": "柔软、亲切，也有很好的画面适应力；适合用明亮背景和轻盈色彩保留人物的甜感。",
         "photos": [
           "assets/photos/人像摄影/相机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.1；拍摄地点：北京.jpg",
+          "assets/photos/人像摄影/相机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
           "assets/photos/人像摄影/相机人像/美丽酥酥/模特名：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg"
-        ]
-      },
-      {
-        "id": "camera-e997bbe8bda9",
-        "title": "闻轩",
-        "description": "气质安静而有存在感，适合东京塔、赤羽桥与六本木这样的城市线条；画面可以在克制的色彩里保留清晰的情绪。",
-        "photos": [
-          "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：赤羽桥；拍摄时间：2026.7.jpg",
-          "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：东京塔；拍摄时间：2026.7.jpg",
-          "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：六本木；拍摄时间：2026.7.jpg",
-          "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：芝公园；拍摄时间：2026.7 .jpg",
-          "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：芝公园；拍摄时间：2026.7..jpg"
         ]
       },
       {
@@ -217,6 +189,14 @@ const portraitCollectionList = [
         ]
       },
       {
+        "id": "camera-cherijanie",
+        "title": "CheriJanie",
+        "description": "自然、明亮，也带一点轻盈的日常感；适合在街景、花影和柔和光线里呈现松弛的现场气息。",
+        "photos": [
+          "assets/photos/人像摄影/相机人像/CheriJanie/模特：CheriJanie；拍摄地点：上海；拍摄时间：206.6.jpg"
+        ]
+      },
+      {
         "id": "camera-kakiloki",
         "title": "kakiloki",
         "description": "清冷、从容，也带一点电影感。她适合在开阔的风景与城市边界中被拍摄，轮廓会被自然光托得很安静。",
@@ -224,18 +204,11 @@ const portraitCollectionList = [
           "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：2026.4；拍摄时间：日本富士山.jpg",
           "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.JPG",
           "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：羽田机场；拍摄时间：2026.7.JPG.jpg",
+          "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
+          "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本富士山.jpg",
           "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京 台场.JPG",
+          "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京台场.jpg",
           "assets/photos/人像摄影/相机人像/kakiloki/模特：kaliloki；拍摄时间：2026.4；拍摄地点：日本 富士山.JPG"
-        ]
-      },
-      {
-        "id": "camera-lmh",
-        "title": "LMH",
-        "description": "清爽、明朗，站在浅草寺这样的传统街景里有很自然的少年感；适合用干净的构图保留人物和城市记忆之间的距离。",
-        "photos": [
-          "assets/photos/人像摄影/相机人像/LMH/模特：LMH；拍摄地点：日本 浅草寺；拍摄时间：2026.7.jpg",
-          "assets/photos/人像摄影/相机人像/LMH/模特：LMH；拍摄地点：日本浅草寺；拍摄时间：2026.7 .jpg",
-          "assets/photos/人像摄影/相机人像/LMH/模特：LMH；拍摄地点：日本浅草寺；拍摄时间：2026.7.JPG.jpg"
         ]
       },
       {
@@ -244,111 +217,13 @@ const portraitCollectionList = [
         "description": "甜美与松弛感很自然地并存，适合明亮街景、咖啡馆和带有日常呼吸感的画面。",
         "photos": [
           "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄地点：东京花火大会；拍摄时间：2026.7.jpg",
+          "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄地点：东京涉谷；拍摄时间：2026.5.jpg",
           "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：206.4；拍摄地点：东京迪士尼本.jpg",
+          "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：东京迪士尼.jpg",
           "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：日本富士山.jpg",
+          "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg",
           "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：日本横滨.jpg",
           "assets/photos/人像摄影/相机人像/Mio/拍摄时间：20626.5；模特：Mio；拍摄地点：日本横滨.jpg"
-        ]
-      },
-      {
-        "id": "camera-momo",
-        "title": "momo",
-        "description": "柔和、亲近，笑容和姿态都有轻盈的日常感；适合在芝公园、浅草寺一类有生活气息的地点里拍出温暖的叙事。",
-        "photos": [
-          "assets/photos/人像摄影/相机人像/momo/模特：momo；拍摄地点：浅草寺；拍摄时间：2026.7..jpg",
-          "assets/photos/人像摄影/相机人像/momo/模特：momo；拍摄地点：芝公园；拍摄时间：2026.7.jpg"
-        ]
-      },
-      {
-        "id": "camera-nero",
-        "title": "Nero",
-        "description": "气质干净利落，眼神和姿态都有很强的画面支点，适合街道、树影和更克制的色调。",
-        "photos": [
-          "assets/photos/人像摄影/相机人像/Nero/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg"
-        ]
-      }
-    ]
-  },
-  {
-    "id": "portrait-mobile",
-    "collection": "mobile",
-    "date": "Portrait",
-    "place": {
-      "zh": "手机人像",
-      "en": "Mobile Portrait",
-      "ja": "スマホ人物"
-    },
-    "title": {
-      "zh": "手机人像",
-      "en": "Mobile Portraits",
-      "ja": "スマホ人物"
-    },
-    "summary": {
-      "zh": "用随身镜头靠近现场，把表情、行动和日常光线里稍纵即逝的真实留下。",
-      "en": "Mobile portraits kept close to the scene, preserving gestures, expressions, and available light.",
-      "ja": "身近なレンズで現場に近づき、表情、動き、その場の光を残す。"
-    },
-    "href": "portrait.html?collection=mobile",
-    "photos": [
-      "assets/photos/人像摄影/手机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
-      "assets/photos/人像摄影/手机人像/CheriJanie/模特：CheriJanie；拍摄地点：上海；拍摄时间：206.6.jpg",
-      "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
-      "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄地点：东京涉谷；拍摄时间：2026.5.jpg",
-      "assets/photos/人像摄影/手机人像/Model/模特：LI.jpg",
-      "assets/photos/人像摄影/手机人像/Nero/模特：Nero；拍摄地点：东京涉谷；拍摄时间：2026.4.jpg"
-    ],
-    "groups": [
-      {
-        "id": "mobile-e7be8ee4b8bd",
-        "title": "美丽酥酥",
-        "description": "柔软、亲切，也有很好的画面适应力；适合用明亮背景和轻盈色彩保留人物的甜感。",
-        "photos": [
-          "assets/photos/人像摄影/手机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg"
-        ]
-      },
-      {
-        "id": "mobile-cherijanie",
-        "title": "CheriJanie",
-        "description": "自然、明亮，也带一点轻盈的日常感；适合在街景、花影和柔和光线里呈现松弛的现场气息。",
-        "photos": [
-          "assets/photos/人像摄影/手机人像/CheriJanie/模特：CheriJanie；拍摄地点：上海；拍摄时间：206.6.jpg"
-        ]
-      },
-      {
-        "id": "mobile-kakiloki",
-        "title": "kakiloki",
-        "description": "清冷、从容，也带一点电影感。她适合在开阔的风景与城市边界中被拍摄，轮廓会被自然光托得很安静。",
-        "photos": [
-          "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
-          "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本富士山.jpg",
-          "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京台场.jpg"
-        ]
-      },
-      {
-        "id": "mobile-mio",
-        "title": "Mio",
-        "description": "甜美与松弛感很自然地并存，适合明亮街景、咖啡馆和带有日常呼吸感的画面。",
-        "photos": [
-          "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄地点：东京涉谷；拍摄时间：2026.5.jpg",
-          "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：东京迪士尼.jpg",
-          "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg"
-        ]
-      },
-      {
-        "id": "mobile-model",
-        "title": "Model",
-        "description": "更像一组开放的肖像档案，保留不同人物在不同场景里的轮廓、情绪和光线。",
-        "photos": [
-          "assets/photos/人像摄影/手机人像/Model/模特：LI.jpg"
-        ]
-      },
-      {
-        "id": "mobile-nero",
-        "title": "Nero",
-        "description": "气质干净利落，眼神和姿态都有很强的画面支点，适合街道、树影和更克制的色调。",
-        "photos": [
-          "assets/photos/人像摄影/手机人像/Nero/模特：Nero；拍摄地点：东京涉谷；拍摄时间：2026.4.jpg",
-          "assets/photos/人像摄影/手机人像/Nero/模特：Nero；拍摄时间：2025.5；拍摄地点：东京涉谷.jpg"
         ]
       }
     ]
@@ -376,33 +251,8 @@ const portraitProjects = [
     },
     "photos": [
       "assets/photos/人像摄影/相机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.1；拍摄地点：北京.jpg",
+      "assets/photos/人像摄影/相机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
       "assets/photos/人像摄影/相机人像/美丽酥酥/模特名：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg"
-    ]
-  },
-  {
-    "id": "camera-e997bbe8bda9",
-    "title": {
-      "zh": "闻轩",
-      "en": "闻轩",
-      "ja": "闻轩"
-    },
-    "date": "Portrait",
-    "place": {
-      "zh": "相机人像",
-      "en": "Camera Portrait",
-      "ja": "カメラ人物"
-    },
-    "summary": {
-      "zh": "以相机记录人物、姿态与光线的关系，让肖像成为一页可以停留阅读的影像章节。",
-      "en": "Camera portraits shaped by posture, light, and the quiet distance between figure and space.",
-      "ja": "人物、姿勢、光の関係をカメラで残し、ゆっくり読める肖像の章にする。"
-    },
-    "photos": [
-      "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：赤羽桥；拍摄时间：2026.7.jpg",
-      "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：东京塔；拍摄时间：2026.7.jpg",
-      "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：六本木；拍摄时间：2026.7.jpg",
-      "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：芝公园；拍摄时间：2026.7 .jpg",
-      "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：芝公园；拍摄时间：2026.7..jpg"
     ]
   },
   {
@@ -454,6 +304,28 @@ const portraitProjects = [
     ]
   },
   {
+    "id": "camera-cherijanie",
+    "title": {
+      "zh": "CheriJanie",
+      "en": "CheriJanie",
+      "ja": "CheriJanie"
+    },
+    "date": "Portrait",
+    "place": {
+      "zh": "相机人像",
+      "en": "Camera Portrait",
+      "ja": "カメラ人物"
+    },
+    "summary": {
+      "zh": "以相机记录人物、姿态与光线的关系，让肖像成为一页可以停留阅读的影像章节。",
+      "en": "Camera portraits shaped by posture, light, and the quiet distance between figure and space.",
+      "ja": "人物、姿勢、光の関係をカメラで残し、ゆっくり読める肖像の章にする。"
+    },
+    "photos": [
+      "assets/photos/人像摄影/相机人像/CheriJanie/模特：CheriJanie；拍摄地点：上海；拍摄时间：206.6.jpg"
+    ]
+  },
+  {
     "id": "camera-kakiloki",
     "title": {
       "zh": "kakiloki",
@@ -475,32 +347,11 @@ const portraitProjects = [
       "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：2026.4；拍摄时间：日本富士山.jpg",
       "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.JPG",
       "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：羽田机场；拍摄时间：2026.7.JPG.jpg",
+      "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
+      "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本富士山.jpg",
       "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京 台场.JPG",
+      "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京台场.jpg",
       "assets/photos/人像摄影/相机人像/kakiloki/模特：kaliloki；拍摄时间：2026.4；拍摄地点：日本 富士山.JPG"
-    ]
-  },
-  {
-    "id": "camera-lmh",
-    "title": {
-      "zh": "LMH",
-      "en": "LMH",
-      "ja": "LMH"
-    },
-    "date": "Portrait",
-    "place": {
-      "zh": "相机人像",
-      "en": "Camera Portrait",
-      "ja": "カメラ人物"
-    },
-    "summary": {
-      "zh": "以相机记录人物、姿态与光线的关系，让肖像成为一页可以停留阅读的影像章节。",
-      "en": "Camera portraits shaped by posture, light, and the quiet distance between figure and space.",
-      "ja": "人物、姿勢、光の関係をカメラで残し、ゆっくり読める肖像の章にする。"
-    },
-    "photos": [
-      "assets/photos/人像摄影/相机人像/LMH/模特：LMH；拍摄地点：日本 浅草寺；拍摄时间：2026.7.jpg",
-      "assets/photos/人像摄影/相机人像/LMH/模特：LMH；拍摄地点：日本浅草寺；拍摄时间：2026.7 .jpg",
-      "assets/photos/人像摄影/相机人像/LMH/模特：LMH；拍摄地点：日本浅草寺；拍摄时间：2026.7.JPG.jpg"
     ]
   },
   {
@@ -523,192 +374,13 @@ const portraitProjects = [
     },
     "photos": [
       "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄地点：东京花火大会；拍摄时间：2026.7.jpg",
+      "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄地点：东京涉谷；拍摄时间：2026.5.jpg",
       "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：206.4；拍摄地点：东京迪士尼本.jpg",
+      "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：东京迪士尼.jpg",
       "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：日本富士山.jpg",
+      "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg",
       "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：日本横滨.jpg",
       "assets/photos/人像摄影/相机人像/Mio/拍摄时间：20626.5；模特：Mio；拍摄地点：日本横滨.jpg"
-    ]
-  },
-  {
-    "id": "camera-momo",
-    "title": {
-      "zh": "momo",
-      "en": "momo",
-      "ja": "momo"
-    },
-    "date": "Portrait",
-    "place": {
-      "zh": "相机人像",
-      "en": "Camera Portrait",
-      "ja": "カメラ人物"
-    },
-    "summary": {
-      "zh": "以相机记录人物、姿态与光线的关系，让肖像成为一页可以停留阅读的影像章节。",
-      "en": "Camera portraits shaped by posture, light, and the quiet distance between figure and space.",
-      "ja": "人物、姿勢、光の関係をカメラで残し、ゆっくり読める肖像の章にする。"
-    },
-    "photos": [
-      "assets/photos/人像摄影/相机人像/momo/模特：momo；拍摄地点：浅草寺；拍摄时间：2026.7..jpg",
-      "assets/photos/人像摄影/相机人像/momo/模特：momo；拍摄地点：芝公园；拍摄时间：2026.7.jpg"
-    ]
-  },
-  {
-    "id": "camera-nero",
-    "title": {
-      "zh": "Nero",
-      "en": "Nero",
-      "ja": "Nero"
-    },
-    "date": "Portrait",
-    "place": {
-      "zh": "相机人像",
-      "en": "Camera Portrait",
-      "ja": "カメラ人物"
-    },
-    "summary": {
-      "zh": "以相机记录人物、姿态与光线的关系，让肖像成为一页可以停留阅读的影像章节。",
-      "en": "Camera portraits shaped by posture, light, and the quiet distance between figure and space.",
-      "ja": "人物、姿勢、光の関係をカメラで残し、ゆっくり読める肖像の章にする。"
-    },
-    "photos": [
-      "assets/photos/人像摄影/相机人像/Nero/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg"
-    ]
-  },
-  {
-    "id": "mobile-e7be8ee4b8bd",
-    "title": {
-      "zh": "美丽酥酥",
-      "en": "美丽酥酥",
-      "ja": "美丽酥酥"
-    },
-    "date": "Portrait",
-    "place": {
-      "zh": "手机人像",
-      "en": "Mobile Portrait",
-      "ja": "スマホ人物"
-    },
-    "summary": {
-      "zh": "用随身镜头靠近现场，把表情、行动和日常光线里稍纵即逝的真实留下。",
-      "en": "Mobile portraits kept close to the scene, preserving gestures, expressions, and available light.",
-      "ja": "身近なレンズで現場に近づき、表情、動き、その場の光を残す。"
-    },
-    "photos": [
-      "assets/photos/人像摄影/手机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg"
-    ]
-  },
-  {
-    "id": "mobile-cherijanie",
-    "title": {
-      "zh": "CheriJanie",
-      "en": "CheriJanie",
-      "ja": "CheriJanie"
-    },
-    "date": "Portrait",
-    "place": {
-      "zh": "手机人像",
-      "en": "Mobile Portrait",
-      "ja": "スマホ人物"
-    },
-    "summary": {
-      "zh": "用随身镜头靠近现场，把表情、行动和日常光线里稍纵即逝的真实留下。",
-      "en": "Mobile portraits kept close to the scene, preserving gestures, expressions, and available light.",
-      "ja": "身近なレンズで現場に近づき、表情、動き、その場の光を残す。"
-    },
-    "photos": [
-      "assets/photos/人像摄影/手机人像/CheriJanie/模特：CheriJanie；拍摄地点：上海；拍摄时间：206.6.jpg"
-    ]
-  },
-  {
-    "id": "mobile-kakiloki",
-    "title": {
-      "zh": "kakiloki",
-      "en": "kakiloki",
-      "ja": "kakiloki"
-    },
-    "date": "Portrait",
-    "place": {
-      "zh": "手机人像",
-      "en": "Mobile Portrait",
-      "ja": "スマホ人物"
-    },
-    "summary": {
-      "zh": "用随身镜头靠近现场，把表情、行动和日常光线里稍纵即逝的真实留下。",
-      "en": "Mobile portraits kept close to the scene, preserving gestures, expressions, and available light.",
-      "ja": "身近なレンズで現場に近づき、表情、動き、その場の光を残す。"
-    },
-    "photos": [
-      "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
-      "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本富士山.jpg",
-      "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京台场.jpg"
-    ]
-  },
-  {
-    "id": "mobile-mio",
-    "title": {
-      "zh": "Mio",
-      "en": "Mio",
-      "ja": "Mio"
-    },
-    "date": "Portrait",
-    "place": {
-      "zh": "手机人像",
-      "en": "Mobile Portrait",
-      "ja": "スマホ人物"
-    },
-    "summary": {
-      "zh": "用随身镜头靠近现场，把表情、行动和日常光线里稍纵即逝的真实留下。",
-      "en": "Mobile portraits kept close to the scene, preserving gestures, expressions, and available light.",
-      "ja": "身近なレンズで現場に近づき、表情、動き、その場の光を残す。"
-    },
-    "photos": [
-      "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄地点：东京涉谷；拍摄时间：2026.5.jpg",
-      "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：东京迪士尼.jpg",
-      "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg"
-    ]
-  },
-  {
-    "id": "mobile-model",
-    "title": {
-      "zh": "Model",
-      "en": "Model",
-      "ja": "Model"
-    },
-    "date": "Portrait",
-    "place": {
-      "zh": "手机人像",
-      "en": "Mobile Portrait",
-      "ja": "スマホ人物"
-    },
-    "summary": {
-      "zh": "用随身镜头靠近现场，把表情、行动和日常光线里稍纵即逝的真实留下。",
-      "en": "Mobile portraits kept close to the scene, preserving gestures, expressions, and available light.",
-      "ja": "身近なレンズで現場に近づき、表情、動き、その場の光を残す。"
-    },
-    "photos": [
-      "assets/photos/人像摄影/手机人像/Model/模特：LI.jpg"
-    ]
-  },
-  {
-    "id": "mobile-nero",
-    "title": {
-      "zh": "Nero",
-      "en": "Nero",
-      "ja": "Nero"
-    },
-    "date": "Portrait",
-    "place": {
-      "zh": "手机人像",
-      "en": "Mobile Portrait",
-      "ja": "スマホ人物"
-    },
-    "summary": {
-      "zh": "用随身镜头靠近现场，把表情、行动和日常光线里稍纵即逝的真实留下。",
-      "en": "Mobile portraits kept close to the scene, preserving gestures, expressions, and available light.",
-      "ja": "身近なレンズで現場に近づき、表情、動き、その場の光を残す。"
-    },
-    "photos": [
-      "assets/photos/人像摄影/手机人像/Nero/模特：Nero；拍摄地点：东京涉谷；拍摄时间：2026.4.jpg",
-      "assets/photos/人像摄影/手机人像/Nero/模特：Nero；拍摄时间：2025.5；拍摄地点：东京涉谷.jpg"
     ]
   }
 ];
@@ -742,14 +414,11 @@ const sitePortfolioSections = [
         "href": "portrait.html?collection=camera",
         "photos": [
           "assets/photos/人像摄影/相机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.1；拍摄地点：北京.jpg",
-          "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：赤羽桥；拍摄时间：2026.7.jpg",
           "assets/photos/人像摄影/相机人像/一口榴莲派/模特：一口榴莲派；拍摄地点：杭州；拍摄时间：2024.10.JPG",
           "assets/photos/人像摄影/相机人像/Celia/模特：Celia；拍摄地点：上海迪士尼；拍摄时间：2026.3.jpg",
+          "assets/photos/人像摄影/相机人像/CheriJanie/模特：CheriJanie；拍摄地点：上海；拍摄时间：206.6.jpg",
           "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：2026.4；拍摄时间：日本富士山.jpg",
-          "assets/photos/人像摄影/相机人像/LMH/模特：LMH；拍摄地点：日本 浅草寺；拍摄时间：2026.7.jpg",
-          "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄地点：东京花火大会；拍摄时间：2026.7.jpg",
-          "assets/photos/人像摄影/相机人像/momo/模特：momo；拍摄地点：浅草寺；拍摄时间：2026.7..jpg",
-          "assets/photos/人像摄影/相机人像/Nero/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg"
+          "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄地点：东京花火大会；拍摄时间：2026.7.jpg"
         ],
         "groups": [
           {
@@ -758,19 +427,8 @@ const sitePortfolioSections = [
             "description": "柔软、亲切，也有很好的画面适应力；适合用明亮背景和轻盈色彩保留人物的甜感。",
             "photos": [
               "assets/photos/人像摄影/相机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.1；拍摄地点：北京.jpg",
+              "assets/photos/人像摄影/相机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
               "assets/photos/人像摄影/相机人像/美丽酥酥/模特名：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg"
-            ]
-          },
-          {
-            "id": "camera-e997bbe8bda9",
-            "title": "闻轩",
-            "description": "气质安静而有存在感，适合东京塔、赤羽桥与六本木这样的城市线条；画面可以在克制的色彩里保留清晰的情绪。",
-            "photos": [
-              "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：赤羽桥；拍摄时间：2026.7.jpg",
-              "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：东京塔；拍摄时间：2026.7.jpg",
-              "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：六本木；拍摄时间：2026.7.jpg",
-              "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：芝公园；拍摄时间：2026.7 .jpg",
-              "assets/photos/人像摄影/相机人像/闻轩/模特：闻轩；拍摄地点：芝公园；拍摄时间：2026.7..jpg"
             ]
           },
           {
@@ -794,6 +452,14 @@ const sitePortfolioSections = [
             ]
           },
           {
+            "id": "camera-cherijanie",
+            "title": "CheriJanie",
+            "description": "自然、明亮，也带一点轻盈的日常感；适合在街景、花影和柔和光线里呈现松弛的现场气息。",
+            "photos": [
+              "assets/photos/人像摄影/相机人像/CheriJanie/模特：CheriJanie；拍摄地点：上海；拍摄时间：206.6.jpg"
+            ]
+          },
+          {
             "id": "camera-kakiloki",
             "title": "kakiloki",
             "description": "清冷、从容，也带一点电影感。她适合在开阔的风景与城市边界中被拍摄，轮廓会被自然光托得很安静。",
@@ -801,18 +467,11 @@ const sitePortfolioSections = [
               "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：2026.4；拍摄时间：日本富士山.jpg",
               "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：日本 台场；拍摄时间：2026.5.JPG",
               "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄地点：羽田机场；拍摄时间：2026.7.JPG.jpg",
+              "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
+              "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本富士山.jpg",
               "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京 台场.JPG",
+              "assets/photos/人像摄影/相机人像/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京台场.jpg",
               "assets/photos/人像摄影/相机人像/kakiloki/模特：kaliloki；拍摄时间：2026.4；拍摄地点：日本 富士山.JPG"
-            ]
-          },
-          {
-            "id": "camera-lmh",
-            "title": "LMH",
-            "description": "清爽、明朗，站在浅草寺这样的传统街景里有很自然的少年感；适合用干净的构图保留人物和城市记忆之间的距离。",
-            "photos": [
-              "assets/photos/人像摄影/相机人像/LMH/模特：LMH；拍摄地点：日本 浅草寺；拍摄时间：2026.7.jpg",
-              "assets/photos/人像摄影/相机人像/LMH/模特：LMH；拍摄地点：日本浅草寺；拍摄时间：2026.7 .jpg",
-              "assets/photos/人像摄影/相机人像/LMH/模特：LMH；拍摄地点：日本浅草寺；拍摄时间：2026.7.JPG.jpg"
             ]
           },
           {
@@ -821,111 +480,13 @@ const sitePortfolioSections = [
             "description": "甜美与松弛感很自然地并存，适合明亮街景、咖啡馆和带有日常呼吸感的画面。",
             "photos": [
               "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄地点：东京花火大会；拍摄时间：2026.7.jpg",
+              "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄地点：东京涉谷；拍摄时间：2026.5.jpg",
               "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：206.4；拍摄地点：东京迪士尼本.jpg",
+              "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：东京迪士尼.jpg",
               "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：日本富士山.jpg",
+              "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg",
               "assets/photos/人像摄影/相机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：日本横滨.jpg",
               "assets/photos/人像摄影/相机人像/Mio/拍摄时间：20626.5；模特：Mio；拍摄地点：日本横滨.jpg"
-            ]
-          },
-          {
-            "id": "camera-momo",
-            "title": "momo",
-            "description": "柔和、亲近，笑容和姿态都有轻盈的日常感；适合在芝公园、浅草寺一类有生活气息的地点里拍出温暖的叙事。",
-            "photos": [
-              "assets/photos/人像摄影/相机人像/momo/模特：momo；拍摄地点：浅草寺；拍摄时间：2026.7..jpg",
-              "assets/photos/人像摄影/相机人像/momo/模特：momo；拍摄地点：芝公园；拍摄时间：2026.7.jpg"
-            ]
-          },
-          {
-            "id": "camera-nero",
-            "title": "Nero",
-            "description": "气质干净利落，眼神和姿态都有很强的画面支点，适合街道、树影和更克制的色调。",
-            "photos": [
-              "assets/photos/人像摄影/相机人像/Nero/模特：Nero；拍摄地点：东京上野；拍摄时间：2026.4.jpg"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "portrait-mobile",
-        "collection": "mobile",
-        "date": "Portrait",
-        "place": {
-          "zh": "手机人像",
-          "en": "Mobile Portrait",
-          "ja": "スマホ人物"
-        },
-        "title": {
-          "zh": "手机人像",
-          "en": "Mobile Portraits",
-          "ja": "スマホ人物"
-        },
-        "summary": {
-          "zh": "用随身镜头靠近现场，把表情、行动和日常光线里稍纵即逝的真实留下。",
-          "en": "Mobile portraits kept close to the scene, preserving gestures, expressions, and available light.",
-          "ja": "身近なレンズで現場に近づき、表情、動き、その場の光を残す。"
-        },
-        "href": "portrait.html?collection=mobile",
-        "photos": [
-          "assets/photos/人像摄影/手机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg",
-          "assets/photos/人像摄影/手机人像/CheriJanie/模特：CheriJanie；拍摄地点：上海；拍摄时间：206.6.jpg",
-          "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
-          "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄地点：东京涉谷；拍摄时间：2026.5.jpg",
-          "assets/photos/人像摄影/手机人像/Model/模特：LI.jpg",
-          "assets/photos/人像摄影/手机人像/Nero/模特：Nero；拍摄地点：东京涉谷；拍摄时间：2026.4.jpg"
-        ],
-        "groups": [
-          {
-            "id": "mobile-e7be8ee4b8bd",
-            "title": "美丽酥酥",
-            "description": "柔软、亲切，也有很好的画面适应力；适合用明亮背景和轻盈色彩保留人物的甜感。",
-            "photos": [
-              "assets/photos/人像摄影/手机人像/美丽酥酥/模特：美丽酥酥；拍摄时间：2026.2；拍摄地点：上海.jpg"
-            ]
-          },
-          {
-            "id": "mobile-cherijanie",
-            "title": "CheriJanie",
-            "description": "自然、明亮，也带一点轻盈的日常感；适合在街景、花影和柔和光线里呈现松弛的现场气息。",
-            "photos": [
-              "assets/photos/人像摄影/手机人像/CheriJanie/模特：CheriJanie；拍摄地点：上海；拍摄时间：206.6.jpg"
-            ]
-          },
-          {
-            "id": "mobile-kakiloki",
-            "title": "kakiloki",
-            "description": "清冷、从容，也带一点电影感。她适合在开阔的风景与城市边界中被拍摄，轮廓会被自然光托得很安静。",
-            "photos": [
-              "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本 富士山.jpg",
-              "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.4；拍摄地点：日本富士山.jpg",
-              "assets/photos/人像摄影/手机人像/kakiloki/模特：kakiloki；拍摄时间：2026.5；拍摄地点：东京台场.jpg"
-            ]
-          },
-          {
-            "id": "mobile-mio",
-            "title": "Mio",
-            "description": "甜美与松弛感很自然地并存，适合明亮街景、咖啡馆和带有日常呼吸感的画面。",
-            "photos": [
-              "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄地点：东京涉谷；拍摄时间：2026.5.jpg",
-              "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.4；拍摄地点：东京迪士尼.jpg",
-              "assets/photos/人像摄影/手机人像/Mio/模特：Mio；拍摄时间：2026.5；拍摄地点：东京涉谷.jpg"
-            ]
-          },
-          {
-            "id": "mobile-model",
-            "title": "Model",
-            "description": "更像一组开放的肖像档案，保留不同人物在不同场景里的轮廓、情绪和光线。",
-            "photos": [
-              "assets/photos/人像摄影/手机人像/Model/模特：LI.jpg"
-            ]
-          },
-          {
-            "id": "mobile-nero",
-            "title": "Nero",
-            "description": "气质干净利落，眼神和姿态都有很强的画面支点，适合街道、树影和更克制的色调。",
-            "photos": [
-              "assets/photos/人像摄影/手机人像/Nero/模特：Nero；拍摄地点：东京涉谷；拍摄时间：2026.4.jpg",
-              "assets/photos/人像摄影/手机人像/Nero/模特：Nero；拍摄时间：2025.5；拍摄地点：东京涉谷.jpg"
             ]
           }
         ]

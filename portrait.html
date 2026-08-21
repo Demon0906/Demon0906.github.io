@@ -150,6 +150,10 @@
         display: grid;
       }
 
+      .session-block {
+        border-top: 1px solid var(--line);
+      }
+
       .model-section {
         display: grid;
         grid-template-columns: minmax(220px, 0.24fr) minmax(0, 0.76fr);
@@ -497,35 +501,81 @@
       const modelMap = new Map();
       (window.portraitCollections || []).forEach((collection) => {
         (collection.groups || []).forEach((group) => {
-          const photos = (group.photos || []).filter((photo) => availablePortraitPhotos.has(photo));
+          const photos = [...new Set(group.photos || [])];
           if (!photos.length) return;
-          if (!modelMap.has(group.title)) {
-            modelMap.set(group.title, {
-              title: group.title,
-              description: group.description,
+          const isSessionGroup = group.title === "约拍写真" || (photos[0] || "").includes("/约拍展示/");
+          const sectionKey = isSessionGroup ? "session" : group.title;
+          if (!modelMap.has(sectionKey)) {
+            modelMap.set(sectionKey, {
+              title: isSessionGroup ? "约拍写真" : group.title,
+              description: isSessionGroup ? "约拍写真独立成章，记录一次相遇里自然出现的光线、距离和人物状态。" : group.description,
+              kind: isSessionGroup ? "session" : "model",
               photos: []
             });
           }
-          modelMap.get(group.title).photos.push(...photos);
+          modelMap.get(sectionKey).photos.push(...photos);
         });
       });
 
-      const models = [...modelMap.values()]
-        .map((model) => ({ ...model, photos: [...new Set(model.photos)].slice(0, 8) }))
-        .filter((model) => model.photos.length)
-        .slice(0, 10);
+      const allEntries = [...modelMap.values()]
+        .map((model) => ({ ...model, photos: [...new Set(model.photos)] }))
+        .filter((model) => model.photos.length);
+      const sessionEntries = allEntries.filter((entry) => entry.kind === "session");
+      const sessionGroupOrder = ["LMH", "momo", "闻轩", "约拍精选"];
+      const sessionDescriptions = {
+        LMH: "浅草寺附近的街道、塔影与明亮日光，让人物在城市记忆里自然停留。",
+        momo: "轻盈、柔和，也带着一点日常的亲近感；适合在有生活气息的场景里慢慢展开。",
+        闻轩: "城市线条与安静姿态相互靠近，在东京的街景里留下清晰而克制的情绪。",
+        约拍精选: "近期约拍中的片段整理。每一张都保留一次相遇里自然出现的光线、距离和人物状态。"
+      };
+      const sessionGroupMap = new Map();
+      sessionEntries.forEach((entry) => {
+        entry.photos.forEach((photo) => {
+          const info = window.photoInfoFromPath ? window.photoInfoFromPath(photo) : {};
+          const modelName = info.fields?.["模特"] || info.fields?.["模特名"] || "约拍精选";
+          if (!sessionGroupMap.has(modelName)) {
+            sessionGroupMap.set(modelName, {
+              title: modelName,
+              description: sessionDescriptions[modelName] || sessionDescriptions["约拍精选"],
+              kind: "session",
+              photos: []
+            });
+          }
+          sessionGroupMap.get(modelName).photos.push(photo);
+        });
+      });
+      const sessionGroups = [...sessionGroupMap.values()].sort((a, b) => {
+        const ai = sessionGroupOrder.indexOf(a.title);
+        const bi = sessionGroupOrder.indexOf(b.title);
+        if (ai !== -1 || bi !== -1) return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+        return a.title.localeCompare(b.title, "zh-Hans-CN", { numeric: true, sensitivity: "base" });
+      });
+      const models = allEntries
+        .filter((entry) => entry.kind !== "session")
+        .sort((a, b) => {
+          const priority = ["kakiloki", "Mio"];
+          const ai = priority.indexOf(a.title);
+          const bi = priority.indexOf(b.title);
+          if (ai !== -1 || bi !== -1) return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+          return a.title.localeCompare(b.title, "zh-Hans-CN", { numeric: true, sensitivity: "base" });
+        });
       const allPhotos = models.flatMap((model) =>
         model.photos.map((photo) => ({
           preview: window.thumbImage(photo),
           full: window.localImage(photo),
         }))
-      );
+      ).concat(sessionGroups.flatMap((entry) =>
+        entry.photos.map((photo) => ({
+          preview: window.thumbImage(photo),
+          full: window.localImage(photo),
+        }))
+      ));
       let photoCursor = 0;
 
-      modelMount.innerHTML = models.map((model, index) => `
-        <article class="model-section">
+      const renderEntry = (model, index, label = "Model") => `
+        <article class="model-section ${model.kind === "session" ? "session-block" : ""}">
           <div class="model-copy">
-            <small>${String(index + 1).padStart(2, "0")} / Model</small>
+            <small>${String(index + 1).padStart(2, "0")} / ${label}</small>
             <h2>${model.title}</h2>
             <p>${model.description || "以光线、姿态和场景整理成一组安静的人像章节。"}</p>
           </div>
@@ -540,7 +590,12 @@
             }).join("")}
           </div>
         </article>
-      `).join("");
+      `;
+
+      modelMount.innerHTML = [
+        ...models.map((model, index) => renderEntry(model, index, "Model")),
+        ...sessionGroups.map((entry, index) => renderEntry(entry, index, "Session Portraits"))
+      ].join("");
 
       document.querySelectorAll(".model-slide img").forEach((image) => {
         image.addEventListener("error", () => {

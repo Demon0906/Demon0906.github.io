@@ -10,6 +10,7 @@ const IMAGE_EXTENSIONS = new Set([".jpg", ".jpeg", ".png", ".webp", ".gif"]);
 
 const sectionOrder = ["portrait", "nature", "architecture", "city", "daily", "stories"];
 const portraitCollectionOrder = ["相机人像", "手机人像"];
+const excludedPortraitGroupNames = new Set(["约拍展示", "LMH", "momo", "MOMO", "闻轩", "Nero", "约拍精选"]);
 
 const sectionConfig = {
   人像摄影: {
@@ -231,6 +232,7 @@ const projectMeta = {
 };
 
 const groupDescriptions = {
+  约拍展示: "为近期约拍整理的人像章节。每一次拍摄都保留人物和城市之间自然发生的距离、光线与情绪。",
   kakiloki: "清冷、从容，也带一点电影感。她适合在开阔的风景与城市边界中被拍摄，轮廓会被自然光托得很安静。",
   Mio: "甜美与松弛感很自然地并存，适合明亮街景、咖啡馆和带有日常呼吸感的画面。",
   Nero: "气质干净利落，眼神和姿态都有很强的画面支点，适合街道、树影和更克制的色调。",
@@ -243,6 +245,13 @@ const groupDescriptions = {
   LI: "简洁、清透，适合被放在更开放的肖像档案里观看；画面重点落在人物轮廓、自然表情和当下的光线上。",
   Model: "更像一组开放的肖像档案，保留不同人物在不同场景里的轮廓、情绪和光线。",
   美丽酥酥: "柔软、亲切，也有很好的画面适应力；适合用明亮背景和轻盈色彩保留人物的甜感。",
+};
+
+const portraitGroupMeta = {
+  "人像摄影/相机人像/约拍展示": {
+    title: "约拍写真",
+    description: "为近期约拍整理的独立章节。每一次拍摄都从真实的相遇开始，在城市、光线和人物状态之间留下自然而清晰的影像。",
+  },
 };
 
 function compareName(a, b) {
@@ -393,13 +402,15 @@ function buildPortraitCollections() {
         href: `portrait.html?collection=${slug(collectionName)}`,
       };
       const groups = listDirs(dir)
+        .filter((groupName) => !excludedPortraitGroupNames.has(groupName))
         .map((groupName) => {
           const groupPhotos = listImages(path.join(dir, groupName));
           if (!groupPhotos.length) return null;
+          const groupMeta = portraitGroupMeta[`${collectionName}/${groupName}`] || {};
           return {
             id: `${meta.collection}-${slug(groupName)}`,
-            title: groupName,
-            description: groupDescriptions[groupName] || summaryFor("人像摄影", groupName),
+            title: groupMeta.title || groupName,
+            description: groupMeta.description || groupDescriptions[groupName] || summaryFor("人像摄影", groupName),
             photos: groupPhotos,
           };
         })

@@ -172,10 +172,26 @@
         contain-intrinsic-size: 620px;
       }
 
+      .collection-group.booking-photo-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding-block: clamp(18px, 2.8vw, 38px);
+        contain-intrinsic-size: 360px;
+      }
+
       .group-copy {
         align-self: start;
         position: sticky;
         top: 96px;
+      }
+
+      .booking-photo-row .group-copy {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
       }
 
       .group-copy small {
@@ -212,6 +228,10 @@
         overscroll-behavior-inline: contain;
         scroll-snap-type: inline mandatory;
         padding-bottom: 14px;
+      }
+
+      .booking-photo-row .group-slider {
+        grid-auto-columns: minmax(220px, 20%);
       }
 
       .group-slide {
@@ -382,6 +402,10 @@
           padding: 22px 14px;
         }
 
+        .collection-group.booking-photo-row {
+          padding: 16px 14px;
+        }
+
         .group-copy {
           position: static;
         }
@@ -389,6 +413,10 @@
         .group-slider {
           grid-auto-columns: minmax(148px, 52%);
           gap: 9px;
+        }
+
+        .booking-photo-row .group-slider {
+          grid-auto-columns: minmax(168px, 68%);
         }
 
         .group-copy small {
@@ -475,6 +503,80 @@
                 "assets/thumbs/人文建筑/拍摄地点：箱根；拍摄时间：2026.6.jpg",
                 "assets/thumbs/人文建筑/拍摄时间：206.6；拍摄地点：箱根.jpg",
                 "assets/thumbs/人文建筑/拍摄地点：东京；拍摄时间：2026.6.jpg"
+              ]
+            }
+          ]
+        },
+        booking: {
+          kicker: "Portrait Sessions",
+          title: "Session Portraits",
+          summary: "约拍不是把人放进固定模板，而是在一次相遇里慢慢找到适合对方的光线、距离和情绪。这里收集近期的约拍写真：有东京街角的明亮，也有夜色里更安静的停顿。",
+          cover: "assets/thumbs/人像摄影/相机人像/约拍展示/模特：DF.jpg",
+          groups: [
+            {
+              title: "圓圓",
+              label: "Session Portraits",
+              description: "约拍写真人物分组。",
+              photos: [
+                "assets/thumbs/人像摄影/相机人像/约拍展示/ 模特：圓圓.jpg",
+                "assets/thumbs/人像摄影/相机人像/约拍展示/模特：圓圓 .jpg",
+                "assets/thumbs/人像摄影/相机人像/约拍展示/模特：圓圓.jpg"
+              ]
+            },
+            {
+              title: "DF",
+              label: "Session Portraits",
+              description: "约拍写真人物分组。",
+              photos: [
+                "assets/thumbs/人像摄影/相机人像/约拍展示/模特：DF .jpg",
+                "assets/thumbs/人像摄影/相机人像/约拍展示/模特：DF.jpg"
+              ]
+            },
+            {
+              title: "LMH",
+              label: "Session Portraits",
+              description: "约拍写真人物分组。",
+              photos: [
+                "assets/thumbs/人像摄影/相机人像/约拍展示/模特：LMH；拍摄地点：日本 浅草寺；拍摄时间：2026.7.jpg",
+                "assets/thumbs/人像摄影/相机人像/约拍展示/模特：LMH；拍摄地点：日本浅草寺；拍摄时间：2026.7 .jpg",
+                "assets/thumbs/人像摄影/相机人像/约拍展示/模特：LMH；拍摄地点：日本浅草寺；拍摄时间：2026.7.JPG.jpg"
+              ]
+            },
+            {
+              title: "LZY",
+              label: "Session Portraits",
+              description: "约拍写真人物分组。",
+              photos: [
+                "assets/thumbs/人像摄影/相机人像/约拍展示/模特：LZY .jpg",
+                "assets/thumbs/人像摄影/相机人像/约拍展示/模特：LZY.jpg"
+              ]
+            },
+            {
+              title: "momo",
+              label: "Session Portraits",
+              description: "约拍写真人物分组。",
+              photos: [
+                "assets/thumbs/人像摄影/相机人像/约拍展示/模特：momo；拍摄地点：浅草寺；拍摄时间：2026.7..jpg",
+                "assets/thumbs/人像摄影/相机人像/约拍展示/模特：momo；拍摄地点：芝公园；拍摄时间：2026.7.jpg"
+              ]
+            },
+            {
+              title: "蕊蕊",
+              label: "Session Portraits",
+              description: "约拍写真人物分组。",
+              photos: [
+                "assets/thumbs/人像摄影/相机人像/约拍展示/模特：蕊蕊 .jpg",
+                "assets/thumbs/人像摄影/相机人像/约拍展示/模特：蕊蕊.jpg"
+              ]
+            },
+            {
+              title: "闻轩",
+              label: "Session Portraits",
+              description: "约拍写真人物分组。",
+              photos: [
+                "assets/thumbs/人像摄影/相机人像/约拍展示/模特：闻轩；拍摄地点：六本木；拍摄时间：2026.7.jpg",
+                "assets/thumbs/人像摄影/相机人像/约拍展示/模特：闻轩；拍摄地点：芝公园；拍摄时间：2026.7..jpg",
+                "assets/thumbs/人像摄影/相机人像/约拍展示/模特：闻轩；拍摄地点：赤羽桥；拍摄时间：2026.7.jpg"
               ]
             }
           ]
@@ -594,6 +696,20 @@
               ["Architecture", "Architecture", "Buildings are not only backgrounds. They hold the order and warmth left by people passing through."]
             ]
           },
+          booking: {
+            kicker: "Portrait Sessions",
+            title: "Session Portraits",
+            summary: "A portrait session is not a fixed pose, but a quiet search for the light, distance and mood that belong to one person. This chapter gathers recent commissioned portraits from Tokyo streets, soft daylight and slower night scenes.",
+            groups: [
+              ["Yuanyuan", "Session Portraits", "Session portrait group."],
+              ["DF", "Session Portraits", "Session portrait group."],
+              ["LMH", "Session Portraits", "Asakusa streets, tower lines and clear daylight let the portrait stay naturally inside the city memory."],
+              ["LZY", "Session Portraits", "Session portrait group."],
+              ["momo", "Session Portraits", "Soft, light and close to everyday life; the frame opens slowly in places with a human rhythm."],
+              ["Ruirui", "Session Portraits", "Session portrait group."],
+              ["Wenxuan", "Session Portraits", "City lines and quiet posture meet in Tokyo, keeping the emotion clean and restrained."],
+            ]
+          },
           travel: {
             kicker: "Nature / Travel",
             title: "Travel",
@@ -630,6 +746,20 @@
             groups: [
               ["Urban View", "Urban View", "街路、夜の光、都市の断片を、散歩中の短い文章のように残します。"],
               ["Architecture", "Architecture", "建築は背景ではなく、人が通ったあとに残る秩序と温度も写します。"]
+            ]
+          },
+          booking: {
+            kicker: "Portrait Sessions",
+            title: "Session Portraits",
+            summary: "撮影の時間は、決まったポーズに人を当てはめることではなく、その人に合う光、距離、空気を探すこと。東京の街角、柔らかな昼の光、夜の静けさの中で残したポートレートです。",
+            groups: [
+              ["Yuanyuan", "Session Portraits", "セッションポートレートのグループです。"],
+              ["DF", "Session Portraits", "セッションポートレートのグループです。"],
+              ["LMH", "Session Portraits", "浅草の街並み、塔の線、明るい光の中で、人物が都市の記憶に自然に残ります。"],
+              ["LZY", "Session Portraits", "セッションポートレートのグループです。"],
+              ["momo", "Session Portraits", "柔らかく、軽やかで、日常に近い空気を持つポートレートです。"],
+              ["Ruirui", "Session Portraits", "セッションポートレートのグループです。"],
+              ["Wenxuan", "Session Portraits", "東京の街の線と静かな姿勢が近づき、澄んだ感情を残します。"],
             ]
           },
           travel: {
@@ -683,12 +813,13 @@
           if (collectionCopy[lang]?.[key]) node.textContent = collectionCopy[lang][key];
         });
         mount.innerHTML = safeGroups.map((group, index) => {
+          const isBooking = collectionKey === "booking";
           const groupText = text.groups?.[index] || [];
           const groupTitle = groupText[0] || group.title || text.title || collection.title;
           const groupLabel = groupText[1] || group.label || groupTitle;
           const groupDescription = groupText[2] || group.description || text.summary || collection.summary || "";
           return `
-            <article class="collection-group">
+            <article class="collection-group${isBooking ? " booking-photo-row" : ""}">
               <div class="group-copy">
                 <small>${String(index + 1).padStart(2, "0")} / ${groupLabel}</small>
                 <h2>${groupTitle}</h2>
